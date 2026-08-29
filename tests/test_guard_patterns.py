@@ -1270,3 +1270,180 @@ def test_the_byte_rules_know_more_than_one_spelling_of_a_name():
              if "account name" in why).pattern)
     assert any(acct.encode("ascii") in p.lower() for p in lits), (
         "no byte rule guards the home directory")
+
+
+# ---------------------------------------------------------------------------
+# 11. the ICLR gates: what they read before they decide
+# ---------------------------------------------------------------------------
+@needs_check
+def test_the_allow_drift_check_reads_a_decorated_macro_value():
+    r"""The check exists because ALLOW drifted onto five generated values.
+
+    It read them with `\{([^{}]*)\}` and keyed on the raw text, so a value
+    with braces was invisible -- \RuleFprHi's "1.2\times 10^{-2}" and its
+    sibling, both generated measurements -- and a percentage stored as
+    "8.7\%" never matched a bare "8.7" in ALLOW. Measured on this build: 15
+    of 106 values carry markup and 14 distinct numbers were unreachable.
+    Adding a percentage to ALLOW is the edit that produced the founding
+    failure, and it was the edit the check could not see.
+    """
+    import importlib
+
+    import check_iclr as C
+    importlib.reload(C)
+
+    assert C.macro_numbers("8.7\\%") == {"8.7"}, "a percentage is not read"
+    assert C.macro_numbers("1.2\\times 10^{-2}") == {"1.2", "10"}, (
+        "a braced value is not read, or the exponent is read as a number")
+    assert C.macro_numbers("0.62") == {"0.62"}
+
+    gen = ROOT / "paper-a" / "iclr" / "generated"
+    if not gen.is_dir():
+        pytest.skip("no generated macros on this checkout")
+    seen = {}
+    for g in sorted(gen.glob("*.tex")):
+        for gm in C.MACRO_DEF.finditer(g.read_text(encoding="utf-8")):
+            for num in C.macro_numbers(gm.group(2)):
+                seen.setdefault(num, []).append(gm.group(1))
+    assert seen, "no macro values parsed at all"
+    # EVERY DEFINED MACRO IS REACHABLE. The first version of this assertion
+    # derived the expected set with C.MACRO_DEF -- the regex under test --
+    # so reverting that regex emptied the set and the check became vacuous.
+    # A macro's NAME can be read without parsing its value at all, which
+    # makes it the independent quantity.
+    names = {n for ns in seen.values() for n in ns}
+    declared = set()
+    for g in gen.glob("*.tex"):
+        declared |= set(re.findall(r"\\newcommand\{?\\([A-Za-z]+)",
+                                   g.read_text(encoding="utf-8")))
+    assert declared <= names, (
+        "these macros are invisible to the drift check, so an ALLOW entry "
+        f"equal to one of their values would never be reported: "
+        f"{sorted(declared - names)}")
+    # And the live ALLOW set is genuinely clean under the wider view.
+    assert not [a for a in C.ALLOW if a in seen], (
+        f"ALLOW has drifted onto a generated value: "
+        f"{[a for a in C.ALLOW if a in seen]}")
+
+
+@needs_check
+def test_the_bibliography_regressions_survive_a_line_break():
+    """Every literal here is multi-word and the PDF is line-broken.
+
+    The same defect the ANONYMITY scan had, in the same function, fixed there
+    and not here. "not a peer-reviewed paper" can break at a space or at its
+    own hyphen, and one regeneration of the bibliography carrying the fuller
+    registry note prints that sentence into the references.
+    """
+    import importlib
+
+    import check_iclr as C
+    importlib.reload(C)
+
+    # REGRESSIONS is local to main(); what is reachable, and what the
+    # gate actually depends on, is the reconstruction.
+    for probe in ("not a peer-reviewed paper",
+                  "not a peer-reviewed\npaper",
+                  "not a peer-\nreviewed paper",
+                  "not a\npeer-reviewed paper"):
+        assert any("not a peer-reviewed paper" in v
+                   for v in C.pdf_views(probe)), (
+            f"the bibliography literal is invisible when broken as {probe!r}")
+
+
+@needs_check
+def test_the_runbook_gate_fails_on_its_own_founding_case():
+    """A shortened quotation is still a substring.
+
+    This gate was written after the runbook's quotation dropped the clause
+    disclosing that a model screened the surveyed literature, and then argued
+    from the shortened version that an OpenReview box could stay unticked.
+    Compared with `in`, re-running that exact deletion passes. Compared as an
+    equality, it cannot.
+    """
+    import importlib
+
+    import check_iclr as C
+    importlib.reload(C)
+
+    full = ("draft and revise this version's text, implement the analysis "
+            "and build-pipeline code, screen the surveyed literature for the "
+            "reporting matrix of \\S\\ref{sec:field}, and run adversarial "
+            "audits of the paper's claims against its artifacts")
+    stated = C._disclosure(full)
+
+    # The rendered section number and the LaTeX ref must compare equal: a
+    # renumbering is not a disclosure change.
+    rendered = full.replace("\\S\\ref{sec:field}", "§8")
+    assert C._disclosure(rendered) == stated, (
+        "a section renumbering would fail the gate")
+
+    # The founding deletion: drop the literature-screening clause.
+    shortened = ("draft and revise this version's text, implement the "
+                 "analysis and build-pipeline code")
+    assert C._disclosure(shortened) != stated, "the shortened quote compares equal"
+    assert C._disclosure(shortened) in stated, (
+        "the shortened quote is no longer a substring, so this test is not "
+        "exercising the defect it names")
+
+    # And the other direction: the paper drops a use the quote never had.
+    trimmed = full.split(", and run adversarial")[0]
+    assert C._disclosure(trimmed) != stated
+
+
+@needs_check
+def test_the_macro_gate_reads_the_appendix_and_what_it_inputs():
+    r"""A compile error in the appendix is still a compile error.
+
+    The gate exists to hear one "with a name instead of on Overleaf at the
+    deadline", and it split main.tex at \appendix and read only what came
+    before -- while the appendix \inputs generated/tab-design. Nothing slips
+    through today, which is why it was worth closing now.
+
+    Its uppercase-only rule is what keeps it from drowning in \sqrt and
+    \rho, and that rule is sound exactly as long as every generated macro is
+    capitalised. That was true and unstated.
+    """
+    import importlib
+
+    import check_iclr as C
+    importlib.reload(C)
+
+    src = _code(pathlib.Path(C.__file__))
+    assert "scanned = tex" in src, (
+        "the macro gate is reading the pre-appendix body again")
+
+    defined = C.defined_macros()
+    assert defined, "no macros defined"
+    assert not [m for m in defined if m[:1].islower()], (
+        "a generated macro is lowercase, which the gate cannot see; the "
+        "build should be saying so")
+
+
+@needs_check
+def test_a_lowercase_generated_macro_makes_the_gate_say_so():
+    r"""The precondition is tested by breaking it, not by reading the source.
+
+    The first version of this asserted that the name "lower_defined" appears
+    in check_iclr.py and that no macro is lowercase today. A revert that
+    keeps the name and empties the branch passes both. So this creates the
+    condition -- one lowercase macro in generated/ -- and asks the gate what
+    it says.
+    """
+    import subprocess
+
+    gen = ROOT / "paper-a" / "iclr" / "generated"
+    if not gen.is_dir():
+        pytest.skip("no generated macros on this checkout")
+    probe = gen / "_probe_lowercase.tex"
+    probe.write_text("\\newcommand{\\probelowercase}{1}\n", encoding="utf-8")
+    try:
+        p = subprocess.run(
+            [sys.executable, str(ROOT / "paper-a" / "src" / "check_iclr.py")],
+            capture_output=True, text=True, cwd=str(ROOT))
+        assert "probelowercase" in p.stdout, (
+            "a lowercase generated macro is invisible to the gate and the "
+            "gate does not say so, so its uppercase-only rule is silently "
+            "unsound:\n" + p.stdout)
+    finally:
+        probe.unlink()
