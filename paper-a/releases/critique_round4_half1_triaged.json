@@ -1,0 +1,915 @@
+{
+  "source": "critique_round4_half1.json",
+  "pdf": "paper-a\\figures\\paper_instrument_validity_v3.pdf",
+  "n_findings": 55,
+  "_method": "word-8 shingle coverage of the normalised quote against the normalised PDF text; >= 90% stands, < 40% is rewritten",
+  "_warning": "'gone' does NOT close a finding; the defect can survive a rewrite. This is a triage aid only.",
+  "n_stands": 8,
+  "n_partly_edited": 21,
+  "n_rewritten": 26,
+  "n_unmatchable": 0,
+  "n_standing_critical_or_major": 4,
+  "n_partly_critical_or_major": 13,
+  "stands": [
+    {
+      "id": "R6",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "We conclude with the minimum an audit must report for its number to be interpretable, and release the full pipeline.",
+      "defect": "The paper contains no URL, DOI, repository name, or archive identifier of any kind. \"Release\" is promised in the abstract, again in the Data and code availability section, and four more times in table",
+      "fix": "Add a resolvable location (archived DOI or repository URL, anonymised for review) to the Data and code availability section, and change \"is retained\" to \"is released at <location>\". If nothing is publ"
+    },
+    {
+      "id": "STAT-07",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Neither ratio is pinned tightly enough to rank the two panels, and we do not: what the two have in common is that both are of order one half.",
+      "defect": "The paper ranks the two panels three times, including in the same section and in the abstract, and then denies doing so. \u00a74.7 itself, three sentences earlier: 'The frontier ratio is larger on the like",
+      "fix": "Delete the ranking claims or attach the intervals. Minimal correction to the abstract: 'give a dispersion-to-effect ratio of 0.54 [0.30, 0.67] and 0.64 [0.37, 0.77], against 0.33 [0.19, 0.42] and 0.25"
+    },
+    {
+      "id": "SC-07",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "the token-matching restriction \u2014 contribute a shift of 11 % to 52 % of it, though the token-matching shift is not itself separable from zero once the ",
+      "defect": "The same physical quantity \u2014 the token-matching shift on Llama-3.1-8B-Instruct \u2014 is reported as 52 % of the effect here and as 61 % in the abstract and \u00a74.4 (\"by 61 % [7 %, 157 %] on the largest\"; \"th",
+      "fix": "Normalise the token-matching component by the effect of the design it was measured on (-0.1509), making the range \"11 % to 61 %\", or state in \u00a71 that the budget's denominator is the Study 2 effect and"
+    },
+    {
+      "id": "STAT-09",
+      "severity": "minor",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "On Mistral-7B-Instruct v0.1 the shift is -0.0180 log-odds, 1.07\u00d7 that model\u2019s pooled between-wording standard deviation on the same scale (0.0168 log-",
+      "defect": "1.07\u00d7 is a ratio of two estimated quantities, neither of which is pinned, reported as a point value with no interval \u2014 and it is the sole support for the abstract's 'Quantization shifts it by up to th",
+      "fix": "Add a '95 % bound' column to Table 14 exactly as Table 6 has one, and change the sentence to '1.07\u00d7 that model's pooled between-wording standard deviation (corner bound [0.2, 5.0])'. Soften the abstra"
+    },
+    {
+      "id": "F4",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.927,
+      "edited_regions": [
+        "- and sometimes larger than - the effects ... larger than - the effects this literature reports."
+      ],
+      "quote": "We find that on LLM r\u00e9sum\u00e9 audits it does not cancel: the reported number moves under the wording, the names, the job, the quantization, the resamplin",
+      "defect": "This is precisely the comparison the abstract disclaims and \u00a78 formally withdraws. The abstract says 'we do not convert our movement to that scale, and \u00a76.2 and \u00a78 say why'. \u00a78 says 'we withdraw the s",
+      "fix": "Restate on the paper's own scale, e.g. 'by amounts of the same order as \u2014 and sometimes larger than \u2014 the effect each model itself shows', which is what Table 3, Table 6 and Figure 1 support; or delet"
+    },
+    {
+      "id": "RW-4",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.941,
+      "edited_regions": [
+        "allocational fairness of llms in hiring contexts. arxiv:2503.19182."
+      ],
+      "quote": "Seshadri, P., Chen, H., Singh, S. and Goldfarb-Tarrant, S. (2025). Small Changes, Large Consequences: Analyzing the Allocational Fairness of LLMs in H",
+      "defect": "Duplicate reference entry, and the duplicate carries the wrong arXiv identifier \u2014 2503.19182 is Iso et al. (2025), which is separately and correctly listed in the same reference list under that same I",
+      "fix": "Delete the hard-coded (\"Seshadri2025\", \u2026) entry from the refs list in build_paper_v3.py and let the matrix string supply it, or correct its ID to arXiv:2501.04316 and de-duplicate on a normalised key "
+    },
+    {
+      "id": "R5",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.941,
+      "edited_regions": [
+        "allocational fairness of llms in hiring contexts. arxiv:2503.19182."
+      ],
+      "quote": "Seshadri, P., Chen, H., Singh, S. and Goldfarb-Tarrant, S. (2025). Small Changes, Large Consequences: Analyzing the Allocational Fairness of LLMs in H",
+      "defect": "The reference list prints Seshadri et al. (2025) twice, immediately adjacent, with two different arXiv identifiers. The second copy carries arXiv:2503.19182 \u2014 which is Iso, Pezeshkpour, Bhutani and Hr",
+      "fix": "Delete the hard-coded (\"Seshadri2025\", \u2026arXiv:2503.19182) tuple at build_paper_v3.py:4087-4090 and let the matrix artifact supply the entry. Add `if c in seen_ref: continue` to the lit-fallback loop s"
+    },
+    {
+      "id": "SC-10",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.941,
+      "edited_regions": [
+        "allocational fairness of llms in hiring contexts. arxiv:2503.19182."
+      ],
+      "quote": "Seshadri, P., Chen, H., Singh, S. and Goldfarb-Tarrant, S. (2025). Small Changes, Large Consequences: Analyzing the Allocational Fairness of LLMs in H",
+      "defect": "The reference list contains Seshadri et al. (2025) twice, once with arXiv:2501.04316 and once with arXiv:2503.19182, and arXiv:2503.19182 is the identifier the same list assigns to a different paper \u2014",
+      "fix": "Delete the hardcoded \"Seshadri2025\" entry at build_paper_v3.py:4087-4090 and let the artifact-sourced reference (arXiv:2501.04316) stand alone."
+    }
+  ],
+  "partly_edited": [
+    {
+      "id": "A1-fstring-leak",
+      "severity": "critical",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.571,
+      "edited_regions": [
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... 1)} to 99.7 %. (\u00a76.2, v7_text.txt lines 2408-2411)"
+      ],
+      "quote": "The four models do not share an operating point: the fraction of saturated cells in Table 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %. (\u00a76.2, ",
+      "defect": "The released PDF prints an unevaluated Python f-string placeholder as body text. The lower endpoint of the range is therefore missing from the paper entirely. This is in v7, the newest release (paper_",
+      "fix": "Change line 2990 to `f\"\" + TAB(\"study2_effect\") + f\" ranges from {pct(min(sat.values()), 1)} to \"` (or move the placeholder into the existing f-string). The sentence should read \"\u2026ranges from 0.0 % to"
+    },
+    {
+      "id": "SC-01",
+      "severity": "critical",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.706,
+      "edited_regions": [
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %."
+      ],
+      "quote": "The four models do not share an operating point: the fraction of saturated cells in Table 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %.",
+      "defect": "A raw Python f-string placeholder is printed verbatim in the built PDF, in place of the lower end of the range. The sentence's whole point is that the four models' operating points differ, and the num",
+      "fix": "Add the missing f prefix to that string segment; the sentence should read \"ranges from 0.0 % to 99.7 %\"."
+    },
+    {
+      "id": "STAT-01",
+      "severity": "critical",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.543,
+      "edited_regions": [
+        "a dispersion-to-effect ratio of 0.54 to 0.64 - ... the dispersion grew but because the effect shrank."
+      ],
+      "quote": "On the 2 of 4 frontier checkpoints whose effect is identified, the same wordings and the same outcome give a dispersion-to-effect ratio of 0.54 to 0.6",
+      "defect": "The frontier dispersion is reported with no noise floor, although the design carries a free byte-identical replicate that flatly contradicts it. S1 and N1 are the SAME STRING (experiment_delta_stabili",
+      "fix": "Add the replicate-agreement column to Table 13 and report the frontier noise floor beside the dispersion, as Table 12 already does. Since the floor is not zero here, either subtract it (variance decom"
+    },
+    {
+      "id": "CF-6",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.571,
+      "edited_regions": [
+        "\u2026and every component is drawn per model in",
+        "against a measurement noise floor of about 3 ... 3 % of the effect. (\u00a71, p. 2)"
+      ],
+      "quote": "\u2026and every component is drawn per model in Figure 1. Both are set against a measurement noise floor of about 3 % of the effect. (\u00a71, p. 2)",
+      "defect": "The sentence that sends the reader to Figure 1 gives a noise floor Figure 1 does not draw, and the discrepancy is a scale error. The '3 %' divides a LOG-ODDS standard deviation by a PROBABILITY-OF-SUP",
+      "fix": "Use a single scale. Replace 'about 3 %' with 'about 4 % to 5 %' (the log-odds ratios Figure 1 plots), or state the P(sup)-scale floor with a P(sup)-scale numerator. Change line 461 to divide by `abs(l"
+    },
+    {
+      "id": "F2",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.68,
+      "edited_regions": [
+        "reported effect, the shift being bounded within 5.4 ... 5.4 % of the effect on every checkpoint"
+      ],
+      "quote": "they do not DETECTABLY move the reported effect, the shift being bounded within 5.4 % of the effect on every checkpoint where we could manipulate them",
+      "defect": "Two independent errors. (a) Same log-odds/superiority unit mismatch as F1: the numerator is the widest endpoint of an `effect_difference` CI in log-odds, the denominator is |P(sup) \u2212 0.5|. On a consis",
+      "fix": "Either 'bounded within 8.7 % of the effect on the two checkpoints whose effect is identified' or 'within 29 % on every checkpoint where we could manipulate them'. The current sentence combines the den"
+    },
+    {
+      "id": "F7",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.795,
+      "edited_regions": [
+        "zero on the name-pair resampling unit. the confound ... confound was masking the finding, not manufacturing it."
+      ],
+      "quote": "restricting to matched pairs moves the disparity further from zero on three of four \u2014 by 61 % [7 %, 157 %] on the largest, a shift not itself separabl",
+      "defect": "The final sentence asserts a settled causal direction from four point estimates, none of which is separable from zero on the paper's own stated resampling unit, one of which points the opposite way. T",
+      "fix": "'\u2026moves the disparity further from zero on three of four, by up to 61 % [7 %, 157 %] on Llama-3.1-8B-Instruct \u2014 a shift estimated on three name-pair clusters and not separable from zero on any model. "
+    },
+    {
+      "id": "RW-1",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.62,
+      "edited_regions": [
+        "because the list was validated on humans \u2026 ... [\u00a710.3] no llm audit we surveyed runs this"
+      ],
+      "quote": "The premise is never checked. It is a manipulation check, and correspondence audits of humans do not need one because the list was validated ON humans",
+      "defect": "False about two papers in the paper's own 13-study panel. Gaebler et al. (2024) contains a section headed \"Manipulation Check\" that does exactly what \u00a79 item 5 prescribes as its first method (\"by prob",
+      "fix": "Add a manipulation_check row to reporting_practice_matrix.json and count it. Replace the three sentences with the counted version, e.g. \u00a74.3: \"The premise is checked by 2 of the 13 audits we surveyed "
+    },
+    {
+      "id": "RW-8",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.784,
+      "edited_regions": [
+        "because a defensible analysis is rarely unique \u2026 ... \u2026 we apply the same logic one step"
+      ],
+      "quote": "Researcher degrees of freedom. Specification-curve analysis (Simonsohn, Simmons and Nelson) and multiverse analysis (Steegen, Tuerlinckx, Gelman and V",
+      "defect": "Two close antecedents of the paper's central claim and of its headline recommendation are absent from the reference list and from Background, and a reviewer will find both immediately. (a) Selvam, Dev",
+      "fix": "Cite both in \u00a72 and mark what is left over. Selvam et al. establish instrument-dependence of a bias score on benchmark tasks with model rankings reversing; Mizrahi et al. establish paraphrase dispersi"
+    },
+    {
+      "id": "R1",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.706,
+      "edited_regions": [
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %."
+      ],
+      "quote": "The four models do not share an operating point: the fraction of saturated cells in Table 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %.",
+      "defect": "A literal, un-interpolated Python f-string expression is printed in the body of the paper (\u00a76.2), and a second one \u2014 \"{nA}\" \u2014 is printed in \u00a78.1 (\"Table 18 is that matrix over {nA} LLM hiring audits, ",
+      "fix": "Put the `f` prefix on the literal that carries the expression: line 2990 \u2192 `f\" ranges from {pct(min(sat.values()), 1)} to \"`, line 3489 \u2192 `f\" is that matrix over {nA} LLM hiring \"`. Rendered text beco"
+    },
+    {
+      "id": "SC-03",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.6,
+      "edited_regions": [
+        "2 puts the noise floor at about 3 ... 3 % of the effect, and the between-wording"
+      ],
+      "quote": "the byte-identical replicate embedded in Study 2 puts the noise floor at about 3 % of the effect, and the between-wording dispersion exceeds it severa",
+      "defect": "The 3 % is a log-odds standard deviation divided by a probability-of-superiority effect \u2014 two different scales. It contradicts (a) \u00a74.1's own explicit guard, \"Both quantities are on the log-odds scale",
+      "fix": "Divide by the same log-odds effect the other components use: \"puts the noise floor at about 5 % of the effect\" (and note the panel worst case is 12 %). The two occurrences are \u00a71 (\"noise floor at abou"
+    },
+    {
+      "id": "SC-04",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.647,
+      "edited_regions": [
+        "the shift being bounded within 5.4 % of ... 5.4 % of the effect on every checkpoint"
+      ],
+      "quote": "the shift being bounded within 5.4 % of the effect on every checkpoint where we could manipulate them \u2014 a bound, not an absence",
+      "defect": "Same scale error as SC-03, in the Conclusion's only quantitative statement about the serving results. The numerator is a bootstrap CI endpoint on a log-odds effect difference; the denominator is |P(su",
+      "fix": "\"bounded within 8.7 % of the effect\", or state the bound in log-odds (0.016) and drop the ratio."
+    },
+    {
+      "id": "STAT-02",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.706,
+      "edited_regions": [
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %."
+      ],
+      "quote": "The four models do not share an operating point: the fraction of saturated cells in Table 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %.",
+      "defect": "A literal, unevaluated Python expression is typeset in the published PDF. The bug is in build_paper_v3.py:2990 \u2014 the `f` prefix binds only to the empty literal before `+ TAB(...)`, so the implicitly-c",
+      "fix": "Make both segments f-strings (or move the interpolation out of the concatenation). Rendered, the two sentences read '...ranges from 0.0 % to 99.7 %' and 'Table 18 is that matrix over 13 LLM hiring aud"
+    },
+    {
+      "id": "STAT-08",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.583,
+      "edited_regions": [
+        "where the effect is distinguishable from zero and ... % to 118 % where it is not"
+      ],
+      "quote": "The instruction wording moves the effect by 25 % to 33 % of itself where the effect is distinguishable from zero and 55 % to 118 % where it is not",
+      "defect": "The 55 % and 118 % cells are a ratio whose denominator is not distinguishable from zero \u2014 exactly the quantity \u00a74.5 rules out in the strongest terms the paper uses about itself: 'A ratio against such ",
+      "fix": "Suppress the SD/effect cells for Mistral v0.1 and v0.3 in Table 3 as Tables 11-13 already do, and change the abstract to 'moves the effect by 25 % [14 %, 32 %] to 33 % [19 %, 42 %] of itself on the tw"
+    },
+    {
+      "id": "A3-abstract-self-contradiction-on-separability",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.718,
+      "edited_regions": [
+        "\"restricting to matched pairs moves the disparity further",
+        "separable from zero on the name-pair resampling unit\" ... lines 22-23; repeated verbatim in \u00a71.2, lines 235-237)"
+      ],
+      "quote": "\"restricting to matched pairs moves the disparity further from zero on three of four \u2014 by 61 % [7 %, 157 %] on the largest, a shift not itself separab",
+      "defect": "The sentence quotes a 95 % interval that excludes zero and then asserts the same shift is not separable from zero. Both halves come from the same 19,398 bootstrap draws. Two of the artifact's own thre",
+      "fix": "Replace with something the artifact supports on all three tests, e.g. \"\u2014 by 61 % on the largest; the 95 % interval on that growth is [7 %, 157 %] and the exact cluster-relabel test gives p = 0.045, bu"
+    },
+    {
+      "id": "A8-fpc-formula",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.412,
+      "edited_regions": [
+        "\"drawing without replacement from our own twelve answers",
+        "question and carries a finite-population factor of \u221a(1\u2212k/12) ... which halves the dispersion for a reason that",
+        "reason that has nothing to do with names.\" ... that has nothing to do with names.\" (\u00a74.2)"
+      ],
+      "quote": "\"Drawing without replacement from our own twelve answers a different question and carries a finite-population factor of \u221a(1\u2212k/12) \u2014 one half at k = 9 ",
+      "defect": "Wrong finite-population correction. The paper prints \u221a(1 \u2212 k/N) = \u221a(1 \u2212 9/12) = 0.500; the correct factor, which the code uses and the data show, is \u221a((N \u2212 k)/(N \u2212 1)) = \u221a(3/11) = 0.522.",
+      "fix": "\"\u2026carries a finite-population factor of \u221a((12\u2212k)/11) \u2014 0.52 at k = 9 \u2014 which roughly halves the dispersion\u2026\""
+    },
+    {
+      "id": "A9-saturated-column-unit",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.667,
+      "edited_regions": [
+        "table 3 caption: \"the final column is the ... \"the final column is the fraction of cells",
+        "preference is saturated beyond 0.99 or below 0.01\""
+      ],
+      "quote": "Table 3 caption: \"The final column is the fraction of cells where the model's preference is saturated beyond 0.99 or below 0.01\"",
+      "defect": "The column is not a fraction of cells. It is a fraction of individual r\u00e9sum\u00e9 scorings \u2014 864 per model, two per cell. Elsewhere the paper uses 'cell' to mean a design cell / matched pair (\"The same 36 ",
+      "fix": "\"\u2026the fraction of individual r\u00e9sum\u00e9 scorings (two per cell) where the model's preference is saturated beyond 0.99 or below 0.01.\""
+    },
+    {
+      "id": "CF-4",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.618,
+      "edited_regions": [
+        "of superiority, the scale tables 3 and 17 ... 17 use, so the three panels are comparable;",
+        "ratios were not commensurable with the others. (table ... with the others. (table 12 caption, p. 15)"
+      ],
+      "quote": "Reported on the PROBABILITY OF SUPERIORITY, the scale Tables 3 and 17 use, so the three panels are comparable; an earlier draft put this table in log-",
+      "defect": "The cross-reference is wrong, and it is wrong in exactly the way the sentence exists to prevent. Table 17 is not on the probability-of-superiority scale \u2014 its 'mean |effect|' and 'max |effect|' column",
+      "fix": "Replace with `\" the scale \" + TAB('study2_effect') + \" and \" + TAB('frontier') + \" use\"` \u2014 rendering 'the scale Tables 3 and 13 use'."
+    },
+    {
+      "id": "F9",
+      "severity": "minor",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.429,
+      "edited_regions": [
+        "language models for hiring discrimination now inform regulation, ... hiring discrimination now inform regulation, procurement and litigation."
+      ],
+      "quote": "Audits of large language models for hiring discrimination now inform regulation, procurement and litigation.",
+      "defect": "The premise the whole paper stands on \u2014 repeated in \u00a71 ('the results are entering regulation, vendor procurement and litigation') and used as the closing justification in the Conclusion ('Given that t",
+      "fix": "Cite NYC Local Law 144 / the 2023 DCWP final rule (both already in lit/law/) for the regulatory limb, drop or source the procurement and litigation limbs, and add ledger rows."
+    },
+    {
+      "id": "F10",
+      "severity": "minor",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.724,
+      "edited_regions": [
+        "word; the two arms cannot be distinguished. \u2026 ... \u2026 the posterior probability that the null arm"
+      ],
+      "quote": "including under edits that change no word; the two arms cannot be distinguished. \u2026 the posterior probability that the null arm exceeds the semantic ar",
+      "defect": "The quoted range is specification-dependent, and the specification is neither named in the paper nor the one the fitting script argues for. fit_arm_contrast.py fits the contrast twice and its docstrin",
+      "fix": "Report both fits: 'with all twelve wordings the posterior probability ranges from 0.12 to 0.83; dropping N1, which is byte-identical to S1 and therefore not an independent draw, it ranges from 0.05 to"
+    },
+    {
+      "id": "RW-9",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.659,
+      "edited_regions": [
+        "the item wrapper and casing do not \u2026 ... \u2026 it establishes it for three classes of",
+        "for three classes of six and leaves two ... and leaves two with a positive individual signal."
+      ],
+      "quote": "in their characterisation of the format space, most individual format features do not independently predict performance \u2014 in their Table 1, the second",
+      "defect": "Two miscounts against Sclar et al.'s Table 1, in a passage whose whole point is that an earlier draft got that table wrong. (a) Three of six is not \"most\", and the paper's own later sentence says \"thr",
+      "fix": "Replace \"most individual format features do not independently predict performance\" with \"half the individual format features do not independently predict performance\", and \"leaves two with a positive "
+    },
+    {
+      "id": "SC-05",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.438,
+      "edited_regions": [
+        "paper measures on the primary posting is 0.1805, ... so the floor is about 45% of it."
+      ],
+      "quote": "For scale, the largest demographic effect this paper measures on the primary posting is 0.1805, so the floor is about 45% of it.",
+      "defect": "A superlative the paper's own tables contradict. Table 14 prints +0.2041 for Llama-2-7B at Q8_0 \u2014 same model, same design, same business-analyst posting \u2014 and Table 9 prints +0.1897 for the same model",
+      "fix": "Either say \"the largest Study 2 effect on the primary posting is 0.1805\" and keep 45 %, or use the true maximum: \"the largest demographic effect this paper measures on the primary posting is 0.2041, s"
+    }
+  ],
+  "rewritten": [
+    {
+      "id": "A4-table6-caption-false",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "table 6 caption: \"the first three columns are ... first three columns are ratios of posterior medians.\""
+      ],
+      "quote": "Table 6 caption: \"The first three columns are ratios of posterior MEDIANS.\"",
+      "defect": "Only the denominator is a posterior median. The numerator is a Monte-Carlo standard deviation over 4,000 cluster-bootstrap resamples of the RAW mean paired log-odds difference \u2014 a frequentist plug-in ",
+      "fix": "Caption should read: \"The first three columns divide a bootstrap SD of the name-draw estimate (4,000 with-replacement resamples of matched first-name pairs) by the posterior median of the between-word"
+    },
+    {
+      "id": "CF-1",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "right: four contrasts per model and inference mode, ... and two r\u00e9sum\u00e9s. (figure 7 caption, p. 23)"
+      ],
+      "quote": "Right: four contrasts per model and inference mode, in each case a paired difference over 48 name pairs and two r\u00e9sum\u00e9s. (Figure 7 caption, p. 23)",
+      "defect": "The caption misstates the design of every contrast it draws. The mechanism panel is 24 name pairs crossed with THREE r\u00e9sum\u00e9 templates (72 paired differences per contrast), not 48 name pairs and two r\u00e9",
+      "fix": "Replace with '\u2026in each case a paired difference over 24 name pairs and three r\u00e9sum\u00e9s' \u2014 or better, interpolate it: the contrast entries already carry `n` (72) and `n_clusters` (24), so the caption can"
+    },
+    {
+      "id": "CF-2",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "left: the design that separates the two accounts, ... fragmentation survives correction. (figure 7 caption, p. 23)"
+      ],
+      "quote": "Left: the design that separates the two accounts, on the one model-mode where fragmentation survives correction. (Figure 7 caption, p. 23)",
+      "defect": "False, and contradicted by the same caption two sentences later. Fragmentation contrasts survive BH on THREE distinct model-modes, not one; even restricting to P3 ('fragmentation, position held equal'",
+      "fix": "Either draw the panel for each model-mode where a fragmentation contrast survives, or change the clause to 'on one of the three model-modes where a fragmentation contrast survives correction (Mistral-"
+    },
+    {
+      "id": "CF-3",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.056,
+      "edited_regions": [
+        "\u2026and the full family is summarised in table ... / table 17. every condition-versus-baseline test on the",
+        "17. every condition-versus-baseline test on the mechanism panel\u2026"
+      ],
+      "quote": "\u2026and the full family is summarised in Table 17 rather than drawn. (\u00a77, p. 22) / Table 17. Every condition-versus-baseline test on the mechanism panel\u2026",
+      "defect": "Table 17 does not summarise the full family. The Benjamini\u2013Hochberg family is 168 contrasts; Table 17's three rows sum to 36 + 60 + 12 = 108. The 60 that are missing are C1, C2, C5, P3 and P4 (12 each",
+      "fix": "Change \u00a77 to '\u2026and 108 of the 168 \u2014 every contrast whose comparator is the D0 baseline \u2014 are summarised in Table 17; the remaining 36 (C1, C2, C5) are in the artifact.' Change the Table 17 caption to "
+    },
+    {
+      "id": "CF-5",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "the open bar is the measurement noise floor ... rather than error. (figure 1 caption, p. 4)"
+      ],
+      "quote": "The open bar is the measurement noise floor -- what a byte-identical repeat gives -- so every bar taller than it is dispersion rather than error. (Fig",
+      "defect": "The caption hands the reader a decision rule the figure cannot support. No bar carries an interval, and five of the drawn bars are quantities the paper itself reports as not distinguishable from zero.",
+      "fix": "Either draw the intervals the artifact already carries, or restrict the sentence to what the figure shows: 'The open bar is the measurement noise floor. Bars are point estimates without intervals; the"
+    },
+    {
+      "id": "CF-7",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "the cause is batched inference, where floating-point reduction ... in the batch. (figure 4 caption, p. 18)"
+      ],
+      "quote": "The cause is batched inference, where floating-point reduction order depends on what else is in the batch. (Figure 4 caption, p. 18)",
+      "defect": "The caption asserts a single cause that the section it sits in explicitly refutes. \u00a75.2 reports that holding requests sequential raises agreement only to 93.8 % (Study 8) and says in terms 'Batching i",
+      "fix": "'The causes are batched inference \u2014 floating-point reduction order depends on what else is in the batch \u2014 and key-value cache residency; \u00a75.2 separates them.'"
+    },
+    {
+      "id": "CF-9",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.125,
+      "edited_regions": [
+        "table 18 is that matrix over {na} llm ... {na} llm hiring audits, summarised one choice per",
+        "hiring audits, summarised one choice per row (\u00a78.1, ... - the fraction of saturated cells in table",
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... {pct(min(sat.values()), 1)} to 99.7 %. (\u00a76.2, p. 19)"
+      ],
+      "quote": "Table 18 is that matrix over {nA} LLM hiring audits, summarised one choice per row (\u00a78.1, p. 23) \u2014 and \u2014 the fraction of saturated cells in Table 3 ra",
+      "defect": "Two f-string placeholders are printed literally in the shipped PDF. Both are claims about a table's contents: the first is the sentence that states Table 18's denominator (the caption says 13), the se",
+      "fix": "Move the f-prefix onto the operands that contain the braces (or interpolate before concatenating). Rendered text should read '\u2026ranges from 0.0 % to 99.7 %' and 'Table 18 is that matrix over 13 LLM hir"
+    },
+    {
+      "id": "F3",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.394,
+      "edited_regions": [
+        "table 18 is that matrix over {na} llm ... {na} llm hiring audits, summarised one choice per",
+        "hiring audits, summarised one choice per row \u2026 ... \u2026 the four models do not share an",
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %."
+      ],
+      "quote": "Table 18 is that matrix over {nA} LLM hiring audits, summarised one choice per row \u2026 The four models do not share an operating point: the fraction of ",
+      "defect": "Two uninterpolated Python f-string expressions are printed verbatim in the shipped PDF (pages 23 and 24). Both are concatenations where an f-prefix was dropped from one segment. The second is not mere",
+      "fix": "Add the missing `f` prefixes. The rendered sentences become 'that matrix over 13 LLM hiring audits' and 'ranges from 0.0 % to 99.7 %'."
+    },
+    {
+      "id": "RW-2",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "neither runs a semantically-null arm designed so that ... so that the edit provably changes no word"
+      ],
+      "quote": "neither runs a semantically-null arm designed so that the edit provably changes no word",
+      "defect": "False of Seshadri et al. (2025), and contradicted by the paper's own Table 18. Seshadri run a non-name perturbation arm on the retrieval task that includes a spacing-only edit \u2014 an edit that provably ",
+      "fix": "Delete the clause and replace with what is actually left over, e.g. \"Seshadri et al. run a spacing-only perturbation and find it moves retrieval outcomes more than the demographic edit does; what is n"
+    },
+    {
+      "id": "RW-3",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.161,
+      "edited_regions": [
+        "table 18 header and rows: \"choice | fully ... \"null-edit control 2 / 13 2 glazko 2024,",
+        "2 / 13 2 glazko 2024, seshadri 2025\" ... \"checkpoint pinned to a revision 2 / 13",
+        "2 / 13 10 armstrong 2024, gaebler 2024\""
+      ],
+      "quote": "Table 18 header and rows: \"choice | fully reported | partly reported by\" \u2026 \"null-edit control  2 / 13  2 Glazko 2024, Seshadri 2025\" \u2026 \"checkpoint pin",
+      "defect": "The fourth column lists the studies that FULLY reported the choice, but the third and fourth headers render adjacent as the single phrase \"partly reported by\", so every named row asserts the opposite ",
+      "fix": "Rename the headers so they cannot be read as one phrase and so the name column is attached to the right count \u2014 e.g. [\"choice\", \">fully reported\", \">partly\", \"studies reporting in full\"] \u2014 or drop the"
+    },
+    {
+      "id": "RW-5",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.16,
+      "edited_regions": [
+        "table 18 is that matrix over {na} llm ... {na} llm hiring audits, summarised one choice per",
+        "hiring audits, summarised one choice per row \u2026 ... [\u00a76.2] the fraction of saturated cells in table",
+        "saturated cells in table 3 ranges from {pct(min(sat.values()), ... 3 ranges from {pct(min(sat.values()), 1)} to 99.7 %."
+      ],
+      "quote": "Table 18 is that matrix over {nA} LLM hiring audits, summarised one choice per row \u2026 [\u00a76.2] the fraction of saturated cells in Table 3 ranges from {pc",
+      "defect": "Two f-string placeholders were never interpolated and are printed literally in the shipped PDF. The first sits in the sentence that states the size of the surveyed literature \u2014 the count on which the ",
+      "fix": "Wrap both strings in f-prefixed literals (or pass nA / the min-saturation value as arguments), and add a check to audit_consistency.py that fails the build on any '{' followed by an identifier in the "
+    },
+    {
+      "id": "R3",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.237,
+      "edited_regions": [
+        "we probed every text model the gemini api-key ... every text model the gemini api-key surface lists",
+        "model the gemini api-key surface lists - 46 ... and three spellings of the parameter - and",
+        "parameter - and 0 returned any. 18 were ... and refused; 19 were quota-blocked, so the question"
+      ],
+      "quote": "we probed every text model the Gemini API-key surface lists \u2014 46 of them, across both public REST versions and three spellings of the parameter \u2014 and ",
+      "defect": "\"46 of them\" is presented as a count of models; it is the count of (model, REST-version) probe records. The artifact contains 46 records over 33 distinct models \u2014 33 on v1beta and 13 of those repeated",
+      "fix": "\"we probed every model the Gemini API-key surface lists \u2014 33 of them, on both public REST versions and three spellings of the parameter, 46 model-by-version probes in all \u2014 and 0 returned any. 18 prob"
+    },
+    {
+      "id": "R4",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.056,
+      "edited_regions": [
+        "we probed every text model the gemini api-key ... every text model the gemini api-key surface lists",
+        "model the gemini api-key surface lists - 46 ... rest versions and three spellings of the parameter"
+      ],
+      "quote": "we probed every text model the Gemini API-key surface lists \u2014 46 of them, across both public REST versions and three spellings of the parameter",
+      "defect": "The artifact that this whole \u00a74.7 paragraph rests on \u2014 paper-a/data/instrument/frontier_api_capability_v2.json \u2014 has no producer anywhere in the repository. Nothing writes it; two scripts only read it",
+      "fix": "Commit the script that produced frontier_api_capability_v2.json (or update probe_frontier_api.py to emit the v2 schema and record the invocation), so the artifact is regenerable. Until then \u00a74.7 shoul"
+    },
+    {
+      "id": "SC-02",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.125,
+      "edited_regions": [
+        "table 18 is that matrix over {na} llm ... {na} llm hiring audits, summarised one choice per"
+      ],
+      "quote": "Table 18 is that matrix over {nA} LLM hiring audits, summarised one choice per row",
+      "defect": "Second uninterpolated placeholder in the built PDF, in the sentence that states the size of the paper's own literature survey. Table 18's caption two paragraphs later says \"Reporting practice across 1",
+      "fix": "Add the f prefix; the sentence should read \"is that matrix over 13 LLM hiring audits\"."
+    },
+    {
+      "id": "SC-06",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "right: four contrasts per model and inference mode, ... difference over 48 name pairs and two r\u00e9sum\u00e9s."
+      ],
+      "quote": "Right: four contrasts per model and inference mode, in each case a paired difference over 48 name pairs and two r\u00e9sum\u00e9s.",
+      "defect": "Figure 7's caption misstates the design of the mechanism panel on both counts, and contradicts \u00a77 in the same document. \u00a77 says \"Study 5 tests this on a full panel \u2014 eleven conditions, six checkpoints",
+      "fix": "\"a paired difference over 24 name pairs and three r\u00e9sum\u00e9s\"."
+    },
+    {
+      "id": "SC-09",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.091,
+      "edited_regions": [
+        "these do not move the effect - we ... - they determine whether the measurement reproduces at"
+      ],
+      "quote": "These do not move the effect \u2014 we checked \u2014 they determine whether the measurement reproduces at all",
+      "defect": "\u00a79 item 7 and \u00a75.2 (\"Critically, the measured effect itself does not depend on either... No number in this paper inherits a dependence on a scheduling parameter\") state an absence; the Conclusion stat",
+      "fix": "Make \u00a79 item 7 and \u00a75.2 match the Conclusion: \"These are not detected to move the effect \u2014 the shift is bounded within 8.7 % of it on the checkpoints where we could manipulate them \u2014 and they determin"
+    },
+    {
+      "id": "STAT-03",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "and none tracks the socioeconomic proxy either (r ... socioeconomic proxy either (r from +0.02 to +0.33)"
+      ],
+      "quote": "and none tracks the socioeconomic proxy either (r from +0.02 to +0.33)",
+      "defect": "False. On Llama-3.1-8B-Instruct the within-race socioeconomic correlation is r = +0.3287 with a bootstrap 95% interval of [0.017, 0.612] and p = 0.039 \u2014 the interval excludes zero. The analysis script",
+      "fix": "Replace with: 'and one of four tracks the socioeconomic proxy (r from +0.02 to +0.33; on Llama-3.1-8B-Instruct r = +0.33, 95% CI [0.02, 0.61]), which is about what twelve tests produce by chance. With"
+    },
+    {
+      "id": "STAT-04",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.375,
+      "edited_regions": [
+        "against a measurement noise floor of about 3 ... floor of about 3 % of the effect."
+      ],
+      "quote": "Both are set against a measurement noise floor of about 3 % of the effect.",
+      "defect": "The noise floor is computed by dividing a LOG-ODDS standard deviation by a PROBABILITY-OF-SUPERIORITY effect \u2014 two different scales. Every other component in the same paragraph ('16 % to 50 %', '11 % ",
+      "fix": "Divide by `beta_logodds`, not by `|P(sup) - 0.5|`: the floor is about 5 % of the effect (5.3 % and 4.2 % on the two identified models). Both \u00a71 sentences should read 'about 5 % of the effect'. Better:"
+    },
+    {
+      "id": "A2-corpus-undercount",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.194,
+      "edited_regions": [
+        "\"\u202631,248 matched-pair records from 64,177 model calls\" (abstract) ... 1,681 single-prompt records from the admission gate, the",
+        "the affiliation probe and the instrument smoke tests\" ... and the instrument smoke tests\" (\u00a73, lines 484-494)"
+      ],
+      "quote": "\"\u202631,248 matched-pair records from 64,177 model calls\" (abstract) and \"64,177 model calls yielding 31,248 matched-pair records across eleven studies, ",
+      "defect": "The Gemini frontier run (data/frontier/wording_gemini-3.1-flash-lite.jsonl, 220 rows) consists of matched pairs \u2014 each row carries white_raw/black_raw and http_white/http_black, i.e. two API calls \u2014 b",
+      "fix": "Either report \"31,468 matched-pair records from 64,397 model calls \u2026 plus 1,461 single-prompt records from the admission gate, the affiliation probe and the instrument smoke tests\", or keep the Gemini"
+    },
+    {
+      "id": "A5-table6-interval-not-of-the-printed-estimate",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.2,
+      "edited_regions": [
+        "table 6 row \"llama-3.1-8b | 1.42x | 1.00x ... \"the last propagates both posteriors and is a",
+        "both posteriors and is a conservative corner bound\", ... \"table 6 divides by that same quantity, so",
+        "so the same caution applies to its cells\" ... same caution applies to its cells\" (lines 1060-1061)"
+      ],
+      "quote": "Table 6 row \"Llama-3.1-8B | 1.42\u00d7 | 1.00\u00d7 | 0.81\u00d7 | [0.30, 4.89]\", with the caption \"The last propagates both posteriors and is a conservative corner ",
+      "defect": "The '95 % bound on k = 9' is a corner bound around a different point estimate than the k = 9 column beside it. The bound comes from the analytic ratio of posterior medians; the printed k = 9 value com",
+      "fix": "Compute the bound around the same estimator the column prints (bootstrap the numerator jointly with the \u03c3_variant posterior), or print the analytic ratio in columns 2\u20134 so the bound belongs to it. And"
+    },
+    {
+      "id": "CF-10",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "re-measuring 504 of these cells on llama-2-7b-chat in ... of them exactly. (figure 4 caption, p. 18)"
+      ],
+      "quote": "Re-measuring 504 of these cells on Llama-2-7B-chat in a separate process on a different day reproduced 0 of them exactly. (Figure 4 caption, p. 18)",
+      "defect": "Arithmetically true, but it is the most extreme of four equally-sized results, selected by a rule that does not discriminate between them, and the caption does not say a fourth model behaved different",
+      "fix": "'Re-measuring 504 of these cells in a separate process on a different day reproduced 0 of them exactly on three of the four models, and 212 of 504 on the fourth.'"
+    },
+    {
+      "id": "R2",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.368,
+      "edited_regions": [
+        "64,177 model calls yielding 31,248 matched-pair records across ... 1,681 single-prompt records from the admission gate, the"
+      ],
+      "quote": "64,177 model calls yielding 31,248 matched-pair records across eleven studies, plus 1,681 single-prompt records from the admission gate, the affiliati",
+      "defect": "Two errors in the paper's headline corpus figures. (a) The three named sources supply 1,461 single-prompt records, not 1,681. The remaining 220 come from paper-a/data/frontier/wording_gemini-3.1-flash",
+      "fix": "Either name the fourth source and correct the call count \u2014 \"64,397 model calls yielding 31,248 matched-pair records across eleven studies, plus 1,461 single-prompt records from the admission gate, the"
+    },
+    {
+      "id": "R7",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "the whole run below cost 67 cents at ... list price, 480,929 input tokens across 4 models."
+      ],
+      "quote": "The whole run below cost 67 cents at list price, 480,929 input tokens across 4 models.",
+      "defect": "The token total is a resumed-run counter, not the run's token cost. experiment_frontier_margin.py rebuilds `done` from the existing JSONL, `continue`s past recorded cells, and only accumulates `in_tok",
+      "fix": "Recount input tokens from the completed JSONL rather than from the in-run accumulator (or make the accumulator seed itself from the resumed rows), regenerate frontier_spend.json, and let the sentence "
+    },
+    {
+      "id": "SC-08",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.391,
+      "edited_regions": [
+        "so: at that size the name draw contributes ... does, and the crossover happens around nine (\u00a74.2)."
+      ],
+      "quote": "A study using three names per race should say so: at that size the name draw contributes more dispersion than the wording does, and the crossover happ",
+      "defect": "\u00a79 asserts as established exactly what \u00a74.2 withdraws. \u00a74.2 says: \"Propagating the posteriors of both standard deviations, the side of 1.0 is determined on 0 of 4 models at k = 9: the crossing is wher",
+      "fix": "\"at that size the name draw contributes more dispersion than the wording does at the point estimate on all four models, though the interval determines the side on only one; the point estimates cross a"
+    },
+    {
+      "id": "STAT-05",
+      "severity": "minor",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.154,
+      "edited_regions": [
+        "not well behaved: there are 3 clusters, any ... coincide with probability 0.11, and 602 of 20,000",
+        "probability 0.11, and 602 of 20,000 resamples drew ... cluster three times and had to be discarded."
+      ],
+      "quote": "This one is not well behaved: there are 3 clusters, any two draws coincide with probability 0.11, and 602 of 20,000 resamples drew a single cluster th",
+      "defect": "Both statistics in this sentence misdescribe the procedure they are diagnosing. (a) 0.11 is not the probability that any two draws coincide; it is the probability that ALL THREE bootstrap draws are th",
+      "fix": "Replace with: 'there are 3 clusters, so 11 % of bootstrap draws are the same cluster three times over, and 602 of 20,000 draws of the twelve grid clusters contained none of the three matched ones and "
+    },
+    {
+      "id": "STAT-10",
+      "severity": "minor",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.333,
+      "edited_regions": [
+        "of superiority, the scale tables 3 and 17 ... 17 use, so the three panels are comparable"
+      ],
+      "quote": "Reported on the PROBABILITY OF SUPERIORITY, the scale Tables 3 and 17 use, so the three panels are comparable",
+      "defect": "Table 17 is not on the probability-of-superiority scale. It is the mechanism-class table, whose 'mean |effect|' and 'max |effect|' columns are absolute LOG-ODDS contrasts (built from `abs(v[\"logodds\"]",
+      "fix": "Replace the literal with `TAB('study2_effect')` and `TAB('frontier')` so the caption reads 'the scale Tables 3 and 13 use'."
+    }
+  ],
+  "unmatchable": []
+}

@@ -1,0 +1,304 @@
+{
+  "model": "llama-3.1-8b-instruct",
+  "served": "Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+  "delimiter_vocab": {
+    "\\n\\n": {
+      "n": 0,
+      "pieces": [],
+      "ids": []
+    },
+    "\\n \\n": {
+      "n": 0,
+      "pieces": [],
+      "ids": []
+    },
+    "\\n\\n\\n": {
+      "n": 0,
+      "pieces": [],
+      "ids": []
+    },
+    ".\\n\\n": {
+      "n": 1,
+      "pieces": [
+        ".\n\n"
+      ],
+      "ids": [
+        382
+      ]
+    },
+    ".\\n\\n\\n": {
+      "n": 1,
+      "pieces": [
+        ".\n\n\n"
+      ],
+      "ids": [
+        4286
+      ]
+    },
+    ".\\n \\n": {
+      "n": 2,
+      "pieces": [
+        ".\n",
+        " \n"
+      ],
+      "ids": [
+        627,
+        720
+      ]
+    },
+    ".\\n": {
+      "n": 1,
+      "pieces": [
+        ".\n"
+      ],
+      "ids": [
+        627
+      ]
+    },
+    "\\n": {
+      "n": 0,
+      "pieces": [],
+      "ids": []
+    }
+  },
+  "merged_token_exists": true,
+  "delimiter_audit": {
+    "merged_delim_id": 382,
+    "alt_merged_delim_id": 4286,
+    "frag_pair_ids": [
+      627,
+      720
+    ],
+    "baseline_merged_delims": 2,
+    "measured_definition": "n_delims_destroyed_measured = D0's count of the merged '.\\n\\n' token minus this condition's count of it, in the tokenised prompt",
+    "declared_source": "experiment_mechanism.CONDITIONS[cond][1]",
+    "n_conditions": 11,
+    "n_disagreements": 1,
+    "disagreements": {
+      "D7": {
+        "declared": 0,
+        "measured": 2,
+        "disposition": "substituted",
+        "note": "both delimiters substituted, still delimiters"
+      }
+    },
+    "null_controls_declared": [
+      "D1",
+      "D2",
+      "D3",
+      "D7",
+      "D8",
+      "D9"
+    ],
+    "null_controls_measured": [
+      "D1",
+      "D2",
+      "D3",
+      "D8",
+      "D9"
+    ],
+    "reclassified": [
+      "D7"
+    ]
+  },
+  "conditions": {
+    "D0": {
+      "n_tokens": 133,
+      "delta_len": 0,
+      "n_merged_delims": 2,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 0,
+      "name_token_index": 44,
+      "delta_name_index": 0,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "baseline",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 0,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "intact",
+      "declared_matches_measured": true
+    },
+    "D1": {
+      "n_tokens": 133,
+      "delta_len": 0,
+      "n_merged_delims": 2,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 0,
+      "name_token_index": 44,
+      "delta_name_index": 0,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "space inserted early, no delimiter touched",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 0,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "intact",
+      "declared_matches_measured": true
+    },
+    "D2": {
+      "n_tokens": 134,
+      "delta_len": 1,
+      "n_merged_delims": 2,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 0,
+      "name_token_index": 44,
+      "delta_name_index": 0,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "space inserted late, no delimiter touched",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 0,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "intact",
+      "declared_matches_measured": true
+    },
+    "D3": {
+      "n_tokens": 133,
+      "delta_len": 0,
+      "n_merged_delims": 2,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 0,
+      "name_token_index": 44,
+      "delta_name_index": 0,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "space beside an intact delimiter",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 0,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "intact",
+      "declared_matches_measured": true
+    },
+    "D4": {
+      "n_tokens": 134,
+      "delta_len": 1,
+      "n_merged_delims": 1,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 1,
+      "name_token_index": 45,
+      "delta_name_index": 1,
+      "n_delims_destroyed": 1,
+      "n_delims_destroyed_declared": 1,
+      "note": "first delimiter destroyed",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 1,
+      "n_delims_fragmented_measured": 1,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "fragmented",
+      "declared_matches_measured": true
+    },
+    "D5": {
+      "n_tokens": 134,
+      "delta_len": 1,
+      "n_merged_delims": 1,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 1,
+      "name_token_index": 44,
+      "delta_name_index": 0,
+      "n_delims_destroyed": 1,
+      "n_delims_destroyed_declared": 1,
+      "note": "second delimiter destroyed",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 1,
+      "n_delims_fragmented_measured": 1,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "fragmented",
+      "declared_matches_measured": true
+    },
+    "D6": {
+      "n_tokens": 135,
+      "delta_len": 2,
+      "n_merged_delims": 0,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 2,
+      "name_token_index": 45,
+      "delta_name_index": 1,
+      "n_delims_destroyed": 2,
+      "n_delims_destroyed_declared": 2,
+      "note": "both delimiters destroyed",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 2,
+      "n_delims_fragmented_measured": 2,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "fragmented",
+      "declared_matches_measured": true
+    },
+    "D7": {
+      "n_tokens": 133,
+      "delta_len": 0,
+      "n_merged_delims": 0,
+      "n_alt_merged_delims": 2,
+      "n_frag_delims": 0,
+      "name_token_index": 44,
+      "delta_name_index": 0,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "both delimiters substituted, still delimiters",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 2,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 2,
+      "delimiter_disposition": "substituted",
+      "declared_matches_measured": false
+    },
+    "D8": {
+      "n_tokens": 134,
+      "delta_len": 1,
+      "n_merged_delims": 2,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 0,
+      "name_token_index": 45,
+      "delta_name_index": 1,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "name shifted +1 token, no delimiter touched",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 0,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "intact",
+      "declared_matches_measured": true
+    },
+    "D9": {
+      "n_tokens": 135,
+      "delta_len": 2,
+      "n_merged_delims": 2,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 0,
+      "name_token_index": 46,
+      "delta_name_index": 2,
+      "n_delims_destroyed": 0,
+      "n_delims_destroyed_declared": 0,
+      "note": "name shifted +2 tokens, no delimiter touched",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 0,
+      "n_delims_fragmented_measured": 0,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "intact",
+      "declared_matches_measured": true
+    },
+    "D10": {
+      "n_tokens": 135,
+      "delta_len": 2,
+      "n_merged_delims": 1,
+      "n_alt_merged_delims": 0,
+      "n_frag_delims": 1,
+      "name_token_index": 45,
+      "delta_name_index": 1,
+      "n_delims_destroyed": 1,
+      "n_delims_destroyed_declared": 1,
+      "note": "name shifted +1 AND second delimiter destroyed",
+      "n_merged_delims_baseline": 2,
+      "n_delims_destroyed_measured": 1,
+      "n_delims_fragmented_measured": 1,
+      "n_delims_substituted_measured": 0,
+      "delimiter_disposition": "fragmented",
+      "declared_matches_measured": true
+    }
+  }
+}

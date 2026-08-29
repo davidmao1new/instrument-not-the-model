@@ -1,0 +1,2521 @@
+{
+  "models": [
+    "llama-2-7b-chat",
+    "llama-3.1-8b-instruct",
+    "mistral-7b-instruct-v0.1",
+    "mistral-7b-instruct-v0.3"
+  ],
+  "context": {
+    "pre": "Candidate: ",
+    "post": "\n"
+  },
+  "source_list": "Bertrand & Mullainathan (2004), Tables 8 / A1 / fn.20",
+  "prior_work": "An & Rudinger (2023), ACL 2023 Short Papers 388-401, stratify names by (race, gender, tokenization length) for social commonsense reasoning. This grid applies the same control to the matched-pair correspondence-audit design, within pair rather than within stratum.",
+  "descriptive": {
+    "female": {
+      "n_white_full": 81,
+      "n_black_full": 45,
+      "n_candidate_pairings": 3645,
+      "balanced_on_every_tokenizer": 50,
+      "balanced_on_at_least_one": 2295,
+      "frac_balanced_all": 0.013717421124828532
+    },
+    "male": {
+      "n_white_full": 81,
+      "n_black_full": 45,
+      "n_candidate_pairings": 3645,
+      "balanced_on_every_tokenizer": 90,
+      "balanced_on_at_least_one": 1540,
+      "frac_balanced_all": 0.024691358024691357
+    }
+  },
+  "first_name_pairs_balanced": {
+    "female": [
+      [
+        "Emily",
+        "Kenya"
+      ],
+      [
+        "Laurie",
+        "Ebony"
+      ]
+    ],
+    "male": [
+      [
+        "Brett",
+        "Jamal"
+      ],
+      [
+        "Geoffrey",
+        "Jamal"
+      ]
+    ]
+  },
+  "surname_pairs_balanced": [
+    [
+      "Baker",
+      "Jackson"
+    ],
+    [
+      "Baker",
+      "Jones"
+    ],
+    [
+      "Baker",
+      "Robinson"
+    ],
+    [
+      "Baker",
+      "Washington"
+    ],
+    [
+      "Baker",
+      "Williams"
+    ],
+    [
+      "Kelly",
+      "Jackson"
+    ],
+    [
+      "Kelly",
+      "Jones"
+    ],
+    [
+      "Kelly",
+      "Robinson"
+    ],
+    [
+      "Kelly",
+      "Washington"
+    ],
+    [
+      "Kelly",
+      "Williams"
+    ],
+    [
+      "Murray",
+      "Jackson"
+    ],
+    [
+      "Murray",
+      "Jones"
+    ],
+    [
+      "Murray",
+      "Robinson"
+    ],
+    [
+      "Murray",
+      "Washington"
+    ],
+    [
+      "Murray",
+      "Williams"
+    ],
+    [
+      "Ryan",
+      "Jackson"
+    ],
+    [
+      "Ryan",
+      "Jones"
+    ],
+    [
+      "Ryan",
+      "Robinson"
+    ],
+    [
+      "Ryan",
+      "Washington"
+    ],
+    [
+      "Ryan",
+      "Williams"
+    ]
+  ],
+  "max_matching": {
+    "female_first": 2,
+    "male_first": 1,
+    "surnames": 4
+  },
+  "selected": {
+    "female_first": [
+      [
+        "Emily",
+        "Kenya"
+      ],
+      [
+        "Laurie",
+        "Ebony"
+      ]
+    ],
+    "male_first": [
+      [
+        "Brett",
+        "Jamal"
+      ]
+    ],
+    "surnames": [
+      [
+        "Baker",
+        "Jackson"
+      ],
+      [
+        "Kelly",
+        "Jones"
+      ],
+      [
+        "Murray",
+        "Robinson"
+      ],
+      [
+        "Ryan",
+        "Washington"
+      ]
+    ]
+  },
+  "grid": [
+    {
+      "idx": 0,
+      "gender": "female",
+      "first_i": 0,
+      "last_j": 0,
+      "white_first": "Emily",
+      "white_last": "Baker",
+      "black_first": "Kenya",
+      "black_last": "Jackson",
+      "white": "Emily Baker",
+      "black": "Kenya Jackson"
+    },
+    {
+      "idx": 1,
+      "gender": "female",
+      "first_i": 0,
+      "last_j": 1,
+      "white_first": "Emily",
+      "white_last": "Kelly",
+      "black_first": "Kenya",
+      "black_last": "Jones",
+      "white": "Emily Kelly",
+      "black": "Kenya Jones"
+    },
+    {
+      "idx": 2,
+      "gender": "female",
+      "first_i": 0,
+      "last_j": 2,
+      "white_first": "Emily",
+      "white_last": "Murray",
+      "black_first": "Kenya",
+      "black_last": "Robinson",
+      "white": "Emily Murray",
+      "black": "Kenya Robinson"
+    },
+    {
+      "idx": 3,
+      "gender": "female",
+      "first_i": 0,
+      "last_j": 3,
+      "white_first": "Emily",
+      "white_last": "Ryan",
+      "black_first": "Kenya",
+      "black_last": "Washington",
+      "white": "Emily Ryan",
+      "black": "Kenya Washington"
+    },
+    {
+      "idx": 4,
+      "gender": "female",
+      "first_i": 1,
+      "last_j": 0,
+      "white_first": "Laurie",
+      "white_last": "Baker",
+      "black_first": "Ebony",
+      "black_last": "Jackson",
+      "white": "Laurie Baker",
+      "black": "Ebony Jackson"
+    },
+    {
+      "idx": 5,
+      "gender": "female",
+      "first_i": 1,
+      "last_j": 1,
+      "white_first": "Laurie",
+      "white_last": "Kelly",
+      "black_first": "Ebony",
+      "black_last": "Jones",
+      "white": "Laurie Kelly",
+      "black": "Ebony Jones"
+    },
+    {
+      "idx": 6,
+      "gender": "female",
+      "first_i": 1,
+      "last_j": 2,
+      "white_first": "Laurie",
+      "white_last": "Murray",
+      "black_first": "Ebony",
+      "black_last": "Robinson",
+      "white": "Laurie Murray",
+      "black": "Ebony Robinson"
+    },
+    {
+      "idx": 7,
+      "gender": "female",
+      "first_i": 1,
+      "last_j": 3,
+      "white_first": "Laurie",
+      "white_last": "Ryan",
+      "black_first": "Ebony",
+      "black_last": "Washington",
+      "white": "Laurie Ryan",
+      "black": "Ebony Washington"
+    },
+    {
+      "idx": 8,
+      "gender": "male",
+      "first_i": 0,
+      "last_j": 0,
+      "white_first": "Brett",
+      "white_last": "Baker",
+      "black_first": "Jamal",
+      "black_last": "Jackson",
+      "white": "Brett Baker",
+      "black": "Jamal Jackson"
+    },
+    {
+      "idx": 9,
+      "gender": "male",
+      "first_i": 0,
+      "last_j": 1,
+      "white_first": "Brett",
+      "white_last": "Kelly",
+      "black_first": "Jamal",
+      "black_last": "Jones",
+      "white": "Brett Kelly",
+      "black": "Jamal Jones"
+    },
+    {
+      "idx": 10,
+      "gender": "male",
+      "first_i": 0,
+      "last_j": 2,
+      "white_first": "Brett",
+      "white_last": "Murray",
+      "black_first": "Jamal",
+      "black_last": "Robinson",
+      "white": "Brett Murray",
+      "black": "Jamal Robinson"
+    },
+    {
+      "idx": 11,
+      "gender": "male",
+      "first_i": 0,
+      "last_j": 3,
+      "white_first": "Brett",
+      "white_last": "Ryan",
+      "black_first": "Jamal",
+      "black_last": "Washington",
+      "white": "Brett Ryan",
+      "black": "Jamal Washington"
+    }
+  ],
+  "n_pairs": 12,
+  "residual_imbalance": {
+    "llama-2-7b-chat": [],
+    "llama-3.1-8b-instruct": [],
+    "mistral-7b-instruct-v0.1": [],
+    "mistral-7b-instruct-v0.3": []
+  },
+  "fully_balanced": true,
+  "per_model_tokens": {
+    "llama-2-7b-chat": {
+      "first": {
+        "Allison": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Anne": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Carrie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Emily": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jill": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Laurie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Kristen": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Meredith": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Sarah": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brad": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brendan": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Geoffrey": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Greg": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brett": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jay": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Matthew": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Neil": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Todd": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Aisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Ebony": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Keisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Kenya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Latonya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Lakisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Latoya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Tamika": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Tanisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Darnell": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Hakim": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jermaine": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Kareem": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jamal": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Leroy": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Rasheed": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Tremayne": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Tyrone": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        }
+      },
+      "last": {
+        "Baker": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Kelly": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "McCarthy": {
+          "race": "white",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Murphy": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Murray": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "O'Brien": {
+          "race": "white",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Ryan": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Sullivan": {
+          "race": "white",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Walsh": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jackson": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Jones": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Robinson": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Washington": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Williams": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        }
+      },
+      "full": {
+        "Allison Baker": 8,
+        "Allison Kelly": 8,
+        "Allison McCarthy": 10,
+        "Allison Murphy": 9,
+        "Allison Murray": 8,
+        "Allison O'Brien": 11,
+        "Allison Ryan": 8,
+        "Allison Sullivan": 10,
+        "Allison Walsh": 9,
+        "Anne Baker": 7,
+        "Anne Kelly": 7,
+        "Anne McCarthy": 9,
+        "Anne Murphy": 8,
+        "Anne Murray": 7,
+        "Anne O'Brien": 10,
+        "Anne Ryan": 7,
+        "Anne Sullivan": 9,
+        "Anne Walsh": 8,
+        "Carrie Baker": 8,
+        "Carrie Kelly": 8,
+        "Carrie McCarthy": 10,
+        "Carrie Murphy": 9,
+        "Carrie Murray": 8,
+        "Carrie O'Brien": 11,
+        "Carrie Ryan": 8,
+        "Carrie Sullivan": 10,
+        "Carrie Walsh": 9,
+        "Emily Baker": 8,
+        "Emily Kelly": 8,
+        "Emily McCarthy": 10,
+        "Emily Murphy": 9,
+        "Emily Murray": 8,
+        "Emily O'Brien": 11,
+        "Emily Ryan": 8,
+        "Emily Sullivan": 10,
+        "Emily Walsh": 9,
+        "Jill Baker": 8,
+        "Jill Kelly": 8,
+        "Jill McCarthy": 10,
+        "Jill Murphy": 9,
+        "Jill Murray": 8,
+        "Jill O'Brien": 11,
+        "Jill Ryan": 8,
+        "Jill Sullivan": 10,
+        "Jill Walsh": 9,
+        "Laurie Baker": 8,
+        "Laurie Kelly": 8,
+        "Laurie McCarthy": 10,
+        "Laurie Murphy": 9,
+        "Laurie Murray": 8,
+        "Laurie O'Brien": 11,
+        "Laurie Ryan": 8,
+        "Laurie Sullivan": 10,
+        "Laurie Walsh": 9,
+        "Kristen Baker": 8,
+        "Kristen Kelly": 8,
+        "Kristen McCarthy": 10,
+        "Kristen Murphy": 9,
+        "Kristen Murray": 8,
+        "Kristen O'Brien": 11,
+        "Kristen Ryan": 8,
+        "Kristen Sullivan": 10,
+        "Kristen Walsh": 9,
+        "Meredith Baker": 9,
+        "Meredith Kelly": 9,
+        "Meredith McCarthy": 11,
+        "Meredith Murphy": 10,
+        "Meredith Murray": 9,
+        "Meredith O'Brien": 12,
+        "Meredith Ryan": 9,
+        "Meredith Sullivan": 11,
+        "Meredith Walsh": 10,
+        "Sarah Baker": 7,
+        "Sarah Kelly": 7,
+        "Sarah McCarthy": 9,
+        "Sarah Murphy": 8,
+        "Sarah Murray": 7,
+        "Sarah O'Brien": 10,
+        "Sarah Ryan": 7,
+        "Sarah Sullivan": 9,
+        "Sarah Walsh": 8,
+        "Brad Baker": 7,
+        "Brad Kelly": 7,
+        "Brad McCarthy": 9,
+        "Brad Murphy": 8,
+        "Brad Murray": 7,
+        "Brad O'Brien": 10,
+        "Brad Ryan": 7,
+        "Brad Sullivan": 9,
+        "Brad Walsh": 8,
+        "Brendan Baker": 9,
+        "Brendan Kelly": 9,
+        "Brendan McCarthy": 11,
+        "Brendan Murphy": 10,
+        "Brendan Murray": 9,
+        "Brendan O'Brien": 12,
+        "Brendan Ryan": 9,
+        "Brendan Sullivan": 11,
+        "Brendan Walsh": 10,
+        "Geoffrey Baker": 8,
+        "Geoffrey Kelly": 8,
+        "Geoffrey McCarthy": 10,
+        "Geoffrey Murphy": 9,
+        "Geoffrey Murray": 8,
+        "Geoffrey O'Brien": 11,
+        "Geoffrey Ryan": 8,
+        "Geoffrey Sullivan": 10,
+        "Geoffrey Walsh": 9,
+        "Greg Baker": 7,
+        "Greg Kelly": 7,
+        "Greg McCarthy": 9,
+        "Greg Murphy": 8,
+        "Greg Murray": 7,
+        "Greg O'Brien": 10,
+        "Greg Ryan": 7,
+        "Greg Sullivan": 9,
+        "Greg Walsh": 8,
+        "Brett Baker": 8,
+        "Brett Kelly": 8,
+        "Brett McCarthy": 10,
+        "Brett Murphy": 9,
+        "Brett Murray": 8,
+        "Brett O'Brien": 11,
+        "Brett Ryan": 8,
+        "Brett Sullivan": 10,
+        "Brett Walsh": 9,
+        "Jay Baker": 7,
+        "Jay Kelly": 7,
+        "Jay McCarthy": 9,
+        "Jay Murphy": 8,
+        "Jay Murray": 7,
+        "Jay O'Brien": 10,
+        "Jay Ryan": 7,
+        "Jay Sullivan": 9,
+        "Jay Walsh": 8,
+        "Matthew Baker": 7,
+        "Matthew Kelly": 7,
+        "Matthew McCarthy": 9,
+        "Matthew Murphy": 8,
+        "Matthew Murray": 7,
+        "Matthew O'Brien": 10,
+        "Matthew Ryan": 7,
+        "Matthew Sullivan": 9,
+        "Matthew Walsh": 8,
+        "Neil Baker": 7,
+        "Neil Kelly": 7,
+        "Neil McCarthy": 9,
+        "Neil Murphy": 8,
+        "Neil Murray": 7,
+        "Neil O'Brien": 10,
+        "Neil Ryan": 7,
+        "Neil Sullivan": 9,
+        "Neil Walsh": 8,
+        "Todd Baker": 8,
+        "Todd Kelly": 8,
+        "Todd McCarthy": 10,
+        "Todd Murphy": 9,
+        "Todd Murray": 8,
+        "Todd O'Brien": 11,
+        "Todd Ryan": 8,
+        "Todd Sullivan": 10,
+        "Todd Walsh": 9,
+        "Aisha Jackson": 9,
+        "Aisha Jones": 9,
+        "Aisha Robinson": 9,
+        "Aisha Washington": 9,
+        "Aisha Williams": 9,
+        "Ebony Jackson": 8,
+        "Ebony Jones": 8,
+        "Ebony Robinson": 8,
+        "Ebony Washington": 8,
+        "Ebony Williams": 8,
+        "Keisha Jackson": 9,
+        "Keisha Jones": 9,
+        "Keisha Robinson": 9,
+        "Keisha Washington": 9,
+        "Keisha Williams": 9,
+        "Kenya Jackson": 8,
+        "Kenya Jones": 8,
+        "Kenya Robinson": 8,
+        "Kenya Washington": 8,
+        "Kenya Williams": 8,
+        "Latonya Jackson": 9,
+        "Latonya Jones": 9,
+        "Latonya Robinson": 9,
+        "Latonya Washington": 9,
+        "Latonya Williams": 9,
+        "Lakisha Jackson": 9,
+        "Lakisha Jones": 9,
+        "Lakisha Robinson": 9,
+        "Lakisha Washington": 9,
+        "Lakisha Williams": 9,
+        "Latoya Jackson": 9,
+        "Latoya Jones": 9,
+        "Latoya Robinson": 9,
+        "Latoya Washington": 9,
+        "Latoya Williams": 9,
+        "Tamika Jackson": 8,
+        "Tamika Jones": 8,
+        "Tamika Robinson": 8,
+        "Tamika Washington": 8,
+        "Tamika Williams": 8,
+        "Tanisha Jackson": 9,
+        "Tanisha Jones": 9,
+        "Tanisha Robinson": 9,
+        "Tanisha Washington": 9,
+        "Tanisha Williams": 9,
+        "Darnell Jackson": 9,
+        "Darnell Jones": 9,
+        "Darnell Robinson": 9,
+        "Darnell Washington": 9,
+        "Darnell Williams": 9,
+        "Hakim Jackson": 9,
+        "Hakim Jones": 9,
+        "Hakim Robinson": 9,
+        "Hakim Washington": 9,
+        "Hakim Williams": 9,
+        "Jermaine Jackson": 9,
+        "Jermaine Jones": 9,
+        "Jermaine Robinson": 9,
+        "Jermaine Washington": 9,
+        "Jermaine Williams": 9,
+        "Kareem Jackson": 9,
+        "Kareem Jones": 9,
+        "Kareem Robinson": 9,
+        "Kareem Washington": 9,
+        "Kareem Williams": 9,
+        "Jamal Jackson": 8,
+        "Jamal Jones": 8,
+        "Jamal Robinson": 8,
+        "Jamal Washington": 8,
+        "Jamal Williams": 8,
+        "Leroy Jackson": 9,
+        "Leroy Jones": 9,
+        "Leroy Robinson": 9,
+        "Leroy Washington": 9,
+        "Leroy Williams": 9,
+        "Rasheed Jackson": 9,
+        "Rasheed Jones": 9,
+        "Rasheed Robinson": 9,
+        "Rasheed Washington": 9,
+        "Rasheed Williams": 9,
+        "Tremayne Jackson": 10,
+        "Tremayne Jones": 10,
+        "Tremayne Robinson": 10,
+        "Tremayne Washington": 10,
+        "Tremayne Williams": 10,
+        "Tyrone Jackson": 9,
+        "Tyrone Jones": 9,
+        "Tyrone Robinson": 9,
+        "Tyrone Washington": 9,
+        "Tyrone Williams": 9
+      },
+      "_base_tokens": 6
+    },
+    "llama-3.1-8b-instruct": {
+      "first": {
+        "Allison": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Anne": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Carrie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Emily": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Jill": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Laurie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 3
+        },
+        "Kristen": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Meredith": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 3
+        },
+        "Sarah": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Brad": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Brendan": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 3
+        },
+        "Geoffrey": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 3
+        },
+        "Greg": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Brett": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jay": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Matthew": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Neil": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Todd": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Aisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Ebony": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Keisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Kenya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Latonya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Lakisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Latoya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Tamika": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Tanisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Darnell": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 3
+        },
+        "Hakim": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jermaine": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 3
+        },
+        "Kareem": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jamal": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Leroy": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Rasheed": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Tremayne": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Tyrone": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        }
+      },
+      "last": {
+        "Baker": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Kelly": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 1
+        },
+        "McCarthy": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Murphy": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Murray": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "O'Brien": {
+          "race": "white",
+          "ctx": 2,
+          "iso": 2
+        },
+        "Ryan": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Sullivan": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Walsh": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jackson": {
+          "race": "black",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Jones": {
+          "race": "black",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Robinson": {
+          "race": "black",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Washington": {
+          "race": "black",
+          "ctx": 1,
+          "iso": 1
+        },
+        "Williams": {
+          "race": "black",
+          "ctx": 1,
+          "iso": 1
+        }
+      },
+      "full": {
+        "Allison Baker": 5,
+        "Allison Kelly": 5,
+        "Allison McCarthy": 5,
+        "Allison Murphy": 5,
+        "Allison Murray": 5,
+        "Allison O'Brien": 6,
+        "Allison Ryan": 5,
+        "Allison Sullivan": 5,
+        "Allison Walsh": 5,
+        "Anne Baker": 5,
+        "Anne Kelly": 5,
+        "Anne McCarthy": 5,
+        "Anne Murphy": 5,
+        "Anne Murray": 5,
+        "Anne O'Brien": 6,
+        "Anne Ryan": 5,
+        "Anne Sullivan": 5,
+        "Anne Walsh": 5,
+        "Carrie Baker": 5,
+        "Carrie Kelly": 5,
+        "Carrie McCarthy": 5,
+        "Carrie Murphy": 5,
+        "Carrie Murray": 5,
+        "Carrie O'Brien": 6,
+        "Carrie Ryan": 5,
+        "Carrie Sullivan": 5,
+        "Carrie Walsh": 5,
+        "Emily Baker": 5,
+        "Emily Kelly": 5,
+        "Emily McCarthy": 5,
+        "Emily Murphy": 5,
+        "Emily Murray": 5,
+        "Emily O'Brien": 6,
+        "Emily Ryan": 5,
+        "Emily Sullivan": 5,
+        "Emily Walsh": 5,
+        "Jill Baker": 5,
+        "Jill Kelly": 5,
+        "Jill McCarthy": 5,
+        "Jill Murphy": 5,
+        "Jill Murray": 5,
+        "Jill O'Brien": 6,
+        "Jill Ryan": 5,
+        "Jill Sullivan": 5,
+        "Jill Walsh": 5,
+        "Laurie Baker": 5,
+        "Laurie Kelly": 5,
+        "Laurie McCarthy": 5,
+        "Laurie Murphy": 5,
+        "Laurie Murray": 5,
+        "Laurie O'Brien": 6,
+        "Laurie Ryan": 5,
+        "Laurie Sullivan": 5,
+        "Laurie Walsh": 5,
+        "Kristen Baker": 5,
+        "Kristen Kelly": 5,
+        "Kristen McCarthy": 5,
+        "Kristen Murphy": 5,
+        "Kristen Murray": 5,
+        "Kristen O'Brien": 6,
+        "Kristen Ryan": 5,
+        "Kristen Sullivan": 5,
+        "Kristen Walsh": 5,
+        "Meredith Baker": 5,
+        "Meredith Kelly": 5,
+        "Meredith McCarthy": 5,
+        "Meredith Murphy": 5,
+        "Meredith Murray": 5,
+        "Meredith O'Brien": 6,
+        "Meredith Ryan": 5,
+        "Meredith Sullivan": 5,
+        "Meredith Walsh": 5,
+        "Sarah Baker": 5,
+        "Sarah Kelly": 5,
+        "Sarah McCarthy": 5,
+        "Sarah Murphy": 5,
+        "Sarah Murray": 5,
+        "Sarah O'Brien": 6,
+        "Sarah Ryan": 5,
+        "Sarah Sullivan": 5,
+        "Sarah Walsh": 5,
+        "Brad Baker": 5,
+        "Brad Kelly": 5,
+        "Brad McCarthy": 5,
+        "Brad Murphy": 5,
+        "Brad Murray": 5,
+        "Brad O'Brien": 6,
+        "Brad Ryan": 5,
+        "Brad Sullivan": 5,
+        "Brad Walsh": 5,
+        "Brendan Baker": 5,
+        "Brendan Kelly": 5,
+        "Brendan McCarthy": 5,
+        "Brendan Murphy": 5,
+        "Brendan Murray": 5,
+        "Brendan O'Brien": 6,
+        "Brendan Ryan": 5,
+        "Brendan Sullivan": 5,
+        "Brendan Walsh": 5,
+        "Geoffrey Baker": 5,
+        "Geoffrey Kelly": 5,
+        "Geoffrey McCarthy": 5,
+        "Geoffrey Murphy": 5,
+        "Geoffrey Murray": 5,
+        "Geoffrey O'Brien": 6,
+        "Geoffrey Ryan": 5,
+        "Geoffrey Sullivan": 5,
+        "Geoffrey Walsh": 5,
+        "Greg Baker": 5,
+        "Greg Kelly": 5,
+        "Greg McCarthy": 5,
+        "Greg Murphy": 5,
+        "Greg Murray": 5,
+        "Greg O'Brien": 6,
+        "Greg Ryan": 5,
+        "Greg Sullivan": 5,
+        "Greg Walsh": 5,
+        "Brett Baker": 5,
+        "Brett Kelly": 5,
+        "Brett McCarthy": 5,
+        "Brett Murphy": 5,
+        "Brett Murray": 5,
+        "Brett O'Brien": 6,
+        "Brett Ryan": 5,
+        "Brett Sullivan": 5,
+        "Brett Walsh": 5,
+        "Jay Baker": 5,
+        "Jay Kelly": 5,
+        "Jay McCarthy": 5,
+        "Jay Murphy": 5,
+        "Jay Murray": 5,
+        "Jay O'Brien": 6,
+        "Jay Ryan": 5,
+        "Jay Sullivan": 5,
+        "Jay Walsh": 5,
+        "Matthew Baker": 5,
+        "Matthew Kelly": 5,
+        "Matthew McCarthy": 5,
+        "Matthew Murphy": 5,
+        "Matthew Murray": 5,
+        "Matthew O'Brien": 6,
+        "Matthew Ryan": 5,
+        "Matthew Sullivan": 5,
+        "Matthew Walsh": 5,
+        "Neil Baker": 5,
+        "Neil Kelly": 5,
+        "Neil McCarthy": 5,
+        "Neil Murphy": 5,
+        "Neil Murray": 5,
+        "Neil O'Brien": 6,
+        "Neil Ryan": 5,
+        "Neil Sullivan": 5,
+        "Neil Walsh": 5,
+        "Todd Baker": 5,
+        "Todd Kelly": 5,
+        "Todd McCarthy": 5,
+        "Todd Murphy": 5,
+        "Todd Murray": 5,
+        "Todd O'Brien": 6,
+        "Todd Ryan": 5,
+        "Todd Sullivan": 5,
+        "Todd Walsh": 5,
+        "Aisha Jackson": 6,
+        "Aisha Jones": 6,
+        "Aisha Robinson": 6,
+        "Aisha Washington": 6,
+        "Aisha Williams": 6,
+        "Ebony Jackson": 5,
+        "Ebony Jones": 5,
+        "Ebony Robinson": 5,
+        "Ebony Washington": 5,
+        "Ebony Williams": 5,
+        "Keisha Jackson": 6,
+        "Keisha Jones": 6,
+        "Keisha Robinson": 6,
+        "Keisha Washington": 6,
+        "Keisha Williams": 6,
+        "Kenya Jackson": 5,
+        "Kenya Jones": 5,
+        "Kenya Robinson": 5,
+        "Kenya Washington": 5,
+        "Kenya Williams": 5,
+        "Latonya Jackson": 6,
+        "Latonya Jones": 6,
+        "Latonya Robinson": 6,
+        "Latonya Washington": 6,
+        "Latonya Williams": 6,
+        "Lakisha Jackson": 6,
+        "Lakisha Jones": 6,
+        "Lakisha Robinson": 6,
+        "Lakisha Washington": 6,
+        "Lakisha Williams": 6,
+        "Latoya Jackson": 6,
+        "Latoya Jones": 6,
+        "Latoya Robinson": 6,
+        "Latoya Washington": 6,
+        "Latoya Williams": 6,
+        "Tamika Jackson": 6,
+        "Tamika Jones": 6,
+        "Tamika Robinson": 6,
+        "Tamika Washington": 6,
+        "Tamika Williams": 6,
+        "Tanisha Jackson": 6,
+        "Tanisha Jones": 6,
+        "Tanisha Robinson": 6,
+        "Tanisha Washington": 6,
+        "Tanisha Williams": 6,
+        "Darnell Jackson": 7,
+        "Darnell Jones": 7,
+        "Darnell Robinson": 7,
+        "Darnell Washington": 7,
+        "Darnell Williams": 7,
+        "Hakim Jackson": 6,
+        "Hakim Jones": 6,
+        "Hakim Robinson": 6,
+        "Hakim Washington": 6,
+        "Hakim Williams": 6,
+        "Jermaine Jackson": 7,
+        "Jermaine Jones": 7,
+        "Jermaine Robinson": 7,
+        "Jermaine Washington": 7,
+        "Jermaine Williams": 7,
+        "Kareem Jackson": 6,
+        "Kareem Jones": 6,
+        "Kareem Robinson": 6,
+        "Kareem Washington": 6,
+        "Kareem Williams": 6,
+        "Jamal Jackson": 5,
+        "Jamal Jones": 5,
+        "Jamal Robinson": 5,
+        "Jamal Washington": 5,
+        "Jamal Williams": 5,
+        "Leroy Jackson": 6,
+        "Leroy Jones": 6,
+        "Leroy Robinson": 6,
+        "Leroy Washington": 6,
+        "Leroy Williams": 6,
+        "Rasheed Jackson": 6,
+        "Rasheed Jones": 6,
+        "Rasheed Robinson": 6,
+        "Rasheed Washington": 6,
+        "Rasheed Williams": 6,
+        "Tremayne Jackson": 6,
+        "Tremayne Jones": 6,
+        "Tremayne Robinson": 6,
+        "Tremayne Washington": 6,
+        "Tremayne Williams": 6,
+        "Tyrone Jackson": 6,
+        "Tyrone Jones": 6,
+        "Tyrone Robinson": 6,
+        "Tyrone Washington": 6,
+        "Tyrone Williams": 6
+      },
+      "_base_tokens": 3
+    },
+    "mistral-7b-instruct-v0.1": {
+      "first": {
+        "Allison": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Anne": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Carrie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Emily": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Jill": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Laurie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Kristen": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Meredith": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Sarah": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brad": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brendan": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Geoffrey": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Greg": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brett": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jay": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Matthew": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Neil": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Todd": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Aisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Ebony": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Keisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Kenya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Latonya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Lakisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Latoya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Tamika": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Tanisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Darnell": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Hakim": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jermaine": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Kareem": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jamal": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Leroy": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Rasheed": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Tremayne": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Tyrone": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        }
+      },
+      "last": {
+        "Baker": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Kelly": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "McCarthy": {
+          "race": "white",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Murphy": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Murray": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "O'Brien": {
+          "race": "white",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Ryan": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Sullivan": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Walsh": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jackson": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Jones": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Robinson": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Washington": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Williams": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        }
+      },
+      "full": {
+        "Allison Baker": 6,
+        "Allison Kelly": 6,
+        "Allison McCarthy": 8,
+        "Allison Murphy": 6,
+        "Allison Murray": 6,
+        "Allison O'Brien": 9,
+        "Allison Ryan": 6,
+        "Allison Sullivan": 7,
+        "Allison Walsh": 7,
+        "Anne Baker": 5,
+        "Anne Kelly": 5,
+        "Anne McCarthy": 7,
+        "Anne Murphy": 5,
+        "Anne Murray": 5,
+        "Anne O'Brien": 8,
+        "Anne Ryan": 5,
+        "Anne Sullivan": 6,
+        "Anne Walsh": 6,
+        "Carrie Baker": 6,
+        "Carrie Kelly": 6,
+        "Carrie McCarthy": 8,
+        "Carrie Murphy": 6,
+        "Carrie Murray": 6,
+        "Carrie O'Brien": 9,
+        "Carrie Ryan": 6,
+        "Carrie Sullivan": 7,
+        "Carrie Walsh": 7,
+        "Emily Baker": 5,
+        "Emily Kelly": 5,
+        "Emily McCarthy": 7,
+        "Emily Murphy": 5,
+        "Emily Murray": 5,
+        "Emily O'Brien": 8,
+        "Emily Ryan": 5,
+        "Emily Sullivan": 6,
+        "Emily Walsh": 6,
+        "Jill Baker": 6,
+        "Jill Kelly": 6,
+        "Jill McCarthy": 8,
+        "Jill Murphy": 6,
+        "Jill Murray": 6,
+        "Jill O'Brien": 9,
+        "Jill Ryan": 6,
+        "Jill Sullivan": 7,
+        "Jill Walsh": 7,
+        "Laurie Baker": 7,
+        "Laurie Kelly": 7,
+        "Laurie McCarthy": 9,
+        "Laurie Murphy": 7,
+        "Laurie Murray": 7,
+        "Laurie O'Brien": 10,
+        "Laurie Ryan": 7,
+        "Laurie Sullivan": 8,
+        "Laurie Walsh": 8,
+        "Kristen Baker": 6,
+        "Kristen Kelly": 6,
+        "Kristen McCarthy": 8,
+        "Kristen Murphy": 6,
+        "Kristen Murray": 6,
+        "Kristen O'Brien": 9,
+        "Kristen Ryan": 6,
+        "Kristen Sullivan": 7,
+        "Kristen Walsh": 7,
+        "Meredith Baker": 7,
+        "Meredith Kelly": 7,
+        "Meredith McCarthy": 9,
+        "Meredith Murphy": 7,
+        "Meredith Murray": 7,
+        "Meredith O'Brien": 10,
+        "Meredith Ryan": 7,
+        "Meredith Sullivan": 8,
+        "Meredith Walsh": 8,
+        "Sarah Baker": 5,
+        "Sarah Kelly": 5,
+        "Sarah McCarthy": 7,
+        "Sarah Murphy": 5,
+        "Sarah Murray": 5,
+        "Sarah O'Brien": 8,
+        "Sarah Ryan": 5,
+        "Sarah Sullivan": 6,
+        "Sarah Walsh": 6,
+        "Brad Baker": 5,
+        "Brad Kelly": 5,
+        "Brad McCarthy": 7,
+        "Brad Murphy": 5,
+        "Brad Murray": 5,
+        "Brad O'Brien": 8,
+        "Brad Ryan": 5,
+        "Brad Sullivan": 6,
+        "Brad Walsh": 6,
+        "Brendan Baker": 6,
+        "Brendan Kelly": 6,
+        "Brendan McCarthy": 8,
+        "Brendan Murphy": 6,
+        "Brendan Murray": 6,
+        "Brendan O'Brien": 9,
+        "Brendan Ryan": 6,
+        "Brendan Sullivan": 7,
+        "Brendan Walsh": 7,
+        "Geoffrey Baker": 6,
+        "Geoffrey Kelly": 6,
+        "Geoffrey McCarthy": 8,
+        "Geoffrey Murphy": 6,
+        "Geoffrey Murray": 6,
+        "Geoffrey O'Brien": 9,
+        "Geoffrey Ryan": 6,
+        "Geoffrey Sullivan": 7,
+        "Geoffrey Walsh": 7,
+        "Greg Baker": 5,
+        "Greg Kelly": 5,
+        "Greg McCarthy": 7,
+        "Greg Murphy": 5,
+        "Greg Murray": 5,
+        "Greg O'Brien": 8,
+        "Greg Ryan": 5,
+        "Greg Sullivan": 6,
+        "Greg Walsh": 6,
+        "Brett Baker": 6,
+        "Brett Kelly": 6,
+        "Brett McCarthy": 8,
+        "Brett Murphy": 6,
+        "Brett Murray": 6,
+        "Brett O'Brien": 9,
+        "Brett Ryan": 6,
+        "Brett Sullivan": 7,
+        "Brett Walsh": 7,
+        "Jay Baker": 5,
+        "Jay Kelly": 5,
+        "Jay McCarthy": 7,
+        "Jay Murphy": 5,
+        "Jay Murray": 5,
+        "Jay O'Brien": 8,
+        "Jay Ryan": 5,
+        "Jay Sullivan": 6,
+        "Jay Walsh": 6,
+        "Matthew Baker": 5,
+        "Matthew Kelly": 5,
+        "Matthew McCarthy": 7,
+        "Matthew Murphy": 5,
+        "Matthew Murray": 5,
+        "Matthew O'Brien": 8,
+        "Matthew Ryan": 5,
+        "Matthew Sullivan": 6,
+        "Matthew Walsh": 6,
+        "Neil Baker": 5,
+        "Neil Kelly": 5,
+        "Neil McCarthy": 7,
+        "Neil Murphy": 5,
+        "Neil Murray": 5,
+        "Neil O'Brien": 8,
+        "Neil Ryan": 5,
+        "Neil Sullivan": 6,
+        "Neil Walsh": 6,
+        "Todd Baker": 5,
+        "Todd Kelly": 5,
+        "Todd McCarthy": 7,
+        "Todd Murphy": 5,
+        "Todd Murray": 5,
+        "Todd O'Brien": 8,
+        "Todd Ryan": 5,
+        "Todd Sullivan": 6,
+        "Todd Walsh": 6,
+        "Aisha Jackson": 6,
+        "Aisha Jones": 6,
+        "Aisha Robinson": 6,
+        "Aisha Washington": 6,
+        "Aisha Williams": 6,
+        "Ebony Jackson": 7,
+        "Ebony Jones": 7,
+        "Ebony Robinson": 7,
+        "Ebony Washington": 7,
+        "Ebony Williams": 7,
+        "Keisha Jackson": 6,
+        "Keisha Jones": 6,
+        "Keisha Robinson": 6,
+        "Keisha Washington": 6,
+        "Keisha Williams": 6,
+        "Kenya Jackson": 5,
+        "Kenya Jones": 5,
+        "Kenya Robinson": 5,
+        "Kenya Washington": 5,
+        "Kenya Williams": 5,
+        "Latonya Jackson": 7,
+        "Latonya Jones": 7,
+        "Latonya Robinson": 7,
+        "Latonya Washington": 7,
+        "Latonya Williams": 7,
+        "Lakisha Jackson": 7,
+        "Lakisha Jones": 7,
+        "Lakisha Robinson": 7,
+        "Lakisha Washington": 7,
+        "Lakisha Williams": 7,
+        "Latoya Jackson": 6,
+        "Latoya Jones": 6,
+        "Latoya Robinson": 6,
+        "Latoya Washington": 6,
+        "Latoya Williams": 6,
+        "Tamika Jackson": 6,
+        "Tamika Jones": 6,
+        "Tamika Robinson": 6,
+        "Tamika Washington": 6,
+        "Tamika Williams": 6,
+        "Tanisha Jackson": 6,
+        "Tanisha Jones": 6,
+        "Tanisha Robinson": 6,
+        "Tanisha Washington": 6,
+        "Tanisha Williams": 6,
+        "Darnell Jackson": 7,
+        "Darnell Jones": 7,
+        "Darnell Robinson": 7,
+        "Darnell Washington": 7,
+        "Darnell Williams": 7,
+        "Hakim Jackson": 7,
+        "Hakim Jones": 7,
+        "Hakim Robinson": 7,
+        "Hakim Washington": 7,
+        "Hakim Williams": 7,
+        "Jermaine Jackson": 7,
+        "Jermaine Jones": 7,
+        "Jermaine Robinson": 7,
+        "Jermaine Washington": 7,
+        "Jermaine Williams": 7,
+        "Kareem Jackson": 7,
+        "Kareem Jones": 7,
+        "Kareem Robinson": 7,
+        "Kareem Washington": 7,
+        "Kareem Williams": 7,
+        "Jamal Jackson": 6,
+        "Jamal Jones": 6,
+        "Jamal Robinson": 6,
+        "Jamal Washington": 6,
+        "Jamal Williams": 6,
+        "Leroy Jackson": 7,
+        "Leroy Jones": 7,
+        "Leroy Robinson": 7,
+        "Leroy Washington": 7,
+        "Leroy Williams": 7,
+        "Rasheed Jackson": 8,
+        "Rasheed Jones": 8,
+        "Rasheed Robinson": 8,
+        "Rasheed Washington": 8,
+        "Rasheed Williams": 8,
+        "Tremayne Jackson": 8,
+        "Tremayne Jones": 8,
+        "Tremayne Robinson": 8,
+        "Tremayne Washington": 8,
+        "Tremayne Williams": 8,
+        "Tyrone Jackson": 7,
+        "Tyrone Jones": 7,
+        "Tyrone Robinson": 7,
+        "Tyrone Washington": 7,
+        "Tyrone Williams": 7
+      },
+      "_base_tokens": 4
+    },
+    "mistral-7b-instruct-v0.3": {
+      "first": {
+        "Allison": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Anne": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Carrie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Emily": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Jill": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Laurie": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Kristen": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Meredith": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Sarah": {
+          "race": "white",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brad": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brendan": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Geoffrey": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Greg": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Brett": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jay": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Matthew": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Neil": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Todd": {
+          "race": "white",
+          "gender": "male",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Aisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Ebony": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Keisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Kenya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Latonya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Lakisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Latoya": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Tamika": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Tanisha": {
+          "race": "black",
+          "gender": "female",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Darnell": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Hakim": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jermaine": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Kareem": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Jamal": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Leroy": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Rasheed": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Tremayne": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Tyrone": {
+          "race": "black",
+          "gender": "male",
+          "ctx": 2,
+          "iso": 3
+        }
+      },
+      "last": {
+        "Baker": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Kelly": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "McCarthy": {
+          "race": "white",
+          "ctx": 2,
+          "iso": 3
+        },
+        "Murphy": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Murray": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "O'Brien": {
+          "race": "white",
+          "ctx": 3,
+          "iso": 4
+        },
+        "Ryan": {
+          "race": "white",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Sullivan": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Walsh": {
+          "race": "white",
+          "ctx": 1,
+          "iso": 2
+        },
+        "Jackson": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Jones": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Robinson": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Washington": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        },
+        "Williams": {
+          "race": "black",
+          "ctx": 0,
+          "iso": 1
+        }
+      },
+      "full": {
+        "Allison Baker": 6,
+        "Allison Kelly": 6,
+        "Allison McCarthy": 8,
+        "Allison Murphy": 6,
+        "Allison Murray": 6,
+        "Allison O'Brien": 9,
+        "Allison Ryan": 6,
+        "Allison Sullivan": 7,
+        "Allison Walsh": 7,
+        "Anne Baker": 5,
+        "Anne Kelly": 5,
+        "Anne McCarthy": 7,
+        "Anne Murphy": 5,
+        "Anne Murray": 5,
+        "Anne O'Brien": 8,
+        "Anne Ryan": 5,
+        "Anne Sullivan": 6,
+        "Anne Walsh": 6,
+        "Carrie Baker": 6,
+        "Carrie Kelly": 6,
+        "Carrie McCarthy": 8,
+        "Carrie Murphy": 6,
+        "Carrie Murray": 6,
+        "Carrie O'Brien": 9,
+        "Carrie Ryan": 6,
+        "Carrie Sullivan": 7,
+        "Carrie Walsh": 7,
+        "Emily Baker": 5,
+        "Emily Kelly": 5,
+        "Emily McCarthy": 7,
+        "Emily Murphy": 5,
+        "Emily Murray": 5,
+        "Emily O'Brien": 8,
+        "Emily Ryan": 5,
+        "Emily Sullivan": 6,
+        "Emily Walsh": 6,
+        "Jill Baker": 6,
+        "Jill Kelly": 6,
+        "Jill McCarthy": 8,
+        "Jill Murphy": 6,
+        "Jill Murray": 6,
+        "Jill O'Brien": 9,
+        "Jill Ryan": 6,
+        "Jill Sullivan": 7,
+        "Jill Walsh": 7,
+        "Laurie Baker": 7,
+        "Laurie Kelly": 7,
+        "Laurie McCarthy": 9,
+        "Laurie Murphy": 7,
+        "Laurie Murray": 7,
+        "Laurie O'Brien": 10,
+        "Laurie Ryan": 7,
+        "Laurie Sullivan": 8,
+        "Laurie Walsh": 8,
+        "Kristen Baker": 6,
+        "Kristen Kelly": 6,
+        "Kristen McCarthy": 8,
+        "Kristen Murphy": 6,
+        "Kristen Murray": 6,
+        "Kristen O'Brien": 9,
+        "Kristen Ryan": 6,
+        "Kristen Sullivan": 7,
+        "Kristen Walsh": 7,
+        "Meredith Baker": 7,
+        "Meredith Kelly": 7,
+        "Meredith McCarthy": 9,
+        "Meredith Murphy": 7,
+        "Meredith Murray": 7,
+        "Meredith O'Brien": 10,
+        "Meredith Ryan": 7,
+        "Meredith Sullivan": 8,
+        "Meredith Walsh": 8,
+        "Sarah Baker": 5,
+        "Sarah Kelly": 5,
+        "Sarah McCarthy": 7,
+        "Sarah Murphy": 5,
+        "Sarah Murray": 5,
+        "Sarah O'Brien": 8,
+        "Sarah Ryan": 5,
+        "Sarah Sullivan": 6,
+        "Sarah Walsh": 6,
+        "Brad Baker": 5,
+        "Brad Kelly": 5,
+        "Brad McCarthy": 7,
+        "Brad Murphy": 5,
+        "Brad Murray": 5,
+        "Brad O'Brien": 8,
+        "Brad Ryan": 5,
+        "Brad Sullivan": 6,
+        "Brad Walsh": 6,
+        "Brendan Baker": 6,
+        "Brendan Kelly": 6,
+        "Brendan McCarthy": 8,
+        "Brendan Murphy": 6,
+        "Brendan Murray": 6,
+        "Brendan O'Brien": 9,
+        "Brendan Ryan": 6,
+        "Brendan Sullivan": 7,
+        "Brendan Walsh": 7,
+        "Geoffrey Baker": 6,
+        "Geoffrey Kelly": 6,
+        "Geoffrey McCarthy": 8,
+        "Geoffrey Murphy": 6,
+        "Geoffrey Murray": 6,
+        "Geoffrey O'Brien": 9,
+        "Geoffrey Ryan": 6,
+        "Geoffrey Sullivan": 7,
+        "Geoffrey Walsh": 7,
+        "Greg Baker": 5,
+        "Greg Kelly": 5,
+        "Greg McCarthy": 7,
+        "Greg Murphy": 5,
+        "Greg Murray": 5,
+        "Greg O'Brien": 8,
+        "Greg Ryan": 5,
+        "Greg Sullivan": 6,
+        "Greg Walsh": 6,
+        "Brett Baker": 6,
+        "Brett Kelly": 6,
+        "Brett McCarthy": 8,
+        "Brett Murphy": 6,
+        "Brett Murray": 6,
+        "Brett O'Brien": 9,
+        "Brett Ryan": 6,
+        "Brett Sullivan": 7,
+        "Brett Walsh": 7,
+        "Jay Baker": 5,
+        "Jay Kelly": 5,
+        "Jay McCarthy": 7,
+        "Jay Murphy": 5,
+        "Jay Murray": 5,
+        "Jay O'Brien": 8,
+        "Jay Ryan": 5,
+        "Jay Sullivan": 6,
+        "Jay Walsh": 6,
+        "Matthew Baker": 5,
+        "Matthew Kelly": 5,
+        "Matthew McCarthy": 7,
+        "Matthew Murphy": 5,
+        "Matthew Murray": 5,
+        "Matthew O'Brien": 8,
+        "Matthew Ryan": 5,
+        "Matthew Sullivan": 6,
+        "Matthew Walsh": 6,
+        "Neil Baker": 5,
+        "Neil Kelly": 5,
+        "Neil McCarthy": 7,
+        "Neil Murphy": 5,
+        "Neil Murray": 5,
+        "Neil O'Brien": 8,
+        "Neil Ryan": 5,
+        "Neil Sullivan": 6,
+        "Neil Walsh": 6,
+        "Todd Baker": 5,
+        "Todd Kelly": 5,
+        "Todd McCarthy": 7,
+        "Todd Murphy": 5,
+        "Todd Murray": 5,
+        "Todd O'Brien": 8,
+        "Todd Ryan": 5,
+        "Todd Sullivan": 6,
+        "Todd Walsh": 6,
+        "Aisha Jackson": 6,
+        "Aisha Jones": 6,
+        "Aisha Robinson": 6,
+        "Aisha Washington": 6,
+        "Aisha Williams": 6,
+        "Ebony Jackson": 7,
+        "Ebony Jones": 7,
+        "Ebony Robinson": 7,
+        "Ebony Washington": 7,
+        "Ebony Williams": 7,
+        "Keisha Jackson": 6,
+        "Keisha Jones": 6,
+        "Keisha Robinson": 6,
+        "Keisha Washington": 6,
+        "Keisha Williams": 6,
+        "Kenya Jackson": 5,
+        "Kenya Jones": 5,
+        "Kenya Robinson": 5,
+        "Kenya Washington": 5,
+        "Kenya Williams": 5,
+        "Latonya Jackson": 7,
+        "Latonya Jones": 7,
+        "Latonya Robinson": 7,
+        "Latonya Washington": 7,
+        "Latonya Williams": 7,
+        "Lakisha Jackson": 7,
+        "Lakisha Jones": 7,
+        "Lakisha Robinson": 7,
+        "Lakisha Washington": 7,
+        "Lakisha Williams": 7,
+        "Latoya Jackson": 6,
+        "Latoya Jones": 6,
+        "Latoya Robinson": 6,
+        "Latoya Washington": 6,
+        "Latoya Williams": 6,
+        "Tamika Jackson": 6,
+        "Tamika Jones": 6,
+        "Tamika Robinson": 6,
+        "Tamika Washington": 6,
+        "Tamika Williams": 6,
+        "Tanisha Jackson": 6,
+        "Tanisha Jones": 6,
+        "Tanisha Robinson": 6,
+        "Tanisha Washington": 6,
+        "Tanisha Williams": 6,
+        "Darnell Jackson": 7,
+        "Darnell Jones": 7,
+        "Darnell Robinson": 7,
+        "Darnell Washington": 7,
+        "Darnell Williams": 7,
+        "Hakim Jackson": 7,
+        "Hakim Jones": 7,
+        "Hakim Robinson": 7,
+        "Hakim Washington": 7,
+        "Hakim Williams": 7,
+        "Jermaine Jackson": 7,
+        "Jermaine Jones": 7,
+        "Jermaine Robinson": 7,
+        "Jermaine Washington": 7,
+        "Jermaine Williams": 7,
+        "Kareem Jackson": 7,
+        "Kareem Jones": 7,
+        "Kareem Robinson": 7,
+        "Kareem Washington": 7,
+        "Kareem Williams": 7,
+        "Jamal Jackson": 6,
+        "Jamal Jones": 6,
+        "Jamal Robinson": 6,
+        "Jamal Washington": 6,
+        "Jamal Williams": 6,
+        "Leroy Jackson": 7,
+        "Leroy Jones": 7,
+        "Leroy Robinson": 7,
+        "Leroy Washington": 7,
+        "Leroy Williams": 7,
+        "Rasheed Jackson": 8,
+        "Rasheed Jones": 8,
+        "Rasheed Robinson": 8,
+        "Rasheed Washington": 8,
+        "Rasheed Williams": 8,
+        "Tremayne Jackson": 8,
+        "Tremayne Jones": 8,
+        "Tremayne Robinson": 8,
+        "Tremayne Washington": 8,
+        "Tremayne Williams": 8,
+        "Tyrone Jackson": 7,
+        "Tyrone Jones": 7,
+        "Tyrone Robinson": 7,
+        "Tyrone Washington": 7,
+        "Tyrone Williams": 7
+      },
+      "_base_tokens": 4
+    }
+  }
+}

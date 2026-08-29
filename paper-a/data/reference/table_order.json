@@ -1,0 +1,21 @@
+{
+ "_what": "The order the tables actually reach the page.",
+ "_why": "paperkit defers span2 floats, so emission order is not render order. Maintaining the numbering by hand was wrong three times in one week; the build measures it instead.",
+ "order": [
+  "study2_effect",
+  "name_draw_grid",
+  "name_variance",
+  "averaging_asymmetry",
+  "token_segmentation",
+  "occupation_ratio",
+  "replicate",
+  "spec_curve",
+  "mech_classes",
+  "reporting_matrix",
+  "instrument_validation",
+  "conditions",
+  "second_task",
+  "frontier",
+  "quantization"
+ ]
+}

@@ -1,0 +1,204 @@
+{
+  "_what": "Credible bounds on the name-to-wording ratio of Table 6, propagating the posterior intervals of both sigmas.",
+  "_formula": "ratio(k) = sigma_first * sqrt(2) / (sqrt(k) * sigma_variant)",
+  "_bound_type": "corner bound from marginal 2.5/50/97.5 quantiles; ignores posterior correlation between the two sigmas and is therefore conservative (wider than the truth)",
+  "ks": [
+    3,
+    6,
+    9
+  ],
+  "models": {
+    "llama-2-7b-chat": {
+      "sigma_first": [
+        0.06567057222127914,
+        0.09199292957782745,
+        0.1396014541387558
+      ],
+      "sigma_variant": [
+        0.03487687185406685,
+        0.06341742724180222,
+        0.11861103773117065
+      ],
+      "k_3": {
+        "est": 1.1844049141796542,
+        "bound": [
+          0.45206414775469583,
+          3.26818616284653
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_6": {
+        "est": 0.8375007464871043,
+        "bound": [
+          0.3196576244086628,
+          2.3109565979288234
+        ],
+        "point_says_wording_larger": true,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_9": {
+        "est": 0.6838164960311389,
+        "bound": [
+          0.2609993573971524,
+          1.886888160881254
+        ],
+        "point_says_wording_larger": true,
+        "bound_determines_side": false,
+        "side": "not determined"
+      }
+    },
+    "llama-3.1-8b-instruct": {
+      "sigma_first": [
+        0.04473225772380829,
+        0.06634914875030518,
+        0.10670548677444458
+      ],
+      "sigma_variant": [
+        0.010277485474944115,
+        0.035333432257175446,
+        0.07075927406549454
+      ],
+      "k_3": {
+        "est": 1.5332179650078508,
+        "bound": [
+          0.5161688834577514,
+          8.477235538786928
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_6": {
+        "est": 1.08414882009409,
+        "bound": [
+          0.36498651773046475,
+          5.994310735191833
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_9": {
+        "est": 0.8852038048236528,
+        "bound": [
+          0.2980102438116413,
+          4.894334220302495
+        ],
+        "point_says_wording_larger": true,
+        "bound_determines_side": false,
+        "side": "not determined"
+      }
+    },
+    "mistral-7b-instruct-v0.1": {
+      "sigma_first": [
+        0.05118051916360855,
+        0.0733848363161087,
+        0.10860437899827957
+      ],
+      "sigma_variant": [
+        0.006132105365395546,
+        0.016788017004728317,
+        0.03369443118572235
+      ],
+      "k_3": {
+        "est": 3.569121232553413,
+        "bound": [
+          1.2402262758749245,
+          14.460792638411279
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": true,
+        "side": "name larger"
+      },
+      "k_6": {
+        "est": 2.523749826415407,
+        "bound": [
+          0.8769724098768971,
+          10.225324535953122
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_9": {
+        "est": 2.0606331043851216,
+        "bound": [
+          0.7160449742324347,
+          8.34894252248211
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      }
+    },
+    "mistral-7b-instruct-v0.3": {
+      "sigma_first": [
+        0.1187453418970108,
+        0.17110925912857056,
+        0.26524317264556885
+      ],
+      "sigma_variant": [
+        0.0017960169352591038,
+        0.03824147582054138,
+        0.09977494180202484
+      ],
+      "k_3": {
+        "est": 3.6533664573820914,
+        "bound": [
+          0.9717386340588732,
+          120.58357542618934
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_6": {
+        "est": 2.5833201961743506,
+        "bound": [
+          0.6871229776839822,
+          85.26546388357801
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      },
+      "k_9": {
+        "est": 2.1092721076178997,
+        "bound": [
+          0.5610335619558497,
+          69.61895973215795
+        ],
+        "point_says_wording_larger": false,
+        "bound_determines_side": false,
+        "side": "not determined"
+      }
+    }
+  },
+  "summary": {
+    "per_k": {
+      "k_3": {
+        "n_models": 4,
+        "n_wording_larger_at_point_estimate": 0,
+        "n_models_where_the_bound_determines_the_side": 1,
+        "n_wording_larger_and_determined": 0
+      },
+      "k_6": {
+        "n_models": 4,
+        "n_wording_larger_at_point_estimate": 1,
+        "n_models_where_the_bound_determines_the_side": 0,
+        "n_wording_larger_and_determined": 0
+      },
+      "k_9": {
+        "n_models": 4,
+        "n_wording_larger_at_point_estimate": 2,
+        "n_models_where_the_bound_determines_the_side": 0,
+        "n_wording_larger_and_determined": 0
+      }
+    },
+    "crossover_established": false,
+    "note": "At the point estimate the wording is the larger source on 2 of 4 models at k = 9. Propagating both posteriors, the side of 1.0 is determined on 0 of them. The MONOTONE claim -- that the ratio falls with k, because only the numerator carries the 1/sqrt(k) -- holds regardless, since it does not depend on either sigma's value."
+  }
+}

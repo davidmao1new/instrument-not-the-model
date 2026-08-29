@@ -1,0 +1,109 @@
+{
+  "_what": "The exact randomization test's resolution floor on the token-matched subset: the smallest p-value attainable at n matched pairs, independent of the data.",
+  "_why": "A matched-pair randomization test has 2^n equally likely sign assignments, so the one-tailed floor is 2^-n and the two-tailed floor 2^(1-n). Stratifying within token-length classes leaves the count unchanged, because the classes are complete blocks and the randomization distribution factorizes over them.",
+  "_alpha": 0.05,
+  "per_model_design_as_run": {
+    "llama-2-7b-chat": {
+      "n_pairs": 12,
+      "n_assignments": 4096,
+      "p_min_one_tailed": 0.000244140625,
+      "p_min_two_tailed": 0.00048828125,
+      "can_reach_alpha": true,
+      "n_clusters_before_matching": 12,
+      "matched_pairs": [
+        "Allison/Aisha",
+        "Anne/Ebony",
+        "Brad/Darnell",
+        "Brendan/Hakim",
+        "Brett/Jamal",
+        "Carrie/Keisha",
+        "Emily/Kenya",
+        "Geoffrey/Jermaine",
+        "Greg/Kareem",
+        "Jay/Leroy",
+        "Jill/Lakisha",
+        "Kristen/Latonya"
+      ]
+    },
+    "llama-3.1-8b-instruct": {
+      "n_pairs": 3,
+      "n_assignments": 8,
+      "p_min_one_tailed": 0.125,
+      "p_min_two_tailed": 0.25,
+      "can_reach_alpha": false,
+      "n_clusters_before_matching": 12,
+      "matched_pairs": [
+        "Anne/Ebony",
+        "Brett/Jamal",
+        "Emily/Kenya"
+      ]
+    },
+    "mistral-7b-instruct-v0.1": {
+      "n_pairs": 8,
+      "n_assignments": 256,
+      "p_min_one_tailed": 0.00390625,
+      "p_min_two_tailed": 0.0078125,
+      "can_reach_alpha": true,
+      "n_clusters_before_matching": 12,
+      "matched_pairs": [
+        "Allison/Aisha",
+        "Anne/Ebony",
+        "Brad/Darnell",
+        "Brett/Jamal",
+        "Carrie/Keisha",
+        "Emily/Kenya",
+        "Greg/Kareem",
+        "Jay/Leroy"
+      ]
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_pairs": 8,
+      "n_assignments": 256,
+      "p_min_one_tailed": 0.00390625,
+      "p_min_two_tailed": 0.0078125,
+      "can_reach_alpha": true,
+      "n_clusters_before_matching": 12,
+      "matched_pairs": [
+        "Allison/Aisha",
+        "Anne/Ebony",
+        "Brad/Darnell",
+        "Brett/Jamal",
+        "Carrie/Keisha",
+        "Emily/Kenya",
+        "Greg/Kareem",
+        "Jay/Leroy"
+      ]
+    }
+  },
+  "fewest_pairs_model": "llama-3.1-8b-instruct",
+  "fewest_pairs_floor_two_tailed": 0.25,
+  "fewest_pairs_can_reach_alpha": false,
+  "slope_significant_models": [
+    "mistral-7b-instruct-v0.3"
+  ],
+  "slope_significant_pairs": {
+    "mistral-7b-instruct-v0.3": 8
+  },
+  "_note_on_naming": "fewest_pairs_model is the binding case for the resolution floor. slope_significant_models is a different set, and the two must not be conflated in prose: the checkpoint carrying the significant token-length slope is not the one with the fewest surviving pairs.",
+  "n_models_that_cannot_reach_alpha": 1,
+  "n_models": 4,
+  "source_list_panel_maximum": {
+    "n_pairs": 3,
+    "n_assignments": 8,
+    "p_min_one_tailed": 0.125,
+    "p_min_two_tailed": 0.25,
+    "can_reach_alpha": false,
+    "possible_pairs_before_matching": 18
+  },
+  "remedy": {
+    "n_pairs_needed": 6,
+    "why": "smallest n with 2^(1-n) <= 0.05",
+    "p_min_two_tailed_at_that_n": 0.03125,
+    "names_per_cell_now": 9,
+    "matched_pairs_per_name_per_cell": 0.1667,
+    "names_per_cell_needed": 35.99280143971206,
+    "list_size_multiple": 3.999200159968007,
+    "_caveat": "Linear in list size only if a larger list draws from the same length distribution. A list BUILT to be token-matched does far better; that is the point of the recommendation."
+  },
+  "_verdict": "On the checkpoint the length confound was identified on, the token-matched subset holds 3 pairs, so the exact test's smallest two-tailed p-value is 0.250. It cannot return significance at any conventional level whatever the data show. Across the full source list the panel-wide maximum matching is 3 pairs, with the same floor. Reaching even 6 pairs, the fewest that clear 0.05, would take about 36 names per cell against the 9 the standard list carries."
+}

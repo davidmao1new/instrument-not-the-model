@@ -1,0 +1,99 @@
+{
+  "_source": {
+    "citation": "Bertrand, Marianne and Sendhil Mullainathan (2004). 'Are Emily and Greg More Employable than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination.' American Economic Review 94(4), 991-1013.",
+    "pdf": "lit/bertrand_mullainathan_2004_aer.pdf",
+    "text": "lit/text/bm2004.txt",
+    "retrieved_from": "https://jenni.uchicago.edu/econ341/readings/Bertrand_Mullainathan_2004_AER_v94_n4.pdf",
+    "verified_utc": "2026-07-28",
+    "verified_how": "pdftotext -layout, then read directly. Every name below was transcribed from the printed tables, not from a secondary source.",
+    "tables": {
+      "table_8": "p. 1008, 'Callback Rate and Mother's Education by First Name'. Gives the real field experiment's per-name callback rate and an SES proxy.",
+      "table_A1": "p. 1012, 'First Names Used in Experiment'. Gives name-race likelihood ratios and an independent human perception survey.",
+      "footnote_20": "p. 995. The surname lists."
+    }
+  },
+
+  "_headline": {
+    "callback_white_pct": 9.65,
+    "callback_black_pct": 6.45,
+    "gap_pp": 3.20,
+    "ratio": 1.50,
+    "located_at": "Table 1, p. 997, row 'All sent resumes'"
+  },
+
+  "_why_this_file_matters": [
+    "VERIFICATION. names.py carried a standing warning that its transcription of the BM2004 list was unverified against the published appendix, and every name-based result in this project depends on it. All 36 first names and all 14 surnames match exactly. Ledger rows A-17 and A-18 close.",
+    "EXTERNAL VALIDITY. Table 8 gives the real-world callback rate for each individual name, and Table A1 gives an independent human survey's probability that each name is perceived as White or Black. Both are per-name covariates, so Study 4's per-name effects can be correlated against them. A model whose name effects track human perception is reproducing the signal; one whose effects track nothing is responding to something else.",
+    "THE FIELD EXPERIMENT MAKES OUR ARGUMENT FOR US. Within a single race-gender cell, BM2004's own callback rates range further than their headline between-race gap of 3.20 pp: White male 5.9 to 15.9 (10.0 pp), Black female 2.2 to 9.6 (7.4 pp), Black male 3.0 to 9.6 (6.6 pp), White female 7.9 to 13.1 (5.2 pp). The authors note the variation and attribute it to possible chance, which at their n they cannot rule out. A deterministic model measured over many observations can."
+  ],
+
+  "first_names": {
+    "white_female": [
+      {"name": "Emily",    "callback_pct": 7.9,  "mother_education_pct": 96.6, "lw_over_lb": "inf", "perception_white": 0.925},
+      {"name": "Anne",     "callback_pct": 8.3,  "mother_education_pct": 93.1, "lw_over_lb": "inf", "perception_white": 0.962},
+      {"name": "Jill",     "callback_pct": 8.4,  "mother_education_pct": 92.3, "lw_over_lb": "inf", "perception_white": 0.889},
+      {"name": "Allison",  "callback_pct": 9.5,  "mother_education_pct": 95.7, "lw_over_lb": "inf", "perception_white": 0.926},
+      {"name": "Laurie",   "callback_pct": 9.7,  "mother_education_pct": 93.4, "lw_over_lb": "inf", "perception_white": 0.963},
+      {"name": "Sarah",    "callback_pct": 9.8,  "mother_education_pct": 97.9, "lw_over_lb": "inf", "perception_white": 0.852},
+      {"name": "Meredith", "callback_pct": 10.2, "mother_education_pct": 81.8, "lw_over_lb": "inf", "perception_white": 0.926},
+      {"name": "Carrie",   "callback_pct": 13.1, "mother_education_pct": 80.7, "lw_over_lb": "inf", "perception_white": 0.923},
+      {"name": "Kristen",  "callback_pct": 13.1, "mother_education_pct": 93.4, "lw_over_lb": "inf", "perception_white": 0.963}
+    ],
+    "black_female": [
+      {"name": "Aisha",   "callback_pct": 2.2, "mother_education_pct": 77.2, "lb_over_lw": 209,   "perception_black": 0.97},
+      {"name": "Keisha",  "callback_pct": 3.8, "mother_education_pct": 68.8, "lb_over_lw": 116,   "perception_black": 0.93},
+      {"name": "Tamika",  "callback_pct": 5.5, "mother_education_pct": 61.5, "lb_over_lw": 284,   "perception_black": 1.0},
+      {"name": "Lakisha", "callback_pct": 5.5, "mother_education_pct": 55.6, "lb_over_lw": "inf", "perception_black": 0.967},
+      {"name": "Tanisha", "callback_pct": 5.8, "mother_education_pct": 64.0, "lb_over_lw": "inf", "perception_black": 1.0},
+      {"name": "Latoya",  "callback_pct": 8.4, "mother_education_pct": 55.5, "lb_over_lw": "inf", "perception_black": 1.0},
+      {"name": "Kenya",   "callback_pct": 8.7, "mother_education_pct": 70.2, "lb_over_lw": "inf", "perception_black": 0.967},
+      {"name": "Latonya", "callback_pct": 9.1, "mother_education_pct": 31.3, "lb_over_lw": "inf", "perception_black": 1.0},
+      {"name": "Ebony",   "callback_pct": 9.6, "mother_education_pct": 65.6, "lb_over_lw": "inf", "perception_black": 0.9}
+    ],
+    "white_male": [
+      {"name": "Todd",     "callback_pct": 5.9,  "mother_education_pct": 87.7, "lw_over_lb": "inf", "perception_white": 0.926},
+      {"name": "Neil",     "callback_pct": 6.6,  "mother_education_pct": 85.7, "lw_over_lb": "inf", "perception_white": 0.654},
+      {"name": "Geoffrey", "callback_pct": 6.8,  "mother_education_pct": 96.0, "lw_over_lb": "inf", "perception_white": 0.731},
+      {"name": "Brett",    "callback_pct": 6.8,  "mother_education_pct": 93.9, "lw_over_lb": "inf", "perception_white": 0.923},
+      {"name": "Brendan",  "callback_pct": 7.7,  "mother_education_pct": 96.7, "lw_over_lb": "inf", "perception_white": 0.667},
+      {"name": "Greg",     "callback_pct": 7.8,  "mother_education_pct": 88.3, "lw_over_lb": "inf", "perception_white": 1.0},
+      {"name": "Matthew",  "callback_pct": 9.0,  "mother_education_pct": 93.1, "lw_over_lb": "inf", "perception_white": 0.888},
+      {"name": "Jay",      "callback_pct": 13.4, "mother_education_pct": 85.4, "lw_over_lb": "inf", "perception_white": 0.926},
+      {"name": "Brad",     "callback_pct": 15.9, "mother_education_pct": 90.5, "lw_over_lb": "inf", "perception_white": 1.0}
+    ],
+    "black_male": [
+      {"name": "Rasheed",  "callback_pct": 3.0, "mother_education_pct": 77.3, "lb_over_lw": "inf", "perception_black": 0.931},
+      {"name": "Tremayne", "callback_pct": 4.3, "mother_education_pct": null, "lb_over_lw": "inf", "perception_black": 0.897,
+       "note": "mother education dropped by BM2004: too few births with education data available"},
+      {"name": "Kareem",   "callback_pct": 4.7, "mother_education_pct": 67.4, "lb_over_lw": "inf", "perception_black": 0.967},
+      {"name": "Darnell",  "callback_pct": 4.8, "mother_education_pct": 66.1, "lb_over_lw": "inf", "perception_black": 0.967},
+      {"name": "Tyrone",   "callback_pct": 5.3, "mother_education_pct": 64.0, "lb_over_lw": 62.5,  "perception_black": 0.900},
+      {"name": "Hakim",    "callback_pct": 5.5, "mother_education_pct": 73.7, "lb_over_lw": null,  "perception_black": 0.933,
+       "note": "L(B)/L(W) cell did not extract cleanly from the PDF and is recorded as unknown rather than guessed"},
+      {"name": "Jamal",    "callback_pct": 6.6, "mother_education_pct": 73.9, "lb_over_lw": 257,   "perception_black": 0.967},
+      {"name": "Leroy",    "callback_pct": 9.4, "mother_education_pct": 53.3, "lb_over_lw": 44.5,  "perception_black": 0.933},
+      {"name": "Jermaine", "callback_pct": 9.6, "mother_education_pct": 57.5, "lb_over_lw": 90.5,  "perception_black": 1.0}
+    ]
+  },
+
+  "surnames": {
+    "_located_at": "footnote 20, p. 995",
+    "white": ["Baker", "Kelly", "McCarthy", "Murphy", "Murray", "O'Brien", "Ryan", "Sullivan", "Walsh"],
+    "black": ["Jackson", "Jones", "Robinson", "Washington", "Williams"]
+  },
+
+  "within_race_callback_range_pp": {
+    "_note": "max minus min of the per-name callback rate inside one race-gender cell, against a headline between-race gap of 3.20 pp",
+    "white_female": 5.2,
+    "black_female": 7.4,
+    "white_male": 10.0,
+    "black_male": 6.6
+  },
+
+  "_transcription_check": {
+    "names_py_first_names_match": true,
+    "names_py_surnames_match": true,
+    "checked_against": "paper-a/src/names.py BM2004 and BM2004_SURNAMES",
+    "detail": "All 36 first names and all 14 surnames are identical as sets. names.py orders them differently, which does not matter because stimuli.build_name_grid sorts alphabetically before selecting."
+  }
+}

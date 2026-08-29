@@ -1,0 +1,1502 @@
+{
+  "llama-2-7b-chat": {
+    "model": "llama-2-7b-chat",
+    "n_obs": 3456,
+    "n_pairs": 1728,
+    "n_first": 24,
+    "n_last": 8,
+    "n_variant": 12,
+    "beta": [
+      0.09961116313934326,
+      0.1895081102848053,
+      0.28389525413513184
+    ],
+    "sigma_first": [
+      0.06567057222127914,
+      0.09199292957782745,
+      0.1396014541387558
+    ],
+    "sigma_last": [
+      0.011858068406581879,
+      0.02742372453212738,
+      0.08044461905956268
+    ],
+    "sigma_variant": [
+      0.761991560459137,
+      1.1208674907684326,
+      1.8319145441055298
+    ],
+    "sigma_cell": [
+      0.8789225220680237,
+      0.90962815284729,
+      0.9430593252182007
+    ],
+    "sigma_resid": [
+      0.139666348695755,
+      0.14429901540279388,
+      0.14923936128616333
+    ],
+    "gamma_gender": [
+      -0.1560719609260559,
+      -0.041843660175800323,
+      0.0737830251455307
+    ],
+    "tau_template": [
+      2.2886881828308105,
+      2.3817903995513916,
+      2.476990222930908
+    ],
+    "ratio_first_to_beta": [
+      0.29374417662620544,
+      0.4865429997444153,
+      1.114783763885498
+    ],
+    "ratio_variant_to_beta": [
+      3.34454607963562,
+      5.997092247009277,
+      13.57244873046875
+    ],
+    "ratio_first_to_variant": [
+      0.04538532346487045,
+      0.08227455615997314,
+      0.14643119275569916
+    ],
+    "sigma_first_minus_last": [
+      0.007674438878893852,
+      0.06254333257675171,
+      0.11465851217508316
+    ],
+    "max_rhat": 1.000571608543396,
+    "min_ess": 825.5333148463092,
+    "converged": true,
+    "diagnostics_interpreted": {
+      "beta": {
+        "rhat": 1.000571608543396,
+        "ess": 3078.4259729596215
+      },
+      "gamma_gender": {
+        "rhat": 0.9998995661735535,
+        "ess": 4334.942823748496
+      },
+      "mu": {
+        "rhat": 1.0001864433288574,
+        "ess": 825.5333148463092
+      },
+      "sigma_cell": {
+        "rhat": 0.9998042583465576,
+        "ess": 9562.986564394054
+      },
+      "sigma_first": {
+        "rhat": 0.9999940395355225,
+        "ess": 2244.4834680648655
+      },
+      "sigma_last": {
+        "rhat": 1.000084638595581,
+        "ess": 2174.08694260356
+      },
+      "sigma_resid": {
+        "rhat": 0.9998761415481567,
+        "ess": 11917.091665533495
+      },
+      "sigma_variant": {
+        "rhat": 1.0000717639923096,
+        "ess": 1795.189207693199
+      },
+      "tau_template": {
+        "rhat": 0.9998591542243958,
+        "ess": 11563.051921331144
+      }
+    },
+    "diagnostics_latent": {
+      "z_first": {
+        "rhat": 1.0005043745040894,
+        "ess": 4317.144115166715
+      },
+      "z_last": {
+        "rhat": 1.0000615119934082,
+        "ess": 5379.214781183949
+      },
+      "z_variant": {
+        "rhat": 1.0003166198730469,
+        "ess": 809.7539717269042
+      }
+    },
+    "parameterisation": "u_cell marginalised (difference + mean)",
+    "counterfactual": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.9045340337332909,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": 0.18994995694837072,
+        "beta_p2_5": 0.0605399836784132,
+        "beta_p97_5": 0.3248906890083225,
+        "beta_min": 0.029420485488636832,
+        "beta_max": 0.3684462951526026,
+        "beta_sd": 0.06847886280148305,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.7962962962962963,
+        "ps_p2_5": 0.6226851851851852,
+        "ps_p97_5": 0.9490740740740741
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.7385489458759964,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": 0.19056398175440722,
+        "beta_p2_5": 0.10968522121850377,
+        "beta_p97_5": 0.2690279630001388,
+        "beta_min": 0.08144683411914617,
+        "beta_max": 0.30475123987513514,
+        "beta_sd": 0.04022624012777431,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.7916666666666666,
+        "ps_p2_5": 0.6909722222222222,
+        "ps_p97_5": 0.8877314814814815
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.5222329678670935,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": 0.19055567298370377,
+        "beta_p2_5": 0.14464893735075482,
+        "beta_p97_5": 0.23279928221782728,
+        "beta_min": 0.13013040196932812,
+        "beta_max": 0.24313900519065007,
+        "beta_sd": 0.02310328633234324,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.7908950617283951,
+        "ps_p2_5": 0.7407407407407407,
+        "ps_p97_5": 0.8479938271604939
+      }
+    },
+    "counterfactual_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": 0.18992949731820466,
+        "beta_p2_5": 0.04282375007752256,
+        "beta_p97_5": 0.34251634667885716,
+        "beta_min": -0.014009678169465927,
+        "beta_max": 0.41148248588216657,
+        "beta_sd": 0.07664740216971208,
+        "sign_flip_frac": 0.001,
+        "ps_median": 0.7986111111111112,
+        "ps_p2_5": 0.5902777777777778,
+        "ps_p97_5": 0.9513888888888888
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": 0.18938355672158097,
+        "beta_p2_5": 0.08676050464118133,
+        "beta_p97_5": 0.2972965860451645,
+        "beta_min": 0.025817442913793568,
+        "beta_max": 0.3723387328468499,
+        "beta_sd": 0.05406006798923863,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.7951388888888888,
+        "ps_p2_5": 0.6550925925925926,
+        "ps_p97_5": 0.9178240740740741
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": 0.1892713648475734,
+        "beta_p2_5": 0.10620175453931843,
+        "beta_p97_5": 0.27473730327474066,
+        "beta_min": 0.05046413114113543,
+        "beta_max": 0.3396185994415329,
+        "beta_sd": 0.04308794299470549,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.7935956790123457,
+        "ps_p2_5": 0.6759259259259259,
+        "ps_p97_5": 0.8927469135802469
+      }
+    },
+    "per_name": {
+      "black:Aisha": {
+        "mean": 1.8695314966877734,
+        "n": 144
+      },
+      "black:Darnell": {
+        "mean": 1.7411353092890995,
+        "n": 144
+      },
+      "black:Ebony": {
+        "mean": 1.7036630766262,
+        "n": 144
+      },
+      "black:Hakim": {
+        "mean": 1.8137360793724926,
+        "n": 144
+      },
+      "black:Jamal": {
+        "mean": 1.6929566431191134,
+        "n": 144
+      },
+      "black:Jermaine": {
+        "mean": 1.7630903559632007,
+        "n": 144
+      },
+      "black:Kareem": {
+        "mean": 1.8366329413763909,
+        "n": 144
+      },
+      "black:Keisha": {
+        "mean": 1.744069713733932,
+        "n": 144
+      },
+      "black:Kenya": {
+        "mean": 1.813908762214731,
+        "n": 144
+      },
+      "black:Lakisha": {
+        "mean": 1.625906885417332,
+        "n": 144
+      },
+      "black:Latonya": {
+        "mean": 1.7950272007441528,
+        "n": 144
+      },
+      "black:Leroy": {
+        "mean": 1.6274504429837044,
+        "n": 144
+      },
+      "white:Allison": {
+        "mean": 1.9083695315070548,
+        "n": 144
+      },
+      "white:Anne": {
+        "mean": 2.0389139633312783,
+        "n": 144
+      },
+      "white:Brad": {
+        "mean": 1.9303104995635165,
+        "n": 144
+      },
+      "white:Brendan": {
+        "mean": 2.094551746821819,
+        "n": 144
+      },
+      "white:Brett": {
+        "mean": 1.7720044717050523,
+        "n": 144
+      },
+      "white:Carrie": {
+        "mean": 1.8762662431225428,
+        "n": 144
+      },
+      "white:Emily": {
+        "mean": 1.9624080117052207,
+        "n": 144
+      },
+      "white:Geoffrey": {
+        "mean": 1.7490806777937344,
+        "n": 144
+      },
+      "white:Greg": {
+        "mean": 1.9000660411924857,
+        "n": 144
+      },
+      "white:Jay": {
+        "mean": 1.986055955854267,
+        "n": 144
+      },
+      "white:Jill": {
+        "mean": 2.037389371299499,
+        "n": 144
+      },
+      "white:Kristen": {
+        "mean": 2.0482048968134126,
+        "n": 144
+      }
+    },
+    "sigma_variant_paired_study2": 0.06341742724180222,
+    "averaging_asymmetry": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.06847886280148305,
+        "sd_from_wording_choice": 0.06341742724180222,
+        "ratio_name_to_wording": 1.0798114300724035
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.04022624012777431,
+        "sd_from_wording_choice": 0.06341742724180222,
+        "ratio_name_to_wording": 0.6343089254377509
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.02310328633234324,
+        "sd_from_wording_choice": 0.06341742724180222,
+        "ratio_name_to_wording": 0.3643050079003281
+      }
+    },
+    "averaging_asymmetry_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.07664740216971208,
+        "sd_from_wording_choice": 0.06341742724180222,
+        "ratio_name_to_wording": 1.2086173391655535
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.05406006798923863,
+        "sd_from_wording_choice": 0.06341742724180222,
+        "ratio_name_to_wording": 0.8524481414724502
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.04308794299470549,
+        "sd_from_wording_choice": 0.06341742724180222,
+        "ratio_name_to_wording": 0.6794337908161567
+      }
+    }
+  },
+  "llama-3.1-8b-instruct": {
+    "model": "llama-3.1-8b-instruct",
+    "n_obs": 3456,
+    "n_pairs": 1728,
+    "n_first": 24,
+    "n_last": 8,
+    "n_variant": 12,
+    "beta": [
+      -0.2233843058347702,
+      -0.14995494484901428,
+      -0.07194238901138306
+    ],
+    "sigma_first": [
+      0.04473225772380829,
+      0.06634914875030518,
+      0.10670548677444458
+    ],
+    "sigma_last": [
+      0.010363851673901081,
+      0.025210019201040268,
+      0.08885598927736282
+    ],
+    "sigma_variant": [
+      0.03903033211827278,
+      0.20591458678245544,
+      0.4309764802455902
+    ],
+    "sigma_cell": [
+      2.1163525581359863,
+      2.189581871032715,
+      2.2638962268829346
+    ],
+    "sigma_resid": [
+      0.11277013272047043,
+      0.11653724312782288,
+      0.12069039046764374
+    ],
+    "gamma_gender": [
+      -0.31672728061676025,
+      -0.09662778675556183,
+      0.1199205070734024
+    ],
+    "tau_template": [
+      9.28969669342041,
+      9.511659622192383,
+      9.739923477172852
+    ],
+    "ratio_first_to_beta": [
+      0.2575765550136566,
+      0.44557157158851624,
+      1.1338075399398804
+    ],
+    "ratio_variant_to_beta": [
+      0.25795039534568787,
+      1.3900763988494873,
+      3.907956600189209
+    ],
+    "ratio_first_to_variant": [
+      0.13581165671348572,
+      0.32838666439056396,
+      1.8843703269958496
+    ],
+    "sigma_first_minus_last": [
+      -0.024803519248962402,
+      0.03984856605529785,
+      0.08550778776407242
+    ],
+    "max_rhat": 1.0012123584747314,
+    "min_ess": 1766.608084173059,
+    "converged": true,
+    "diagnostics_interpreted": {
+      "beta": {
+        "rhat": 0.9998026490211487,
+        "ess": 2910.569212615297
+      },
+      "gamma_gender": {
+        "rhat": 0.9998067617416382,
+        "ess": 6528.832252210784
+      },
+      "mu": {
+        "rhat": 0.9998307824134827,
+        "ess": 4035.118573250273
+      },
+      "sigma_cell": {
+        "rhat": 0.9998123049736023,
+        "ess": 6370.820718632296
+      },
+      "sigma_first": {
+        "rhat": 1.0002593994140625,
+        "ess": 2247.055928066236
+      },
+      "sigma_last": {
+        "rhat": 1.0012123584747314,
+        "ess": 1766.608084173059
+      },
+      "sigma_resid": {
+        "rhat": 1.000045895576477,
+        "ess": 7625.659019730717
+      },
+      "sigma_variant": {
+        "rhat": 1.000101089477539,
+        "ess": 1787.345958238433
+      },
+      "tau_template": {
+        "rhat": 0.9998002648353577,
+        "ess": 7372.78937310149
+      }
+    },
+    "diagnostics_latent": {
+      "z_first": {
+        "rhat": 1.0001962184906006,
+        "ess": 4622.911369602439
+      },
+      "z_last": {
+        "rhat": 1.0002607107162476,
+        "ess": 4855.153434582096
+      },
+      "z_variant": {
+        "rhat": 1.0001888275146484,
+        "ess": 4783.197766204899
+      }
+    },
+    "parameterisation": "u_cell marginalised (difference + mean)",
+    "counterfactual": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.9045340337332909,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": -0.14484911885942162,
+        "beta_p2_5": -0.24333630143438972,
+        "beta_p97_5": -0.07355851058665669,
+        "beta_min": -0.2693903195662196,
+        "beta_max": -0.05296994469815113,
+        "beta_sd": 0.044493131285290526,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.18287037037037038,
+        "ps_p2_5": 0.08101851851851852,
+        "ps_p97_5": 0.32407407407407407
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.7385489458759964,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": -0.15208014261434855,
+        "beta_p2_5": -0.19907580442140824,
+        "beta_p97_5": -0.10275439484332125,
+        "beta_min": -0.21175807538555363,
+        "beta_max": -0.09003123939426058,
+        "beta_sd": 0.02638661411973382,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.1863425925925926,
+        "ps_p2_5": 0.11226851851851852,
+        "ps_p97_5": 0.25925925925925924
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.5222329678670935,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": -0.152636522199455,
+        "beta_p2_5": -0.1766733729909906,
+        "beta_p97_5": -0.12021768231874298,
+        "beta_min": -0.18353622828715913,
+        "beta_max": -0.11139610333113628,
+        "beta_sd": 0.014816499315570579,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.18981481481481483,
+        "ps_p2_5": 0.1412037037037037,
+        "ps_p97_5": 0.2222222222222222
+      }
+    },
+    "counterfactual_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": -0.14522024889434398,
+        "beta_p2_5": -0.2604901570559733,
+        "beta_p97_5": -0.06448721631453692,
+        "beta_min": -0.3146269097071547,
+        "beta_max": -0.012529666427444535,
+        "beta_sd": 0.050154332611598386,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.18055555555555555,
+        "ps_p2_5": 0.06944444444444445,
+        "ps_p97_5": 0.34953703703703703
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": -0.1491351437819317,
+        "beta_p2_5": -0.2242951527628189,
+        "beta_p97_5": -0.08830299712733375,
+        "beta_min": -0.32380747688071704,
+        "beta_max": -0.0362915304627257,
+        "beta_sd": 0.035248387215929024,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.18287037037037038,
+        "ps_p2_5": 0.09837962962962964,
+        "ps_p97_5": 0.29976851851851855
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": -0.14946032971789486,
+        "beta_p2_5": -0.20985544528870137,
+        "beta_p97_5": -0.09832316670370998,
+        "beta_min": -0.27860421396414914,
+        "beta_max": -0.06472965658204013,
+        "beta_sd": 0.02860480244041674,
+        "sign_flip_frac": 0.0,
+        "ps_median": 0.18518518518518517,
+        "ps_p2_5": 0.1111111111111111,
+        "ps_p97_5": 0.2777777777777778
+      }
+    },
+    "per_name": {
+      "black:Aisha": {
+        "mean": -3.7647519927042765,
+        "n": 144
+      },
+      "black:Darnell": {
+        "mean": -3.947602840357557,
+        "n": 144
+      },
+      "black:Ebony": {
+        "mean": -3.597436071723489,
+        "n": 144
+      },
+      "black:Hakim": {
+        "mean": -3.773493123712961,
+        "n": 144
+      },
+      "black:Jamal": {
+        "mean": -3.711923822963578,
+        "n": 144
+      },
+      "black:Jermaine": {
+        "mean": -3.785877886436497,
+        "n": 144
+      },
+      "black:Kareem": {
+        "mean": -3.814816472772293,
+        "n": 144
+      },
+      "black:Keisha": {
+        "mean": -3.739222758287229,
+        "n": 144
+      },
+      "black:Kenya": {
+        "mean": -3.6737132371537373,
+        "n": 144
+      },
+      "black:Lakisha": {
+        "mean": -3.7842742711742634,
+        "n": 144
+      },
+      "black:Latonya": {
+        "mean": -3.7547346024716544,
+        "n": 144
+      },
+      "black:Leroy": {
+        "mean": -3.919351752585947,
+        "n": 144
+      },
+      "white:Allison": {
+        "mean": -3.8774247221803173,
+        "n": 144
+      },
+      "white:Anne": {
+        "mean": -3.9568888527405885,
+        "n": 144
+      },
+      "white:Brad": {
+        "mean": -4.010167749491278,
+        "n": 144
+      },
+      "white:Brendan": {
+        "mean": -3.9190740799117663,
+        "n": 144
+      },
+      "white:Brett": {
+        "mean": -3.9356668335578715,
+        "n": 144
+      },
+      "white:Carrie": {
+        "mean": -3.8876169796143643,
+        "n": 144
+      },
+      "white:Emily": {
+        "mean": -3.817346499831684,
+        "n": 144
+      },
+      "white:Geoffrey": {
+        "mean": -3.9542802025252177,
+        "n": 144
+      },
+      "white:Greg": {
+        "mean": -4.0397916398595575,
+        "n": 144
+      },
+      "white:Jay": {
+        "mean": -3.9318814190133917,
+        "n": 144
+      },
+      "white:Jill": {
+        "mean": -3.8680895297075515,
+        "n": 144
+      },
+      "white:Kristen": {
+        "mean": -3.879706212588775,
+        "n": 144
+      }
+    },
+    "sigma_variant_paired_study2": 0.035333432257175446,
+    "averaging_asymmetry": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.044493131285290526,
+        "sd_from_wording_choice": 0.035333432257175446,
+        "ratio_name_to_wording": 1.2592360391553794
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.02638661411973382,
+        "sd_from_wording_choice": 0.035333432257175446,
+        "ratio_name_to_wording": 0.7467888748445964
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.014816499315570579,
+        "sd_from_wording_choice": 0.035333432257175446,
+        "ratio_name_to_wording": 0.4193337122679802
+      }
+    },
+    "averaging_asymmetry_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.050154332611598386,
+        "sd_from_wording_choice": 0.035333432257175446,
+        "ratio_name_to_wording": 1.419458269622622
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.035248387215929024,
+        "sd_from_wording_choice": 0.035333432257175446,
+        "ratio_name_to_wording": 0.9975930716091372
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.02860480244041674,
+        "sd_from_wording_choice": 0.035333432257175446,
+        "ratio_name_to_wording": 0.8095676138172999
+      }
+    }
+  },
+  "mistral-7b-instruct-v0.1": {
+    "model": "mistral-7b-instruct-v0.1",
+    "n_obs": 3456,
+    "n_pairs": 1728,
+    "n_first": 24,
+    "n_last": 8,
+    "n_variant": 12,
+    "beta": [
+      -0.06468825042247772,
+      0.001602482283487916,
+      0.06904962658882141
+    ],
+    "sigma_first": [
+      0.05118051916360855,
+      0.0733848363161087,
+      0.10860437899827957
+    ],
+    "sigma_last": [
+      0.005050267092883587,
+      0.012400971725583076,
+      0.044013991951942444
+    ],
+    "sigma_variant": [
+      0.2042795717716217,
+      0.3045561909675598,
+      0.5183737277984619
+    ],
+    "sigma_cell": [
+      0.46209916472435,
+      0.4781234860420227,
+      0.4951799511909485
+    ],
+    "sigma_resid": [
+      0.05940394848585129,
+      0.061425842344760895,
+      0.06357087939977646
+    ],
+    "gamma_gender": [
+      -0.14584966003894806,
+      -0.06991621851921082,
+      0.005959620233625174
+    ],
+    "tau_template": [
+      1.6151537895202637,
+      1.663262128829956,
+      1.7127020359039307
+    ],
+    "ratio_first_to_beta": [
+      0.9861286282539368,
+      3.3363964557647705,
+      78.74987030029297
+    ],
+    "ratio_variant_to_beta": [
+      3.6155428886413574,
+      14.204538345336914,
+      349.4747009277344
+    ],
+    "ratio_first_to_variant": [
+      0.12804606556892395,
+      0.2393779158592224,
+      0.4286240041255951
+    ],
+    "sigma_first_minus_last": [
+      0.024574000388383865,
+      0.05908393859863281,
+      0.0969221293926239
+    ],
+    "max_rhat": 1.0015647411346436,
+    "min_ess": 1018.2154300982506,
+    "converged": true,
+    "diagnostics_interpreted": {
+      "beta": {
+        "rhat": 0.9999665021896362,
+        "ess": 2491.9016275678646
+      },
+      "gamma_gender": {
+        "rhat": 0.999870777130127,
+        "ess": 2657.431610520282
+      },
+      "mu": {
+        "rhat": 1.0005295276641846,
+        "ess": 1018.2154300982506
+      },
+      "sigma_cell": {
+        "rhat": 0.9998868107795715,
+        "ess": 9290.496175768667
+      },
+      "sigma_first": {
+        "rhat": 0.9998239874839783,
+        "ess": 1957.8229663698191
+      },
+      "sigma_last": {
+        "rhat": 0.9998196363449097,
+        "ess": 2317.2622896250664
+      },
+      "sigma_resid": {
+        "rhat": 0.9998159408569336,
+        "ess": 11158.946899202621
+      },
+      "sigma_variant": {
+        "rhat": 1.0015647411346436,
+        "ess": 1304.1909623170648
+      },
+      "tau_template": {
+        "rhat": 1.000108003616333,
+        "ess": 12594.631138959034
+      }
+    },
+    "diagnostics_latent": {
+      "z_first": {
+        "rhat": 1.000439167022705,
+        "ess": 3539.884489991566
+      },
+      "z_last": {
+        "rhat": 1.0003665685653687,
+        "ess": 4460.678412247989
+      },
+      "z_variant": {
+        "rhat": 1.001654863357544,
+        "ess": 1029.964363617099
+      }
+    },
+    "parameterisation": "u_cell marginalised (difference + mean)",
+    "counterfactual": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.9045340337332909,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": 0.005746904167656521,
+        "beta_p2_5": -0.09203857952691727,
+        "beta_p97_5": 0.107109387718474,
+        "beta_min": -0.12656206651615406,
+        "beta_max": 0.11253568743420968,
+        "beta_sd": 0.04977301362981853,
+        "sign_flip_frac": 0.455,
+        "ps_median": 0.5023148148148148,
+        "ps_p2_5": 0.24074074074074073,
+        "ps_p97_5": 0.7615740740740741
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.7385489458759964,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": 0.0026298661783946504,
+        "beta_p2_5": -0.055141455770377046,
+        "beta_p97_5": 0.05789379157955971,
+        "beta_min": -0.06404477224193171,
+        "beta_max": 0.0680439935706071,
+        "beta_sd": 0.028666456433436,
+        "sign_flip_frac": 0.481,
+        "ps_median": 0.4976851851851852,
+        "ps_p2_5": 0.3425925925925926,
+        "ps_p97_5": 0.6539351851851852
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.5222329678670935,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": -8.074418309705557e-05,
+        "beta_p2_5": -0.033999035034955806,
+        "beta_p97_5": 0.03220196932422364,
+        "beta_min": -0.03580780160686771,
+        "beta_max": 0.04389144970992022,
+        "beta_sd": 0.016489278694143253,
+        "sign_flip_frac": 0.5025,
+        "ps_median": 0.49691358024691357,
+        "ps_p2_5": 0.4089506172839506,
+        "ps_p97_5": 0.5825617283950617
+      }
+    },
+    "counterfactual_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": 0.0046394596572659225,
+        "beta_p2_5": -0.10674614544639101,
+        "beta_p97_5": 0.11004067899146291,
+        "beta_min": -0.1907261236578075,
+        "beta_max": 0.19194356495031079,
+        "beta_sd": 0.05436000280636605,
+        "sign_flip_frac": 0.468,
+        "ps_median": 0.5,
+        "ps_p2_5": 0.20133101851851853,
+        "ps_p97_5": 0.7685185185185185
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": 0.0018771127079632278,
+        "beta_p2_5": -0.07423616451298268,
+        "beta_p97_5": 0.07885593451220531,
+        "beta_min": -0.12575336708637924,
+        "beta_max": 0.13510474818500526,
+        "beta_sd": 0.03902767576168888,
+        "sign_flip_frac": 0.47625,
+        "ps_median": 0.5,
+        "ps_p2_5": 0.2847222222222222,
+        "ps_p97_5": 0.7071759259259259
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": 0.0012900896943464546,
+        "beta_p2_5": -0.06120723531216392,
+        "beta_p97_5": 0.06294666849812998,
+        "beta_min": -0.11599172194325462,
+        "beta_max": 0.10093206281315903,
+        "beta_sd": 0.03147473140301591,
+        "sign_flip_frac": 0.48175,
+        "ps_median": 0.49691358024691357,
+        "ps_p2_5": 0.3263695987654321,
+        "ps_p97_5": 0.6635802469135802
+      }
+    },
+    "per_name": {
+      "black:Aisha": {
+        "mean": -1.862823009834732,
+        "n": 144
+      },
+      "black:Darnell": {
+        "mean": -1.9326758398617008,
+        "n": 144
+      },
+      "black:Ebony": {
+        "mean": -1.6990847638413409,
+        "n": 144
+      },
+      "black:Hakim": {
+        "mean": -1.9826621136923777,
+        "n": 144
+      },
+      "black:Jamal": {
+        "mean": -1.8912315848642665,
+        "n": 144
+      },
+      "black:Jermaine": {
+        "mean": -1.9100689733815177,
+        "n": 144
+      },
+      "black:Kareem": {
+        "mean": -1.9424048581078297,
+        "n": 144
+      },
+      "black:Keisha": {
+        "mean": -1.9581435873554172,
+        "n": 144
+      },
+      "black:Kenya": {
+        "mean": -1.9400282177015622,
+        "n": 144
+      },
+      "black:Lakisha": {
+        "mean": -1.7502828182479597,
+        "n": 144
+      },
+      "black:Latonya": {
+        "mean": -1.7173072894760704,
+        "n": 144
+      },
+      "black:Leroy": {
+        "mean": -1.9105696879574456,
+        "n": 144
+      },
+      "white:Allison": {
+        "mean": -1.8413281983364707,
+        "n": 144
+      },
+      "white:Anne": {
+        "mean": -1.8041570145198804,
+        "n": 144
+      },
+      "white:Brad": {
+        "mean": -1.9113164220511736,
+        "n": 144
+      },
+      "white:Brendan": {
+        "mean": -1.9536822768658761,
+        "n": 144
+      },
+      "white:Brett": {
+        "mean": -1.878530647184972,
+        "n": 144
+      },
+      "white:Carrie": {
+        "mean": -1.9303409175431925,
+        "n": 144
+      },
+      "white:Emily": {
+        "mean": -1.8233445571757452,
+        "n": 144
+      },
+      "white:Geoffrey": {
+        "mean": -1.7181254084312068,
+        "n": 144
+      },
+      "white:Greg": {
+        "mean": -1.9668449201106557,
+        "n": 144
+      },
+      "white:Jay": {
+        "mean": -1.9120714776682743,
+        "n": 144
+      },
+      "white:Jill": {
+        "mean": -1.8341706434600757,
+        "n": 144
+      },
+      "white:Kristen": {
+        "mean": -1.9080334131338776,
+        "n": 144
+      }
+    },
+    "sigma_variant_paired_study2": 0.016788017004728317,
+    "averaging_asymmetry": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.04977301362981853,
+        "sd_from_wording_choice": 0.016788017004728317,
+        "ratio_name_to_wording": 2.964794091869221
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.028666456433436,
+        "sd_from_wording_choice": 0.016788017004728317,
+        "ratio_name_to_wording": 1.7075546459931592
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.016489278694143253,
+        "sd_from_wording_choice": 0.016788017004728317,
+        "ratio_name_to_wording": 0.9822052651899909
+      }
+    },
+    "averaging_asymmetry_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.05436000280636605,
+        "sd_from_wording_choice": 0.016788017004728317,
+        "ratio_name_to_wording": 3.2380240495977364
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.03902767576168888,
+        "sd_from_wording_choice": 0.016788017004728317,
+        "ratio_name_to_wording": 2.3247341094958864
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.03147473140301591,
+        "sd_from_wording_choice": 0.016788017004728317,
+        "ratio_name_to_wording": 1.8748331857271234
+      }
+    }
+  },
+  "mistral-7b-instruct-v0.3": {
+    "model": "mistral-7b-instruct-v0.3",
+    "n_obs": 3456,
+    "n_pairs": 1728,
+    "n_first": 24,
+    "n_last": 8,
+    "n_variant": 12,
+    "beta": [
+      -0.2984766960144043,
+      -0.09256996959447861,
+      0.11047130078077316
+    ],
+    "sigma_first": [
+      0.1187453418970108,
+      0.17110925912857056,
+      0.26524317264556885
+    ],
+    "sigma_last": [
+      0.03873095288872719,
+      0.08181998133659363,
+      0.22457943856716156
+    ],
+    "sigma_variant": [
+      0.1317168027162552,
+      0.3450169861316681,
+      0.679428219795227
+    ],
+    "sigma_cell": [
+      2.9155020713806152,
+      3.020359516143799,
+      3.128570556640625
+    ],
+    "sigma_resid": [
+      0.2956862151622772,
+      0.30554676055908203,
+      0.3160441517829895
+    ],
+    "gamma_gender": [
+      -0.6926611661911011,
+      -0.37350112199783325,
+      -0.06703683733940125
+    ],
+    "tau_template": [
+      27.438634872436523,
+      27.752046585083008,
+      28.062946319580078
+    ],
+    "ratio_first_to_beta": [
+      0.5595746040344238,
+      1.7181696891784668,
+      30.88400650024414
+    ],
+    "ratio_variant_to_beta": [
+      0.7912430763244629,
+      3.530365467071533,
+      62.05611038208008
+    ],
+    "ratio_first_to_variant": [
+      0.22995539009571075,
+      0.5057082176208496,
+      1.4312517642974854
+    ],
+    "sigma_first_minus_last": [
+      -0.06100628525018692,
+      0.08669410645961761,
+      0.19521979987621307
+    ],
+    "max_rhat": 1.0003811120986938,
+    "min_ess": 1794.9335514141426,
+    "converged": true,
+    "diagnostics_interpreted": {
+      "beta": {
+        "rhat": 0.9998013973236084,
+        "ess": 4335.261364150913
+      },
+      "gamma_gender": {
+        "rhat": 0.9998005628585815,
+        "ess": 6822.663114174254
+      },
+      "mu": {
+        "rhat": 1.0003811120986938,
+        "ess": 4287.6659865791435
+      },
+      "sigma_cell": {
+        "rhat": 0.9998554587364197,
+        "ess": 8341.624816389422
+      },
+      "sigma_first": {
+        "rhat": 0.999811053276062,
+        "ess": 2350.759038524406
+      },
+      "sigma_last": {
+        "rhat": 0.9999323487281799,
+        "ess": 2428.1941886118107
+      },
+      "sigma_resid": {
+        "rhat": 0.9998055696487427,
+        "ess": 10479.558898956351
+      },
+      "sigma_variant": {
+        "rhat": 0.9998890161514282,
+        "ess": 1794.9335514141426
+      },
+      "tau_template": {
+        "rhat": 0.9998634457588196,
+        "ess": 9328.427636689392
+      }
+    },
+    "diagnostics_latent": {
+      "z_first": {
+        "rhat": 1.000234842300415,
+        "ess": 6033.690370845954
+      },
+      "z_last": {
+        "rhat": 1.0002729892730713,
+        "ess": 6227.386393798081
+      },
+      "z_variant": {
+        "rhat": 1.000605583190918,
+        "ess": 5927.642165899872
+      }
+    },
+    "parameterisation": "u_cell marginalised (difference + mean)",
+    "counterfactual": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.9045340337332909,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": -0.08276712319088947,
+        "beta_p2_5": -0.3502617974896572,
+        "beta_p97_5": 0.13535773217939207,
+        "beta_min": -0.42421727328661346,
+        "beta_max": 0.1753064408054033,
+        "beta_sd": 0.12331295276208969,
+        "sign_flip_frac": 0.21125,
+        "ps_median": 0.44675925925925924,
+        "ps_p2_5": 0.2800925925925926,
+        "ps_p97_5": 0.5995370370370371
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.7385489458759964,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": -0.090781514490296,
+        "beta_p2_5": -0.22942303929877322,
+        "beta_p97_5": 0.04597975226772512,
+        "beta_min": -0.30066641978270664,
+        "beta_max": 0.11722313275165856,
+        "beta_sd": 0.07133991877071141,
+        "sign_flip_frac": 0.106,
+        "ps_median": 0.44907407407407407,
+        "ps_p2_5": 0.3611111111111111,
+        "ps_p97_5": 0.5370370370370371
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "finite_population_factor": 0.5222329678670935,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": -0.09421973903944034,
+        "beta_p2_5": -0.16777640633098057,
+        "beta_p97_5": -0.005403851128503396,
+        "beta_min": -0.18073100495583316,
+        "beta_max": 0.019110233074839104,
+        "beta_sd": 0.04143681901748154,
+        "sign_flip_frac": 0.01925,
+        "ps_median": 0.4498456790123457,
+        "ps_p2_5": 0.39891975308641975,
+        "ps_p97_5": 0.5054591049382717
+      }
+    },
+    "counterfactual_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 3,
+        "n_pairs_available": 12,
+        "beta_median": -0.07957735209445686,
+        "beta_p2_5": -0.3783957448920205,
+        "beta_p97_5": 0.14552964117056397,
+        "beta_min": -0.4704741350464557,
+        "beta_max": 0.20233656530907956,
+        "beta_sd": 0.13789996924705764,
+        "sign_flip_frac": 0.2525,
+        "ps_median": 0.4513888888888889,
+        "ps_p2_5": 0.26851851851851855,
+        "ps_p97_5": 0.6157407407407407
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 6,
+        "n_pairs_available": 12,
+        "beta_median": -0.08702194395943225,
+        "beta_p2_5": -0.29425374786758957,
+        "beta_p97_5": 0.0917317040352104,
+        "beta_min": -0.4473457041665346,
+        "beta_max": 0.1871193860505014,
+        "beta_sd": 0.097027442363898,
+        "sign_flip_frac": 0.177,
+        "ps_median": 0.4513888888888889,
+        "ps_p2_5": 0.3182581018518519,
+        "ps_p97_5": 0.5694444444444444
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "finite_population_factor": 1.0,
+        "n_sim": 4000,
+        "n_pairs_drawn": 9,
+        "n_pairs_available": 12,
+        "beta_median": -0.08985936822657017,
+        "beta_p2_5": -0.25253662424586865,
+        "beta_p97_5": 0.05515613615551464,
+        "beta_min": -0.34932105308745853,
+        "beta_max": 0.15014771202035543,
+        "beta_sd": 0.07858360825502379,
+        "sign_flip_frac": 0.11725,
+        "ps_median": 0.44907407407407407,
+        "ps_p2_5": 0.3472029320987654,
+        "ps_p97_5": 0.5494020061728395
+      }
+    },
+    "per_name": {
+      "black:Aisha": {
+        "mean": -1.2963063233657945,
+        "n": 144
+      },
+      "black:Darnell": {
+        "mean": -1.903962917237028,
+        "n": 144
+      },
+      "black:Ebony": {
+        "mean": -1.2763101596367161,
+        "n": 144
+      },
+      "black:Hakim": {
+        "mean": -1.87228077225345,
+        "n": 144
+      },
+      "black:Jamal": {
+        "mean": -1.3789408326829868,
+        "n": 144
+      },
+      "black:Jermaine": {
+        "mean": -1.6092766073092533,
+        "n": 144
+      },
+      "black:Kareem": {
+        "mean": -1.789540553461884,
+        "n": 144
+      },
+      "black:Keisha": {
+        "mean": -1.1651127779862331,
+        "n": 144
+      },
+      "black:Kenya": {
+        "mean": -1.2933610258873312,
+        "n": 144
+      },
+      "black:Lakisha": {
+        "mean": -1.2877737801797982,
+        "n": 144
+      },
+      "black:Latonya": {
+        "mean": -1.0902009485542905,
+        "n": 144
+      },
+      "black:Leroy": {
+        "mean": -1.726120220011557,
+        "n": 144
+      },
+      "white:Allison": {
+        "mean": -1.3328285872116012,
+        "n": 144
+      },
+      "white:Anne": {
+        "mean": -1.5249178672923027,
+        "n": 144
+      },
+      "white:Brad": {
+        "mean": -1.752282366921821,
+        "n": 144
+      },
+      "white:Brendan": {
+        "mean": -1.6699442069443715,
+        "n": 144
+      },
+      "white:Brett": {
+        "mean": -1.8494149677294418,
+        "n": 144
+      },
+      "white:Carrie": {
+        "mean": -1.5487940905050186,
+        "n": 144
+      },
+      "white:Emily": {
+        "mean": -1.121458819095408,
+        "n": 144
+      },
+      "white:Geoffrey": {
+        "mean": -1.549436735338091,
+        "n": 144
+      },
+      "white:Greg": {
+        "mean": -1.7070501140308387,
+        "n": 144
+      },
+      "white:Jay": {
+        "mean": -1.691031057320025,
+        "n": 144
+      },
+      "white:Jill": {
+        "mean": -1.7062701524743973,
+        "n": 144
+      },
+      "white:Kristen": {
+        "mean": -1.3364176758892965,
+        "n": 144
+      }
+    },
+    "sigma_variant_paired_study2": 0.03824147582054138,
+    "averaging_asymmetry": {
+      "draw_3_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.12331295276208969,
+        "sd_from_wording_choice": 0.03824147582054138,
+        "ratio_name_to_wording": 3.2245866592798236
+      },
+      "draw_6_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.07133991877071141,
+        "sd_from_wording_choice": 0.03824147582054138,
+        "ratio_name_to_wording": 1.8655116529888531
+      },
+      "draw_9_per_race": {
+        "draw_mode": "without_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.04143681901748154,
+        "sd_from_wording_choice": 0.03824147582054138,
+        "ratio_name_to_wording": 1.0835570052770762
+      }
+    },
+    "averaging_asymmetry_with_replacement": {
+      "draw_3_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 3,
+        "sd_from_name_draw": 0.13789996924705764,
+        "sd_from_wording_choice": 0.03824147582054138,
+        "ratio_name_to_wording": 3.6060315740477975
+      },
+      "draw_6_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 6,
+        "sd_from_name_draw": 0.097027442363898,
+        "sd_from_wording_choice": 0.03824147582054138,
+        "ratio_name_to_wording": 2.5372305927529024
+      },
+      "draw_9_per_race": {
+        "draw_mode": "with_replacement",
+        "n_names_per_race": 9,
+        "sd_from_name_draw": 0.07858360825502379,
+        "sd_from_wording_choice": 0.03824147582054138,
+        "ratio_name_to_wording": 2.0549313688571784
+      }
+    }
+  }
+}

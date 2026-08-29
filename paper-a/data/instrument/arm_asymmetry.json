@@ -1,0 +1,209 @@
+{
+ "_what": "Between-wording variance of the Black-name arm minus the White-name arm, per (model, dataset); cluster bootstrap on name clusters.",
+ "_provenance": "Hypothesis raised externally, not originated by the authors; computation independently reproduced before adoption.",
+ "seed": 20260825,
+ "n_boot": 10000,
+ "results": [
+  {
+   "model": "llama-2-7b-chat",
+   "dataset": "delta",
+   "mean_var_black": 1.6411748087095104,
+   "mean_var_white": 1.5212301589100548,
+   "D": 0.11994464979945563,
+   "D_ci": [
+    0.08552008035473489,
+    0.15489532471089804
+   ],
+   "R": 1.0788471416352898,
+   "R_ci": [
+    1.0553679820175106,
+    1.1035548720523152
+   ],
+   "D_withinkind": 0.133547959350498,
+   "D_withinkind_ci": [
+    0.09505055097371091,
+    0.17171340021350884
+   ],
+   "frac_cells_black_higher": 0.8055555555555556,
+   "n_cells": 36,
+   "n_clusters": 12
+  },
+  {
+   "model": "llama-2-7b-chat",
+   "dataset": "names",
+   "mean_var_black": 1.324531589931537,
+   "mean_var_white": 1.2639412897037379,
+   "D": 0.06059030022779921,
+   "D_ci": [
+    0.00959508293922881,
+    0.11839267969340866
+   ],
+   "R": 1.047937590710405,
+   "R_ci": [
+    1.0075080176486009,
+    1.095011612969571
+   ],
+   "D_withinkind": 0.06916372696893758,
+   "D_withinkind_ci": [
+    0.013702021909936395,
+    0.13238434863813747
+   ],
+   "frac_cells_black_higher": 0.6597222222222222,
+   "n_cells": 144,
+   "n_clusters": 12
+  },
+  {
+   "model": "llama-3.1-8b-instruct",
+   "dataset": "delta",
+   "mean_var_black": 0.15634408151651322,
+   "mean_var_white": 0.14269131081723918,
+   "D": 0.013652770699274036,
+   "D_ci": [
+    0.006989945810922305,
+    0.019587328331433475
+   ],
+   "R": 1.0956804630995414,
+   "R_ci": [
+    1.046973088920646,
+    1.1415958317979398
+   ],
+   "D_withinkind": 0.011042175646939628,
+   "D_withinkind_ci": [
+    0.004442366959461878,
+    0.01758430886242188
+   ],
+   "frac_cells_black_higher": 0.6388888888888888,
+   "n_cells": 36,
+   "n_clusters": 12
+  },
+  {
+   "model": "llama-3.1-8b-instruct",
+   "dataset": "names",
+   "mean_var_black": 0.1562979477357366,
+   "mean_var_white": 0.145947004403649,
+   "D": 0.010350943332087609,
+   "D_ci": [
+    0.0024710546307759648,
+    0.01753717179273949
+   ],
+   "R": 1.0709226158795269,
+   "R_ci": [
+    1.016574344869971,
+    1.122389550189005
+   ],
+   "D_withinkind": 0.007825130081642151,
+   "D_withinkind_ci": [
+    0.0007573860048507097,
+    0.014417079059506194
+   ],
+   "frac_cells_black_higher": 0.6527777777777778,
+   "n_cells": 144,
+   "n_clusters": 12
+  },
+  {
+   "model": "mistral-7b-instruct-v0.1",
+   "dataset": "delta",
+   "mean_var_black": 0.0890848015642224,
+   "mean_var_white": 0.09396809998781958,
+   "D": -0.004883298423597179,
+   "D_ci": [
+    -0.007556155843423079,
+    -0.0024043556273888812
+   ],
+   "R": 0.9480323809438505,
+   "R_ci": [
+    0.9216574724272312,
+    0.9738178454592875
+   ],
+   "D_withinkind": -0.005092126423363999,
+   "D_withinkind_ci": [
+    -0.007815979615406355,
+    -0.002594092089471558
+   ],
+   "frac_cells_black_higher": 0.2222222222222222,
+   "n_cells": 36,
+   "n_clusters": 12
+  },
+  {
+   "model": "mistral-7b-instruct-v0.1",
+   "dataset": "names",
+   "mean_var_black": 0.08865075112488967,
+   "mean_var_white": 0.09376717484491857,
+   "D": -0.0051164237200289064,
+   "D_ci": [
+    -0.008522579512022862,
+    -0.0021470455313632917
+   ],
+   "R": 0.9454348099055885,
+   "R_ci": [
+    0.9110818595663057,
+    0.9767592589250942
+   ],
+   "D_withinkind": -0.0047861833042731755,
+   "D_withinkind_ci": [
+    -0.008714443516185735,
+    -0.0012513176590296562
+   ],
+   "frac_cells_black_higher": 0.3194444444444444,
+   "n_cells": 144,
+   "n_clusters": 12
+  },
+  {
+   "model": "mistral-7b-instruct-v0.3",
+   "dataset": "delta",
+   "mean_var_black": 0.4583786065071892,
+   "mean_var_white": 0.40025045917074925,
+   "D": 0.05812814733643995,
+   "D_ci": [
+    0.018393795893568158,
+    0.09786262776163168
+   ],
+   "R": 1.1452294332325603,
+   "R_ci": [
+    1.0439869920722575,
+    1.2541842479792522
+   ],
+   "D_withinkind": 0.07125535334157285,
+   "D_withinkind_ci": [
+    0.031739044716284484,
+    0.11251739032528058
+   ],
+   "frac_cells_black_higher": 0.6944444444444444,
+   "n_cells": 36,
+   "n_clusters": 12
+  },
+  {
+   "model": "mistral-7b-instruct-v0.3",
+   "dataset": "names",
+   "mean_var_black": 0.42922106117514525,
+   "mean_var_white": 0.3738884353331133,
+   "D": 0.05533262584203197,
+   "D_ci": [
+    0.03530026980902831,
+    0.07474100538618783
+   ],
+   "R": 1.1479923437394735,
+   "R_ci": [
+    1.0932637254036497,
+    1.202439549049536
+   ],
+   "D_withinkind": 0.06823389396649654,
+   "D_withinkind_ci": [
+    0.04733197160164742,
+    0.088726446739644
+   ],
+   "frac_cells_black_higher": 0.6805555555555556,
+   "n_cells": 144,
+   "n_clusters": 12
+  }
+ ],
+ "summary": {
+  "n_combinations": 8,
+  "n_positive": 6,
+  "n_ci_excludes_zero_positive": 6,
+  "n_ci_excludes_zero_negative": 2,
+  "reversed_models": [
+   "mistral-7b-instruct-v0.1"
+  ]
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "_what": "Wild cluster bootstrap-t vs percentile pair-bootstrap intervals for the per-model headline effects; twelve name-pair clusters.",
+ "_why": "Percentile intervals with a dozen clusters can under-cover (Cameron-Miller); this is the check a reviewer asked for.",
+ "seed": 20260825,
+ "n_boot": 20000,
+ "models": {
+  "llama-2-7b-chat": {
+   "n_pairs": 12,
+   "est": 0.1805175455890047,
+   "se_cluster": 0.036812279230898665,
+   "ci_percentile": [
+    0.11517331227620596,
+    0.2538974622039252
+   ],
+   "ci_wild_t": [
+    0.10469272700275577,
+    0.25633709815717276
+   ],
+   "width_ratio_wild_over_percentile": 1.0931360634282477,
+   "excl_zero_percentile": true,
+   "excl_zero_wild_t": true
+  },
+  "llama-3.1-8b-instruct": {
+   "n_pairs": 12,
+   "est": -0.17628771147194242,
+   "se_cluster": 0.03235771219491061,
+   "ci_percentile": [
+    -0.2367922208569515,
+    -0.11625051562894165
+   ],
+   "ci_wild_t": [
+    -0.2491196234551066,
+    -0.10286607144052505
+   ],
+   "width_ratio_wild_over_percentile": 1.2133024975707505,
+   "excl_zero_percentile": true,
+   "excl_zero_wild_t": true
+  },
+  "mistral-7b-instruct-v0.1": {
+   "n_pairs": 12,
+   "est": -0.03260305476235126,
+   "se_cluster": 0.0354104268599481,
+   "ci_percentile": [
+    -0.10046529388622392,
+    0.03155053097018976
+   ],
+   "ci_wild_t": [
+    -0.11125098811297432,
+    0.046983089338933415
+   ],
+   "width_ratio_wild_over_percentile": 1.1985993165895845,
+   "excl_zero_percentile": false,
+   "excl_zero_wild_t": false
+  },
+  "mistral-7b-instruct-v0.3": {
+   "n_pairs": 12,
+   "est": -0.08533195470384254,
+   "se_cluster": 0.08704828749163425,
+   "ci_percentile": [
+    -0.24944011058018575,
+    0.07705672059238981
+   ],
+   "ci_wild_t": [
+    -0.27741546713320303,
+    0.1066405935462678
+   ],
+   "width_ratio_wild_over_percentile": 1.1762933787142067,
+   "excl_zero_percentile": false,
+   "excl_zero_wild_t": false
+  }
+ },
+ "summary": {
+  "ratio_min": 1.0931360634282477,
+  "ratio_max": 1.2133024975707505,
+  "n_verdict_changes": 0,
+  "verdict_changes": []
+ }
+}

@@ -1,0 +1,90 @@
+{
+  "n_perm": 20000,
+  "seed": 20260801,
+  "models": {
+    "llama-2-7b-chat": {
+      "p_actual": 0.7910879629629629,
+      "perm_mean": 0.79216328125,
+      "perm_sd": 0.009297539767457261,
+      "perm_ci": [
+        0.7743055555555556,
+        0.8101851851851852
+      ],
+      "perm_min": 0.7523148148148148,
+      "perm_max": 0.8333333333333334,
+      "best_possible": 0.8969907407407407,
+      "worst_possible": 0.6932870370370371,
+      "range_best_worst": 0.2037037037037036,
+      "sign_flip_rate_vs_actual": 0.0,
+      "n_balanced_pairs": 7,
+      "p_balanced": 0.7777777777777778,
+      "sigma_word_reference": null,
+      "n_cells": 72
+    },
+    "llama-3.1-8b-instruct": {
+      "p_actual": 0.1869212962962963,
+      "perm_mean": 0.1997115162037037,
+      "perm_sd": 0.009467425979623995,
+      "perm_ci": [
+        0.18171296296296297,
+        0.2181712962962963
+      ],
+      "perm_min": 0.16203703703703703,
+      "perm_max": 0.23900462962962962,
+      "best_possible": 0.30092592592592593,
+      "worst_possible": 0.09490740740740741,
+      "range_best_worst": 0.20601851851851852,
+      "sign_flip_rate_vs_actual": 0.0,
+      "n_balanced_pairs": 7,
+      "p_balanced": 0.07539682539682539,
+      "sigma_word_reference": null,
+      "n_cells": 72
+    },
+    "mistral-7b-instruct-v0.1": {
+      "p_actual": 0.49710648148148145,
+      "perm_mean": 0.5074921875,
+      "perm_sd": 0.012851338903240733,
+      "perm_ci": [
+        0.4820601851851852,
+        0.5324074074074074
+      ],
+      "perm_min": 0.45891203703703703,
+      "perm_max": 0.5555555555555556,
+      "best_possible": 0.6221064814814815,
+      "worst_possible": 0.37962962962962965,
+      "range_best_worst": 0.24247685185185186,
+      "sign_flip_rate_vs_actual": 0.708,
+      "n_balanced_pairs": 7,
+      "p_balanced": 0.7777777777777778,
+      "sigma_word_reference": null,
+      "n_cells": 72
+    },
+    "mistral-7b-instruct-v0.3": {
+      "p_actual": 0.44907407407407407,
+      "perm_mean": 0.4577040509259259,
+      "perm_sd": 0.011043679968589374,
+      "perm_ci": [
+        0.4363425925925926,
+        0.4791666666666667
+      ],
+      "perm_min": 0.41550925925925924,
+      "perm_max": 0.5017361111111112,
+      "best_possible": 0.5659722222222222,
+      "worst_possible": 0.3460648148148148,
+      "range_best_worst": 0.21990740740740738,
+      "sign_flip_rate_vs_actual": 0.0001,
+      "n_balanced_pairs": 7,
+      "p_balanced": 0.3492063492063492,
+      "sigma_word_reference": null,
+      "n_cells": 72
+    }
+  },
+  "summary": {
+    "min_perm_sd": 0.009297539767457261,
+    "max_perm_sd": 0.012851338903240733,
+    "min_best_worst_range": 0.2037037037037036,
+    "max_best_worst_range": 0.24247685185185186,
+    "n_models": 4,
+    "n_models_where_repairing_flips_sign": 2
+  }
+}

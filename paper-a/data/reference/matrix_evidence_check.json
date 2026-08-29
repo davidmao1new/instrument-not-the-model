@@ -1,0 +1,22 @@
+{
+ "_what": "Every claim the reporting matrix makes about another paper, re-checked against that paper's extracted full text.",
+ "_why": "A wrong negative claim about someone else's reporting is the same class of error this paper is about. Asserting the codings were careful is not evidence; re-running them is.",
+ "_method": "Negative searches are re-run with a leading word boundary over the body, excluding reference lists. Quotations are matched verbatim, then after footnote markers are removed, then with extraction spacing normalised, then as in-order token subsequences through interleaved page furniture.",
+ "n_studies": 16,
+ "n_negative_searches_rerun": 710,
+ "n_negative_searches_now_hitting": 0,
+ "n_terms_only_in_a_reference_list": 12,
+ "n_negative_searches_hitting_but_adjudicated_benign": 12,
+ "n_not_reported_cells_with_no_parsable_search": 6,
+ "n_quotations_checked": 419,
+ "n_quotations_verified": 377,
+ "n_quotations_unverifiable_damaged_source": 15,
+ "n_cells_with_a_positive_verdict_and_no_evidence": 0,
+ "degraded_sources": {
+  "Bertrand & Mullainathan 2004": {
+   "ligatures": 5617,
+   "splices": 121,
+   "degraded": true
+  }
+ }
+}

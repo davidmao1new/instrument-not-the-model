@@ -1,0 +1,74 @@
+{
+  "_what": "Whether this paper's own measurement noise follows the pattern Fu et al. (2026) report at the token-probability level: negligible near p = 0 or 1, largest in 0.2 to 0.8.",
+  "_prediction_source": "Fu, Martinez, Conde, Arriaga, Reviriego, Qi and Liu (2026), abstract.",
+  "_caveat": "A quantity bounded in [0, 1] has less room to vary near its bounds whatever the mechanism, so this cannot separate the arithmetic explanation from the boundary one. It establishes only that the pattern is present.",
+  "band": [
+    0.2,
+    0.8
+  ],
+  "n_permutations": 20000,
+  "seed": 20260801,
+  "models": {
+    "llama-2-7b-chat": {
+      "n_cells": 72,
+      "n_in_band": 24,
+      "n_exactly_reproducible": 1,
+      "spearman_rho_sd_vs_centrality": 0.580776898835938,
+      "mean_sd_in_band": 0.0026279821252195115,
+      "mean_sd_out_of_band": 0.0007060505466830437,
+      "band_minus_out": 0.0019219315785364679,
+      "p_permutation": 9.99950002499875e-05,
+      "nonzero_only": {
+        "band_minus_out": 0.0020361916709373163,
+        "p_permutation": 9.99950002499875e-05,
+        "n_in": 23,
+        "n_out": 48
+      },
+      "supports_prediction": true
+    },
+    "llama-3.1-8b-instruct": {
+      "n_cells": 72,
+      "n_in_band": 0,
+      "n_exactly_reproducible": 0,
+      "spearman_rho_sd_vs_centrality": 0.8768731108109846,
+      "mean_sd_in_band": null,
+      "mean_sd_out_of_band": 0.00045146593967256357
+    },
+    "mistral-7b-instruct-v0.1": {
+      "n_cells": 72,
+      "n_in_band": 24,
+      "n_exactly_reproducible": 1,
+      "spearman_rho_sd_vs_centrality": 0.7383433018200527,
+      "mean_sd_in_band": 0.0023152743120807766,
+      "mean_sd_out_of_band": 0.0005340518146601754,
+      "band_minus_out": 0.001781222497420601,
+      "p_permutation": 4.999750012499375e-05,
+      "nonzero_only": {
+        "band_minus_out": 0.0017698596928533636,
+        "p_permutation": 4.999750012499375e-05,
+        "n_in": 24,
+        "n_out": 47
+      },
+      "supports_prediction": true
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_cells": 72,
+      "n_in_band": 0,
+      "n_exactly_reproducible": 1,
+      "spearman_rho_sd_vs_centrality": 0.8109524728278346,
+      "mean_sd_in_band": null,
+      "mean_sd_out_of_band": 6.7048723133120704e-06
+    }
+  },
+  "summary": {
+    "n_models": 4,
+    "n_band_testable": 2,
+    "n_supporting": 2,
+    "n_models_with_no_cell_in_band": 2,
+    "rho_min": 0.580776898835938,
+    "rho_max": 0.8768731108109846,
+    "all_rho_positive": true,
+    "mean_sd_where_no_cell_in_band": 0.00022908540599293783,
+    "verdict": "the pattern Fu et al. report at the token-probability level is present here: the rank correlation between per-arm noise and closeness to p = 0.5 is positive on every model, and where the 0.2-to-0.8 band contains any cell at all the in-band noise is larger than the out-of-band noise"
+  }
+}

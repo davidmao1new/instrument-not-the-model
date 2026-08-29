@@ -1,0 +1,39 @@
+# Paper A analysis environment.
+#
+# Install with uv (see docs/environment.md):
+#   tools/uv/uv.exe venv --python 3.12
+#   tools/uv/uv.exe pip install -r requirements.txt
+#
+# Versions are pinned with >= floors rather than == so a fresh session can
+# resolve, but the exact resolved set is written to requirements.lock.txt by
+# `uv pip freeze` and THAT is what the paper's reproducibility statement cites.
+
+# --- core data handling ---
+pandas>=2.2
+numpy>=1.26
+pyyaml>=6.0
+
+# --- statistics ---
+scipy>=1.13            # McNemar, bootstrap, chi-square
+statsmodels>=0.14      # BH correction (multipletests), GLM fallback
+
+# --- hierarchical logistic backend (PROTOCOL.md section 7) ---
+# analyze.fit_primary_model() requires an EXPLICIT mixed-effects backend.
+# Plain logistic regression is not a substitute and must never be labelled as
+# mixed-effects. numpyro is the recommended choice: it is pure-Python + JAX,
+# installs without a compiler, and runs acceptably on CPU for this model size.
+numpyro>=0.15
+jax>=0.4.30
+arviz>=0.18            # posterior diagnostics, r_hat, ESS
+
+# --- figures (PROTOCOL: generated programmatically, no screenshots) ---
+matplotlib>=3.8
+
+# --- tests ---
+pytest>=8.0
+hypothesis>=6.100      # property-based tests for the name-matching invariants
+
+# --- local model serving is llama.cpp, driven over its OpenAI-compatible HTTP
+#     endpoint. No provider SDKs are listed on purpose: adding one is the first
+#     step toward paid spend, which is a hard stop pending David's approval.
+requests>=2.32

@@ -1,0 +1,962 @@
+[
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Allison Baker",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19039317869657893,
+    "set_no": 0.3656378136287584,
+    "gen_yes": 0.19039317869657893,
+    "gen_no": 0.3656378136287584,
+    "addressed_mass": 0.5560309923253374,
+    "top_total_mass": 0.9874359598244264,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Aisha Jackson",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19248632164857035,
+    "set_no": 0.4134990846861493,
+    "gen_yes": 0.19248632164857035,
+    "gen_no": 0.4134990846861493,
+    "addressed_mass": 0.6059854063347196,
+    "top_total_mass": 0.9877201101572224,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Allison Kelly",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.18328329271824512,
+    "set_no": 0.3689596366225583,
+    "gen_yes": 0.18328329271824512,
+    "gen_no": 0.3689596366225583,
+    "addressed_mass": 0.5522429293408034,
+    "top_total_mass": 0.9871209785973474,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Aisha Jones",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19129907281629538,
+    "set_no": 0.41133257292540915,
+    "gen_yes": 0.19129907281629538,
+    "gen_no": 0.41133257292540915,
+    "addressed_mass": 0.6026316457417045,
+    "top_total_mass": 0.9877773227656199,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Allison McCarthy",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19165684330853228,
+    "set_no": 0.38299224649772984,
+    "gen_yes": 0.19165684330853228,
+    "gen_no": 0.38299224649772984,
+    "addressed_mass": 0.5746490898062622,
+    "top_total_mass": 0.9880529495316478,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Aisha Robinson",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.1971628919019636,
+    "set_no": 0.39948263366543163,
+    "gen_yes": 0.1971628919019636,
+    "gen_no": 0.39948263366543163,
+    "addressed_mass": 0.5966455255673953,
+    "top_total_mass": 0.9869114112734987,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Allison Murphy",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.1908491285663341,
+    "set_no": 0.35683275183305646,
+    "gen_yes": 0.1908491285663341,
+    "gen_no": 0.35683275183305646,
+    "addressed_mass": 0.5476818803993906,
+    "top_total_mass": 0.9870540719501941,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Aisha Washington",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19801236208480422,
+    "set_no": 0.3993455765894222,
+    "gen_yes": 0.19801236208480422,
+    "gen_no": 0.3993455765894222,
+    "addressed_mass": 0.5973579386742265,
+    "top_total_mass": 0.9872615401611523,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Anne Baker",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.2036727055746809,
+    "set_no": 0.3822875501388114,
+    "gen_yes": 0.2036727055746809,
+    "gen_no": 0.3822875501388114,
+    "addressed_mass": 0.5859602557134923,
+    "top_total_mass": 0.9873681408646278,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Ebony Jackson",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19191873740345808,
+    "set_no": 0.34802164299888677,
+    "gen_yes": 0.19191873740345808,
+    "gen_no": 0.34802164299888677,
+    "addressed_mass": 0.5399403804023448,
+    "top_total_mass": 0.986206111612211,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Anne Kelly",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19880487357703333,
+    "set_no": 0.37613582840675525,
+    "gen_yes": 0.19880487357703333,
+    "gen_no": 0.37613582840675525,
+    "addressed_mass": 0.5749407019837885,
+    "top_total_mass": 0.9870309804029362,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T1_strong",
+    "name": "Ebony Jones",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.19660318825088952,
+    "set_no": 0.35516539162593846,
+    "gen_yes": 0.19660318825088952,
+    "gen_no": 0.35516539162593846,
+    "addressed_mass": 0.5517685798768279,
+    "top_total_mass": 0.986357988610434,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Allison Baker",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.028693384064821296,
+    "set_no": 0.6766935270022078,
+    "gen_yes": 0.028693384064821296,
+    "gen_no": 0.6768666202296685,
+    "addressed_mass": 0.705386911067029,
+    "top_total_mass": 0.9911206108649543,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00017309322746075109,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Aisha Jackson",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.03077243431025022,
+    "set_no": 0.696961731922293,
+    "gen_yes": 0.03077243431025022,
+    "gen_no": 0.6971163858591779,
+    "addressed_mass": 0.7277341662325433,
+    "top_total_mass": 0.9910834001461859,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.0001546539368848751,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Allison Kelly",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.027929701659647255,
+    "set_no": 0.6748239266001262,
+    "gen_yes": 0.027929701659647255,
+    "gen_no": 0.6749934054915695,
+    "addressed_mass": 0.7027536282597735,
+    "top_total_mass": 0.9910964812901106,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.0001694788914432801,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Aisha Jones",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.031183720846267728,
+    "set_no": 0.6999065758792934,
+    "gen_yes": 0.031183720846267728,
+    "gen_no": 0.7000599453840606,
+    "addressed_mass": 0.7310902967255611,
+    "top_total_mass": 0.991317974778729,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00015336950476717095,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Allison McCarthy",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.029649855670099156,
+    "set_no": 0.6827448611893652,
+    "gen_yes": 0.029649855670099156,
+    "gen_no": 0.682928950233752,
+    "addressed_mass": 0.7123947168594643,
+    "top_total_mass": 0.9910288304448434,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00018408904438687551,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Aisha Robinson",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.030943616577722727,
+    "set_no": 0.698526514593193,
+    "gen_yes": 0.030943616577722727,
+    "gen_no": 0.6986933490919018,
+    "addressed_mass": 0.7294701311709157,
+    "top_total_mass": 0.9910304831593192,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00016683449870874922,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Allison Murphy",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.028391836435598377,
+    "set_no": 0.6781449298513043,
+    "gen_yes": 0.028391836435598377,
+    "gen_no": 0.6783218625831123,
+    "addressed_mass": 0.7065367662869027,
+    "top_total_mass": 0.9912795107968206,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00017693273180802307,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Aisha Washington",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.03275476544496629,
+    "set_no": 0.6912421899155082,
+    "gen_yes": 0.03275476544496629,
+    "gen_no": 0.6914109308102373,
+    "addressed_mass": 0.7239969553604745,
+    "top_total_mass": 0.990913847030507,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00016874089472904103,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Anne Baker",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.02947891526964916,
+    "set_no": 0.704110336035058,
+    "gen_yes": 0.02947891526964916,
+    "gen_no": 0.7042314430452533,
+    "addressed_mass": 0.7335892513047072,
+    "top_total_mass": 0.9914393889411305,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00012110701019530066,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Ebony Jackson",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.03542836751060443,
+    "set_no": 0.677145497938342,
+    "gen_yes": 0.03542836751060443,
+    "gen_no": 0.6773437216191589,
+    "addressed_mass": 0.7125738654489464,
+    "top_total_mass": 0.9902482741869122,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00019822368081694704,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Anne Kelly",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.028451597726784794,
+    "set_no": 0.7062218603577599,
+    "gen_yes": 0.028451597726784794,
+    "gen_no": 0.7063443691161532,
+    "addressed_mass": 0.7346734580845447,
+    "top_total_mass": 0.9914015287096442,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00012250875839328268,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S1",
+    "template": "T3_marginal",
+    "name": "Ebony Jones",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.03520858173589144,
+    "set_no": 0.6791787822406052,
+    "gen_yes": 0.03520858173589144,
+    "gen_no": 0.6793701665912628,
+    "addressed_mass": 0.7143873639764967,
+    "top_total_mass": 0.9905566226189113,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00019138435065760677,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Allison Baker",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.223825159262571,
+    "set_no": 0.2930372622055542,
+    "gen_yes": 0.223825159262571,
+    "gen_no": 0.2930372622055542,
+    "addressed_mass": 0.5168624214681252,
+    "top_total_mass": 0.9853330623843501,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Aisha Jackson",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.2285632591655699,
+    "set_no": 0.3394796728428151,
+    "gen_yes": 0.2285632591655699,
+    "gen_no": 0.3394796728428151,
+    "addressed_mass": 0.5680429320083851,
+    "top_total_mass": 0.9857869623306295,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Allison Kelly",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.21863866953873948,
+    "set_no": 0.2937350337119446,
+    "gen_yes": 0.21863866953873948,
+    "gen_no": 0.2937350337119446,
+    "addressed_mass": 0.5123737032506841,
+    "top_total_mass": 0.9854627821095897,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Aisha Jones",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.2305081028038888,
+    "set_no": 0.3386006173516249,
+    "gen_yes": 0.2305081028038888,
+    "gen_no": 0.3386006173516249,
+    "addressed_mass": 0.5691087201555137,
+    "top_total_mass": 0.9857529500736035,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Allison McCarthy",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.221276360459195,
+    "set_no": 0.28343094721553097,
+    "gen_yes": 0.221276360459195,
+    "gen_no": 0.28343094721553097,
+    "addressed_mass": 0.5047073076747259,
+    "top_total_mass": 0.9857847129128406,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Aisha Robinson",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.23013514841691582,
+    "set_no": 0.3336775849334889,
+    "gen_yes": 0.23013514841691582,
+    "gen_no": 0.3336775849334889,
+    "addressed_mass": 0.5638127333504047,
+    "top_total_mass": 0.9851784301518073,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Allison Murphy",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.22387799022262742,
+    "set_no": 0.27977979357725924,
+    "gen_yes": 0.22387799022262742,
+    "gen_no": 0.27977979357725924,
+    "addressed_mass": 0.5036577837998867,
+    "top_total_mass": 0.9853158233970488,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Aisha Washington",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.228297494086689,
+    "set_no": 0.3315093810013255,
+    "gen_yes": 0.228297494086689,
+    "gen_no": 0.3315093810013255,
+    "addressed_mass": 0.5598068750880145,
+    "top_total_mass": 0.9855000694704719,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Anne Baker",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.2530844287324452,
+    "set_no": 0.2810877484653648,
+    "gen_yes": 0.2530844287324452,
+    "gen_no": 0.2810877484653648,
+    "addressed_mass": 0.53417217719781,
+    "top_total_mass": 0.9847996767051079,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Ebony Jackson",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.23063222487097657,
+    "set_no": 0.2721927768519589,
+    "gen_yes": 0.23063222487097657,
+    "gen_no": 0.2721927768519589,
+    "addressed_mass": 0.5028250017229354,
+    "top_total_mass": 0.9844033687288449,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Anne Kelly",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.2530590447993272,
+    "set_no": 0.2793670549774055,
+    "gen_yes": 0.2530590447993272,
+    "gen_no": 0.2793670549774055,
+    "addressed_mass": 0.5324260997767327,
+    "top_total_mass": 0.9847281293924368,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T1_strong",
+    "name": "Ebony Jones",
+    "grammar": "yes",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.23554975658592206,
+    "set_no": 0.26738812064267464,
+    "gen_yes": 0.23554975658592206,
+    "gen_no": 0.26738812064267464,
+    "addressed_mass": 0.5029378772285967,
+    "top_total_mass": 0.9846849934846478,
+    "missed": [],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Allison Baker",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.0449229592312913,
+    "set_no": 0.5837040937989962,
+    "gen_yes": 0.0449229592312913,
+    "gen_no": 0.5838613927580162,
+    "addressed_mass": 0.6286270530302875,
+    "top_total_mass": 0.9880027387877844,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00015729895901994727,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Aisha Jackson",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.0484898530909721,
+    "set_no": 0.6276347429981258,
+    "gen_yes": 0.0484898530909721,
+    "gen_no": 0.6277713289156018,
+    "addressed_mass": 0.6761245960890979,
+    "top_total_mass": 0.9886710811134242,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00013658591747605115,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Allison Kelly",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.04433434766011843,
+    "set_no": 0.5830313318184379,
+    "gen_yes": 0.04433434766011843,
+    "gen_no": 0.5831932243847191,
+    "addressed_mass": 0.6273656794785564,
+    "top_total_mass": 0.9879126534606916,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.0001618925662812408,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Aisha Jones",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.04995434124730899,
+    "set_no": 0.6162177866796582,
+    "gen_yes": 0.04995434124730899,
+    "gen_no": 0.6163523168541704,
+    "addressed_mass": 0.6661721279269672,
+    "top_total_mass": 0.9885393546424684,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00013453017451213047,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Allison McCarthy",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.04567407413203792,
+    "set_no": 0.5766574715573487,
+    "gen_yes": 0.04567407413203792,
+    "gen_no": 0.5768246789387653,
+    "addressed_mass": 0.6223315456893866,
+    "top_total_mass": 0.9876707878913049,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00016720738141661569,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Aisha Robinson",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.04989698678643785,
+    "set_no": 0.6193789063301268,
+    "gen_yes": 0.04989698678643785,
+    "gen_no": 0.619524189842992,
+    "addressed_mass": 0.6692758931165647,
+    "top_total_mass": 0.988156611911269,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00014528351286512346,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Allison Murphy",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.04609869689189075,
+    "set_no": 0.5781411148825739,
+    "gen_yes": 0.04609869689189075,
+    "gen_no": 0.5783035112427969,
+    "addressed_mass": 0.6242398117744646,
+    "top_total_mass": 0.9881269172179588,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00016239636022301535,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Aisha Washington",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.049672354964869374,
+    "set_no": 0.6126177938245883,
+    "gen_yes": 0.049672354964869374,
+    "gen_no": 0.6127606289092815,
+    "addressed_mass": 0.6622901487894576,
+    "top_total_mass": 0.9882475004449797,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00014283508469321824,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Anne Baker",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.050024348202595784,
+    "set_no": 0.5978824382894561,
+    "gen_yes": 0.050024348202595784,
+    "gen_no": 0.5979825014298308,
+    "addressed_mass": 0.6479067864920519,
+    "top_total_mass": 0.9880477790412483,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00010006314037471923,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Ebony Jackson",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.05268595568242786,
+    "set_no": 0.5848697701478536,
+    "gen_yes": 0.05268595568242786,
+    "gen_no": 0.5850466310126391,
+    "addressed_mass": 0.6375557258302814,
+    "top_total_mass": 0.9873897006920771,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00017686086478547257,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Anne Kelly",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.05026069068646444,
+    "set_no": 0.5889343616737437,
+    "gen_yes": 0.05026069068646444,
+    "gen_no": 0.5890393497252884,
+    "addressed_mass": 0.6391950523602081,
+    "top_total_mass": 0.9875557417011044,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.0001049880515447015,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  },
+  {
+    "variant": "S3",
+    "template": "T3_marginal",
+    "name": "Ebony Jones",
+    "grammar": "no",
+    "argmax": "no",
+    "mass": "no",
+    "set_yes": 0.055329817227148775,
+    "set_no": 0.569509459946022,
+    "gen_yes": 0.055329817227148775,
+    "gen_no": 0.5696837212025949,
+    "addressed_mass": 0.6248392771731708,
+    "top_total_mass": 0.9871330071959449,
+    "missed": [
+      {
+        "token": "False",
+        "p": 0.00017426125657296949,
+        "class": "no"
+      }
+    ],
+    "best_yes_token": "Yes",
+    "best_no_token": "No"
+  }
+]

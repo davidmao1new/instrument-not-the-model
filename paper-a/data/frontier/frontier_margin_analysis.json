@@ -1,0 +1,256 @@
+{
+  "_what": "Study 2's wording design, outcome and estimand, on frontier API models that return log probabilities.",
+  "_outcome": "probability of superiority over matched pairs, from the renormalised margin log P(yes) - log P(no)",
+  "_resampling_unit": "name pair",
+  "_window": "top-20 (the API cap); the local panel uses top-100",
+  "n_boot": 20000,
+  "seed": 20260801,
+  "models": {
+    "gpt-4o-mini": {
+      "n_design_cells": 432,
+      "n_usable": 432,
+      "n_censored": 0,
+      "frac_censored": 0.0,
+      "n_saturated": 0,
+      "frac_saturated": 0.0,
+      "unmeasurable": false,
+      "censored_white_only": 0,
+      "censored_black_only": 0,
+      "censoring_by_template": {
+        "T1_strong": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        },
+        "T2_mid": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        },
+        "T3_marginal": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        }
+      },
+      "strength_levels_wholly_lost": [],
+      "design_intact": true,
+      "n_wordings": 12,
+      "n_pairs": 12,
+      "superiority": {
+        "est": 0.29861111111111116,
+        "ci": [
+          0.2199074074074074,
+          0.3842592592592593
+        ]
+      },
+      "effect_identified": true,
+      "per_variant": {
+        "S1": 0.3055555555555556,
+        "S2": 0.19444444444444445,
+        "S3": 0.4166666666666666,
+        "S4": 0.3055555555555556,
+        "S5": 0.49999999999999994,
+        "S6": 0.27777777777777773,
+        "N1": 0.4444444444444444,
+        "N2": 0.16666666666666666,
+        "N3": 0.16666666666666666,
+        "N4": 0.2222222222222222,
+        "N5": 0.3055555555555556,
+        "N6": 0.2777777777777778
+      },
+      "sd_across_wordings": 0.10798961271077474,
+      "ratio_sd_to_effect": 0.5362242838052265,
+      "ratio_suppressed_because_effect_covers_zero": false,
+      "arms": {
+        "semantic": {
+          "n_wordings": 6,
+          "sd": 0.1082977149423218,
+          "mean": 0.3333333333333333
+        },
+        "null": {
+          "n_wordings": 6,
+          "sd": 0.1050426133399391,
+          "mean": 0.26388888888888884
+        }
+      }
+    },
+    "gpt-4o": {
+      "n_design_cells": 432,
+      "n_usable": 426,
+      "n_censored": 6,
+      "frac_censored": 0.013888888888888888,
+      "n_saturated": 6,
+      "frac_saturated": 0.013888888888888888,
+      "unmeasurable": false,
+      "censored_white_only": 4,
+      "censored_black_only": 2,
+      "censoring_by_template": {
+        "T1_strong": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        },
+        "T2_mid": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        },
+        "T3_marginal": {
+          "n": 144,
+          "lost": 6,
+          "frac_lost": 0.041666666666666664
+        }
+      },
+      "strength_levels_wholly_lost": [],
+      "design_intact": true,
+      "n_wordings": 12,
+      "n_pairs": 12,
+      "superiority": {
+        "est": 0.3930886243386243,
+        "ci": [
+          0.31448412698412703,
+          0.4611772486772487
+        ]
+      },
+      "effect_identified": true,
+      "per_variant": {
+        "S1": 0.44444444444444436,
+        "S2": 0.3333333333333333,
+        "S3": 0.4166666666666666,
+        "S4": 0.3611111111111111,
+        "S5": 0.4444444444444444,
+        "S6": 0.4583333333333333,
+        "N1": 0.4166666666666666,
+        "N2": 0.44444444444444436,
+        "N3": 0.2777777777777778,
+        "N4": 0.3611111111111111,
+        "N5": 0.27777777777777773,
+        "N6": 0.47222222222222215
+      },
+      "sd_across_wordings": 0.06858687667532555,
+      "ratio_sd_to_effect": 0.6415302043494723,
+      "ratio_suppressed_because_effect_covers_zero": false,
+      "arms": {
+        "semantic": {
+          "n_wordings": 6,
+          "sd": 0.05103103630798286,
+          "mean": 0.40972222222222215
+        },
+        "null": {
+          "n_wordings": 6,
+          "sd": 0.08379501738332418,
+          "mean": 0.375
+        }
+      }
+    },
+    "gpt-4.1-mini": {
+      "n_design_cells": 432,
+      "n_usable": 288,
+      "n_censored": 144,
+      "frac_censored": 0.3333333333333333,
+      "n_saturated": 144,
+      "frac_saturated": 0.3333333333333333,
+      "unmeasurable": false,
+      "censored_white_only": 0,
+      "censored_black_only": 0,
+      "censoring_by_template": {
+        "T1_strong": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        },
+        "T2_mid": {
+          "n": 144,
+          "lost": 0,
+          "frac_lost": 0.0
+        },
+        "T3_marginal": {
+          "n": 144,
+          "lost": 144,
+          "frac_lost": 1.0
+        }
+      },
+      "strength_levels_wholly_lost": [
+        "T3_marginal"
+      ],
+      "design_intact": false,
+      "n_wordings": 12,
+      "n_pairs": 12,
+      "superiority": {
+        "est": 0.48611111111111116,
+        "ci": [
+          0.3993055555555556,
+          0.5659722222222222
+        ]
+      },
+      "effect_identified": false,
+      "per_variant": {
+        "S1": 0.5833333333333334,
+        "S2": 0.6666666666666666,
+        "S3": 0.4166666666666667,
+        "S4": 0.375,
+        "S5": 0.5416666666666666,
+        "S6": 0.4166666666666667,
+        "N1": 0.5416666666666666,
+        "N2": 0.4583333333333333,
+        "N3": 0.625,
+        "N4": 0.3333333333333333,
+        "N5": 0.4166666666666667,
+        "N6": 0.4583333333333333
+      },
+      "sd_across_wordings": 0.10410351621123125,
+      "ratio_sd_to_effect": null,
+      "ratio_suppressed_because_effect_covers_zero": true,
+      "arms": {
+        "semantic": {
+          "n_wordings": 6,
+          "sd": 0.11486707293408517,
+          "mean": 0.5
+        },
+        "null": {
+          "n_wordings": 6,
+          "sd": 0.10092167846991637,
+          "mean": 0.47222222222222227
+        }
+      }
+    },
+    "gpt-4.1": {
+      "n_design_cells": 432,
+      "n_usable": 1,
+      "n_censored": 431,
+      "frac_censored": 0.9976851851851852,
+      "n_saturated": 431,
+      "frac_saturated": 0.9976851851851852,
+      "censored_white_only": 0,
+      "censored_black_only": 7,
+      "unmeasurable": true,
+      "why": "the model places essentially all probability mass on one answer, so the other is outside the top-20 window the API returns and the margin cannot be formed; this is model confidence, not a sampling or budget limit"
+    }
+  },
+  "summary": {
+    "n_models": 4,
+    "n_measurable": 3,
+    "models_outcome_unmeasurable": [
+      "gpt-4.1"
+    ],
+    "n_identified": 2,
+    "identified_models": [
+      "gpt-4o-mini",
+      "gpt-4o"
+    ],
+    "sd_min": 0.06858687667532555,
+    "sd_max": 0.10798961271077474,
+    "ratio_min": 0.5362242838052265,
+    "ratio_max": 0.6415302043494723,
+    "ratio_basis": "models whose effect interval excludes 0.5",
+    "null_arm_sd_min": 0.08379501738332418,
+    "null_arm_sd_max": 0.1050426133399391,
+    "n_models_null_arm_at_least_semantic": 1,
+    "total_censored": 581,
+    "total_saturated": 581,
+    "models_with_a_strength_level_wholly_lost": [
+      "gpt-4.1-mini"
+    ]
+  }
+}

@@ -1,0 +1,1415 @@
+{
+  "source": "critique_round7.json",
+  "pdf": "paper-a\\figures\\paper_instrument_validity_v3.pdf",
+  "n_findings": 92,
+  "_method": "word-8 shingle coverage of the normalised quote against the normalised PDF text; >= 90% stands, < 40% is rewritten",
+  "_warning": "'gone' does NOT close a finding; the defect can survive a rewrite. This is a triage aid only.",
+  "n_stands": 56,
+  "n_partly_edited": 21,
+  "n_rewritten": 15,
+  "n_unmatchable": 0,
+  "n_standing_critical_or_major": 26,
+  "n_partly_critical_or_major": 12,
+  "stands": [
+    {
+      "id": "half1#2:A3",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Table 6 divides by that same quantity, so the same caution applies to its cells, and an audit of this paper pointed out that we applied it in one plac",
+      "defect": "It is not the same quantity. The \"factor of two\" \u00a74.1 establishes is on `sd_ps` -- the raw standard deviation of the twelve per-wording probability-of-superiority estimates, bootstrapped over wordings",
+      "fix": "Replace with: \"Table 6 divides by the pooled between-wording SD of \u00a76.1 -- a different estimator of the same phenomenon, on the log-odds scale -- which is estimated from the same twelve wordings and s"
+    },
+    {
+      "id": "half1#8:wording-vs-model-contradiction",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "on Mistral-7B-Instruct v0.1 the dispersion (0.0685) simply EXCEEDS the effect (0.0579) \u2014 which wording the researcher wrote matters more than which mo",
+      "defect": "\u00a74.1 asserts exactly the claim \u00a71 declares false, and the comparison offered does not measure it. \u00a71 says: \"Which model you audit matters several times more than how you word the question, and any cla",
+      "fix": "Delete the clause after the em-dash. The two magnitudes support only: \"on Mistral-7B-Instruct v0.1 the between-wording dispersion (0.0685) exceeds the distance of the point estimate from chance (0.057"
+    },
+    {
+      "id": "half1#13:RW-1",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Every audit picks a name list. Bertrand and Mullainathan used nine first names per race per gender; LLM audits typically use fewer and rarely report t",
+      "defect": "\"LLM audits typically use fewer\" is false against the paper's own literature artifact and against the primary texts. Most of the surveyed panel uses far MORE first names per race-by-gender cell than B",
+      "fix": "Replace with a statement the artifact supports, e.g. \"LLM audits vary from 4 to 100 first names per race-by-gender cell and rarely report the sensitivity of the result to that choice\", and reframe the"
+    },
+    {
+      "id": "half1#14:RW-3",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Two of those audits reach part of this paper's conclusion before it, and should be read as antecedents rather than as related work.",
+      "defect": "Four close antecedents of the central claim and of the headline recommendation are absent from the paper and from the reference list, and three of the four were flagged as major related-work defects b",
+      "fix": "Add a Background paragraph positioning against Selvam et al. (2023), Mizrahi et al. (2024) and Simson et al. (2024) and stating what is left over (the matched-pair estimand, the byte-identical noise f"
+    },
+    {
+      "id": "half1#15:RW-4",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "An arXiv identifier alone means no peer-reviewed version was located at the time of writing",
+      "defect": "The stated convention is false for at least one entry, and the entry it is false for is mis-cited. Nghiem et al. (2024) is cited as \"arXiv:2406.12232v2, 5 Oct 2024\", i.e. as having no located peer-rev",
+      "fix": "Cite as: Nghiem, H., Prindle, J., Zhao, J. and Daume III, H. (2024). \"You Gotta be a Doctor, Lin\": ... Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing (EMNLP 202"
+    },
+    {
+      "id": "half1#20:R3",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "On the other two the column is empty by the rule stated in its caption, and the comparison that survives there needs no ratio at all: on Mistral-7B-In",
+      "defect": "Three problems in one sentence. (a) Flat contradiction with \u00a71, which pre-emptively forbids exactly this claim: \"Which model you audit matters several times more than how you word the question, and an",
+      "fix": "\"on Mistral-7B-Instruct v0.1 the dispersion (0.0685) and the effect (0.0579) are the same size at the point estimate, but the ratio's 95 % interval resampling name pairs is [0.27, 20.44], so the order"
+    },
+    {
+      "id": "half1#21:R4",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "With the correct resampling unit that difference is not distinguishable from zero in any case, which is now stated where the claim is made; but a read",
+      "defect": "A flat null asserted in \u00a710.1, and again in \u00a71 (\"though the token-matching shift is not itself separable from zero once the resampling unit is the name pair (\u00a74.4)\"), that \u00a74.4 spends two pages explic",
+      "fix": "In \u00a71 and \u00a710.1 use \u00a74.4's own verdict: \"the shift sits on the 0.05 boundary \u2014 percentile interval excluding zero, bootstrap p = 0.078, exact cluster relabelling p = 0.045 \u2014 and \u00a74.4 reports the ambig"
+    },
+    {
+      "id": "half1#35:RA-2",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Which model you audit matters several times more than how you word the question, and any claim to the contrary would be false.",
+      "defect": "\u00a74.1 makes exactly the claim \u00a71 declares false, in the same words: 'on Mistral-7B-Instruct v0.1 the dispersion (0.0685) simply EXCEEDS the effect (0.0579) \u2014 which wording the researcher wrote matters ",
+      "fix": "In \u00a74.1 replace 'which wording the researcher wrote matters more than which model was tested' with what the two magnitudes actually say: 'which wording the researcher wrote matters more than whether t"
+    },
+    {
+      "id": "half1#36:RA-3",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "With the correct resampling unit that difference is not distinguishable from zero in any case, which is now stated where the claim is made",
+      "defect": "\u00a710.1 and \u00a71 assert a flat null for the token-matching shift that \u00a74.4 spends two pages explicitly declining to assert. \u00a71: 'though the token-matching shift is not itself separable from zero once the ",
+      "fix": "In \u00a71 and \u00a710.1 replace 'not itself separable from zero' / 'not distinguishable from zero in any case' with \u00a74.4's actual verdict: 'the three procedures on the name-pair unit straddle 0.05 \u2014 percentil"
+    },
+    {
+      "id": "half1#39:RA-9",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Dropping N1 , which is byte-identical to S1, so its effect is not an independent draw from the null arm and its inclusion makes that arm look less dis",
+      "defect": "The stated mechanism is a direction the data reverse on half the panel, including on the model where the change is largest. If including N1 made the null arm look less dispersed, dropping it should ra",
+      "fix": "Drop the causal parenthetical and state the measured fact: 'Dropping N1 moves \u03c3_null down on two models and up on two, and moves the range of posterior probabilities to 0.05\u20130.88; on Llama-2-7B-chat t"
+    },
+    {
+      "id": "half2#43:A3-quantization-comparably",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The job posted, the quantization and the name drawn move it comparably.",
+      "defect": "Of the three, the quantization does not carry this. Quantization was manipulated on 2 of the 11 checkpoints, and on the only one of those two with an identified effect (Llama-2-7B-chat) the shift is +",
+      "fix": "'The job posted and the name drawn move it comparably; the quantization, measured on two checkpoints, moves it by 0.37\u00d7 to 1.07\u00d7 the between-wording SD, distinguishable from zero on one of the two.'"
+    },
+    {
+      "id": "half2#48:STAT-02",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The socioeconomic proxy is a different story, and the earlier draft of this sentence got it wrong by grouping the two together: r runs +0.02 to +0.33,",
+      "defect": "The one construct-validity result the paper singles out as pointing against itself \u2014 and repeats in \u00a710.3 (\"The socioeconomic check does not: on Llama-3.1-8B-Instruct the within-race correlation ... e",
+      "fix": "Replace the bootstrap p and interval for q3_ses.pooled_within_race with the permutation test, which is exact under the null this check needs: on Llama-3.1-8B-Instruct r = +0.33, permutation p = 0.13, "
+    },
+    {
+      "id": "half2#51:CE-02",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The disagreement is attributable to request batching and key-value cache residency: with both controlled the measurement reproduces bitwise, across se",
+      "defect": "A null read as absence, and an internal contradiction with the paper's own two other statements of the same result. Sec. 5.2 and the Conclusion say explicitly that this is 'a bound rather than an abse",
+      "fix": "Sec. 1.2 and Sec. 10.1: replace 'invariant to both' with 'not detected to move under either: every effect-difference interval covers zero and the shift is bounded within 8.7 % of the effect on the che"
+    },
+    {
+      "id": "half2#52:CE-03",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The job posted, the quantization and the name drawn move it comparably.",
+      "defect": "The quantization half of this sentence is licensed only by a ratio whose denominator covers zero \u2014 the exact construction \u00a74.5 says 'is not a number we may print' and that Tables 3, 4 and 11 suppress ",
+      "fix": "\"The job posted and the name drawn move it comparably; the quantization shift is of the same order as the between-wording SD on one of the two checkpoints tested and is not separable from zero on the "
+    },
+    {
+      "id": "half2#64:RW-1",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Identifiers are given as printed on the document read. An arXiv identifier alone means no peer-reviewed version was located at the time of writing; wh",
+      "defect": "The rule is violated for at least six of the thirteen panel studies. Each is cited with a bare arXiv identifier (or arXiv plus a hedge), and each has a peer-reviewed version that a single search locat",
+      "fix": "Replace the six entries with their published venues (ACL 2024 386\u2013397; EAAMO '24 DOI 10.1145/3689904.3694699; EMNLP 2024 7268\u20137287; NAACL 2025 Industry 672\u2013683; IJCNLP-AACL 2025 2645\u20132665; AIES 2024; "
+    },
+    {
+      "id": "half2#65:RW-3",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Of 13 LLM hiring audits read in full text, none fully reports its batching, cache policy or token matching, and none reports how far its effect moves ",
+      "defect": "The last clause is false as stated, and the paper's own body says so. Gaebler et al. estimate the demographic effect separately under four re-worded prompts and plot every per-variant estimate against",
+      "fix": "Abstract: \"...none fully reports its batching, cache policy or token matching, and none of the 8 that use more than one wording reports a dispersion statistic across them (4 show per-wording estimates"
+    },
+    {
+      "id": "half2#70:RW-9",
+      "severity": "major",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "A count of one variable is an anecdote. The claim this paper makes is about a practice, so it needs the whole matrix: every LLM audit we could obtain ",
+      "defect": "The panel is materially incomplete for its stated inclusion criterion, and the omissions are recent and on-topic rather than obscure. Because every headline count in Table 18 and the abstract is a den",
+      "fix": "Either score these four into the matrix and reprint the affected denominators, or state the search protocol (databases, query strings, cutoff date) in the Table 18 caption so a reader knows what the p"
+    },
+    {
+      "id": "half2#71:R1-dispersion-exceeds-effect-no-interval",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "On the other two the column is empty by the rule stated in its caption, and the comparison that survives there needs no ratio at all: on Mistral-7B-In",
+      "defect": "\u00a74.1 suppresses the SD/effect ratio for Mistral-7B-Instruct v0.1 on the stated ground that its denominator covers zero and 'a point estimate for it would mislead' \u2014 and then asserts the strict inequal",
+      "fix": "Replace with the interval that is already on disk: \"on Mistral-7B-Instruct v0.1 the point estimates put the dispersion (0.0685) above the effect (0.0579), but the ratio's interval is [0.69, 1.52] resa"
+    },
+    {
+      "id": "half2#72:R2-name-grid-not-deterministic",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "A model evaluated deterministically over 144 observations per name, with a measurement noise floor established separately and equal to zero once servi",
+      "defect": "\u00a74.2 licenses its headline answer to Bertrand and Mullainathan's chance caveat by attaching \u00a75.2's zero noise floor to the name-grid study. The name grid did not run under the configuration that produ",
+      "fix": "Drop the zero-floor clause from \u00a74.2 and state the name grid's own floor. Minimal replacement: \"A model evaluated over 144 observations per name, against a byte-identical replicate floor measured insi"
+    },
+    {
+      "id": "half2#76:R6-sigma-first-vs-last-no-interval",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Crossing 24 first names with 8 surnames makes them separate parameters, and they are not the same size: 0.092 against 0.027 on Llama-2-7B-chat. That s",
+      "defect": "The paper's stated contribution is a comparison of two posterior medians with no interval on the comparison, on one model of four, and the released artifact does not contain the quantity needed to che",
+      "fix": "Emit the contrast from the same draws (one line in fit_name_variance.py) and report it: \"...they are not the same size on 2 of the 4 checkpoints: on Llama-2-7B-chat 0.092 against 0.027, a difference o"
+    },
+    {
+      "id": "half2#88:R2-02",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "It does not reach the claim this section makes: the dispersion across wordings is computed from the cells the window did resolve, the same cells under",
+      "defect": "This is the sentence that immunises \u00a74.6's dispersion result against the top-100 censoring it has just conceded, and it is false on the only row where censoring actually occurs. On rental tenancy / Ll",
+      "fix": "Either restrict every per-wording estimate to the cells resolved under all twelve wordings, or replace the clause with: 'on seven of the eight rows every wording resolves the same 36 cells; on rental-"
+    },
+    {
+      "id": "half2#90:R2-04",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "But the reader should know that on those models the question is being put to the model more insistently than a deployment would, and that the three na",
+      "defect": "The 50 % is a maximum over the whole six-model panel (build_paper_v3.py line 1386 computes `1 - min(ag.values())` across every row of Table 1), but both places it appears attribute it to a named subse",
+      "fix": "Scope the statistic to the sentence's referent: 'the three natural decision rules disagree on up to 43 % of probes on those models, and on 50 % of probes on Mistral-7B-Instruct v0.1, which is not one "
+    },
+    {
+      "id": "half1#3:A4",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "\u201ctop-100 mass\u201d is how much of the distribution the top-100 window captures at all; the two are divided in the next column.",
+      "defect": "The next column is not the two divided. It is the mean over probes of the per-probe ratio, mean_i(addressed_i / top_i), which is not the quotient of the two printed column means. A reader who follows ",
+      "fix": "Change the caption to \"...the third column is the per-probe ratio of the two, averaged over probes, which is not exactly the quotient of the two column means\"; or print the quotient of the means and l"
+    },
+    {
+      "id": "half1#4:A5",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Measured over five repeats of each cell, agreement rises from 47.9 % at concurrency four to 93.8 % at concurrency one, and the per-cell standard devia",
+      "defect": "This sentence and the one that follows it pool different model sets, and Table 15 -- the table the reader lands on immediately after -- contains neither number. 47.9 % and 93.8 % pool the four Study 8",
+      "fix": "State the model set on each number: \"...rises from 47.9 % to 93.8 % pooled over the four checkpoints where batching was manipulated; on the two checkpoints Study 9 also covers the same two configurati"
+    },
+    {
+      "id": "half1#11:noise-floor-scale-dependence",
+      "severity": "minor",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "It is not sampling error: the byte-identical replicate embedded in Study 2 puts the noise floor at about 5 % of the effect, and the between-wording di",
+      "defect": "The 5 % is scale-specific and the sentence does not say so. It is the log-odds floor over the log-odds effect. On the probability of superiority \u2014 which \u00a73 declares the paper's primary effect size and",
+      "fix": "Name the scale and give both: \"the byte-identical replicate embedded in Study 2 puts the noise floor at about 5 % of the effect in log-odds and about 10 % of it on the probability-of-superiority scale"
+    },
+    {
+      "id": "half1#12:degenerate-on-this-panel",
+      "severity": "minor",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "We do not use the thresholded verdict as the primary outcome because it is degenerate on this panel: Llama-2-7B-chat accepts 99.8 % of candidates, so ",
+      "defect": "A design justification stated over 'this panel' and licensed by one checkpoint. The artifact carries a `degenerate` flag per model and it is True on exactly one of four; the other three accept 33.3 %,",
+      "fix": "\"because it is degenerate on one of the four checkpoints \u2014 Llama-2-7B-chat accepts 99.8 % of candidates \u2014 so a binary analysis has no dynamic range there and the panel cannot be read on a common outco"
+    },
+    {
+      "id": "half1#16:RW-5",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Armstrong, L., Liu, A., MacNeil, S. and Metaxa, D. (2024). The Silicon Ceiling: Auditing GPT's Race and Gender Biases in Hiring. arXiv:2405.04412v2.",
+      "defect": "The version identifier contradicts the document on disk, and so contradicts the reference list's own stated rule that \"Identifiers are given as printed on the document read.\" The PDF in lit/ prints v3",
+      "fix": "arXiv:2405.04412v3, 15 Nov 2024."
+    },
+    {
+      "id": "half1#17:RW-6",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Bertrand and Mullainathan mailed r\u00e9sum\u00e9s to real employers and found a 3.2-point callback gap between White- and Black-sounding names.",
+      "defect": "B&M did not mail the r\u00e9sum\u00e9s; they faxed them, mailing only a handful. The paper's opening characterisation of its own field-experiment anchor misstates the delivery mode, which matters slightly becau",
+      "fix": "\"Bertrand and Mullainathan faxed (and in a few cases mailed) r\u00e9sum\u00e9s to real employers and found a 3.2-point callback gap ...\""
+    },
+    {
+      "id": "half1#18:RW-7",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Hoffstedde, S. A., Hirota, M., Nadayanur Sathis Kanna, A., Kotani, R., Kumar, U., Trovato, G. and Phan, X. T. (2026). Gender Bias in LLM Hiring Decisi",
+      "defect": "Three references never appear anywhere in the body: Hoffstedde et al. (2026), Iso et al. (2025) and Veldanda et al. (2023). They are members of the Table 18 panel but Table 18's last column names only",
+      "fix": "Print the panel roster once in \u00a78.1 (the 13 study labels are already in the artifact's llm_hiring_audits list), which cites all three and makes the matrix reconstructible."
+    },
+    {
+      "id": "half1#22:R5",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "It also sharpens the paragraph above: on the corrected numbers the frontier NUMERATOR is no larger than the local one, so what separates the two panel",
+      "defect": "False against the artifact the same paragraph interpolates every other number from, and it is the one clause in that paragraph that is hard-typed rather than computed. After the noise subtraction the ",
+      "fix": "\"on the corrected numbers the frontier numerator is within 2 % of the local one (0.0935 against 0.0921 at the top of each panel), so what separates the two panels is almost entirely the shrinking effe"
+    },
+    {
+      "id": "half1#23:R6",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Dropping N1 , which is byte-identical to S1, so its effect is not an independent draw from the null arm and its inclusion makes that arm look less dis",
+      "defect": "A mechanism asserted for a number that does not come from it. The stated reason \u2014 including N1 makes the null arm look LESS dispersed \u2014 predicts that sigma_null rises when N1 is dropped. It falls on t",
+      "fix": "Drop the causal clause and state the measured fact: \"Dropping N1 \u2014 which is byte-identical to S1 and so not an independent draw from the null arm \u2014 moves sigma_null down on two models and up on two, a"
+    },
+    {
+      "id": "half1#24:R7",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "we probed every generation-capable text model the Gemini API-key surface lists: 33 of them, 46 probes across both public REST versions, each with thre",
+      "defect": "The accounting does not close on the page and the model-level coverage is never stated. 18 + 19 = 37 of the 46 probes; the remaining 9 are recorded in the artifact as `n_unavailable` (retired models a",
+      "fix": "\"...33 models, 46 probes. 18 probes reached a model and every one returned HTTP 400 with 'Logprobs is not enabled for this model'; 19 were quota-blocked and 9 were unavailable (retired, or served only"
+    },
+    {
+      "id": "half1#38:RA-8",
+      "severity": "minor",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The parts that are not the race effect are the within-race correlations, and they are the manipulation check. Against the field experiment's own per-n",
+      "defect": "The manipulation check is defined in \u00a74.3 as whether 'the model encodes the name-to-race association the list was validated for', and the validation data is Bertrand and Mullainathan's perception surv",
+      "fix": "Compute and report the within-race perception correlation, which is the manipulation check the section is repairing, and label the callback correlation as the criterion check it is. \u00a79 item 5's claim "
+    },
+    {
+      "id": "half1#40:RA-10",
+      "severity": "minor",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "On the within-race correlations, which are the part that is not the race effect, no model shows an interval excluding zero.",
+      "defect": "False as written, and contradicted two paragraphs later inside the same subsection. \u00a710.3's next paragraph says: 'The socioeconomic check does not: on Llama-3.1-8B-Instruct the within-race correlation",
+      "fix": "Scope the quantifier: 'On the within-race PERCEPTION and CALLBACK correlations, no model shows an interval excluding zero; the socioeconomic one does on Llama-3.1-8B-Instruct, and the next paragraph i"
+    },
+    {
+      "id": "half2#46:A7-table1-caption-wrong-operation",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "\"top-100 mass\" is how much of the distribution the top-100 window captures at all; the two are divided in the next column.",
+      "defect": "The next column is not the quotient of the two printed columns; it is the mean over probes of the per-probe quotient. The two differ in the second decimal, so a reader who does the division the captio",
+      "fix": "Change the caption to '...; the next column is the mean over probes of their ratio, which differs slightly from the quotient of the two printed averages.'"
+    },
+    {
+      "id": "half2#49:STAT-05",
+      "severity": "minor",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "It also sharpens the paragraph above: on the corrected numbers the frontier NUMERATOR is no larger than the local one, so what separates the two panel",
+      "defect": "False against the artifact the sentence is about, and it is hard-typed prose rather than an interpolated number \u2014 the failure mode the paper elsewhere identifies as its own (\"A number carried in prose",
+      "fix": "Replace with the interpolated comparison, e.g. \"the corrected frontier numerator (0.059-0.094) is the same size as the local one (0.038-0.092), so almost all of what separates the two panels is the sh"
+    },
+    {
+      "id": "half2#50:STAT-08",
+      "severity": "minor",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The direction of the reported disparity on this model is determined by which r\u00e9sum\u00e9 the auditor wrote , which is a stimulus choice no audit varies eit",
+      "defect": "Two problems. (a) The cross-reference is wrong: \u00a74.5 varies the JOB POSTED across three occupations that are matched on \"the same r\u00e9sum\u00e9 skeleton\" (\u00a74.5; \u00a710.2 confirms \"one r\u00e9sum\u00e9 skeleton\"), so it d",
+      "fix": "Correct the cross-reference (the r\u00e9sum\u00e9-template axis is documented in \u00a74.1 itself, not \u00a74.5), and either add a r\u00e9sum\u00e9-template bar to Figure 1's budget from the existing spec-curve artifact, or state"
+    },
+    {
+      "id": "half2#56:CE-09",
+      "severity": "minor",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Dropping N1 , which is byte-identical to S1, so its effect is not an independent draw from the null arm and its inclusion makes that arm look less dis",
+      "defect": "The stated direction of the bias is wrong on half the panel, and on the model where it is wrong the correction is large. Dropping N1 halves the null-arm sigma on Llama-2-7B-chat \u2014 i.e. including N1 ma",
+      "fix": "\"Dropping N1, which is byte-identical to S1 and so is not an independent draw from the null arm, moves the range to 0.05 to 0.88; the direction of the correction differs by model (the null-arm SD fall"
+    },
+    {
+      "id": "half2#63:CAP-10",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Table 4. Within-race between-first-name dispersion against the race effect itself, in log-odds.",
+      "defect": "Table 5 is printed two pages before Table 4. In the built PDF Table 5's caption sits on page 7 (right column, y = 459) and Table 4's on page 9 (full width, top). The reader meets them out of numerical",
+      "fix": "Either move the Table 4 block earlier so it places before Table 5, make Table 4 single-column so it does not defer, or swap the two entries in TABLE_ORDER. Extend the ordering assertion to check rende"
+    },
+    {
+      "id": "half2#66:RW-4",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "It is worth naming the quantity, because the field has no word for it and a thing without a name is hard to require.",
+      "defect": "The paper's central quantity \u2014 how much a measured social-bias effect moves under semantics-preserving changes to the instrument \u2014 has been named, measured and published at least twice, and neither wo",
+      "fix": "Add both to \u00a72 and state the delta explicitly: they establish that a bias score moves under meaning-preserving instrument changes on benchmark tasks; this paper adds a measured noise floor, a per-comp"
+    },
+    {
+      "id": "half2#67:RW-6",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "An and Rudinger establish, on social commonsense reasoning, that a first name's tokenization length influences how a model treats it independently of ",
+      "defect": "The second half is not An and Rudinger's result and their paper says so explicitly. They present the demographics\u2013tokenization correlation as a replication of Wolfe and Caliskan (2021), which the pape",
+      "fix": "\"...and that the two are correlated in the population of names \u2014 Wolfe and Caliskan (2021), which An and Rudinger replicate on 5,748 voter-file first names \u2014 because White and male names are more ofte"
+    },
+    {
+      "id": "half2#68:RW-7",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Table 18 is that matrix over 13 LLM hiring audits, summarised one choice per row; the per-study cells, including the two non-audits kept for contrast,",
+      "defect": "The thirteen-study panel on which the paper's novelty claim rests is never enumerated in the paper, and two of its members appear nowhere in the document except the reference list. A reader cannot che",
+      "fix": "Print the thirteen study names in the Table 18 caption or a one-line footnote."
+    },
+    {
+      "id": "half2#69:RW-8",
+      "severity": "minor",
+      "lenses": [
+        "related-work"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Researcher degrees of freedom. Specification-curve analysis (Simonsohn, Simmons and Nelson) and multiverse analysis (Steegen, Tuerlinckx, Gelman and V",
+      "defect": "The paragraph cites the two originating methods papers but not the work that already carried them into algorithmic fairness and into language-model evaluation \u2014 which is the step the paper claims as i",
+      "fix": "Add both to \u00a72 (Simson et al.) and \u00a76.1/\u00a79 item 8 (Miller), with one clause each saying what this paper's version does that theirs does not (a matched-pair estimand; a name-pair rather than row resamp"
+    },
+    {
+      "id": "half2#77:R8-twentieth-overstates-the-null",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "A delimiter mechanism worth caring about would have to be smaller than a twentieth of the effect the audit exists to measure to have escaped this desi",
+      "defect": "The escape threshold is the calibrated minimum detectable difference, which the sentence itself states two lines earlier as 5.7 % of the median demographic effect \u2014 about a seventeenth, not a twentiet",
+      "fix": "\"...would have to be smaller than about a seventeenth of the effect the audit exists to measure to have escaped this design\" \u2014 or interpolate: f\"smaller than {1/(mdd_pct/100):.0f}th of the effect\"."
+    },
+    {
+      "id": "half2#78:R9-plus-minus-35-mischaracterises-an-asymmetric-interval",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "Twelve wordings estimate a standard deviation with eleven degrees of freedom (\u00a74.1 puts the interval on it at about \u00b135 %), and three such estimates c",
+      "defect": "The parenthetical is hard-typed and describes an interval that is neither symmetric nor as narrow as \u00b135 % at its worst. \u00a74.1 interpolates the same quantity correctly as a relative WIDTH ('69 % to 78 ",
+      "fix": "Interpolate it: \"(\u00a74.1 puts the interval on it at 69 % to 78 % of the point estimate, and asymmetric)\"."
+    },
+    {
+      "id": "half2#79:R10-orders-of-magnitude",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "The other 2 have no cell in that band at all, and their per-arm noise is smaller by orders of magnitude , which is the same prediction seen from the o",
+      "defect": "'orders of magnitude' (plural) is hard-typed and overstates the artifact on one of the two models it describes. On Llama-3.1-8B-Instruct the out-of-band per-arm noise is a factor of about 6 below the ",
+      "fix": "Interpolate the ratio, e.g. \"...their per-arm noise is smaller by a factor of 6 and 350 respectively\", or write \"by up to two orders of magnitude\"."
+    },
+    {
+      "id": "half2#91:R2-08",
+      "severity": "minor",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "we probed every generation-capable text model the Gemini API-key surface lists: 33 of them, 46 probes across both public REST versions, each with thre",
+      "defect": "The probe accounting does not close: 18 + 19 = 37 of 46. The remaining 9 \u2014 5 with verdict 'not-available' (HTTP 404, model retired for new users) and 4 with verdict 'plain-400' \u2014 are never mentioned, ",
+      "fix": "'\u202646 probes, of which 18 reached a model that refused with HTTP 400 (\"Logprobs is not enabled for this model\"), 19 were quota-blocked, 5 returned 404 for a retired model and 4 a plain 400; the gating "
+    },
+    {
+      "id": "half2#92:R2-10",
+      "severity": "minor",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "verbatim",
+      "coverage": 1.0,
+      "edited_regions": [],
+      "quote": "and across the whole range it never exceeds the per-wording \u03b1 of 0.05 (maximum 0.0442).",
+      "defect": "The parenthetical reports a grid maximum as if it were the supremum of the rule's false-positive rate. As \u03c1 \u2192 1 the twelve per-wording estimates become identical and the rule's event reduces exactly t",
+      "fix": "'\u2026and across the whole range it never exceeds the per-wording \u03b1 of 0.05, which it approaches only as the wordings become perfectly correlated (0.0442 at the largest \u03c1 we evaluate).'"
+    },
+    {
+      "id": "half1#7:STAT-3",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.978,
+      "edited_regions": [
+        "it, which the paper does not do. (\u00a74.1)"
+      ],
+      "quote": "Twelve wordings pin the dispersion to about a factor of two. That is enough to say it is large relative to the effect: every lower bound here is sever",
+      "defect": "The lower bounds and the noise floor are on different scales, and on a common scale the claim fails. The lower bounds referred to (0.33 [0.19, 0.42] and 0.25 [0.14, 0.32]) are probability-of-superiori",
+      "fix": "State the floor comparison on the scale of the number it licenses: on the probability-of-superiority scale the Study 2 floor is 10-11% of the effect and the between-wording SD exceeds it by 3.3x and 2"
+    },
+    {
+      "id": "half2#80:SC-1",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.933,
+      "edited_regions": [
+        "no model shows an interval excluding zero. (\u00a710.3)"
+      ],
+      "quote": "On the within-race correlations, which are the part that is not the race effect, no model shows an interval excluding zero. (\u00a710.3)",
+      "defect": "Flatly contradicted two paragraphs later in the same subsection, and by the paper's own artifact. \u00a710.3 continues: \"The criterion check returns intervals that span zero on every model. The socioeconom",
+      "fix": "Replace with: \"On the within-race correlation against the list's own validation data no model shows an interval excluding zero; the within-race socioeconomic correlation does on one of the four (\u00a74.3)"
+    },
+    {
+      "id": "half2#82:SC-3",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.968,
+      "edited_regions": [
+        "moves the measured effect on several checkpoints. (\u00a74.4)"
+      ],
+      "quote": "It is not one here, because Section 7 establishes in a controlled design that displacing the name by one or two tokens \u2014 destroying no delimiter, chan",
+      "defect": "Section 7 establishes no such thing; it reports a null and files D8/D9 in the class it uses AS the null baseline. The position-alone contrasts are P1 (D8\u2212D0) and P2 (D9\u2212D0); after the BH correction th",
+      "fix": "Replace with what the panel supports: \"\u00a77's position controls D8 and D9 displace the name by one and two tokens with every delimiter intact; those contrasts clear the family-wise threshold on 4 of 24 "
+    },
+    {
+      "id": "half2#83:SC-4",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.97,
+      "edited_regions": [
+        "and none has an interval excluding zero. (\u00a74.3)"
+      ],
+      "quote": "The parts that are not the race effect are the within-race correlations, and they are the manipulation check. Against the field experiment's own per-n",
+      "defect": "The identical statistic is re-introduced in the very next paragraph as one of \"Two further checks\", and called \"The criterion check\" in \u00a710.3 \u2014 three names for one number, with \"further\" asserting it ",
+      "fix": "Either compute the within-race perception correlation and report it as the manipulation check, or state plainly that no within-race manipulation check exists and the criterion (callback) correlation i"
+    },
+    {
+      "id": "half1#30:SC-7",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.932,
+      "edited_regions": [
+        "\u00a74.7: \"we probed every generation-capable text model the ... \"we probed every generation-capable text model the gemini",
+        "quota-blocked, so the question is untested on those.\""
+      ],
+      "quote": "\u00a74.7: \"we probed every generation-capable text model the Gemini API-key surface lists: 33 of them, 46 probes across both public REST versions, each wi",
+      "defect": "The probe accounting does not add up on the page: 18 + 19 = 37, not 46. Nine probes returned model-unavailable and are not mentioned, and the paragraph therefore leaves the reader believing only 19 of",
+      "fix": "\"\u202646 probes \u2026 and 0 returned any. 18 probes, covering 12 distinct models, reached a model that refused; 19 were quota-blocked and 9 returned model-unavailable, so the question is untested on those 28."
+    },
+    {
+      "id": "half1#31:SC-8",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.925,
+      "edited_regions": [
+        "\u00a71: \"choices that are a switch between two ... \"choices that are a switch between two specific",
+        "the resampling unit is the name pair (\u00a74.4).\""
+      ],
+      "quote": "\u00a71: \"Choices that are a switch between two specific settings \u2014 the quantization, the token-matching restriction \u2014 contribute a shift of 11 % to 52 % o",
+      "defect": "The hedge covers the token-matching shift but not the quantization shift, and on the two checkpoints this sentence is scoped to (\"the two checkpoints here whose effect is distinguishable from zero\") t",
+      "fix": "\"\u2026contribute a shift of 11 % to 52 % of it, though neither shift is separable from zero on these two checkpoints: the token-matching shift once the resampling unit is the name pair (\u00a74.4), and the qua"
+    },
+    {
+      "id": "half2#84:SC-5",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.957,
+      "edited_regions": [
+        "the per-cell standard deviation falls by 8.5x. (\u00a75.2)"
+      ],
+      "quote": "Measured over five repeats of each cell, agreement rises from 47.9 % at concurrency four to 93.8 % at concurrency one, and the per-cell standard devia",
+      "defect": "Table 15 sits immediately below this sentence, is captioned \"The same 36 cells, five repeats each, under three serving configurations\", and cannot produce any of the three numbers. It lists two checkp",
+      "fix": "Name the scopes in both places: \"...agreement rises from 47.9 % to 93.8 % across the four checkpoints on which concurrency was manipulated\" and \"Table 15. The same 36 cells, five repeats each, on the "
+    },
+    {
+      "id": "half2#86:SC-8",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "reflowed",
+      "coverage": 0.958,
+      "edited_regions": [
+        "above are between one and three quanta. (\u00a78)"
+      ],
+      "quote": "observing a between-wording spread larger than that median is close to guaranteed by the instrument rather than earned from the data: the spreads abov",
+      "defect": "Wrong at both ends against the quantum the same paragraph defines (100/(12x3) = 2.778 points). The four between-wording SDs quoted three sentences earlier (6.2, 2.9, 3.7, 2.7 points) are 2.23, 1.03, 1",
+      "fix": "\"the spreads above are between 1.0 and 2.2 quanta, and one of the four is below a single quantum.\""
+    }
+  ],
+  "partly_edited": [
+    {
+      "id": "half1#1:A1",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.621,
+      "edited_regions": [
+        "moves the effect by 25 % to 33 ... itself where the effect is separable from zero"
+      ],
+      "quote": "over 31,468 matched pairs from 64,397 model calls on six open-weight and five frontier checkpoints: the instruction wording moves the effect by 25 % t",
+      "defect": "The stated range is not the range over the corpus the same sentence names. \"25 % to 33 %\" is min/max of SD-across-wordings divided by |P(sup)-0.5| over the two identified checkpoints of Study 2 only -",
+      "fix": "Either widen the number -- \"moves the effect by 25 % to 64 % of itself where the effect is separable from zero\" -- or scope it: \"...on the business-analyst posting of the open-weight panel the instruc"
+    },
+    {
+      "id": "half1#6:STAT-2",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.867,
+      "edited_regions": [
+        "with the ratio running 0.71 to 3.30. ... ... ... that is a different object from two",
+        "as spurious had the numbers not matched. (\u00a74.4, ... had the numbers not matched. (\u00a74.4, table 10)"
+      ],
+      "quote": "The sign agrees on 4 of 4 models and the magnitude within a factor of five on 4, with the ratio running 0.71 to 3.30. ... That is a different object f",
+      "defect": "The two estimators are not independent and their agreement is largely forced by construction, so the check has almost no power to expose a spurious channel. The predicted shift is -b*mean(\u0394) where b i",
+      "fix": "Replace the assertion of independence with the calibrated statement: under a permutation null with no length channel, 4-of-4 sign agreement occurs 16-27% of the time and the full sign-plus-magnitude p"
+    },
+    {
+      "id": "half1#9:abstract-25-33-excludes-half-the-panel",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.694,
+      "edited_regions": [
+        "moves the effect by 25 % to 33 ... itself where the effect is separable from zero,"
+      ],
+      "quote": "over 31,468 matched pairs from 64,397 model calls on six open-weight and five frontier checkpoints: the instruction wording moves the effect by 25 % t",
+      "defect": "The colon binds a headline range to an eleven-checkpoint corpus, but the range is computed on two open-weight checkpoints only. On the frontier checkpoints where the effect is separable from zero, the",
+      "fix": "\"the instruction wording moves the effect by 25 % to 33 % of itself on the open-weight checkpoints where the effect is separable from zero, and by 54 % to 64 % on the frontier ones\" \u2014 or scope the sen"
+    },
+    {
+      "id": "half1#10:every-number-interpolated",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.727,
+      "edited_regions": [
+        "every number in this paper is interpolated from ... number in this paper is interpolated from an",
+        "on disk by the script that typesets it."
+      ],
+      "quote": "Every number in this paper is interpolated from an artifact on disk by the script that typesets it.",
+      "defect": "False of the typesetting script as it stands, and the Data-availability section makes the stronger form of the claim (\"a missing artifact drops the sentence that depended on it and is named in a warni",
+      "fix": "Either interpolate these (e.g. f\"\u00a74.6 confirms it on {second['summary']['n_replicate_cells']} replicate cells\") behind the same missing-artifact guard the sentence claims, or weaken the claim to \"Ever"
+    },
+    {
+      "id": "half2#41:A1-abstract-wording-ratio-excludes-frontier",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.776,
+      "edited_regions": [
+        "moves the effect by 25 % to 33 ... itself where the effect is separable from zero,"
+      ],
+      "quote": "Holding the model fixed and varying only choices published audits do not report, over 31,468 matched pairs from 64,397 model calls on six open-weight ",
+      "defect": "The sentence sets its scope over all eleven checkpoints and then reports a range that is the open-weight panel only. Four checkpoints in this paper have an effect separable from zero, not two: Llama-2",
+      "fix": "Replace with: 'the instruction wording moves the effect by 25 % to 64 % of itself where the effect is separable from zero \u2014 25 % to 33 % on the open-weight checkpoints and 54 % to 64 % on the frontier"
+    },
+    {
+      "id": "half2#47:STAT-01",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.81,
+      "edited_regions": [
+        "exclude the null on the same side. ... ... ... across the whole range it never exceeds",
+        "the per-wording \u03b1 of 0.05 (maximum 0.0442). ... ... ... on our own panel the wordings correlate"
+      ],
+      "quote": "The rule is not in fact a selection problem: requiring the sign to be stable AND the smallest estimate to exclude the null is the same event as requir",
+      "defect": "The claimed set-equality is true only if every wording's interval has the same width. The paper's recommended screening rule is `sign stable AND the smallest per-wording ESTIMATE excludes the null`; t",
+      "fix": "Either (a) restate the rule as `every wording's interval excludes the null on the same side`, which is the event actually calibrated, or (b) keep the rule as written and recompute the FPR with unequal"
+    },
+    {
+      "id": "half2#53:CE-04",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.571,
+      "edited_regions": [
+        "an auditable pipeline. every number in this paper ... number in this paper is interpolated from an",
+        "on disk by the script that typesets it."
+      ],
+      "quote": "An auditable pipeline. Every number in this paper is interpolated from an artifact on disk by the script that typesets it.",
+      "defect": "False as stated, and repeated as a stronger universal in the Conclusion ('Nothing in this paper is computed anywhere except in that code ... so a number cannot be printed unsourced'). At least a dozen",
+      "fix": "Either interpolate these (all twelve have a field in an artifact already on disk), or state the claim as it is true: 'Every estimate reported in a table or quoted as a result is interpolated from an a"
+    },
+    {
+      "id": "half2#54:CE-07",
+      "severity": "major",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.738,
+      "edited_regions": [
+        "moves the effect by 25 % to 33 ... itself where the effect is separable from zero"
+      ],
+      "quote": "Holding the model fixed and varying only choices published audits do not report, over 31,468 matched pairs from 64,397 model calls on six open-weight ",
+      "defect": "The corpus total is placed in apposition to the headline result, so the sentence reads as though the 25-33 % figure comes from 31,468 pairs across eleven checkpoints. It comes from Study 2, which is 1",
+      "fix": "Separate the two: '...over 31,468 matched pairs from 64,397 model calls on six open-weight and five frontier checkpoints. On the 1,728-pair wording study the instruction wording moves the effect by 25"
+    },
+    {
+      "id": "half2#74:R4-every-number-interpolated-is-false",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.571,
+      "edited_regions": [
+        "an auditable pipeline. every number in this paper ... number in this paper is interpolated from an",
+        "on disk by the script that typesets it."
+      ],
+      "quote": "An auditable pipeline. Every number in this paper is interpolated from an artifact on disk by the script that typesets it.",
+      "defect": "The paper's governing rule, restated in the data-availability section as \"Nothing in this paper is computed anywhere except in that code... so a number cannot be printed unsourced\", is false. An AST s",
+      "fix": "Either interpolate these (every one has a source key already loaded \u2014 legacy_bias_share, bh_family_size, cross_session.n / n_identical, delimiter_class_contrast.n_tests_*), or narrow the claim to what"
+    },
+    {
+      "id": "half2#81:SC-2",
+      "severity": "major",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.455,
+      "edited_regions": [
+        "moves the effect by 25 % to 33 ... itself where the effect is separable from zero,",
+        "including under edits that change no word. (abstract)"
+      ],
+      "quote": "the instruction wording moves the effect by 25 % to 33 % of itself where the effect is separable from zero, including under edits that change no word.",
+      "defect": "The abstract's own scope is \"six open-weight and five frontier checkpoints\", but the 25\u201333 % range is computed over the two identified OPEN-WEIGHT checkpoints only. On the frontier checkpoints whose e",
+      "fix": "Scope the clause \u2014 \"...moves the effect by 25 % to 33 % of itself on the open-weight checkpoints where it is separable from zero, and by 54 % to 64 % on the two frontier checkpoints where it is\" \u2014 or "
+    },
+    {
+      "id": "half2#87:R2-01",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.818,
+      "edited_regions": [
+        "templates, only multiples of about 2.8 points. [\u2026] ... [\u2026] the spreads above are between one and"
+      ],
+      "quote": "With twelve name pairs the top decile of twenty-four ranked candidates is two positions, so a per-template shortlist gap can only take multiples of 1/",
+      "defect": "The stated resolution of the shortlist bridge is wrong by a factor of two, and the sentence that quantifies the consequence is false against the paper's own artifact. With 12 White and 12 Black candid",
+      "fix": "'a per-template shortlist gap can only take multiples of 1/6, and a per-wording value, the mean over three templates, only multiples of about 5.6 points. [\u2026] three of the four spreads above are smalle"
+    },
+    {
+      "id": "half2#89:R2-03",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.886,
+      "edited_regions": [
+        "the other, so the comparison can fail. [\u2026] ... [\u2026] it is one channel with a predicted"
+      ],
+      "quote": "The slope is fitted on all 48 pairs; the shift is measured on the 12-pair subset. Neither is used to compute the other, so the comparison can fail. [\u2026",
+      "defect": "Table 10 is presented as an independent cross-validation of the token-length channel; it is an algebraic decomposition of one OLS fit on one set of 48 rows. Because the slope b is fitted on ALL 48 pai",
+      "fix": "State the identity and report what the check is: 'obs \u2212 pred is by construction the mean OLS residual on the token-matched rows, so this is a within-model residual check, not two independent estimator"
+    },
+    {
+      "id": "half1#25:R8",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.892,
+      "edited_regions": [
+        "of what we reported was that bias. it ... bias. it was found by an adversarial audit"
+      ],
+      "quote": "the statistic returned a positive value under a null in which it should return zero, and 83 % of what we reported was that bias. It was found by an ad",
+      "defect": "The paper's governing rule \u2014 restated in this very sentence and again under Data and code availability (\"a number cannot be printed unsourced\") \u2014 is that no number is typed. \"83 %\" is a string literal",
+      "fix": "Interpolate: f\"{pct(_nc['legacy_bias_share'], 0)} of what we reported was that bias\". Then add a body-text literal check to audit_consistency.py of the kind already applied to figure captions, so the "
+    },
+    {
+      "id": "half1#26:R10",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.818,
+      "edited_regions": [
+        "templates, only multiples of about 2.8 points. ... ... ... the spreads above are between one and"
+      ],
+      "quote": "With twelve name pairs the top decile of twenty-four ranked candidates is two positions, so a per-template shortlist gap can only take multiples of 1/",
+      "defect": "The resolution limit is understated by a factor of two and the closing sentence is false on either quantum. With two shortlist slots among 12+12 candidates the per-template gap can only be 0 or +-2/12",
+      "fix": "\"a per-template shortlist gap can only be 0 or +-2/12, so a per-wording value \u2014 the mean over three templates \u2014 only multiples of about 5.6 points ... the spreads above run from a half to about one qu"
+    },
+    {
+      "id": "half1#27:SC-2",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.88,
+      "edited_regions": [
+        "\u00a74.7.1: \"it also sharpens the paragraph above: on ... \"it also sharpens the paragraph above: on the",
+        "the two panels is entirely the shrinking effect.\""
+      ],
+      "quote": "\u00a74.7.1: \"It also sharpens the paragraph above: on the corrected numbers the frontier NUMERATOR is no larger than the local one, so what separates the ",
+      "defect": "False on the paper's own artifact, and contradicted by the ranges \u00a74.7 prints two paragraphs earlier. The corrected between-wording SD is larger on the top frontier checkpoint (gpt-4o-mini, 0.0935) th",
+      "fix": "\"on the corrected numbers the two panels' numerators overlap \u2014 0.059 to 0.094 on the frontier checkpoints against 0.069 to 0.092 locally \u2014 so most of what separates the two ratios is the shrinking eff"
+    },
+    {
+      "id": "half1#28:SC-4",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.5,
+      "edited_regions": [
+        "table 17 caption: \"every condition-versus-baseline test on the ... \"every condition-versus-baseline test on the mechanism panel, split",
+        "by what the condition was declared to do.\" ... | 5 (13.9 %) | 0.0202 | 0.1128\"."
+      ],
+      "quote": "Table 17 caption: \"Every condition-versus-baseline test on the mechanism panel, split by what the TOKENIZER says the condition does to a delimiter rat",
+      "defect": "Table 2 classifies four conditions as fragmenting a delimiter (D4, D5, D10, D6 \u2014 the last two columns read \"1 fragmented\" and \"2 fragmented\"), and \u00a77 introduces D10 as one of the three conditions \"add",
+      "fix": "Add to the Table 17 caption: \"D10 fragments a delimiter but is tested only against D8 (contrast P4), not against the baseline, so it supplies no row here; the destroyed class is D4, D5 and D6 across 1"
+    },
+    {
+      "id": "half1#32:SC-9",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.857,
+      "edited_regions": [
+        "\u00a710.3: \"a delimiter mechanism worth caring about would ... \"a delimiter mechanism worth caring about would have",
+        "exists to measure to have escaped this design.\""
+      ],
+      "quote": "\u00a710.3: \"A delimiter mechanism worth caring about would have to be smaller than a twentieth of the effect the audit exists to measure to have escaped t",
+      "defect": "Arithmetic overstatement of the paper's own null, in the same sentence pair that establishes the number. The minimum detectable difference between condition classes is given two clauses earlier as \"0.",
+      "fix": "\"would have to be smaller than about a seventeenth of the effect the audit exists to measure\", or simply \"smaller than 5.7 % of it\"."
+    },
+    {
+      "id": "half1#33:SC-10",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.643,
+      "edited_regions": [
+        "\u00a71: \"6 of the 12 studies to which ... \"6 of the 12 studies to which the",
+        "than one wording, but 0 of 8 report ... 8 report a dispersion statistic across them: a",
+        "needs and the one nobody prints (table 18).\" ... row: \"wordings separately estimated | 8 / 12\"."
+      ],
+      "quote": "\u00a71: \"6 of the 12 studies to which the check applies estimate the effect separately under more than one wording, but 0 of 8 report a dispersion statist",
+      "defect": "The introduction sends the reader to Table 18 for \"6 of the 12\", and Table 18's only row with denominator 12 on this variable reads 8/12. The two numbers measure different things \u2014 6 is how many studi",
+      "fix": "Either add a Table 18 row \"wordings separately estimated > 1 | 6 / 12\", or rewrite \u00a71 as \"\u2026Table 18 records that 8 of 12 studies report how many wordings their effect was separately estimated under, t"
+    },
+    {
+      "id": "half2#45:A5-dispersion-denominator-switch",
+      "severity": "minor",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.844,
+      "edited_regions": [
+        "than one wording, but 0 of 8 report ... 8 report a dispersion statistic across them: a"
+      ],
+      "quote": "6 of the 12 studies to which the check applies estimate the effect separately under more than one wording, but 0 of 8 report a dispersion statistic ac",
+      "defect": "Two denominators from two different applicability rules are joined in one sentence with no signal that the rule changed, and the second is larger than the first, so 'them' cannot mean what the grammar",
+      "fix": "'6 of the 12 studies whose wording count is determinable estimate the effect separately under more than one wording, and none of those 6 reports a dispersion statistic across them; counting every stud"
+    },
+    {
+      "id": "half2#55:CE-08",
+      "severity": "minor",
+      "lenses": [
+        "claims-vs-evidence"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.833,
+      "edited_regions": [
+        "with the twelve estimates equicorrelated at \u03c1 ... ... \u03c1 ... that probability has a closed form."
+      ],
+      "quote": "requiring the sign to be stable AND the smallest estimate to exclude the null is the same event as requiring EVERY wording\u2019s interval to exclude the n",
+      "defect": "The equivalence holds only if every wording's interval has the same width, and the paper's own per-wording intervals do not. The calibration the abstract advertises ('a screening rule whose false-posi",
+      "fix": "State the rule as the event that is actually calibrated \u2014 'every wording's interval excludes the null on the same side' \u2014 or note that the closed form assumes equal per-wording standard errors and tha"
+    },
+    {
+      "id": "half2#85:SC-7",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "partly",
+      "coverage": 0.684,
+      "edited_regions": [
+        "the per-wording estimate exceeds it by a factor ... by a factor of 5.7 to 7.0. (\u00a74.1)"
+      ],
+      "quote": "That gives a noise floor per model, and the between-wording standard deviation of the per-wording estimate exceeds it by a factor of 5.7 to 7.0. (\u00a74.1",
+      "defect": "This is the stated defence of Table 3's headline dispersions, but \u00a74.7.1 and \u00a710.1 give an incompatible account of the same Study-2 byte-identical replicate against the same dispersions: \"The local fl",
+      "fix": "State the scale in \u00a74.1: \"...exceeds it by a factor of 5.7 to 7.0 on the log-odds scale; on the probability-of-superiority scale Table 3 reports, the same replicate accounts for up to 20 % of the obse"
+    }
+  ],
+  "rewritten": [
+    {
+      "id": "half1#5:STAT-1",
+      "severity": "major",
+      "lenses": [
+        "statistics"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.13,
+      "edited_regions": [
+        "can only detect a within-race correlation of 0.76 ... race, so these nulls are weak evidence rather",
+        "are weak evidence rather than reassuring ones. (\u00a74.3; ... 0.76 at 80 % power, so neither check",
+        "% power, so neither check licenses a conclusion.\", ... and again in \u00a79 item 5 and \u00a710.3)"
+      ],
+      "quote": "The design can only detect a within-race correlation of 0.76 or larger on 12 names per race, so these nulls are weak evidence rather than reassuring o",
+      "defect": "The minimum detectable effect quoted to excuse the manipulation-check null belongs to a different estimator from the one whose null is being excused. Every within-race correlation the paper prints (-0",
+      "fix": "Quote 0.56 (the artifact's own `mde_rho_all_names`, equivalently ~0.52 for the averaged statistic) beside the pooled within-race nulls, or report the per-race correlations that 0.76 actually describes"
+    },
+    {
+      "id": "half1#19:R2",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.021,
+      "edited_regions": [
+        "what makes the length channel a live mechanism ... 7 displace the name by one and two",
+        "name by one and two tokens and nothing ... is a good deal more than either alone."
+      ],
+      "quote": "What makes the length channel a live mechanism rather than a speculation is that it is independently supported by a manipulation in which the name is ",
+      "defect": "The sign agreement is false against the artifacts. This is the sentence that promotes \u00a74.4's token-length finding from a correlational subset comparison to a \"live mechanism\", and \u00a710.3 leans on it ag",
+      "fix": "Replace with the counted result and interpolate it: \"the sign of the D8/D9 shift agrees with that model's Table 8 slope on 4 of 16 model-by-mode cells and is opposite on the rest, so the two designs d"
+    },
+    {
+      "id": "half1#34:RA-1",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.033,
+      "edited_regions": [
+        "what makes the length channel a live mechanism ... 7 displace the name by one and two",
+        "name by one and two tokens and nothing ... the slope in table 8, the per-pair regression"
+      ],
+      "quote": "What makes the length channel a live mechanism rather than a speculation is that it is independently supported by a manipulation in which the name is ",
+      "defect": "The sign agreement is false against the paper's own artifact, under every aggregation. This is the single sentence that upgrades \u00a74.4's token-length channel from an admitted confound ('we do not claim",
+      "fix": "Delete the sign claim, or replace it with the counted result: 'the sign of the D8/D9 shift agrees with that model's Table 8 slope on 4 of 16 model-by-mode cells and opposes on 12, so the two designs d"
+    },
+    {
+      "id": "half1#37:RA-7",
+      "severity": "major",
+      "lenses": [
+        "reviewer-attack"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.25,
+      "edited_regions": [
+        "can only detect a within-race correlation of 0.76 ... race, so these nulls are weak evidence rather"
+      ],
+      "quote": "The design can only detect a within-race correlation of 0.76 or larger on 12 names per race, so these nulls are weak evidence rather than reassuring o",
+      "defect": "The power figure is computed for a different sample size than the statistic it is attached to. The within-race correlations the paper reports (-0.05, +0.15, +0.09, +0.13, and the SES ones) are the art",
+      "fix": "Quote the MDE of the statistic actually reported: '|r| \u2265 0.59 at 80 % power on the 24 pooled within-race observations'. Keep 0.76 only if the per-race correlations (n = 12) are the ones being reported"
+    },
+    {
+      "id": "half2#42:A2-section9-repeats-restricted-range",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.25,
+      "edited_regions": [
+        "moves the effect by 25 % to 33 ... on the models where the effect is identified."
+      ],
+      "quote": "Measured consequence: the wording moves the effect by 25 % to 33 % of itself on the models where the effect is identified.",
+      "defect": "Section 9's recommendation repeats the abstract's restricted range but attaches an explicitly universal scope \u2014 'the models where the effect is identified'. Four models in this paper are identified, a",
+      "fix": "'Measured consequence: the wording moves the effect by 25 % to 64 % of itself on the four models where the effect is identified \u2014 25\u201333 % locally, 54\u201364 % on the frontier API checkpoints (\u00a74.7).'"
+    },
+    {
+      "id": "half2#44:A4-mde-wrong-n",
+      "severity": "major",
+      "lenses": [
+        "arithmetic"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.25,
+      "edited_regions": [
+        "can only detect a within-race correlation of 0.76 ... race, so these nulls are weak evidence rather"
+      ],
+      "quote": "The design can only detect a within-race correlation of 0.76 or larger on 12 names per race, so these nulls are weak evidence rather than reassuring o",
+      "defect": "The minimum detectable correlation quoted (0.76) is the artifact's `mde_rho_within_race`, simulated at n = 12. The four correlations it is attached to (\u22120.05, +0.15, +0.09, +0.13) are the `pooled_with",
+      "fix": "Either quote the MDE of the statistic actually reported \u2014 'The design can only detect a within-race correlation of about 0.56 on the 24 pooled within-race name observations (0.76 if each race is read "
+    },
+    {
+      "id": "half2#59:CAP-4",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "left: the design that separates the two accounts, ... survives correction (3 survive on either fragmentation contrast)."
+      ],
+      "quote": "Left: the design that separates the two accounts, on one of the 2 model-modes where fragmentation with position held equal survives correction (3 surv",
+      "defect": "The left panel's intervals do not belong to the quantity it plots, and the mismatch makes the panel contradict its own caption. The y value is `per_condition[c].logodds.est - per_condition[\"D0\"].logod",
+      "fix": "Plot each series against D0 with the PAIRED contrast interval (bootstrap of the difference, clustered on name pair) rather than the per-condition CI \u2014 for the fragmented point at x = 1 that is +0.0173"
+    },
+    {
+      "id": "half2#60:CAP-5",
+      "severity": "major",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "re-measuring 504 of these cells on llama-2-7b-chat in ... a different day reproduced 0 of them exactly."
+      ],
+      "quote": "Re-measuring 504 of these cells on Llama-2-7B-chat in a separate process on a different day reproduced 0 of them exactly.",
+      "defect": "This is the worst of four equally sized cross-session checks, presented on a four-model panel with no indication that it is one of four or that the others differ. All four models have exactly n = 504 ",
+      "fix": "Report all four: \"Re-measuring 504 of these cells in a separate process on a different day reproduced 0 of them exactly on three of the four models and 212 of 504 on Mistral-7B-Instr v0.3.\" Replace th"
+    },
+    {
+      "id": "half2#73:R3-figure2-caption-carries-withdrawn-claim",
+      "severity": "major",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "on mistral-7b-instruct v0.3 twelve specifications are significantly positive ... meaning at all; the two do not separate."
+      ],
+      "quote": "On Mistral-7B-Instruct v0.3 twelve specifications are significantly positive and twelve are significantly negative, so the sign of the reported effect",
+      "defect": "Figure 2's caption survived the correction \u00a74.1 makes to the body, and the figure cannot show the reader what actually drives the flip. \u00a74.1 says plainly: \"It is not the wording that flips it, and say",
+      "fix": "Encode the template in the lower strip (or as marker shape) and rewrite the caption to the artifact's own licensed_claim: \"...twelve specifications are significantly positive and twelve significantly "
+    },
+    {
+      "id": "half1#29:SC-5",
+      "severity": "minor",
+      "lenses": [
+        "self-consistency"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.316,
+      "edited_regions": [
+        "\u00a75.2: \"measured over five repeats of each cell, ... \"measured over five repeats of each cell, agreement",
+        "concurrency four to 93.8 % at concurrency one\" ... \"disabling prompt-cache reuse while holding requests sequential raises",
+        "raises agreement from 93.1 % to 100.0 %\". ... 1, cache on 91.7 % / 94.4 %\"."
+      ],
+      "quote": "\u00a75.2: \"Measured over five repeats of each cell, agreement rises from 47.9 % at concurrency four to 93.8 % at concurrency one\" \u2026 two paragraphs later \u2026",
+      "defect": "The same serving configuration (concurrency 1, cache on) is given two different agreement rates, 93.8 % and 93.1 %, in adjacent paragraphs, and Table 15, which sits between them and is captioned \"The ",
+      "fix": "\"\u2026agreement rises from 47.9 % at concurrency four to 93.8 % at concurrency one across the four checkpoints Study 8 covers\u2026 Disabling prompt-cache reuse raises agreement from 93.1 % to 100.0 % on the t"
+    },
+    {
+      "id": "half2#57:CAP-2",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "on mistral-7b-instruct v0.3 twelve specifications are significantly positive ... meaning at all; the two do not separate."
+      ],
+      "quote": "On Mistral-7B-Instruct v0.3 twelve specifications are significantly positive and twelve are significantly negative, so the sign of the reported effect",
+      "defect": "The specification curve's lower strip \u2014 the panel whose entire job is to show WHICH analytic choice produced which result \u2014 marks the one factor that cannot possibly carry the sign, and omits the one ",
+      "fix": "Add a third row to the lower strip marking the r\u00e9sum\u00e9 template of each specification, and amend the caption to: \"...twelve are significantly negative. Every positive one is template T1_strong and ever"
+    },
+    {
+      "id": "half2#58:CAP-3",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "left: the logistic curve, the tangent an audit ... there at each model's mean operating point (blue)."
+      ],
+      "quote": "Left: the logistic curve, the tangent an audit assumes when it converts at p = 0.5 (grey, slope 0.25), and the tangent that is actually there at each ",
+      "defect": "The plotted blue markers are not each model's mean operating point. They are the point p solving p(1-p) = mean_cells p(1-p), i.e. the inverse of the panel-mean slope, which by Jensen's inequality is f",
+      "fix": "Relabel the blue markers for what they are \u2014 \"the point whose local slope equals the model's mean p(1-p)\" \u2014 and add: \"On Mistral v0.3 this is not where the model sits: two thirds of its scorings fall "
+    },
+    {
+      "id": "half2#61:CAP-7",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "the dashed rule marks the magnitude of that ... the magnitude of that model's own demographic effect."
+      ],
+      "quote": "The dashed rule marks the magnitude of that model's own demographic effect.",
+      "defect": "The dashed rule is `abs(beta_pp_max[1])`, the posterior MEDIAN OF |beta|, which is positively biased when the posterior straddles zero, so on the two models whose effect is not distinguishable from ze",
+      "fix": "Draw the dashed rule dotted or grey on the two models whose beta interval covers zero, and add to the caption: \"On Mistral-7B-Inst v0.1 and v0.3 the rule is the posterior median of |beta| against a be"
+    },
+    {
+      "id": "half2#62:CAP-8",
+      "severity": "minor",
+      "lenses": [
+        "captions-figures"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.0,
+      "edited_regions": [
+        "each small marker is the demographic effect estimated ... over all twelve, with a 95 % interval."
+      ],
+      "quote": "Each small marker is the demographic effect estimated under one wording; circles are paraphrases, open squares are perturbations that change no meanin",
+      "defect": "The caption promises a one-to-one marker-per-wording mapping the figure does not deliver. Because the probability of superiority on 36 pairs is quantised to multiples of 1/36, wordings coincide exactl",
+      "fix": "Jitter coincident markers or annotate multiplicity, and state the resolution in the caption: \"Estimates are quantised to multiples of 1/36, so markers coincide; on Mistral-7B-Inst v0.3 the twelve word"
+    },
+    {
+      "id": "half2#75:R5-figure-captions-outside-every-audit",
+      "severity": "minor",
+      "lenses": [
+        "reproducibility"
+      ],
+      "n": 1,
+      "verdict": "gone",
+      "coverage": 0.176,
+      "edited_regions": [
+        "fails if any guarded passage never fired , ... printed unsourced, and a result cannot vanish unremarked."
+      ],
+      "quote": "the consistency audit fails if any guarded passage never fired , so a number cannot be printed unsourced, and a result cannot vanish unremarked.",
+      "defect": "All eight figure captions \u2014 the sentences that state each figure's finding \u2014 are rasterised inside the PNGs and are absent from the PDF text layer, so none of the text-level checks in audit_consistenc",
+      "fix": "Draw captions with the text engine (paperkit) rather than inside the figure, so they enter the PDF text layer and the existing prose checks apply; and either change check P's pass message to name what"
+    }
+  ],
+  "unmatchable": []
+}

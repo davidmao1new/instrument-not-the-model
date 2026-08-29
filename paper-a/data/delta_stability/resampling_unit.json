@@ -1,0 +1,205 @@
+{
+  "n_boot": 20000,
+  "n_boot_contrast": 8000,
+  "seed": 20260730,
+  "pooled_effect": {
+    "llama-2-7b-chat": {
+      "n_rows": 432,
+      "n_pairs": 12,
+      "est": 0.18051754558900474,
+      "iid_ci": [
+        0.15749519170655704,
+        0.20307324488648357
+      ],
+      "clustered_ci": [
+        0.11508605647619047,
+        0.2530021326512167
+      ],
+      "iid_width": 0.045578053179926525,
+      "clustered_width": 0.13791607617502621,
+      "ratio": 3.02593170512529,
+      "iid_significant": true,
+      "clustered_significant": true
+    },
+    "llama-3.1-8b-instruct": {
+      "n_rows": 432,
+      "n_pairs": 12,
+      "est": -0.17628771147194242,
+      "iid_ci": [
+        -0.19465863185296073,
+        -0.15792551548166378
+      ],
+      "clustered_ci": [
+        -0.236160277624984,
+        -0.11472655574609922
+      ],
+      "iid_width": 0.03673311637129695,
+      "clustered_width": 0.12143372187888479,
+      "ratio": 3.3058377255944564,
+      "iid_significant": true,
+      "clustered_significant": true
+    },
+    "mistral-7b-instruct-v0.1": {
+      "n_rows": 432,
+      "n_pairs": 12,
+      "est": -0.032603054762351265,
+      "iid_ci": [
+        -0.046650511075901666,
+        -0.01870553217820869
+      ],
+      "clustered_ci": [
+        -0.10093557896993088,
+        0.032153246246856206
+      ],
+      "iid_width": 0.027944978897692974,
+      "clustered_width": 0.13308882521678708,
+      "ratio": 4.762530889861376,
+      "iid_significant": true,
+      "clustered_significant": false
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_rows": 432,
+      "n_pairs": 12,
+      "est": -0.08533195470384253,
+      "iid_ci": [
+        -0.13484499552389084,
+        -0.036370178669616206
+      ],
+      "clustered_ci": [
+        -0.24993715058933674,
+        0.0791414885377703
+      ],
+      "iid_width": 0.09847481685427464,
+      "clustered_width": 0.32907863912710705,
+      "ratio": 3.341754264078352,
+      "iid_significant": true,
+      "clustered_significant": false
+    }
+  },
+  "pooled_summary": {
+    "min_ratio": 3.02593170512529,
+    "max_ratio": 4.762530889861376,
+    "n_models": 4,
+    "n_significant_iid": 4,
+    "n_significant_clustered": 2,
+    "models_losing_significance": [
+      "mistral-7b-instruct-v0.1",
+      "mistral-7b-instruct-v0.3"
+    ]
+  },
+  "contrasts": {
+    "n": 168,
+    "min": 0.6402045389494464,
+    "median": 1.0076243331235453,
+    "mean": 1.0241757006506536,
+    "max": 1.4458242367220862,
+    "frac_widen_over_10pct": 0.34523809523809523,
+    "frac_widen_over_25pct": 0.07142857142857142,
+    "frac_inside_reported_range": 0.6666666666666666,
+    "templates_used": [
+      "T1_strong",
+      "T2_mid",
+      "T3_marginal"
+    ],
+    "n_templates": 3,
+    "rows_per_cluster": 3
+  },
+  "contrasts_two_template_all_subsets": {
+    "T1_strong+T2_mid": {
+      "n": 168,
+      "min": 0.4818148556994929,
+      "median": 1.0195036930574912,
+      "mean": 1.0077577823154125,
+      "max": 1.3343017849658994,
+      "frac_widen_over_10pct": 0.20833333333333334,
+      "frac_widen_over_25pct": 0.017857142857142856,
+      "frac_inside_reported_range": 0.7619047619047619,
+      "templates_used": [
+        "T1_strong",
+        "T2_mid"
+      ],
+      "n_templates": 2,
+      "rows_per_cluster": 2,
+      "reproduces_reported_range": false,
+      "is_historical_panel": false
+    },
+    "T1_strong+T3_marginal": {
+      "n": 168,
+      "min": 0.6605110263242011,
+      "median": 0.9968061183053547,
+      "mean": 0.9974370563533596,
+      "max": 1.2529020434443017,
+      "frac_widen_over_10pct": 0.2261904761904762,
+      "frac_widen_over_25pct": 0.005952380952380952,
+      "frac_inside_reported_range": 0.7440476190476191,
+      "templates_used": [
+        "T1_strong",
+        "T3_marginal"
+      ],
+      "n_templates": 2,
+      "rows_per_cluster": 2,
+      "reproduces_reported_range": false,
+      "is_historical_panel": true
+    },
+    "T2_mid+T3_marginal": {
+      "n": 168,
+      "min": 0.6844102001461234,
+      "median": 1.0100850071429706,
+      "mean": 1.010712916833738,
+      "max": 1.2998649026844478,
+      "frac_widen_over_10pct": 0.23809523809523808,
+      "frac_widen_over_25pct": 0.017857142857142856,
+      "frac_inside_reported_range": 0.7440476190476191,
+      "templates_used": [
+        "T2_mid",
+        "T3_marginal"
+      ],
+      "n_templates": 2,
+      "rows_per_cluster": 2,
+      "reproduces_reported_range": false,
+      "is_historical_panel": false
+    }
+  },
+  "contrasts_two_template": {
+    "n": 168,
+    "min": 0.6605110263242011,
+    "median": 0.9968061183053547,
+    "mean": 0.9974370563533596,
+    "max": 1.2529020434443017,
+    "frac_widen_over_10pct": 0.2261904761904762,
+    "frac_widen_over_25pct": 0.005952380952380952,
+    "frac_inside_reported_range": 0.7440476190476191,
+    "templates_used": [
+      "T1_strong",
+      "T3_marginal"
+    ],
+    "n_templates": 2,
+    "rows_per_cluster": 2,
+    "reproduces_reported_range": false,
+    "is_historical_panel": true
+  },
+  "contrasts_two_template_seed_stability": {
+    "seeds": [
+      20260730,
+      20260728,
+      20260729,
+      7
+    ],
+    "min_across_seeds": 0.6526398180313718,
+    "max_of_min_across_seeds": 0.6642714698207097,
+    "min_of_max_across_seeds": 1.2510015878206688,
+    "max_across_seeds": 1.2679885696517785,
+    "reported_min_reachable": false,
+    "reported_max_reachable": false,
+    "note": "Endpoints are order statistics over 168 contrasts, so this is where Monte Carlo error would show first. If neither reported endpoint is reachable under any seed, the prose range differs from the data by more than the bootstrap's own noise."
+  },
+  "contrasts_two_template_prior_claim": {
+    "min": 0.83,
+    "max": 1.14,
+    "n": 168,
+    "source": "hand-typed in paper-a/src/build_paper_v3.py 6.1 and in effectsize.boot_ci's docstring; never held in an artifact",
+    "reproduced_by_any_subset": false,
+    "reproduced_by_historical_panel": false,
+    "note": "Superseded by contrasts_two_template, which recomputes the same quantity on the same contrast family. Retained so the paper can report what the earlier draft claimed beside what the data gives."
+  }
+}

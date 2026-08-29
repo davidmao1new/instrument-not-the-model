@@ -1,0 +1,1266 @@
+{
+  "llama-2-7b-chat": {
+    "BA": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": 0.18051754558900474,
+      "ci": [
+        0.11500343028252441,
+        0.2526672566026859
+      ],
+      "p": 0.00016666666666666666,
+      "ps": 0.7893518518518519,
+      "ps_ci": [
+        0.6990740740740741,
+        0.8726851851851852
+      ],
+      "sigma_variant_raw": 0.06708458347552172,
+      "ps_sd_across_wordings": 0.09655858154913986,
+      "ratio_sd_to_effect": 0.33370645783382735,
+      "wording_range": [
+        0.023672768565209737,
+        0.2691078482193519
+      ],
+      "label": "Business Analyst",
+      "gender_typing": "balanced",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.2423363693067129,
+        0.6439662669159102
+      ],
+      "ratio_sd_to_effect_ci_unbounded": false,
+      "ratio_denominator": 0.28935185185185186,
+      "ratio_denominator_ci": [
+        0.1967592592592593,
+        0.37037037037037035
+      ],
+      "ratio_denominator_indistinguishable_from_zero": false,
+      "ps_ci_pair_cluster": [
+        0.6967592592592593,
+        0.8703703703703703
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.0820574292140245,
+        0.14383044196003245
+      ],
+      "boot_frac_effect_sign_flip": 0.0,
+      "boot_frac_ratio_over_1000pct": 0.0,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.9930555555555556,
+          "n_yes": 286,
+          "n_decisions": 288,
+          "ci": [
+            0.9826388888888888,
+            1.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.9976851851851852,
+          "n_yes": 862,
+          "n_decisions": 864,
+          "ci": [
+            0.9942129629629629,
+            1.0
+          ]
+        }
+      }
+    },
+    "SWE": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": 0.009034562790397568,
+      "ci": [
+        -0.09258712592282796,
+        0.10129472466098036
+      ],
+      "p": 0.8501666666666666,
+      "ps": 0.5601851851851852,
+      "ps_ci": [
+        0.4120370370370371,
+        0.7037037037037037
+      ],
+      "sigma_variant_raw": 0.083159712694675,
+      "ps_sd_across_wordings": 0.1307372115394365,
+      "ratio_sd_to_effect": 2.1722490532706353,
+      "wording_range": [
+        -0.1246378591627342,
+        0.15109264883737827
+      ],
+      "label": "Software Engineer",
+      "gender_typing": "male-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.5347153060848452,
+        48.06018484437224
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.06018518518518523,
+      "ratio_denominator_ci": [
+        0.00462962962962965,
+        0.20376157407407325
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.41203703703703703,
+        0.7037037037037037
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.0957378263172588,
+        0.20407223141445843
+      ],
+      "boot_frac_effect_sign_flip": 0.2175,
+      "boot_frac_ratio_over_1000pct": 0.1175,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 1.0,
+          "n_yes": 864,
+          "n_decisions": 864,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "RN": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": 0.046359442211670966,
+      "ci": [
+        -0.017246779106240825,
+        0.11453019389755513
+      ],
+      "p": 0.1635,
+      "ps": 0.5694444444444444,
+      "ps_ci": [
+        0.4305555555555556,
+        0.7129629629629629
+      ],
+      "sigma_variant_raw": 0.06149083868812295,
+      "ps_sd_across_wordings": 0.12618684594594937,
+      "ratio_sd_to_effect": 1.8170905816216716,
+      "wording_range": [
+        -0.03250531539371183,
+        0.150787278963599
+      ],
+      "label": "Registered Nurse",
+      "gender_typing": "female-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.49071624016275334,
+        41.558062712046464
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.06944444444444442,
+      "ratio_denominator_ci": [
+        0.00462962962962965,
+        0.20833333333333337
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.4351851851851852,
+        0.7083333333333334
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.09174698042719671,
+        0.20701356568160867
+      ],
+      "boot_frac_effect_sign_flip": 0.16733333333333333,
+      "boot_frac_ratio_over_1000pct": 0.10933333333333334,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 1.0,
+          "n_yes": 864,
+          "n_decisions": 864,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "ratio_spread_across_occupations": {
+      "est": 1.838542595436808,
+      "ci": [
+        0.38390000002995234,
+        71.96401295091464
+      ],
+      "ci_unbounded": true,
+      "argmax": "SWE",
+      "argmin": "BA",
+      "argmax_denominator_indistinguishable_from_zero": true,
+      "n_cells_with_undefined_denominator": 2,
+      "n_cells": 3,
+      "note": "max minus min of ratio_sd_to_effect across the three arms; this is the quantity the paper calls the spread. The flag says whether the arm supplying the maximum has an effect separable from zero. If it does not, the spread is a statement about a ratio that is not estimable."
+    },
+    "wording_sd_spread_across_occupations": {
+      "est": 0.034178629990296625,
+      "ci": [
+        0.01013785881337866,
+        0.10345330719222283
+      ],
+      "argmax": "SWE",
+      "argmin": "BA",
+      "note": "spread across occupations of SD_wording(Ps) alone -- the numerator of the ratio, with no division. Reportable in every cell because it has no denominator to be near zero."
+    },
+    "acceptance_by_strength_across_occupations": {
+      "by_strength": {
+        "T1_strong": {
+          "max_rate": 1.0,
+          "max_occ": "BA",
+          "min_rate": 1.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "T2_mid": {
+          "max_rate": 1.0,
+          "max_occ": "BA",
+          "min_rate": 1.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "T3_marginal": {
+          "max_rate": 1.0,
+          "max_occ": "SWE",
+          "min_rate": 0.9930555555555556,
+          "min_occ": "BA",
+          "gap_pp": 0.694444444444442
+        },
+        "all_strengths": {
+          "max_rate": 1.0,
+          "max_occ": "SWE",
+          "min_rate": 0.9976851851851852,
+          "min_occ": "BA",
+          "gap_pp": 0.23148148148147696
+        }
+      },
+      "worst_strength": "T3_marginal",
+      "worst_gap_pp": 0.694444444444442,
+      "note": "acceptance rate = fraction of the model's yes/no decisions that were yes, over both r\u00e9sum\u00e9s of every pair. The three arms are matched on surface structure by construction; this measures whether they are matched on difficulty, and the gap at a fixed strength level is the answer."
+    }
+  },
+  "llama-3.1-8b-instruct": {
+    "BA": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.17628771147194242,
+      "ci": [
+        -0.2371941237759355,
+        -0.11600740373251213
+      ],
+      "p": 0.00016666666666666666,
+      "ps": 0.1875,
+      "ps_ci": [
+        0.10185185185185185,
+        0.2870370370370371
+      ],
+      "sigma_variant_raw": 0.04278638849276404,
+      "ps_sd_across_wordings": 0.07778228702657292,
+      "ratio_sd_to_effect": 0.24890331848503333,
+      "wording_range": [
+        -0.24716977110546814,
+        -0.061593773978644614
+      ],
+      "label": "Business Analyst",
+      "gender_typing": "balanced",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.1796507235369017,
+        0.49460924302771864
+      ],
+      "ratio_sd_to_effect_ci_unbounded": false,
+      "ratio_denominator": 0.3125,
+      "ratio_denominator_ci": [
+        0.21296296296296297,
+        0.3958333333333333
+      ],
+      "ratio_denominator_indistinguishable_from_zero": false,
+      "ps_ci_pair_cluster": [
+        0.10416666666666667,
+        0.28703703703703703
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.06536860576971826,
+        0.11874550414274847
+      ],
+      "boot_frac_effect_sign_flip": 0.0,
+      "boot_frac_ratio_over_1000pct": 0.0,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.3333333333333333,
+          "n_yes": 288,
+          "n_decisions": 864,
+          "ci": [
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        }
+      }
+    },
+    "SWE": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.04938680194473481,
+      "ci": [
+        -0.124800227828052,
+        0.02667750064775247
+      ],
+      "p": 0.20483333333333334,
+      "ps": 0.4050925925925926,
+      "ps_ci": [
+        0.2685185185185185,
+        0.5393518518518519
+      ],
+      "sigma_variant_raw": 0.022085305025474185,
+      "ps_sd_across_wordings": 0.05736734237846065,
+      "ratio_sd_to_effect": 0.604455900182805,
+      "wording_range": [
+        -0.0914826718352391,
+        -0.0180616359494384
+      ],
+      "label": "Software Engineer",
+      "gender_typing": "male-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.27125082908403225,
+        16.748920927692154
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.09490740740740738,
+      "ratio_denominator_ci": [
+        0.00462962962962965,
+        0.22459490740740656
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.2754050925925926,
+        0.5347222222222222
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.05313541770833538,
+        0.1062433290527011
+      ],
+      "boot_frac_effect_sign_flip": 0.084,
+      "boot_frac_ratio_over_1000pct": 0.039,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 0.9097222222222222,
+          "n_yes": 262,
+          "n_decisions": 288,
+          "ci": [
+            0.8958333333333334,
+            0.9166666666666666
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.30324074074074076,
+          "n_yes": 262,
+          "n_decisions": 864,
+          "ci": [
+            0.2986111111111111,
+            0.3055555555555556
+          ]
+        }
+      }
+    },
+    "RN": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.15996642175078327,
+      "ci": [
+        -0.25398528891859395,
+        -0.06272520674058983
+      ],
+      "p": 0.0005,
+      "ps": 0.2800925925925926,
+      "ps_ci": [
+        0.12725694444444438,
+        0.43981481481481477
+      ],
+      "sigma_variant_raw": 0.06949846604847601,
+      "ps_sd_across_wordings": 0.10082316456317335,
+      "ratio_sd_to_effect": 0.45848007464516727,
+      "wording_range": [
+        -0.34191611741500916,
+        -0.07488476582787193
+      ],
+      "label": "Registered Nurse",
+      "gender_typing": "female-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.19260790766315525,
+        2.352767541754705
+      ],
+      "ratio_sd_to_effect_ci_unbounded": false,
+      "ratio_denominator": 0.21990740740740738,
+      "ratio_denominator_ci": [
+        0.06481481481481483,
+        0.37037037037037035
+      ],
+      "ratio_denominator_indistinguishable_from_zero": false,
+      "ps_ci_pair_cluster": [
+        0.12962962962962962,
+        0.4351851851851852
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.06851226197661454,
+        0.15571480544890237
+      ],
+      "boot_frac_effect_sign_flip": 0.0023333333333333335,
+      "boot_frac_ratio_over_1000pct": 0.0028333333333333335,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.3333333333333333,
+          "n_yes": 288,
+          "n_decisions": 864,
+          "ci": [
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        }
+      }
+    },
+    "ratio_spread_across_occupations": {
+      "est": 0.3555525816977717,
+      "ci": [
+        0.06778175853707435,
+        17.194125744131863
+      ],
+      "ci_unbounded": true,
+      "argmax": "SWE",
+      "argmin": "BA",
+      "argmax_denominator_indistinguishable_from_zero": true,
+      "n_cells_with_undefined_denominator": 1,
+      "n_cells": 3,
+      "note": "max minus min of ratio_sd_to_effect across the three arms; this is the quantity the paper calls the spread. The flag says whether the arm supplying the maximum has an effect separable from zero. If it does not, the spread is a statement about a ratio that is not estimable."
+    },
+    "wording_sd_spread_across_occupations": {
+      "est": 0.043455822184712695,
+      "ci": [
+        0.007254094104613375,
+        0.07537780421304684
+      ],
+      "argmax": "RN",
+      "argmin": "SWE",
+      "note": "spread across occupations of SD_wording(Ps) alone -- the numerator of the ratio, with no division. Reportable in every cell because it has no denominator to be near zero."
+    },
+    "acceptance_by_strength_across_occupations": {
+      "by_strength": {
+        "T1_strong": {
+          "max_rate": 1.0,
+          "max_occ": "BA",
+          "min_rate": 0.9097222222222222,
+          "min_occ": "SWE",
+          "gap_pp": 9.027777777777779
+        },
+        "T2_mid": {
+          "max_rate": 0.0,
+          "max_occ": "BA",
+          "min_rate": 0.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "T3_marginal": {
+          "max_rate": 0.0,
+          "max_occ": "BA",
+          "min_rate": 0.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "all_strengths": {
+          "max_rate": 0.3333333333333333,
+          "max_occ": "BA",
+          "min_rate": 0.30324074074074076,
+          "min_occ": "SWE",
+          "gap_pp": 3.009259259259256
+        }
+      },
+      "worst_strength": "T1_strong",
+      "worst_gap_pp": 9.027777777777779,
+      "note": "acceptance rate = fraction of the model's yes/no decisions that were yes, over both r\u00e9sum\u00e9s of every pair. The three arms are matched on surface structure by construction; this measures whether they are matched on difficulty, and the gap at a fixed strength level is the answer."
+    }
+  },
+  "mistral-7b-instruct-v0.1": {
+    "BA": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.032603054762351265,
+      "ci": [
+        -0.09931535892470571,
+        0.029515578744692673
+      ],
+      "p": 0.344,
+      "ps": 0.44212962962962965,
+      "ps_ci": [
+        0.2638888888888889,
+        0.625
+      ],
+      "sigma_variant_raw": 0.019616012398361426,
+      "ps_sd_across_wordings": 0.06851226197661456,
+      "ratio_sd_to_effect": 1.1838918869559,
+      "wording_range": [
+        -0.06169436726052351,
+        0.0022460293190512373
+      ],
+      "label": "Business Analyst",
+      "gender_typing": "balanced",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.27246383151065107,
+        27.771797336015553
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.05787037037037035,
+      "ratio_denominator_ci": [
+        0.002314814814814825,
+        0.23842592592592593
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.2638888888888889,
+        0.6203703703703703
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.04756264697433677,
+        0.1347667972276619
+      ],
+      "boot_frac_effect_sign_flip": 0.271,
+      "boot_frac_ratio_over_1000pct": 0.06166666666666667,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 0.7708333333333334,
+          "n_yes": 222,
+          "n_decisions": 288,
+          "ci": [
+            0.6979166666666666,
+            0.8333333333333334
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.2569444444444444,
+          "n_yes": 222,
+          "n_decisions": 864,
+          "ci": [
+            0.2326388888888889,
+            0.2777777777777778
+          ]
+        }
+      }
+    },
+    "SWE": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.033427243939037045,
+      "ci": [
+        -0.10251129330557765,
+        0.03149720866546455
+      ],
+      "p": 0.336,
+      "ps": 0.4444444444444444,
+      "ps_ci": [
+        0.25231481481481477,
+        0.6273726851851843
+      ],
+      "sigma_variant_raw": 0.0174996630242224,
+      "ps_sd_across_wordings": 0.0488360596106407,
+      "ratio_sd_to_effect": 0.8790490729915322,
+      "wording_range": [
+        -0.05757370295363362,
+        -0.005457191355975604
+      ],
+      "label": "Software Engineer",
+      "gender_typing": "male-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.20087184137005615,
+        17.135264863583547
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.05555555555555558,
+      "ratio_denominator_ci": [
+        0.00462962962962965,
+        0.24305555555555558
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.2569444444444444,
+        0.6342592592592593
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.03642700473754184,
+        0.1130699835891933
+      ],
+      "boot_frac_effect_sign_flip": 0.2995,
+      "boot_frac_ratio_over_1000pct": 0.04583333333333333,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 0.3923611111111111,
+          "n_yes": 113,
+          "n_decisions": 288,
+          "ci": [
+            0.3368055555555556,
+            0.4513888888888889
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.027777777777777776,
+          "n_yes": 8,
+          "n_decisions": 288,
+          "ci": [
+            0.013888888888888888,
+            0.041666666666666664
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.1400462962962963,
+          "n_yes": 121,
+          "n_decisions": 864,
+          "ci": [
+            0.11921296296296297,
+            0.16319444444444445
+          ]
+        }
+      }
+    },
+    "RN": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.06808111511534663,
+      "ci": [
+        -0.13348932944151792,
+        -0.0038515598668317635
+      ],
+      "p": 0.0405,
+      "ps": 0.32175925925925924,
+      "ps_ci": [
+        0.1388888888888889,
+        0.5231481481481481
+      ],
+      "sigma_variant_raw": 0.021220295545138525,
+      "ps_sd_across_wordings": 0.053573655379226336,
+      "ratio_sd_to_effect": 0.3005690795302049,
+      "wording_range": [
+        -0.11273588175302739,
+        -0.04069288671631726
+      ],
+      "label": "Registered Nurse",
+      "gender_typing": "female-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.11577570219607908,
+        5.477606114848009
+      ],
+      "ratio_sd_to_effect_ci_unbounded": false,
+      "ratio_denominator": 0.17824074074074076,
+      "ratio_denominator_ci": [
+        0.01620370370370372,
+        0.3680555555555556
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.13194444444444445,
+        0.5231481481481481
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.03243745600673013,
+        0.11443050402608308
+      ],
+      "boot_frac_effect_sign_flip": 0.04533333333333334,
+      "boot_frac_ratio_over_1000pct": 0.013833333333333333,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 0.4201388888888889,
+          "n_yes": 121,
+          "n_decisions": 288,
+          "ci": [
+            0.3263888888888889,
+            0.5243055555555556
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.013888888888888888,
+          "n_yes": 4,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.03125
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.14467592592592593,
+          "n_yes": 125,
+          "n_decisions": 864,
+          "ci": [
+            0.1099537037037037,
+            0.18287037037037038
+          ]
+        }
+      }
+    },
+    "ratio_spread_across_occupations": {
+      "est": 0.8833228074256951,
+      "ci": [
+        0.10898171268102833,
+        42.33044283838638
+      ],
+      "ci_unbounded": true,
+      "argmax": "BA",
+      "argmin": "RN",
+      "argmax_denominator_indistinguishable_from_zero": true,
+      "n_cells_with_undefined_denominator": 3,
+      "n_cells": 3,
+      "note": "max minus min of ratio_sd_to_effect across the three arms; this is the quantity the paper calls the spread. The flag says whether the arm supplying the maximum has an effect separable from zero. If it does not, the spread is a statement about a ratio that is not estimable."
+    },
+    "wording_sd_spread_across_occupations": {
+      "est": 0.01967620236597386,
+      "ci": [
+        0.006280804983370578,
+        0.06301717148379314
+      ],
+      "argmax": "BA",
+      "argmin": "SWE",
+      "note": "spread across occupations of SD_wording(Ps) alone -- the numerator of the ratio, with no division. Reportable in every cell because it has no denominator to be near zero."
+    },
+    "acceptance_by_strength_across_occupations": {
+      "by_strength": {
+        "T1_strong": {
+          "max_rate": 0.7708333333333334,
+          "max_occ": "BA",
+          "min_rate": 0.3923611111111111,
+          "min_occ": "SWE",
+          "gap_pp": 37.84722222222223
+        },
+        "T2_mid": {
+          "max_rate": 0.027777777777777776,
+          "max_occ": "SWE",
+          "min_rate": 0.0,
+          "min_occ": "BA",
+          "gap_pp": 2.7777777777777777
+        },
+        "T3_marginal": {
+          "max_rate": 0.0,
+          "max_occ": "BA",
+          "min_rate": 0.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "all_strengths": {
+          "max_rate": 0.2569444444444444,
+          "max_occ": "BA",
+          "min_rate": 0.1400462962962963,
+          "min_occ": "SWE",
+          "gap_pp": 11.689814814814811
+        }
+      },
+      "worst_strength": "T1_strong",
+      "worst_gap_pp": 37.84722222222223,
+      "note": "acceptance rate = fraction of the model's yes/no decisions that were yes, over both r\u00e9sum\u00e9s of every pair. The three arms are matched on surface structure by construction; this measures whether they are matched on difficulty, and the gap at a fixed strength level is the answer."
+    }
+  },
+  "mistral-7b-instruct-v0.3": {
+    "BA": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.08533195470384253,
+      "ci": [
+        -0.24363968010544962,
+        0.0823269747398601
+      ],
+      "p": 0.30966666666666665,
+      "ps": 0.4305555555555556,
+      "ps_ci": [
+        0.33333333333333337,
+        0.5300925925925926
+      ],
+      "sigma_variant_raw": 0.06614572022479077,
+      "ps_sd_across_wordings": 0.03838051553931985,
+      "ratio_sd_to_effect": 0.552679423766206,
+      "wording_range": [
+        -0.17775824183846362,
+        0.02130718893348223
+      ],
+      "label": "Business Analyst",
+      "gender_typing": "balanced",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.2664693550105965,
+        11.1028251932887
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.06944444444444442,
+      "ratio_denominator_ci": [
+        0.00462962962962965,
+        0.16435185185185186
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.33564814814814814,
+        0.5254629629629629
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.025009351038292226,
+        0.07313429524027566
+      ],
+      "boot_frac_effect_sign_flip": 0.0825,
+      "boot_frac_ratio_over_1000pct": 0.027333333333333334,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.006944444444444444,
+          "n_yes": 2,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.017361111111111112
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.33564814814814814,
+          "n_yes": 290,
+          "n_decisions": 864,
+          "ci": [
+            0.3333333333333333,
+            0.33912037037037035
+          ]
+        }
+      }
+    },
+    "SWE": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": -0.1359012049608993,
+      "ci": [
+        -0.31903919493827326,
+        0.052025702818000875
+      ],
+      "p": 0.15116666666666667,
+      "ps": 0.45833333333333337,
+      "ps_ci": [
+        0.36342592592592593,
+        0.5763888888888888
+      ],
+      "sigma_variant_raw": 0.0866345161194328,
+      "ps_sd_across_wordings": 0.03838051553931986,
+      "ratio_sd_to_effect": 0.9211323729436773,
+      "wording_range": [
+        -0.23077526445856922,
+        0.033109425005186176
+      ],
+      "label": "Software Engineer",
+      "gender_typing": "male-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.20245824538691734,
+        18.060504372298993
+      ],
+      "ratio_sd_to_effect_ci_unbounded": true,
+      "ratio_denominator": 0.041666666666666685,
+      "ratio_denominator_ci": [
+        0.002314814814814825,
+        0.13657407407407407
+      ],
+      "ratio_denominator_indistinguishable_from_zero": true,
+      "ps_ci_pair_cluster": [
+        0.36342592592592593,
+        0.5740740740740741
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.022026707252743315,
+        0.07985882371193521
+      ],
+      "boot_frac_effect_sign_flip": 0.213,
+      "boot_frac_ratio_over_1000pct": 0.049,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.9444444444444444,
+          "n_yes": 272,
+          "n_decisions": 288,
+          "ci": [
+            0.9236111111111112,
+            0.9652777777777778
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.6481481481481481,
+          "n_yes": 560,
+          "n_decisions": 864,
+          "ci": [
+            0.6412037037037037,
+            0.6550925925925926
+          ]
+        }
+      }
+    },
+    "RN": {
+      "n": 432,
+      "n_variants": 12,
+      "logodds": 0.12364660972350097,
+      "ci": [
+        -0.04911827489892663,
+        0.28356053967104267
+      ],
+      "p": 0.14066666666666666,
+      "ps": 0.6111111111111112,
+      "ps_ci": [
+        0.5023148148148148,
+        0.7268518518518519
+      ],
+      "sigma_variant_raw": 0.09376365054176591,
+      "ps_sd_across_wordings": 0.056804150905060545,
+      "ratio_sd_to_effect": 0.5112373581455447,
+      "wording_range": [
+        -0.0702528417545531,
+        0.28641196062254426
+      ],
+      "label": "Registered Nurse",
+      "gender_typing": "female-typed",
+      "n_pair_clusters": 12,
+      "n_wordings": 12,
+      "ratio_sd_to_effect_ci": [
+        0.3005287458028426,
+        5.440240618483948
+      ],
+      "ratio_sd_to_effect_ci_unbounded": false,
+      "ratio_denominator": 0.11111111111111116,
+      "ratio_denominator_ci": [
+        0.01157407407407407,
+        0.2269097222222214
+      ],
+      "ratio_denominator_indistinguishable_from_zero": false,
+      "ps_ci_pair_cluster": [
+        0.5023148148148148,
+        0.7269097222222214
+      ],
+      "ps_sd_across_wordings_ci": [
+        0.04483431653162236,
+        0.09401500964453016
+      ],
+      "boot_frac_effect_sign_flip": 0.022,
+      "boot_frac_ratio_over_1000pct": 0.012333333333333333,
+      "acceptance_by_strength": {
+        "T1_strong": {
+          "rate": 1.0,
+          "n_yes": 288,
+          "n_decisions": 288,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "T2_mid": {
+          "rate": 0.3055555555555556,
+          "n_yes": 88,
+          "n_decisions": 288,
+          "ci": [
+            0.1527777777777778,
+            0.4584201388888876
+          ]
+        },
+        "T3_marginal": {
+          "rate": 0.0,
+          "n_yes": 0,
+          "n_decisions": 288,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "all_strengths": {
+          "rate": 0.4351851851851852,
+          "n_yes": 376,
+          "n_decisions": 864,
+          "ci": [
+            0.38425925925925924,
+            0.48614004629629587
+          ]
+        }
+      }
+    },
+    "ratio_spread_across_occupations": {
+      "est": 0.4098950147981326,
+      "ci": [
+        0.1573444463779564,
+        27.338446420247266
+      ],
+      "ci_unbounded": true,
+      "argmax": "SWE",
+      "argmin": "RN",
+      "argmax_denominator_indistinguishable_from_zero": true,
+      "n_cells_with_undefined_denominator": 2,
+      "n_cells": 3,
+      "note": "max minus min of ratio_sd_to_effect across the three arms; this is the quantity the paper calls the spread. The flag says whether the arm supplying the maximum has an effect separable from zero. If it does not, the spread is a statement about a ratio that is not estimable."
+    },
+    "wording_sd_spread_across_occupations": {
+      "est": 0.018423635365740695,
+      "ci": [
+        0.0070254776657398986,
+        0.055686843521664545
+      ],
+      "argmax": "RN",
+      "argmin": "BA",
+      "note": "spread across occupations of SD_wording(Ps) alone -- the numerator of the ratio, with no division. Reportable in every cell because it has no denominator to be near zero."
+    },
+    "acceptance_by_strength_across_occupations": {
+      "by_strength": {
+        "T1_strong": {
+          "max_rate": 1.0,
+          "max_occ": "BA",
+          "min_rate": 1.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "T2_mid": {
+          "max_rate": 0.9444444444444444,
+          "max_occ": "SWE",
+          "min_rate": 0.006944444444444444,
+          "min_occ": "BA",
+          "gap_pp": 93.75
+        },
+        "T3_marginal": {
+          "max_rate": 0.0,
+          "max_occ": "BA",
+          "min_rate": 0.0,
+          "min_occ": "BA",
+          "gap_pp": 0.0
+        },
+        "all_strengths": {
+          "max_rate": 0.6481481481481481,
+          "max_occ": "SWE",
+          "min_rate": 0.33564814814814814,
+          "min_occ": "BA",
+          "gap_pp": 31.25
+        }
+      },
+      "worst_strength": "T2_mid",
+      "worst_gap_pp": 93.75,
+      "note": "acceptance rate = fraction of the model's yes/no decisions that were yes, over both r\u00e9sum\u00e9s of every pair. The three arms are matched on surface structure by construction; this measures whether they are matched on difficulty, and the gap at a fixed strength level is the answer."
+    }
+  }
+}

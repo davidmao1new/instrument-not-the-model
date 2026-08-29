@@ -1,0 +1,354 @@
+{
+  "_what": "Permutation test of the null that the three postings share one between-wording dispersion.",
+  "_why": "The spread statistic \u00a74.5 quoted is max minus min of three non-negative SDs. Its percentile bootstrap interval cannot contain zero by construction, so 'the interval excludes zero' was arithmetic rather than evidence.",
+  "_test": "Deviations from each posting's own mean are pooled and permuted across postings; the p-value is the fraction of permutations whose statistic is at least the observed one.",
+  "n_permutations": 20000,
+  "seed": 20260801,
+  "models": {
+    "llama-2-7b-chat": {
+      "postings": [
+        "BA",
+        "RN",
+        "SWE"
+      ],
+      "n_wordings": 12,
+      "n_pairs_per_cell": [
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ]
+      ],
+      "sd_by_posting": {
+        "BA": 0.09655858154913985,
+        "RN": 0.12618684594594937,
+        "SWE": 0.13073721153943652
+      },
+      "spread": {
+        "est": 0.034178629990296666,
+        "p": 0.48107594620268984,
+        "null_median": 0.03323899454809447,
+        "null_p95": 0.06666369326555001
+      },
+      "variance_ratio": {
+        "est": 1.8332288401253927,
+        "p": 0.47732613369331534,
+        "null_median": 1.797505439097482,
+        "null_p95": 3.43050738646613
+      },
+      "significant_at_05": false,
+      "effect_gap_across_postings": {
+        "est": 0.22916666666666674,
+        "ci": [
+          0.1620370370370371,
+          0.3472222222222222
+        ],
+        "p_permutation": 0.004199160167966407,
+        "effect_by_posting": {
+          "BA": 0.789351851851852,
+          "RN": 0.5694444444444444,
+          "SWE": 0.5601851851851852
+        },
+        "note": "probability-of-superiority scale; max minus min over the three postings; p from permuting posting labels within name pair, so the pairing is preserved under the null"
+      }
+    },
+    "llama-3.1-8b-instruct": {
+      "postings": [
+        "BA",
+        "RN",
+        "SWE"
+      ],
+      "n_wordings": 12,
+      "n_pairs_per_cell": [
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ]
+      ],
+      "sd_by_posting": {
+        "BA": 0.07778228702657293,
+        "RN": 0.10082316456317335,
+        "SWE": 0.057367342378460646
+      },
+      "spread": {
+        "est": 0.0434558221847127,
+        "p": 0.2650367481625919,
+        "null_median": 0.031925719397344024,
+        "null_p95": 0.06387572295327242
+      },
+      "variance_ratio": {
+        "est": 3.088809946714032,
+        "p": 0.2856357182140893,
+        "null_median": 2.3126546738600635,
+        "null_p95": 6.501638916684317
+      },
+      "significant_at_05": false,
+      "effect_gap_across_postings": {
+        "est": 0.2175925925925926,
+        "ci": [
+          0.1226851851851852,
+          0.3101851851851851
+        ],
+        "p_permutation": 0.0007998400319936012,
+        "effect_by_posting": {
+          "BA": 0.18749999999999997,
+          "RN": 0.28009259259259256,
+          "SWE": 0.40509259259259256
+        },
+        "note": "probability-of-superiority scale; max minus min over the three postings; p from permuting posting labels within name pair, so the pairing is preserved under the null"
+      }
+    },
+    "mistral-7b-instruct-v0.1": {
+      "postings": [
+        "BA",
+        "RN",
+        "SWE"
+      ],
+      "n_wordings": 12,
+      "n_pairs_per_cell": [
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ]
+      ],
+      "sd_by_posting": {
+        "BA": 0.06851226197661456,
+        "RN": 0.053573655379226336,
+        "SWE": 0.0488360596106407
+      },
+      "spread": {
+        "est": 0.01967620236597386,
+        "p": 0.48937553122343885,
+        "null_median": 0.019397365562263482,
+        "null_p95": 0.03619734618056489
+      },
+      "variance_ratio": {
+        "est": 1.9681372549019613,
+        "p": 0.5333733313334333,
+        "null_median": 2.030887564165535,
+        "null_p95": 4.059553010003544
+      },
+      "significant_at_05": false,
+      "effect_gap_across_postings": {
+        "est": 0.12268518518518517,
+        "ci": [
+          0.04623842592592582,
+          0.2615740740740741
+        ],
+        "p_permutation": 0.07238552289542091,
+        "effect_by_posting": {
+          "BA": 0.4421296296296296,
+          "RN": 0.3217592592592593,
+          "SWE": 0.4444444444444445
+        },
+        "note": "probability-of-superiority scale; max minus min over the three postings; p from permuting posting labels within name pair, so the pairing is preserved under the null"
+      }
+    },
+    "mistral-7b-instruct-v0.3": {
+      "postings": [
+        "BA",
+        "RN",
+        "SWE"
+      ],
+      "n_wordings": 12,
+      "n_pairs_per_cell": [
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ]
+      ],
+      "sd_by_posting": {
+        "BA": 0.03838051553931985,
+        "RN": 0.05680415090506055,
+        "SWE": 0.03838051553931986
+      },
+      "spread": {
+        "est": 0.018423635365740702,
+        "p": 0.6282685865706714,
+        "null_median": 0.02082318519613496,
+        "null_p95": 0.03305995555055185
+      },
+      "variance_ratio": {
+        "est": 2.19047619047619,
+        "p": 0.6925653717314134,
+        "null_median": 2.603830350542408,
+        "null_p95": 5.0381975264808645
+      },
+      "significant_at_05": false,
+      "effect_gap_across_postings": {
+        "est": 0.18055555555555558,
+        "ci": [
+          0.12962962962962954,
+          0.24999999999999994
+        ],
+        "p_permutation": 0.0007998400319936012,
+        "effect_by_posting": {
+          "BA": 0.4305555555555556,
+          "RN": 0.6111111111111112,
+          "SWE": 0.45833333333333326
+        },
+        "note": "probability-of-superiority scale; max minus min over the three postings; p from permuting posting labels within name pair, so the pairing is preserved under the null"
+      }
+    }
+  },
+  "n_effect_gap_significant": 3,
+  "summary": {
+    "n_models": 4,
+    "n_significant_spread": 0,
+    "n_significant_variance_ratio": 0,
+    "min_p": 0.2650367481625919,
+    "n_effect_gap_significant": 3,
+    "verdict": "the observed spread is within what one shared dispersion produces; \u00a74.5 cannot claim the postings differ in dispersion on this evidence"
+  }
+}

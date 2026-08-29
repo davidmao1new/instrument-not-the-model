@@ -1,0 +1,961 @@
+{
+  "_what": "Every non-quarantined JSONL row under paper-a/data, classified by its keys as a matched-pair measurement or a single-prompt measurement. Produced by paper-a/src/analyze_corpus_size.py.",
+  "_classification_rule": "matched pair iff the row records an outcome for BOTH arms: either white_margin and black_margin, or -- where the API returns no distribution -- white_raw and black_raw. This is the same predicate build_paper_v3.corpus_size() uses to charge the row two model calls. All other rows are single-prompt and cost one call. The raw fallback exists for the 220 Gemini rows in `frontier`, which are matched pairs carrying a thresholded verdict per arm; keying on the margin alone scored them as single prompts and undercounted both the paired corpus and the call total.",
+  "_quarantine_rule": "rows under _contaminated, _superseded, _binary_only_superseded, _d9_superseded are excluded from every headline total, and counted under quarantined_excluded.",
+  "_d9_recheck_rule": "mechanism_panel/mech_d9recheck_*.jsonl IS included in the headline totals, as it always was in corpus_size(). analyze_mech_panel.py excludes it from the panel CONTRASTS because adjudicate_d9.py returned VINDICATED, making the recheck an independent cross-session reproduction rather than a replacement for the stored cells. Those rows are real measurements, so they count toward corpus size; the totals net of them are published under the *_excluding_d9_recheck keys for any sentence that means distinct design cells.",
+  "_superseded_note": "n_matched_pair_records_superseded is the number the abstract previously reported as 'matched-pair measurements across all studies'. It is the count of ALL non-quarantined rows, which includes the 1,461 single-prompt rows in panel_gate, prestige and smoke. Retained under its own key because nothing is deleted and the paper may want to report the corpus both ways; the sentence about matched pairs should use n_matched_pair_records.",
+  "_n_studies_note": "There are 10 data directories but the paper says nine studies: `smoke` holds the pilot and instrument smoke tests, not a study. n_studies excludes it; n_data_directories does not. Wire prose that says 'nine studies' to n_studies.",
+  "n_matched_pair_records": 31468,
+  "n_single_prompt_records": 1461,
+  "n_model_calls": 64397,
+  "n_all_records": 32929,
+  "n_matched_pair_records_superseded": 32929,
+  "n_matched_pair_records_excluding_d9_recheck": 30316,
+  "n_model_calls_excluding_d9_recheck": 62093,
+  "n_d9_recheck_records": 1152,
+  "n_d9_recheck_model_calls": 2304,
+  "n_data_directories": 12,
+  "n_studies": 11,
+  "n_studies_matched_pair": 9,
+  "n_studies_single_prompt": 3,
+  "n_files": 76,
+  "n_rows_with_error": 24,
+  "n_pair_rows_with_a_null_margin": 633,
+  "n_pair_rows_with_no_margin_field": 220,
+  "_null_vs_absent_note": "n_pair_rows_with_a_null_margin counts pairs whose margin was REQUESTED and CENSORED -- the key is there and null because the losing option fell outside the log-probability window. n_pair_rows_with_no_margin_field counts pairs from an endpoint that returns no distribution to anyone, so the key was never written. Only the first is a property of this instrument; combining them would report a censoring rate the instrument does not have.",
+  "by_study": {
+    "delta_stability": {
+      "n_records": 1728,
+      "n_matched_pair_records": 1728,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3456,
+      "n_files": 4,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "frontier": {
+      "n_records": 1948,
+      "n_matched_pair_records": 1948,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3896,
+      "n_files": 5,
+      "n_pair_rows_with_a_null_margin": 581,
+      "n_pair_rows_with_no_margin_field": 220,
+      "kind": "matched_pair"
+    },
+    "mechanism": {
+      "n_records": 576,
+      "n_matched_pair_records": 576,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1152,
+      "n_files": 2,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "mechanism_panel": {
+      "n_records": 10656,
+      "n_matched_pair_records": 10656,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 21312,
+      "n_files": 24,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "names": {
+      "n_records": 6912,
+      "n_matched_pair_records": 6912,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 13824,
+      "n_files": 4,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "occupation": {
+      "n_records": 3456,
+      "n_matched_pair_records": 3456,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 6912,
+      "n_files": 4,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "panel_gate": {
+      "n_records": 1080,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 1080,
+      "n_model_calls": 1080,
+      "n_files": 6,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "single_prompt"
+    },
+    "prestige": {
+      "n_records": 192,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 192,
+      "n_model_calls": 192,
+      "n_files": 4,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "single_prompt"
+    },
+    "quantization": {
+      "n_records": 864,
+      "n_matched_pair_records": 864,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1728,
+      "n_files": 2,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "replicate": {
+      "n_records": 1872,
+      "n_matched_pair_records": 1872,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3744,
+      "n_files": 8,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "second_task": {
+      "n_records": 3456,
+      "n_matched_pair_records": 3456,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 6912,
+      "n_files": 8,
+      "n_pair_rows_with_a_null_margin": 52,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "matched_pair"
+    },
+    "smoke": {
+      "n_records": 189,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 189,
+      "n_model_calls": 189,
+      "n_files": 5,
+      "n_pair_rows_with_a_null_margin": 0,
+      "n_pair_rows_with_no_margin_field": 0,
+      "kind": "single_prompt"
+    }
+  },
+  "by_file": [
+    {
+      "path": "delta_stability/_binary_only_superseded/delta_mistral-7b-instruct-v0.1.jsonl",
+      "study": "delta_stability",
+      "quarantined": true,
+      "n_records": 91,
+      "n_matched_pair_records": 91,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 182
+    },
+    {
+      "path": "delta_stability/_binary_only_superseded/delta_mistral-7b-instruct-v0.3.jsonl",
+      "study": "delta_stability",
+      "quarantined": true,
+      "n_records": 0,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 0
+    },
+    {
+      "path": "delta_stability/delta_llama-2-7b-chat.jsonl",
+      "study": "delta_stability",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "delta_stability/delta_llama-3.1-8b-instruct.jsonl",
+      "study": "delta_stability",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "delta_stability/delta_mistral-7b-instruct-v0.1.jsonl",
+      "study": "delta_stability",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "delta_stability/delta_mistral-7b-instruct-v0.3.jsonl",
+      "study": "delta_stability",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "frontier/margin_gpt-4.1-mini.jsonl",
+      "study": "frontier",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "frontier/margin_gpt-4.1.jsonl",
+      "study": "frontier",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "frontier/margin_gpt-4o-mini.jsonl",
+      "study": "frontier",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "frontier/margin_gpt-4o.jsonl",
+      "study": "frontier",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "frontier/wording_gemini-3.1-flash-lite.jsonl",
+      "study": "frontier",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 220,
+      "n_matched_pair_records": 220,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 440
+    },
+    {
+      "path": "mechanism/mechanism_llama-2-7b-chat.jsonl",
+      "study": "mechanism",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 288,
+      "n_matched_pair_records": 288,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 576
+    },
+    {
+      "path": "mechanism/mechanism_llama-3.1-8b-instruct.jsonl",
+      "study": "mechanism",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 288,
+      "n_matched_pair_records": 288,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 576
+    },
+    {
+      "path": "mechanism_panel/mech_chat_llama-2-13b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_chat_llama-2-7b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_chat_llama-3.1-8b-instruct.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_chat_mistral-7b-instruct-v0.1.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_chat_mistral-7b-instruct-v0.3.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_chat_mistral-7b-v0.1-base.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_chat_llama-2-13b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_chat_llama-2-7b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_chat_llama-3.1-8b-instruct.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_chat_mistral-7b-instruct-v0.1.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_chat_mistral-7b-instruct-v0.3.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_chat_mistral-7b-v0.1-base.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_raw_llama-2-13b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_raw_llama-2-7b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_raw_llama-3.1-8b-instruct.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_raw_mistral-7b-instruct-v0.1.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_raw_mistral-7b-instruct-v0.3.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_d9recheck_raw_mistral-7b-v0.1-base.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": true,
+      "n_records": 96,
+      "n_matched_pair_records": 96,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 192
+    },
+    {
+      "path": "mechanism_panel/mech_raw_llama-2-13b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_raw_llama-2-7b-chat.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_raw_llama-3.1-8b-instruct.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_raw_mistral-7b-instruct-v0.1.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_raw_mistral-7b-instruct-v0.3.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "mechanism_panel/mech_raw_mistral-7b-v0.1-base.jsonl",
+      "study": "mechanism_panel",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 792,
+      "n_matched_pair_records": 792,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1584
+    },
+    {
+      "path": "names/names_llama-2-7b-chat.jsonl",
+      "study": "names",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 1728,
+      "n_matched_pair_records": 1728,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3456
+    },
+    {
+      "path": "names/names_llama-3.1-8b-instruct.jsonl",
+      "study": "names",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 1728,
+      "n_matched_pair_records": 1728,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3456
+    },
+    {
+      "path": "names/names_mistral-7b-instruct-v0.1.jsonl",
+      "study": "names",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 1728,
+      "n_matched_pair_records": 1728,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3456
+    },
+    {
+      "path": "names/names_mistral-7b-instruct-v0.3.jsonl",
+      "study": "names",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 1728,
+      "n_matched_pair_records": 1728,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 3456
+    },
+    {
+      "path": "occupation/occ_llama-2-7b-chat.jsonl",
+      "study": "occupation",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 864,
+      "n_matched_pair_records": 864,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1728
+    },
+    {
+      "path": "occupation/occ_llama-3.1-8b-instruct.jsonl",
+      "study": "occupation",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 864,
+      "n_matched_pair_records": 864,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1728
+    },
+    {
+      "path": "occupation/occ_mistral-7b-instruct-v0.1.jsonl",
+      "study": "occupation",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 864,
+      "n_matched_pair_records": 864,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1728
+    },
+    {
+      "path": "occupation/occ_mistral-7b-instruct-v0.3.jsonl",
+      "study": "occupation",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 864,
+      "n_matched_pair_records": 864,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 1728
+    },
+    {
+      "path": "panel_gate/raw_llama-2-13b-chat.jsonl",
+      "study": "panel_gate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 180,
+      "n_model_calls": 180
+    },
+    {
+      "path": "panel_gate/raw_llama-2-7b-chat.jsonl",
+      "study": "panel_gate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 180,
+      "n_model_calls": 180
+    },
+    {
+      "path": "panel_gate/raw_llama-3.1-8b-instruct.jsonl",
+      "study": "panel_gate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 180,
+      "n_model_calls": 180
+    },
+    {
+      "path": "panel_gate/raw_mistral-7b-instruct-v0.1.jsonl",
+      "study": "panel_gate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 180,
+      "n_model_calls": 180
+    },
+    {
+      "path": "panel_gate/raw_mistral-7b-instruct-v0.3.jsonl",
+      "study": "panel_gate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 180,
+      "n_model_calls": 180
+    },
+    {
+      "path": "panel_gate/raw_mistral-7b-v0.1-base.jsonl",
+      "study": "panel_gate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 180,
+      "n_model_calls": 180
+    },
+    {
+      "path": "prestige/_contaminated/prestige_llama-3.1-8b-instruct.jsonl",
+      "study": "prestige",
+      "quarantined": true,
+      "n_records": 48,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 48,
+      "n_model_calls": 48
+    },
+    {
+      "path": "prestige/_contaminated/prestige_mistral-7b-instruct-v0.3.jsonl",
+      "study": "prestige",
+      "quarantined": true,
+      "n_records": 48,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 48,
+      "n_model_calls": 48
+    },
+    {
+      "path": "prestige/prestige_llama-2-7b-chat.jsonl",
+      "study": "prestige",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 48,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 48,
+      "n_model_calls": 48
+    },
+    {
+      "path": "prestige/prestige_llama-3.1-8b-instruct.jsonl",
+      "study": "prestige",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 48,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 48,
+      "n_model_calls": 48
+    },
+    {
+      "path": "prestige/prestige_mistral-7b-instruct-v0.1.jsonl",
+      "study": "prestige",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 48,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 48,
+      "n_model_calls": 48
+    },
+    {
+      "path": "prestige/prestige_mistral-7b-instruct-v0.3.jsonl",
+      "study": "prestige",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 48,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 48,
+      "n_model_calls": 48
+    },
+    {
+      "path": "quantization/delta_llama-2-7b-chat-q8.jsonl",
+      "study": "quantization",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "quantization/delta_mistral-7b-instruct-v0.1-q8.jsonl",
+      "study": "quantization",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "replicate/nocache_llama-2-7b-chat.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 180,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 360
+    },
+    {
+      "path": "replicate/nocache_mistral-7b-instruct-v0.3.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 180,
+      "n_matched_pair_records": 180,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 360
+    },
+    {
+      "path": "replicate/nocache_session2_llama-2-7b-chat.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 36,
+      "n_matched_pair_records": 36,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 72
+    },
+    {
+      "path": "replicate/nocache_session2_mistral-7b-instruct-v0.3.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 36,
+      "n_matched_pair_records": 36,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 72
+    },
+    {
+      "path": "replicate/rep_llama-2-7b-chat.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 360,
+      "n_matched_pair_records": 360,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 720
+    },
+    {
+      "path": "replicate/rep_llama-3.1-8b-instruct.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 360,
+      "n_matched_pair_records": 360,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 720
+    },
+    {
+      "path": "replicate/rep_mistral-7b-instruct-v0.1.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 360,
+      "n_matched_pair_records": 360,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 720
+    },
+    {
+      "path": "replicate/rep_mistral-7b-instruct-v0.3.jsonl",
+      "study": "replicate",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 360,
+      "n_matched_pair_records": 360,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 720
+    },
+    {
+      "path": "second_task/housing_llama-2-7b-chat.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/housing_llama-3.1-8b-instruct.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/housing_mistral-7b-instruct-v0.1.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/housing_mistral-7b-instruct-v0.3.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/moderation_llama-2-7b-chat.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/moderation_llama-3.1-8b-instruct.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/moderation_mistral-7b-instruct-v0.1.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "second_task/moderation_mistral-7b-instruct-v0.3.jsonl",
+      "study": "second_task",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 432,
+      "n_matched_pair_records": 432,
+      "n_single_prompt_records": 0,
+      "n_model_calls": 864
+    },
+    {
+      "path": "smoke/calibration.jsonl",
+      "study": "smoke",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 64,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 64,
+      "n_model_calls": 64
+    },
+    {
+      "path": "smoke/email_instrument.jsonl",
+      "study": "smoke",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 18,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 18,
+      "n_model_calls": 18
+    },
+    {
+      "path": "smoke/email_instrument_mistral-7b-instruct-v0.1.Q4_K_M.jsonl",
+      "study": "smoke",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 60,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 60,
+      "n_model_calls": 60
+    },
+    {
+      "path": "smoke/outcome_probe.jsonl",
+      "study": "smoke",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 7,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 7,
+      "n_model_calls": 7
+    },
+    {
+      "path": "smoke/raw_mistral-7b-instruct-v0.1.Q4_K_M.jsonl",
+      "study": "smoke",
+      "quarantined": false,
+      "d9_recheck": false,
+      "n_records": 40,
+      "n_matched_pair_records": 0,
+      "n_single_prompt_records": 40,
+      "n_model_calls": 40
+    }
+  ],
+  "quarantined_excluded": {
+    "n_records": 187,
+    "n_matched_pair_records": 91,
+    "n_single_prompt_records": 96,
+    "n_model_calls": 278
+  },
+  "reconciliation": {
+    "pair_plus_single_equals_old_total": true,
+    "calls_equal_two_per_pair_plus_one_per_single": true,
+    "study_breakdown_sums_to_total": true,
+    "null_margins_confined_to_studies_that_expect_them": true,
+    "single_prompt_rows_are_confined_to_the_expected_studies": true,
+    "single_prompt_total_equals_the_expected_studies": true,
+    "absent_margins_confined_to_studies_that_expect_them": true
+  }
+}

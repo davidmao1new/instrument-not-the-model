@@ -1,0 +1,66 @@
+{
+  "_what": "Does the token-matched subset shift agree with the shift the Table 8 slope predicts?",
+  "_prediction": "shift ~= -slope * mean(delta over ALL pairs), because the observed contrast is matched-minus-ALL and the matched arm contributes delta = 0; the slope is fitted on all 48 pairs and the shift is measured on the matched subset, so neither is used to compute the other. An earlier version averaged delta over the DROPPED pairs, which inflates the prediction by n_all / n_dropped and flattered the agreement.",
+  "models": {
+    "llama-2-7b-chat": {
+      "slope": 0.02519224787272608,
+      "n_pairs": 48,
+      "n_dropped": 33,
+      "mean_delta_over_all": 0.25,
+      "mean_delta_over_dropped": 0.36363636363636365,
+      "predicted_shift": -0.00629806196818152,
+      "observed_shift": -0.019839117216255697,
+      "ratio_observed_to_predicted": 3.1500352515559595,
+      "same_sign": true,
+      "slope_p": 0.2261,
+      "subset_p": 0.1247
+    },
+    "llama-3.1-8b-instruct": {
+      "slope": 0.07016281457837127,
+      "n_pairs": 48,
+      "n_dropped": 36,
+      "mean_delta_over_all": 0.9166666666666666,
+      "mean_delta_over_dropped": 1.2222222222222223,
+      "predicted_shift": -0.06431591336350699,
+      "observed_shift": -0.0913816940398734,
+      "ratio_observed_to_predicted": 1.4208255665031664,
+      "same_sign": true,
+      "slope_p": 0.1051,
+      "subset_p": 0.07804928343128158
+    },
+    "mistral-7b-instruct-v0.1": {
+      "slope": -0.01626922229032414,
+      "n_pairs": 48,
+      "n_dropped": 32,
+      "mean_delta_over_all": 0.5,
+      "mean_delta_over_dropped": 0.75,
+      "predicted_shift": 0.00813461114516207,
+      "observed_shift": 0.02685898455988059,
+      "ratio_observed_to_predicted": 3.301815425541827,
+      "same_sign": true,
+      "slope_p": 0.0685,
+      "subset_p": 0.29815
+    },
+    "mistral-7b-instruct-v0.3": {
+      "slope": 0.08906109081523335,
+      "n_pairs": 48,
+      "n_dropped": 32,
+      "mean_delta_over_all": 0.5,
+      "mean_delta_over_dropped": 0.75,
+      "predicted_shift": -0.044530545407616674,
+      "observed_shift": -0.031501223065890066,
+      "ratio_observed_to_predicted": 0.7074070792876922,
+      "same_sign": true,
+      "slope_p": 0.01045,
+      "subset_p": 0.67925
+    }
+  },
+  "summary": {
+    "n_models": 4,
+    "n_same_sign": 4,
+    "n_within_a_factor_of_five": 4,
+    "ratio_min": 0.7074070792876922,
+    "ratio_max": 3.301815425541827,
+    "verdict": "the two designs agree on magnitude, not only on sign"
+  }
+}

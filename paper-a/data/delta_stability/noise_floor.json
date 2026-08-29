@@ -1,0 +1,70 @@
+{
+  "llama-2-7b-chat": {
+    "n_replicate_cells": 36,
+    "n_identical": 24,
+    "frac_identical": 0.6666666666666666,
+    "sigma_noise_per_cell": 0.05712774550104129,
+    "max_abs_diff": 0.32335677656260353,
+    "n_cells_per_variant": 36,
+    "sigma_noise_on_variant_mean": 0.009521290916840215,
+    "sigma_variant_raw": 0.06708458347552172,
+    "ratio_variant_to_noise": 7.045744538366102,
+    "cross_session": {
+      "n": 504,
+      "n_identical": 0,
+      "sigma": 0.14822478243136453,
+      "max_abs": 1.1476533946451335
+    }
+  },
+  "llama-3.1-8b-instruct": {
+    "n_replicate_cells": 36,
+    "n_identical": 5,
+    "frac_identical": 0.1388888888888889,
+    "sigma_noise_per_cell": 0.04472527248661542,
+    "max_abs_diff": 0.21911404443183002,
+    "n_cells_per_variant": 36,
+    "sigma_noise_on_variant_mean": 0.00745421208110257,
+    "sigma_variant_raw": 0.04278638849276404,
+    "ratio_variant_to_noise": 5.739894173555014,
+    "cross_session": {
+      "n": 504,
+      "n_identical": 0,
+      "sigma": 0.07483931964241569,
+      "max_abs": 0.3980296304209592
+    }
+  },
+  "mistral-7b-instruct-v0.1": {
+    "n_replicate_cells": 36,
+    "n_identical": 21,
+    "frac_identical": 0.5833333333333334,
+    "sigma_noise_per_cell": 0.01754856844396954,
+    "max_abs_diff": 0.09862780319464759,
+    "n_cells_per_variant": 36,
+    "sigma_noise_on_variant_mean": 0.0029247614073282563,
+    "sigma_variant_raw": 0.019616012398361426,
+    "ratio_variant_to_noise": 6.706876105931827,
+    "cross_session": {
+      "n": 504,
+      "n_identical": 0,
+      "sigma": 0.0103071881863035,
+      "max_abs": 0.08473884013978628
+    }
+  },
+  "mistral-7b-instruct-v0.3": {
+    "n_replicate_cells": 36,
+    "n_identical": 16,
+    "frac_identical": 0.4444444444444444,
+    "sigma_noise_per_cell": 0.060747450279900965,
+    "max_abs_diff": 0.36423899329325327,
+    "n_cells_per_variant": 36,
+    "sigma_noise_on_variant_mean": 0.010124575046650161,
+    "sigma_variant_raw": 0.06614572022479077,
+    "ratio_variant_to_noise": 6.533184841834511,
+    "cross_session": {
+      "n": 504,
+      "n_identical": 212,
+      "sigma": 0.09686356588430378,
+      "max_abs": 0.6312710814849734
+    }
+  }
+}

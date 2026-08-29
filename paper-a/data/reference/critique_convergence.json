@@ -1,0 +1,74 @@
+{
+  "_what": "Round-over-round behaviour of the adversarial critique loop.",
+  "_why": "To decide whether more rounds are worth running, and on what evidence, rather than by feel.",
+  "_novelty_method": "A finding repeats an earlier one when their defect texts share 30 % of their 6-word shingles.",
+  "n_rounds": 4,
+  "rounds": [
+    {
+      "round": 1,
+      "file": "critique_round1.json",
+      "n_examined": 79,
+      "n_confirmed": 32,
+      "n_serious": 27,
+      "n_critical": 6,
+      "n_major": 21,
+      "n_minor": 5,
+      "n_repeat_of_earlier": 0,
+      "n_novel": 32,
+      "novelty_rate": 1.0,
+      "n_self_inflicted": 2
+    },
+    {
+      "round": 2,
+      "file": "critique_round2.json",
+      "n_examined": 160,
+      "n_confirmed": 128,
+      "n_serious": 102,
+      "n_critical": 6,
+      "n_major": 96,
+      "n_minor": 26,
+      "n_repeat_of_earlier": 0,
+      "n_novel": 128,
+      "novelty_rate": 1.0,
+      "n_self_inflicted": 15
+    },
+    {
+      "round": 5,
+      "file": "critique_round5.json",
+      "n_examined": 154,
+      "n_confirmed": 110,
+      "n_serious": 78,
+      "n_critical": 2,
+      "n_major": 76,
+      "n_minor": 32,
+      "n_repeat_of_earlier": 0,
+      "n_novel": 110,
+      "novelty_rate": 1.0,
+      "n_self_inflicted": 13
+    },
+    {
+      "round": 6,
+      "file": "critique_round6.json",
+      "n_examined": 134,
+      "n_confirmed": 49,
+      "n_serious": 29,
+      "n_critical": 1,
+      "n_major": 28,
+      "n_minor": 20,
+      "n_repeat_of_earlier": 0,
+      "n_novel": 49,
+      "novelty_rate": 1.0,
+      "n_self_inflicted": 3
+    }
+  ],
+  "trend": {
+    "serious_first": 27,
+    "serious_last": 29,
+    "serious_change": 2,
+    "critical_last": 1,
+    "minor_share_first": 0.15625,
+    "minor_share_last": 0.40816326530612246,
+    "novelty_last": 1.0,
+    "self_inflicted_last": 3
+  }
+}

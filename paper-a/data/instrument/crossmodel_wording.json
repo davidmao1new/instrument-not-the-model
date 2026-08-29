@@ -1,0 +1,86 @@
+{
+ "specifications": {
+  "margin-gap scale, grand-centered": {
+   "family_r": 0.31410655808649046,
+   "family_perm_p": 0.018449077546122693,
+   "cross_family_mean": 0.022202902004632853,
+   "cross_family_min": -0.10756392712761789,
+   "cross_family_max": 0.15501601394328743,
+   "family_rank_of_6": 1,
+   "shared_variance_share": 0.3031401335137068,
+   "idiosyncratic_share": 0.6968598664862933
+  },
+  "margin-gap scale, ARM-centered": {
+   "family_r": 0.29222123964358215,
+   "family_perm_p": 0.030148492575371232,
+   "cross_family_mean": 0.02512777032412118,
+   "cross_family_min": -0.11437724834101164,
+   "cross_family_max": 0.19363406206010086,
+   "family_rank_of_6": 1,
+   "shared_variance_share": 0.3022325114080235,
+   "idiosyncratic_share": 0.6977674885919765
+  },
+  "prob-of-superiority scale": {
+   "family_r": 0.13015137406760857,
+   "family_perm_p": 0.3401329933503325,
+   "cross_family_mean": 0.062490166488916934,
+   "cross_family_min": -0.0248053117274985,
+   "cross_family_max": 0.12278353514796674,
+   "family_rank_of_6": 1,
+   "shared_variance_share": 0.3053252758140241,
+   "idiosyncratic_share": 0.6946747241859759
+  }
+ },
+ "per_context": {
+  "resume_BA": {
+   "family_r": 0.20748714045844882,
+   "rank_of_6": 4,
+   "cross_family_mean": 0.16081652723584375
+  },
+  "resume_SWE": {
+   "family_r": 0.5069243858286417,
+   "rank_of_6": 1,
+   "cross_family_mean": -0.07283975439570585
+  },
+  "resume_RN": {
+   "family_r": 0.5439583287980166,
+   "rank_of_6": 1,
+   "cross_family_mean": 0.22377990554386745
+  },
+  "housing": {
+   "family_r": 0.2602056844453938,
+   "rank_of_6": 2,
+   "cross_family_mean": -0.08175715323793725
+  },
+  "moderation": {
+   "family_r": 0.05195725090195132,
+   "rank_of_6": 3,
+   "cross_family_mean": -0.1189850151229038
+  }
+ },
+ "loco": {},
+ "per_context_summary": {
+  "mean_rank": 2.2,
+  "beats_cross_mean": 5,
+  "n_contexts": 5
+ },
+ "reliability_floor": {
+  "value": 0.9696476564500742,
+  "at": [
+   "resume_BA",
+   "llama-3.1-8b-instruct"
+  ]
+ },
+ "_what": "Cross-model correlation of per-wording race-effect profiles over five task contexts; the same-family Mistral pair against the five cross-family pairs.",
+ "_provenance": "Computed inside an adversarial audit workflow, 25 Aug 2026; independently reproduced before adoption.",
+ "models": [
+  "llama-2-7b-chat",
+  "llama-3.1-8b-instruct",
+  "mistral-7b-instruct-v0.1",
+  "mistral-7b-instruct-v0.3"
+ ],
+ "family_pair": [
+  "mistral-7b-instruct-v0.1",
+  "mistral-7b-instruct-v0.3"
+ ]
+}

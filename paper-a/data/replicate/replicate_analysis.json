@@ -1,0 +1,122 @@
+{
+  "llama-2-7b-chat": {
+    "1": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.9166666666666666,
+      "mean_sd": 0.0022826102199267843,
+      "max_spread": 0.10183885536519455,
+      "prompt_sha_consistent": true
+    },
+    "4": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.6388888888888888,
+      "mean_sd": 0.009745437279163629,
+      "max_spread": 0.160310432466249,
+      "prompt_sha_consistent": true
+    },
+    "effect_conc1": 0.24030641746560827,
+    "effect_conc4": 0.24217176801465554,
+    "effect_difference": {
+      "est": -0.0018653505490472148,
+      "ci": [
+        -0.015687994951402124,
+        0.01036609968942339
+      ],
+      "p": 0.78575
+    }
+  },
+  "llama-3.1-8b-instruct": {
+    "1": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.9722222222222222,
+      "mean_sd": 0.000346071623291209,
+      "max_spread": 0.02785822829146234,
+      "prompt_sha_consistent": true
+    },
+    "4": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.1388888888888889,
+      "mean_sd": 0.019444181201812932,
+      "max_spread": 0.20639628987304004,
+      "prompt_sha_consistent": true
+    },
+    "effect_conc1": -0.17918351754140124,
+    "effect_conc4": -0.181319076534832,
+    "effect_difference": {
+      "est": 0.0021355589934307657,
+      "ci": [
+        -0.005983546611287688,
+        0.009848655796935715
+      ],
+      "p": 0.59825
+    }
+  },
+  "mistral-7b-instruct-v0.1": {
+    "1": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.9166666666666666,
+      "mean_sd": 0.00028680434934169233,
+      "max_spread": 0.010970306504611171,
+      "prompt_sha_consistent": true
+    },
+    "4": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.6388888888888888,
+      "mean_sd": 0.003315604737405122,
+      "max_spread": 0.07661201316599653,
+      "prompt_sha_consistent": true
+    },
+    "effect_conc1": -0.05778803409845122,
+    "effect_conc4": -0.05867577409601373,
+    "effect_difference": {
+      "est": 0.0008877399975625033,
+      "ci": [
+        -0.007690876989722252,
+        0.009389249802174707
+      ],
+      "p": 0.84
+    }
+  },
+  "mistral-7b-instruct-v0.3": {
+    "1": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.9444444444444444,
+      "mean_sd": 0.0023633744774812404,
+      "max_spread": 0.12049458650104938,
+      "prompt_sha_consistent": true
+    },
+    "4": {
+      "n_cells": 36,
+      "n_repeats": 5,
+      "frac_all_identical": 0.5,
+      "mean_sd": 0.012289123761347897,
+      "max_spread": 0.13725623085541283,
+      "prompt_sha_consistent": true
+    },
+    "effect_conc1": -0.09656787020728516,
+    "effect_conc4": -0.093410825011134,
+    "effect_difference": {
+      "est": -0.0031570451961511698,
+      "ci": [
+        -0.013859662569321697,
+        0.006774562285559288
+      ],
+      "p": 0.554125
+    }
+  },
+  "_verdict": {
+    "verdict": "PARTIAL",
+    "frac_identical_conc1": 0.9375,
+    "frac_identical_conc4": 0.47916666666666663,
+    "mean_sd_conc1": 0.0013197151675102313,
+    "mean_sd_conc4": 0.011198586744932394,
+    "sd_ratio": 8.485608880331046
+  }
+}

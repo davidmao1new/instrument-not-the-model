@@ -1,0 +1,271 @@
+# Paper A run configuration.
+#
+# PURPOSE. PROTOCOL.md section 5 requires that every model be pinned to an exact
+# snapshot, because "a model name without a snapshot is not reproducible". For
+# local GGUF artifacts the strongest available pin is the SHA256 of the file, and
+# that is what is recorded here. Every number in the paper traces back to one of
+# these hashes.
+#
+# GENERATION LABELS ARE PRE-SPECIFIED HERE, BEFORE ANALYSIS. RQ1 turns entirely
+# on the pre-2024 / post-2024 split, so assigning that label after seeing results
+# would be the study's most obvious failure mode. The rule is stated below and
+# applied mechanically.
+#
+# STATUS: proposals in this file that touch a pre-registered section of
+# PROTOCOL.md are marked `pending_approval: true` and MUST NOT be acted on until
+# David signs off. See PROGRESS.md "Open decisions".
+
+meta:
+  protocol_version: "PROTOCOL.md @ 2026-07-26"
+  config_version: "0.1.0"
+  written: "2026-07-26"
+  notes: >
+    Written after the Stage 0 pilot and the first five literature reads.
+    Nothing here overrides PROTOCOL.md; where the two differ the difference is
+    flagged and logged in CHANGELOG.md.
+
+# ---------------------------------------------------------------------------
+# Generation label rule. Applied mechanically, no judgement calls.
+# ---------------------------------------------------------------------------
+generation_rule:
+  cutoff: "2024-01-01"
+  basis: "public release date of the specific checkpoint, not the family"
+  pre_2024: "checkpoint released strictly before the cutoff"
+  post_2024: "checkpoint released on or after the cutoff"
+  rationale: >
+    Gao, Jiang & Yan (arXiv:2606.28978) place the behavioural break between
+    their sole 2023 model and everything from 2024 onward. Using the same
+    cutoff keeps our RQ1 contrast directly comparable to theirs.
+
+# ---------------------------------------------------------------------------
+# Model panel. All local, all free, all captured and hashed.
+# ---------------------------------------------------------------------------
+models:
+
+  - id: mistral-7b-instruct-v0.1
+    file: models/mistral-7b-instruct-v0.1.Q4_K_M.gguf
+    sha256: 14466f9d658bf4a79f96c3f3f22759707c291cac4e62fea625e80c7d32169991
+    bytes: 4368438944
+    source_repo: TheBloke/Mistral-7B-Instruct-v0.1-GGUF
+    quantization: Q4_K_M
+    params_b: 7.24
+    released: "2023-09"
+    generation: pre_2024
+    role: primary pre-2024 anchor
+    quality_gate: FAILED
+    quality_gate_note: >
+      Stage 0 pilot. Degenerate under a constrained verdict: 100% yes under one
+      framing, 100% no under another including for an unqualified candidate,
+      10/10 position-A under forced choice. See docs/pilot_findings_stage0.md.
+      An et al. (arXiv:2406.10486) obtain ~56.7% acceptance from this same model
+      using open-ended email generation, so the failure is instrument-specific
+      rather than a property of the model's judgement. Re-gate under the email
+      instrument before admitting it to the confirmatory panel.
+
+  - id: mistral-7b-v0.1-base
+    file: models/mistral-7b-v0.1.Q4_K_M.gguf
+    sha256: ce6253d2e91adea0c35924b38411b0434fa18fcb90c52980ce68187dbcbbe40c
+    bytes: 4368438912
+    source_repo: TheBloke/Mistral-7B-v0.1-GGUF
+    quantization: Q4_K_M
+    params_b: 7.24
+    released: "2023-09"
+    generation: pre_2024
+    role: >
+      Base (non-instruct) checkpoint, captured because PROTOCOL section 5 names
+      "Mistral 7B v0.1" explicitly. Also the common ancestor of all three MTE
+      models audited by Wilson & Caliskan. Not expected to follow the verdict
+      format; retained for the base-vs-instruct comparison and for any
+      embedding-based analysis.
+    quality_gate: NOT_RUN
+
+  - id: llama-2-7b-chat
+    file: models/llama-2-7b-chat.Q4_K_M.gguf
+    sha256: 08a5566d61d7cb6b420c3e4387a39e0078e1f2fe5f055f3a03887385304d4bfa
+    bytes: 4081004224
+    source_repo: TheBloke/Llama-2-7B-Chat-GGUF
+    quantization: Q4_K_M
+    params_b: 6.74
+    released: "2023-07"
+    generation: pre_2024
+    role: primary pre-2024 anchor, Llama family
+    quality_gate: NOT_RUN
+
+  - id: llama-2-13b-chat
+    file: models/llama-2-13b-chat.Q4_K_M.gguf
+    sha256: 7ddfe27f61bf994542c22aca213c46ecbd8a624cca74abff02a7b5a8c18f787f
+    bytes: 7865956224
+    source_repo: TheBloke/Llama-2-13B-chat-GGUF
+    quantization: Q4_K_M
+    params_b: 13.0
+    released: "2023-07"
+    generation: pre_2024
+    role: >
+      Within-generation scale contrast against llama-2-7b-chat. Replaces the
+      scale role PROTOCOL section 5 assigned to Llama 2 70B, which cannot run on
+      this hardware. See docs/decision_llama2_70b.md.
+    quality_gate: NOT_RUN
+    warning: >
+      7.87 GiB against 7.42 GiB of Vulkan-visible memory, so it will not fully
+      offload. Expect roughly 2x the per-call cost of a 7B until measured.
+
+  - id: mistral-7b-instruct-v0.3
+    file: models/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf
+    sha256: 1270d22c0fbb3d092fb725d4d96c457b7b687a5f5a715abe1e818da303e562b6
+    bytes: 4372812000
+    source_repo: bartowski/Mistral-7B-Instruct-v0.3-GGUF
+    quantization: Q4_K_M
+    params_b: 7.25
+    released: "2024-05"
+    generation: post_2024
+    role: >
+      THE CLEANEST GENERATIONAL CONTRAST IN THE PANEL. Same family, same
+      architecture, same parameter count as v0.1, one generation apart. The
+      manipulation is essentially the training and alignment recipe with
+      everything else held fixed.
+    quality_gate: NOT_RUN
+    sha256_note: "Recompute from models/MANIFEST.tsv before any confirmatory run."
+
+  - id: llama-3.1-8b-instruct
+    file: models/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+    sha256: 7b064f5842bf9532c91456deda288a1b672397a54fa729aa665952863033557c
+    bytes: 4920739232
+    source_repo: bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
+    quantization: Q4_K_M
+    params_b: 8.03
+    released: "2024-07"
+    generation: post_2024
+    role: >
+      Post-2024 counterpart to llama-2-7b-chat, near size-matched. Carries the
+      largest effect in the Gao/Jiang/Yan panel (-3.01 pp, CI [-3.50, -2.51])
+      and the highest discordance rate (psi = 15.2%), so it is simultaneously
+      the highest-signal and best-powered post-2024 cell available.
+    quality_gate: PASSED
+    quality_gate_note: >
+      Prefers the strong resume over the unqualified one in both orders.
+      Residual position bias is substantial: 4 of 5 name pairs were
+      order-dependent, which is why order reversal is now mandatory.
+    sha256_note: "Recompute from models/MANIFEST.tsv before any confirmatory run."
+
+# Quantization robustness set. Same checkpoints at Q8_0, held for the
+# robustness re-run in PROTOCOL section 7. NOT part of the primary panel:
+# mixing quantization levels within a contrast would confound generation with
+# numerical precision.
+robustness_quantization:
+  - {id: mistral-7b-instruct-v0.1, file: models/mistral-7b-instruct-v0.1.Q8_0.gguf, sha256: ab634d1d552dc60533e486cbcc73ad9b01358994dabf2453230e7fcd77308dc8}
+  - {id: llama-2-7b-chat,          file: models/llama-2-7b-chat.Q8_0.gguf,          sha256: f47dade5e86466edb66c5afe6f8e9fb1fbb2c292827b90bd46b7a1817d864bf2}
+
+excluded_models:
+  - id: llama-2-70b-chat
+    reason: >
+      Unrunnable on this hardware (38.58 GiB at Q4_K_M against 15.8 GB RAM) and
+      unreachable by API: OpenRouter's catalogue contains zero Llama 2 models.
+      PROTOCOL section 5 names it. Exclusion is RECOMMENDED, NOT APPLIED.
+    pending_approval: true
+    document: docs/decision_llama2_70b.md
+
+# ---------------------------------------------------------------------------
+# Inference. Held identical across every model so the model is the only thing
+# that varies.
+# ---------------------------------------------------------------------------
+inference:
+  server: llama.cpp llama-server
+  build: b10107
+  backend: vulkan
+  n_gpu_layers: 99
+  context: 4096
+  threads: 8
+  parallel: 4
+  temperature: 0.0
+  seed: 42
+  prompt_order: [system, job_posting, resume]   # posting first so it prefix-caches
+  replication:
+    temperature: 0.7
+    subsample_fraction: 0.10                     # PROTOCOL section 5
+
+# ---------------------------------------------------------------------------
+# Outcome measures. PROTOCOL section 4 makes binary advance primary; the Stage 0
+# pilot showed that is not viable for pre-2024 open-weight models.
+# ---------------------------------------------------------------------------
+outcomes:
+  binary_advance:
+    status: secondary
+    max_tokens: 8
+    grammar: 'root ::= "yes" | "no"'
+    note: >
+      Retained so the two instruments can be compared directly, which is itself
+      a reportable result. Degenerate on mistral-7b-instruct-v0.1.
+
+  email_generation:
+    status: proposed_primary_for_pre_2024
+    pending_approval: true
+    max_tokens: 220
+    n_paraphrased_templates: 5
+    classification: rejection markers checked before acceptance markers
+    note: >
+      Follows An et al. (arXiv:2406.10486), who obtain non-degenerate acceptance
+      rates from exactly our pre-2024 anchor set. Roughly 20x the decode cost of
+      the binary verdict, so max_tokens should be tuned down once it is known how
+      early the accept/reject signal appears. CHANGING THE PRIMARY OUTCOME TOUCHES
+      PROTOCOL SECTION 4 AND NEEDS APPROVAL.
+
+  forced_choice:
+    status: secondary
+    max_tokens: 2
+    grammar: 'root ::= "A" | "B"'
+    order_reversal: required        # NOT optional. 4 of 5 pairs were order-dependent.
+    note: Pairs that disagree under reversal are reported as an order-effect rate.
+
+  score_0_100:
+    status: unusable_on_pre_2024
+    note: mistral-7b-instruct-v0.1 will not emit a bare number; it writes prose.
+
+# ---------------------------------------------------------------------------
+# Sample sizes. PROTOCOL section 6's numbers are superseded by the re-derivation
+# in docs/power_analysis.md, which is NOT YET APPROVED.
+# ---------------------------------------------------------------------------
+sample_size:
+  registered:
+    main_effect_pairs: 10000
+    basis: "PROTOCOL section 6, independent-samples formula"
+  proposed:
+    pending_approval: true
+    main_effect_pairs: 4000
+    interaction_pairs_h2b: 8000
+    planning_discordance_psi: 0.20
+    basis: "docs/power_analysis.md, matched-pairs variance (psi - delta^2)/n"
+  stage1_pilot_pairs: 300
+  stage1_purpose: >
+    Measure psi per model and re-plan Stage 2 from the measured value, which is
+    what PROTOCOL section 6's two-stage structure exists for.
+
+# ---------------------------------------------------------------------------
+# Analysis. Fixed here BEFORE results are seen.
+# ---------------------------------------------------------------------------
+analysis:
+  primary_estimand: average marginal effect of race signal on advance probability
+  units: percentage points
+  interval: bootstrap 95% CI, cluster-resampled at the job-posting level
+  bootstrap_replicates: 2000
+  multiplicity: benjamini_hochberg
+  multiplicity_scope: model x group cells
+  report_both_raw_and_adjusted: true
+  h2b_test: interaction of channel x model_generation
+  h2b_note: >
+    NOT a comparison of two separate significance tests. CLAUDE.md flags that as
+    the most common error in this literature.
+  hierarchical_backend: numpyro
+  hierarchical_note: >
+    Plain logistic regression is not a substitute and must never be labelled
+    mixed-effects.
+  report_mde_alongside_every_null: true
+
+# ---------------------------------------------------------------------------
+# Cost control. The study is designed to cost nothing.
+# ---------------------------------------------------------------------------
+cost:
+  paid_apis_enabled: false
+  hard_stop: >
+    Any paid API spend requires David's explicit prior approval. Not a threshold,
+    a hard stop. Log every actual expenditure in PROGRESS.md.
+  local_only: true

@@ -1,0 +1,86 @@
+{
+  "llama-2-7b-chat-q8": {
+    "base": "llama-2-7b-chat",
+    "n_cells": 432,
+    "shift": 0.0235616908947502,
+    "shift_ci": [
+      -0.006677213576365506,
+      0.05766061406908356
+    ],
+    "shift_p": 0.158375,
+    "r_per_name_margin": 0.985755632753231,
+    "r_paired_delta": 0.6100963218180802,
+    "sign_disagreement": 0.20833333333333334,
+    "bitwise_identical": 0.0,
+    "q4": {
+      "logodds": 0.18051754558900474,
+      "ci": [
+        0.11277220177783244,
+        0.2531597656274688
+      ],
+      "ps": 0.7893518518518519
+    },
+    "q8": {
+      "logodds": 0.20407923648375495,
+      "ci": [
+        0.14171558154041933,
+        0.2784895993235135
+      ],
+      "ps": 0.8217592592592593
+    },
+    "sigma_variant": 0.06341742724180222,
+    "sigma_variant_ci": [
+      0.03487687185406685,
+      0.11861103773117065
+    ],
+    "shift_over_sigma_variant": 0.3715333768573204,
+    "shift_over_sigma_variant_ci": [
+      0.0,
+      1.653262205118318
+    ],
+    "_ratio_bound_type": "corner bound over the shift's bootstrap interval and the pooled between-wording SD's posterior interval, both on the log-odds scale; the same construction \u00a74.2 uses",
+    "ratio_exceeds_one_determined": false
+  },
+  "mistral-7b-instruct-v0.1-q8": {
+    "base": "mistral-7b-instruct-v0.1",
+    "n_cells": 432,
+    "shift": -0.017992507610409807,
+    "shift_ci": [
+      -0.030324321720836964,
+      -0.006176255567683372
+    ],
+    "shift_p": 0.002,
+    "r_per_name_margin": 0.995433931459533,
+    "r_paired_delta": 0.9088556197019517,
+    "sign_disagreement": 0.14814814814814814,
+    "bitwise_identical": 0.0,
+    "q4": {
+      "logodds": -0.032603054762351265,
+      "ci": [
+        -0.09866778315360784,
+        0.030085892816289823
+      ],
+      "ps": 0.44212962962962965
+    },
+    "q8": {
+      "logodds": -0.05059556237276107,
+      "ci": [
+        -0.11857380615126654,
+        0.016429527988756378
+      ],
+      "ps": 0.4097222222222222
+    },
+    "sigma_variant": 0.016788017004728317,
+    "sigma_variant_ci": [
+      0.006132105365395546,
+      0.03369443118572235
+    ],
+    "shift_over_sigma_variant": 1.071747044653472,
+    "shift_over_sigma_variant_ci": [
+      0.18330196861434161,
+      4.945172973048046
+    ],
+    "_ratio_bound_type": "corner bound over the shift's bootstrap interval and the pooled between-wording SD's posterior interval, both on the log-odds scale; the same construction \u00a74.2 uses",
+    "ratio_exceeds_one_determined": false
+  }
+}

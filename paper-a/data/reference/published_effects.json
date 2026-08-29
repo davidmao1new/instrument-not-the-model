@@ -1,0 +1,387 @@
+{
+ "_purpose": [
+  "Closes gap G5. The paper's abstract claimed that effects 'of the magnitude this literature typically reports, two to three points' sit inside the range surface-form perturbation produces. That is the paper's central practical claim and it had no artifact behind it. This file is the artifact.",
+  "Every number was read from the source PDF or its pdftotext dump, with the location recorded. Nothing here is inferred from an abstract or reconstructed from a figure. Fields that could not be found are 'NOT FOUND' rather than estimated.",
+  "The claim as written was ALSO WRONG in a direction that understated our case. Across the fourteen published percentage-point gaps below, the median absolute effect is 0.64 pp and eleven of fourteen are under 1.10 pp. 'Two to three points' describes the two largest, not the typical.",
+  "That sentence previously read 'the median absolute effect is 0.51 pp and ten of twelve are under 1.10 pp', because two of the fourteen table rows had been wrongly recorded as untranscribable. They transcribe cleanly; see '_transcription_completeness' below. The superseded twelve-row figures are retained under summary_of_published_pp_gaps.superseded_twelve_row."
+ ],
+ "_scale_warning": [
+  "Gao/Jiang/Yan report a genuine callback-rate difference in percentage points. Our primary measure is a log-odds decision margin, and converting it to percentage points requires a base rate the models do not share (see effectsize.py). The two are NOT directly comparable and must never share a column without a stated conversion.",
+  "The comparison that IS scale-free, and is the one the paper should make, is the RATIO sigma_variant / |beta|: how much of a measured effect is attributable to the wording it was measured under. That ratio transfers to any study on any scale."
+ ],
+ "gao_jiang_yan_2026": {
+  "citation": "Zhenyu Gao, Wenxi Jiang, Yutong Yan. 'Can LLMs Hire Fairly? Racial Bias in Resume Screening.' arXiv:2606.28978v1, 27 June 2026. CUHK Business School.",
+  "source_text": "lit/text/gao_jiang_yan_2026_cuhk.txt",
+  "estimand": "delta_race, percentage-point gap in callback rate, White-coded minus Black-coded names, from discordant pairs",
+  "located_at": "Table I, printed p. 14",
+  "n_per_model": "24,024 paired postings per model on the race axis (p. 2, line 50 of text dump)",
+  "n_prompts": 1,
+  "n_prompts_quote": "'The prompt is held constant across all models' (Sec 2.2, line 216 of text dump)",
+  "decoding": "temperature 0, described as 'producing deterministic outputs' (Sec 2.2, line 222); 'each decision deterministic' (line 50)",
+  "quantization": "NOT STATED",
+  "names_source": "Bertrand & Mullainathan (2004) Tables A1-A2, combined with Kline, Rose & Walters (2022) Appendix B Tables B1-B2",
+  "cb_pct_definition": "The Cb% column of Table I, transcribed as printed. The paper describes it only as 'the callback rate' (Sec. 3.1) and never states which arm it is taken from or whether it is pooled, so it is recorded but not used in any derived quantity here.",
+  "effects": [
+   {
+    "model": "GPT-3.5-turbo",
+    "released": "2023-05",
+    "cb_pct": 91,
+    "delta_pp": 2.12,
+    "ci": [
+     1.82,
+     2.43
+    ],
+    "sig": "p<0.01",
+    "b": 953,
+    "c": 443
+   },
+   {
+    "model": "Claude 3 Haiku",
+    "released": "2024-03",
+    "cb_pct": 25,
+    "delta_pp": -0.35,
+    "ci": [
+     -0.73,
+     0.02
+    ],
+    "sig": "n.s.",
+    "b": 1099,
+    "c": 1183
+   },
+   {
+    "model": "GPT-4o-mini",
+    "released": "2024-07",
+    "cb_pct": 48,
+    "delta_pp": -0.61,
+    "ci": [
+     -0.87,
+     -0.35
+    ],
+    "sig": "p<0.01",
+    "b": 381,
+    "c": 527
+   },
+   {
+    "model": "Llama-3.1-8B-Instruct",
+    "released": "2024-07",
+    "cb_pct": 42,
+    "delta_pp": -3.01,
+    "ci": [
+     -3.5,
+     -2.51
+    ],
+    "sig": "p<0.01",
+    "b": 1460,
+    "c": 2183
+   },
+   {
+    "model": "Claude Haiku 4.5",
+    "released": "2024-10",
+    "cb_pct": 46,
+    "delta_pp": -0.7,
+    "ci": [
+     -0.94,
+     -0.44
+    ],
+    "sig": "p<0.01",
+    "b": 404,
+    "c": 571
+   },
+   {
+    "model": "Llama-3.3-70B-Instruct",
+    "released": "2024-11",
+    "cb_pct": 52,
+    "delta_pp": -0.16,
+    "ci": [
+     -0.4,
+     0.07
+    ],
+    "sig": "n.s.",
+    "b": 428,
+    "c": 467
+   },
+   {
+    "model": "Gemini-2.5-flash",
+    "released": "2025-06",
+    "cb_pct": 40,
+    "delta_pp": -0.37,
+    "ci": [
+     -0.73,
+     -0.01
+    ],
+    "sig": "p<0.05",
+    "b": 926,
+    "c": 1016
+   },
+   {
+    "model": "GPT-oss-120b",
+    "released": "2025-08",
+    "cb_pct": 13,
+    "delta_pp": -0.16,
+    "ci": [
+     -0.61,
+     0.27
+    ],
+    "sig": "n.s.",
+    "b": 1382,
+    "c": 1421
+   },
+   {
+    "model": "DeepSeek-V3.1",
+    "released": "2025-08",
+    "cb_pct": 44,
+    "delta_pp": -1.04,
+    "ci": [
+     -1.42,
+     -0.66
+    ],
+    "sig": "p<0.01",
+    "b": 985,
+    "c": 1234
+   },
+   {
+    "model": "Grok-4.1-fast",
+    "released": "2025-11",
+    "cb_pct": 58,
+    "delta_pp": -0.4,
+    "ci": [
+     -0.75,
+     -0.07
+    ],
+    "sig": "p<0.05",
+    "b": 786,
+    "c": 881
+   },
+   {
+    "model": "Qwen3.5-397B",
+    "released": "2026-02",
+    "cb_pct": 49,
+    "delta_pp": -1.04,
+    "ci": [
+     -1.32,
+     -0.73
+    ],
+    "sig": "p<0.01",
+    "b": 543,
+    "c": 792
+   },
+   {
+    "model": "GPT-5.4-mini",
+    "released": "2026-03",
+    "cb_pct": 78,
+    "delta_pp": -0.14,
+    "ci": [
+     -0.48,
+     0.21
+    ],
+    "sig": "n.s.",
+    "b": 871,
+    "c": 904
+   },
+   {
+    "model": "Gemma-4-31B-it",
+    "released": "2026-03",
+    "cb_pct": 53,
+    "delta_pp": -0.67,
+    "ci": [
+     -0.87,
+     -0.47
+    ],
+    "sig": "p<0.01",
+    "b": 193,
+    "c": 354
+   },
+   {
+    "model": "GLM-5.1",
+    "released": "2026-04",
+    "cb_pct": 65,
+    "delta_pp": -1.6,
+    "ci": [
+     -1.91,
+     -1.29
+    ],
+    "sig": "p<0.01",
+    "b": 511,
+    "c": 895
+   }
+  ],
+  "_transcription_completeness": [
+   "All FOURTEEN rows of Table I are transcribed above. Verified 2026-08-01 by paper-a/src/build_published_effects_summary.py, which re-reads the PDF text layer and the running prose and refuses to write if the two disagree with this file.",
+   "SUPERSEDED CLAIM, retained verbatim because it stood in the paper and must be visibly retracted rather than quietly dropped: '_rows_not_transcribed': 'Gemma-4-31B-it (2026-03) and one further row are present in Table I but their columns did not extract cleanly from the two-column PDF layout and are omitted rather than guessed.'",
+   "That claim was FALSE on both counts. Both rows extract cleanly, and each value is attested three independent ways: (1) the PDF text layer of page 15 (0-indexed 14), which yields 'Gemma-4-31B-it 2026-03 53 -0.67*** [-0.87,-0.47] 193 354' and 'GLM-5.1 2026-04 65 -1.60*** [-1.91,-1.29] 511 895'; (2) the running prose at lines 320-321 of the text dump, which names both point estimates and their significance; (3) an arithmetic cross-check the prose supplies independently of the table -- line 346 states that discordant pairs among 2024+ models range from 547 to 3,643, and 193+354 = 547 and 1,460+2,183 = 3,643 exactly. The page was also rendered at 5x and read visually.",
+   "The omission was not a layout problem. It dropped the second-largest gap in the panel (GLM-5.1, -1.60 pp) and one mid-sized gap, which is what moved the headline median."
+  ],
+  "_our_overlap": "Llama-3.1-8B-Instruct is measured by both studies. Their -3.01 pp is the largest effect in their panel; the direction agrees with ours."
+ },
+ "wilson_caliskan_2024": {
+  "citation": "Kyra Wilson, Aylin Caliskan. 'Gender, Race, and Intersectional Bias in Resume Screening via Language Model Retrieval.' arXiv:2407.20371v2, 20 Aug 2024. AAAI copyright line; venue commonly cited as AIES 2024 but the string 'AIES 2024' does not appear in the PDF.",
+  "estimand": "share of bias tests in which one group is selected significantly more often, at a top-10% retrieval threshold; and percentage-point difference in selection rate",
+  "n_observations": "over 3 million resume-job comparisons; 554 resumes, 571 job descriptions, 9 occupations",
+  "n_prompts": 10,
+  "n_prompts_effective": 1,
+  "n_prompts_note": "Ten task instructions exist (Table 3, p. 14) but Equation (2) on p. 6 AVERAGES cosine similarity over all ten BEFORE any bias test is run. Every demographic number in the paper is computed on that averaged quantity, and no per-instruction demographic effect is reported anywhere. Between-wording dispersion is structurally unrecoverable from this design. p. 6 promises 'results for individual task instructions are also provided in the Appendix'; the appendix figure that delivers it (Figure 14, p. 20) splits only by occupation match, not by race or gender.",
+  "names_source": "Elder & Hayes (2023), Journal of Politics 85(2):764-770. Surname held CONSTANT at 'Williams' for every resume, chosen as near race-balanced (47.68% Black, 45.75% White).",
+  "decoding": "NOT FOUND — no precision, quantization, temperature, seed or hardware stated anywhere in 25 pages. These are embedding models used encoder-style, so decoding is arguably N/A, but numeric precision is not.",
+  "_relevance": "The strongest single demonstration that the field averages wording away rather than reporting its dispersion."
+ },
+ "an_etal_2024": {
+  "citation": "Haozhe An, Christabel Acquaye, Colin Kai Wang, Zongxia Li, Rachel Rudinger. 'Do Large Language Models Discriminate in Hiring Decisions on the Basis of Race, Ethnicity, and Gender?' In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers), pages 386-397, 2024.",
+  "estimand": "acceptance rate (%) per intersectional group, from generated acceptance/rejection emails",
+  "located_at": "Table 1, p. 3",
+  "n_prompts": 820,
+  "n_prompts_note": "820 templates = 4 qualification levels x 5 base templates x 41 occupational roles. The five base templates are paraphrases, and results are reported averaged over them. This is the paper whose existence makes the abstract's 'each estimates its effect under a single prompt' false.",
+  "names_source": "Rosenman, Olivella & Imai (2023) intersected with a second source; fully specified in Sec. 2 and Appendix A.1",
+  "quantization": "NOT STATED",
+  "models": [
+   "Mistral-7B-Instruct",
+   "Llama2-7b",
+   "Llama2-13b",
+   "Llama2-70b",
+   "GPT-3.5-Turbo"
+  ],
+  "_relevance": "Averages over paraphrases and reports only the mean. Like Wilson & Caliskan, the dispersion existed and was discarded."
+ },
+ "iso_etal_2025": {
+  "citation": "Hayate Iso, Pouya Pezeshkpour, Nikita Bhutani, Estevam Hruschka. 'Evaluating Bias in LLMs for Job-Resume Matching: Gender, Race, and Education.' arXiv:2503.19182v1, 24 March 2025. Megagon Labs.",
+  "estimand": "mean L1-penalized linear coefficient on a 0-100 match score",
+  "located_at": "Table 1 p. 5 (gender, race); Table 2 p. 6 (education)",
+  "n_prompts": 1,
+  "n_prompts_note": "A single fixed prompt template, Appendix A p. 10. No paraphrases, no wording variants.",
+  "names_source": "the `faker` Python library (Sec. 3.3, p. 3) — fictional names, not a validated demographic-signal name list",
+  "decoding": "NOT FOUND",
+  "_relevance": "Also the source of the prestige confound our affiliation design was built to avoid: their institution contrast varies prestige and demographic association together (Ivy League vs HBCUs/women's colleges), so the two cannot be separated."
+ },
+ "tan_etal_2026": {
+  "citation": "Bryan Chen Zhengyu Tan, Shaun Khoo, Bich Ngoc Doan, Zhengyuan Liu, Nancy F. Chen, Roy Ka-Wei Lee. 'Small Changes, Big Impact: Demographic Bias in LLM-Based Hiring Through Subtle Sociocultural Markers.'",
+  "estimand": "range of group win-rate / Top-Score across 8 demographic groups; normalised deviation from parity",
+  "located_at": "Table 13, Appendix E, p. 17",
+  "values": {
+   "win_rate_range_no_rationale": 0.065,
+   "win_rate_range_rationale": 0.068,
+   "top_score_range_no_rationale": 0.063,
+   "top_score_range_rationale": 0.072
+  },
+  "n_prompts": 2,
+  "n_prompts_note": "Two prompt variants per evaluation setting (rationale / no rationale) — that is the entire prompt-variation design, and the two differ in what they ask for rather than in wording.",
+  "names_source": "NOT APPLICABLE — uses no names at all, by design; sociocultural markers instead. Resume generation mandates placeholder contact information.",
+  "quantization": "NOT FOUND"
+ },
+ "fu_shi_2025": {
+  "citation": "Dingjie Fu, Dianxing Shi. \"'You Are Rejected!': An Empirical Study of Large Language Models Taking Hiring Evaluations.\" arXiv:2510.19167v2, 23 October 2025. Huazhong University of Science and Technology.",
+  "n_prompts": 1,
+  "demographic_effects": "NOT FOUND — the paper reports no demographic effect sizes at all; exhaustive regex search over the text found none.",
+  "decoding": "NOT STATED"
+ },
+ "bertrand_mullainathan_2004": {
+  "citation": "see paper-a/data/reference/bm2004_names.json for the full verified record",
+  "estimand": "callback rate, field experiment with real employers",
+  "delta_pp": 3.2,
+  "rates": {
+   "white": 9.65,
+   "black": 6.45,
+   "ratio": 1.5
+  },
+  "located_at": "Table 1, p. 997, row 'All sent resumes'",
+  "within_race_between_name_range_pp": {
+   "white_female": 5.2,
+   "black_female": 7.4,
+   "white_male": 10.0,
+   "black_male": 6.6
+  },
+  "_relevance": "The anchor every LLM audit compares itself to. Its own Table 8 shows the within-race between-name spread is 1.6x to 3.1x the headline race gap."
+ },
+ "summary_of_published_pp_gaps": {
+  "_source": "all 14 Gao/Jiang/Yan race-axis rows above, the only set of directly comparable percentage-point callback gaps across a model panel",
+  "_computed_by": "paper-a/src/build_published_effects_summary.py — these are recomputed from the effects rows and verified against the PDF, not typed",
+  "n": 14,
+  "abs_values_sorted": [
+   0.14,
+   0.16,
+   0.16,
+   0.35,
+   0.37,
+   0.4,
+   0.61,
+   0.67,
+   0.7,
+   1.04,
+   1.04,
+   1.6,
+   2.12,
+   3.01
+  ],
+  "median_abs_pp": 0.64,
+  "mean_abs_pp": 0.8836,
+  "n_below_1_1_pp": 11,
+  "n_above_2_pp": 2,
+  "max_abs_pp": 3.01,
+  "_correction": "The abstract said this literature 'typically reports two to three points'. It does not. The median is 0.64 pp and 11 of 14 fall below 1.10 pp. Two to three points describes only the two extremes. The corrected number strengthens the paper's argument rather than weakening it.",
+  "superseded_twelve_row": {
+   "_why_kept": "House rule: nothing is deleted. These are the values the paper reported while two of the fourteen rows were wrongly believed untranscribable. Kept so the correction is auditable and so any prose still carrying the old numbers can be traced.",
+   "_superseded_on": "2026-08-01",
+   "n": 12,
+   "abs_values_sorted": [
+    0.14,
+    0.16,
+    0.16,
+    0.35,
+    0.37,
+    0.4,
+    0.61,
+    0.7,
+    1.04,
+    1.04,
+    2.12,
+    3.01
+   ],
+   "median_abs_pp": 0.505,
+   "mean_abs_pp": 0.8417,
+   "n_below_1_1_pp": 10,
+   "n_above_2_pp": 2,
+   "max_abs_pp": 3.01
+  },
+  "_what_the_correction_moved": "Median absolute gap 0.505 -> 0.64 pp; count below 1.1 pp 10 of 12 -> 11 of 14; mean 0.8417 -> 0.8836 pp; maximum UNCHANGED at 3.01 pp (Llama-3.1-8B-Instruct, the model our own panel overlaps, so the overlap comparison is untouched). The direction of the paper's argument is unchanged: the published median is still well under one point."
+ },
+ "how_many_prompts_the_field_uses": {
+  "_this_is_the_gap_stated_precisely": "No study in this set reports the dispersion of its effect across wordings. Three use one prompt; one uses two; two average over many and report only the mean. A fourth study, Fu & Shi, reports no demographic effect at all and is excluded from the wording-count statement rather than counted as one.",
+  "gao_jiang_yan_2026": {
+   "n_prompts": 1,
+   "dispersion_reported": false
+  },
+  "iso_etal_2025": {
+   "n_prompts": 1,
+   "dispersion_reported": false
+  },
+  "fu_shi_2025": {
+   "n_prompts": 1,
+   "dispersion_reported": false,
+   "n_prompts_effective": null,
+   "_note": "Reports no demographic effect of any kind, so there is no effect for a wording to have been estimated under. Excluded from every effect-size and wording-count statement; retained in the panel because its reporting practice is informative in the matrix."
+  },
+  "tan_etal_2026": {
+   "n_prompts": 2,
+   "dispersion_reported": false
+  },
+  "wilson_caliskan_2024": {
+   "n_prompts": 10,
+   "averaged_before_testing": true,
+   "dispersion_reported": false
+  },
+  "an_etal_2024": {
+   "n_prompts": 5,
+   "averaged_before_testing": true,
+   "dispersion_reported": false,
+   "n_prompts_superseded_820": 820,
+   "_correction": "820 was the count of INSTANTIATED prompts (4 qualification levels x 5 base templates x 41 roles), not of distinct wordings. Only the five base templates are paraphrases of one another. Corrected 2026-08-01 after the v3 audit; the superseded value is retained under its own key."
+  }
+ },
+ "determinism_claims_in_the_literature": {
+  "_why_this_matters": "Our noise-floor measurement (paper-a/data/delta_stability/noise_floor.json) finds that at temperature 0, with identical weights and byte-identical prompts, 0 of 154 re-measured cells reproduce exactly across sessions, and only 5 of 36 reproduce within a session on Llama-3.1-8B. Batched inference is not bitwise stable.",
+  "gao_jiang_yan_2026": {
+   "quote_1": "'each decision deterministic'",
+   "quote_2": "temperature 0, 'producing deterministic outputs'",
+   "located_at": "lines 50 and 222 of lit/text/gao_jiang_yan_2026_cuhk.txt",
+   "status": "CONTRADICTED by direct measurement on a model in their own panel (Llama-3.1-8B-Instruct)"
+  }
+ }
+}

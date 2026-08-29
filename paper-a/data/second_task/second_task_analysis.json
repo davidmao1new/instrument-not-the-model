@@ -1,0 +1,1629 @@
+{
+  "_what": "Study 2's analysis, on non-hiring domains, same wordings and names.",
+  "n_boot": 10000,
+  "seed": 20260801,
+  "domains": [
+    "housing",
+    "moderation"
+  ],
+  "domain_labels": {
+    "housing": "rental tenancy screening",
+    "moderation": "content moderation"
+  },
+  "by_domain": {
+    "housing": {
+      "models": {
+        "llama-2-7b-chat": {
+          "overall": {
+            "n": 380,
+            "logodds": {
+              "est": 0.009108075073412936,
+              "ci": [
+                -0.1565927592735543,
+                0.17966470643652985
+              ],
+              "p": 0.9166
+            },
+            "prob_pp": {
+              "est": -1.4230079511518672,
+              "ci": [
+                -2.6361599756146976,
+                -0.007750195798771747
+              ],
+              "p": 0.034
+            },
+            "superiority": {
+              "est": 0.5394736842105263,
+              "ci": [
+                0.38675532129730605,
+                0.6839379125442595
+              ],
+              "cliff": 0.07894736842105265,
+              "p": 0.6062
+            },
+            "local_slope": 0.08499269050558464,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              0.07741198058162158,
+              0.2277018768353234
+            ],
+            "legacy_pp": 0.2277018768353234,
+            "saturated_frac": 0.05921052631578947
+          },
+          "per_variant": {
+            "N1": {
+              "n": 32,
+              "logodds": 0.04533647911620772,
+              "ps": 0.5,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 24,
+              "logodds": 0.03566505275631382,
+              "ps": 0.625,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 33,
+              "logodds": -0.1260925786785662,
+              "ps": 0.4242424242424242,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": 0.058737300974040695,
+              "ps": 0.5833333333333334,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": -0.06132560239434707,
+              "ps": 0.5,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 31,
+              "logodds": 0.06527406193880658,
+              "ps": 0.6129032258064516,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 32,
+              "logodds": 0.04533647911620772,
+              "ps": 0.5,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 29,
+              "logodds": 0.13332821442268938,
+              "ps": 0.6206896551724138,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": -0.012214019846506089,
+              "ps": 0.5833333333333334,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 25,
+              "logodds": 0.01848151730393674,
+              "ps": 0.48,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": 0.005973932873628117,
+              "ps": 0.5555555555555556,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 30,
+              "logodds": -0.0723200798034668,
+              "ps": 0.5,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.07054420945767774,
+          "sd_across_wordings_ps": 0.06497965866725629,
+          "effect_logodds": 0.009108075073412936,
+          "effect_ps": 0.5394736842105263,
+          "effect_identified": false,
+          "ratio_sd_to_effect_logodds": 7.745238032084395,
+          "ratio_sd_to_effect_ps": 1.6461513529038254,
+          "noise_floor": {
+            "n_cells": 32,
+            "n_identical": 32,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "32/32",
+          "arm_sd_ps": {
+            "semantic": 0.05555275678862048,
+            "null": 0.07875591564602379
+          },
+          "arm_sd": {
+            "semantic": 0.06818308397933523,
+            "null": 0.07829015041864963
+          },
+          "wording_range_logodds": [
+            -0.1260925786785662,
+            0.13332821442268938
+          ]
+        },
+        "llama-3.1-8b-instruct": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": -0.08501899471804472,
+              "ci": [
+                -0.1364846405549358,
+                -0.038998901499548606
+              ],
+              "p": 0.0009
+            },
+            "prob_pp": {
+              "est": -0.6528332834544565,
+              "ci": [
+                -1.2500498734407366,
+                -0.15453205890270438
+              ],
+              "p": 0.0208
+            },
+            "superiority": {
+              "est": 0.3425925925925926,
+              "ci": [
+                0.25462962962962965,
+                0.43981481481481477
+              ],
+              "cliff": -0.3148148148148148,
+              "p": 0.0007
+            },
+            "local_slope": 0.08418068461720017,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              -0.7156957180831129,
+              -2.125474867951118
+            ],
+            "legacy_pp": -2.125474867951118,
+            "saturated_frac": 0.5567129629629629
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": -0.0723206266853268,
+              "ps": 0.3888888888888889,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": -0.0723206266853268,
+              "ps": 0.3888888888888889,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": -0.03592768166442966,
+              "ps": 0.4444444444444444,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": -0.04996648061466105,
+              "ps": 0.41666666666666663,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": -0.06998797994743404,
+              "ps": 0.33333333333333337,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": -0.0723206266853268,
+              "ps": 0.3888888888888889,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": -0.0723206266853268,
+              "ps": 0.3888888888888889,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": -0.08343874920720498,
+              "ps": 0.3888888888888889,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": -0.12765538607600327,
+              "ps": 0.16666666666666666,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": -0.06489495159849862,
+              "ps": 0.3611111111111111,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": -0.12813561981155766,
+              "ps": 0.2222222222222222,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": -0.17093858095544012,
+              "ps": 0.2222222222222222,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.038110027532907126,
+          "sd_across_wordings_ps": 0.08889941015174031,
+          "effect_logodds": -0.08501899471804472,
+          "effect_ps": 0.3425925925925926,
+          "effect_identified": true,
+          "ratio_sd_to_effect_logodds": 0.44825309519707274,
+          "ratio_sd_to_effect_ps": 0.5647727233169385,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.09899183156225258,
+            "null": 0.03692111488403124
+          },
+          "arm_sd": {
+            "semantic": 0.041200235479300414,
+            "null": 0.01554224226054485
+          },
+          "wording_range_logodds": [
+            -0.17093858095544012,
+            -0.03592768166442966
+          ]
+        },
+        "mistral-7b-instruct-v0.1": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": -0.022917631036254407,
+              "ci": [
+                -0.0949150227399322,
+                0.039518846398845967
+              ],
+              "p": 0.5127
+            },
+            "prob_pp": {
+              "est": 0.011960085763188879,
+              "ci": [
+                -1.0746383427540076,
+                0.9887026617827175
+              ],
+              "p": 0.9824
+            },
+            "superiority": {
+              "est": 0.49074074074074076,
+              "ci": [
+                0.30787037037037035,
+                0.6666666666666666
+              ],
+              "cliff": -0.018518518518518545,
+              "p": 0.9328
+            },
+            "local_slope": 0.1455792398325423,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              -0.3336331305020595,
+              -0.5729407759063602
+            ],
+            "legacy_pp": -0.5729407759063602,
+            "saturated_frac": 0.0
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": -0.022715900415859212,
+              "ps": 0.5277777777777778,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": -0.06793396423449954,
+              "ps": 0.3611111111111111,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": -0.0324964936352224,
+              "ps": 0.4722222222222222,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": -0.026036216098738827,
+              "ps": 0.5277777777777778,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": -0.02613646864324715,
+              "ps": 0.4722222222222222,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": -0.01932592547964904,
+              "ps": 0.5277777777777778,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": -0.022715900415859212,
+              "ps": 0.5277777777777778,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": -0.01908675652554377,
+              "ps": 0.5,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": 0.007133376535372503,
+              "ps": 0.5555555555555556,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": -0.027080193156227346,
+              "ps": 0.4444444444444444,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": -0.0006855753208848373,
+              "ps": 0.4722222222222222,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": -0.017931555044693997,
+              "ps": 0.5,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.018104454311385697,
+          "sd_across_wordings_ps": 0.052079825920060684,
+          "effect_logodds": -0.022917631036254407,
+          "effect_ps": 0.49074074074074076,
+          "effect_identified": false,
+          "ratio_sd_to_effect_logodds": 0.7899793081905135,
+          "ratio_sd_to_effect_ps": 5.624621199366563,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.039283710065919325,
+            "null": 0.06494695524722291
+          },
+          "arm_sd": {
+            "semantic": 0.013491358991852088,
+            "null": 0.017928216328255486
+          },
+          "wording_range_logodds": [
+            -0.06793396423449954,
+            0.007133376535372503
+          ]
+        },
+        "mistral-7b-instruct-v0.3": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": -0.0781530578861073,
+              "ci": [
+                -0.26090482863567804,
+                0.09011575563002351
+              ],
+              "p": 0.3892
+            },
+            "prob_pp": {
+              "est": 0.0028437983423326256,
+              "ci": [
+                -0.00356889722274327,
+                0.009356809567252366
+              ],
+              "p": 0.3897
+            },
+            "superiority": {
+              "est": 0.5185185185185185,
+              "ci": [
+                0.42824074074074076,
+                0.6041666666666666
+              ],
+              "cliff": 0.037037037037037035,
+              "p": 0.7023
+            },
+            "local_slope": 0.0001884449598613954,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              -0.0014727549856392802,
+              -1.9538264471526825
+            ],
+            "legacy_pp": -1.9538264471526825,
+            "saturated_frac": 1.0
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": -0.07585136789264031,
+              "ps": 0.5555555555555556,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": -0.08270826342819006,
+              "ps": 0.5277777777777778,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": -0.2488379233466217,
+              "ps": 0.3611111111111111,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": 0.04457220096160078,
+              "ps": 0.5555555555555556,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": -0.16930604615173112,
+              "ps": 0.4444444444444444,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": -0.06906227686851274,
+              "ps": 0.5833333333333334,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": -0.07585136789264031,
+              "ps": 0.5555555555555556,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": -0.10267525177503511,
+              "ps": 0.4722222222222222,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": -0.001317753628584464,
+              "ps": 0.5555555555555556,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": -0.06407516956097216,
+              "ps": 0.5,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": -0.0928744958538691,
+              "ps": 0.5,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": 0.0001510208039086574,
+              "ps": 0.6111111111111112,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.07726524907771484,
+          "sd_across_wordings_ps": 0.06838416165518488,
+          "effect_logodds": -0.0781530578861073,
+          "effect_ps": 0.5185185185185185,
+          "effect_identified": false,
+          "ratio_sd_to_effect_logodds": 0.9886401270480515,
+          "ratio_sd_to_effect_ps": 3.692744729379989,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.050967996090825515,
+            "null": 0.08501391800842986
+          },
+          "arm_sd": {
+            "semantic": 0.045034673390461424,
+            "null": 0.09969577982215079
+          },
+          "wording_range_logodds": [
+            -0.2488379233466217,
+            0.04457220096160078
+          ]
+        }
+      },
+      "censoring": {
+        "llama-2-7b-chat": {
+          "n_cells": 432,
+          "n_white_censored": 44,
+          "n_black_censored": 32,
+          "n_pairs_dropped": 52,
+          "frac_pairs_dropped": 0.12037037037037036,
+          "censored_white_only": 20,
+          "censored_black_only": 8,
+          "differential_p": 0.03569813817739487,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 47,
+              "n": 144,
+              "frac": 0.3263888888888889
+            },
+            "L3_marginal": {
+              "dropped": 5,
+              "n": 144,
+              "frac": 0.034722222222222224
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 52,
+            "extreme_magnitude_used": 5.763266651082447,
+            "effect_dropping_censored": 0.009108075073412936,
+            "bound_low": -0.2624230051776861,
+            "bound_high": 0.05775847543800542,
+            "bounds_contain_zero": true,
+            "sign_stable_under_bounds": false
+          }
+        },
+        "llama-3.1-8b-instruct": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 9.605363389490405,
+            "effect_dropping_censored": -0.08501899471804472,
+            "bound_low": -0.08501899471804472,
+            "bound_high": -0.08501899471804472,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        },
+        "mistral-7b-instruct-v0.1": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 3.247136610978305,
+            "effect_dropping_censored": -0.022917631036254407,
+            "bound_low": -0.022917631036254407,
+            "bound_high": -0.022917631036254407,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        },
+        "mistral-7b-instruct-v0.3": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 18.018257996192112,
+            "effect_dropping_censored": -0.0781530578861073,
+            "bound_low": -0.0781530578861073,
+            "bound_high": -0.0781530578861073,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        }
+      }
+    },
+    "moderation": {
+      "models": {
+        "llama-2-7b-chat": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": -0.12935996595955737,
+              "ci": [
+                -0.23975643844867103,
+                -0.029494401996556518
+              ],
+              "p": 0.0156
+            },
+            "prob_pp": {
+              "est": -0.1714987868758176,
+              "ci": [
+                -0.30590894394602736,
+                -0.04403742355350005
+              ],
+              "p": 0.0087
+            },
+            "superiority": {
+              "est": 0.3402777777777778,
+              "ci": [
+                0.2037037037037037,
+                0.48842592592592593
+              ],
+              "cliff": -0.3194444444444444,
+              "p": 0.0283
+            },
+            "local_slope": 0.012165556558874581,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              -0.15737359823350858,
+              -3.2339991489889344
+            ],
+            "legacy_pp": -3.2339991489889344,
+            "saturated_frac": 0.6539351851851852
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": -0.1897962416575039,
+              "ps": 0.2777777777777778,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": -0.14876731330875437,
+              "ps": 0.3055555555555556,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": -0.16772082933594532,
+              "ps": 0.2777777777777778,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": -0.12250337723295505,
+              "ps": 0.33333333333333337,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": -0.12518763150013004,
+              "ps": 0.3055555555555556,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": -0.112593915383808,
+              "ps": 0.33333333333333337,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": -0.1897962416575039,
+              "ps": 0.2777777777777778,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": -0.05930513190358565,
+              "ps": 0.3888888888888889,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": -0.26449369906610365,
+              "ps": 0.2222222222222222,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": -0.03605176670303699,
+              "ps": 0.4722222222222222,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": -0.02676152991637523,
+              "ps": 0.4722222222222222,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": -0.10934191384898637,
+              "ps": 0.41666666666666663,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.0689540008606069,
+          "sd_across_wordings_ps": 0.08044227493028522,
+          "effect_logodds": -0.12935996595955737,
+          "effect_ps": 0.3402777777777778,
+          "effect_identified": true,
+          "ratio_sd_to_effect_logodds": 0.5330397263877175,
+          "ratio_sd_to_effect_ps": 0.5036385908678727,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.10356306601281803,
+            "null": 0.024845199749997673
+          },
+          "arm_sd": {
+            "semantic": 0.09496590675132448,
+            "null": 0.029946461213680116
+          },
+          "wording_range_logodds": [
+            -0.26449369906610365,
+            -0.02676152991637523
+          ]
+        },
+        "llama-3.1-8b-instruct": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": 0.281188016010126,
+              "ci": [
+                0.22385612264457555,
+                0.33327212065726886
+              ],
+              "p": 0.0001
+            },
+            "prob_pp": {
+              "est": 3.6394903231038547,
+              "ci": [
+                2.960085443923141,
+                4.236672017814914
+              ],
+              "p": 0.0001
+            },
+            "superiority": {
+              "est": 0.9027777777777778,
+              "ci": [
+                0.8518518518518519,
+                0.9490740740740741
+              ],
+              "cliff": 0.8055555555555556,
+              "p": 0.0001
+            },
+            "local_slope": 0.08493598994794274,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              2.3882982501318026,
+              7.02970040025315
+            ],
+            "legacy_pp": 7.02970040025315,
+            "saturated_frac": 0.3680555555555556
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": 0.26100760343287543,
+              "ps": 0.9166666666666666,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": 0.26100760343287543,
+              "ps": 0.9166666666666666,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": 0.2621905863935121,
+              "ps": 0.9166666666666666,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": 0.27886732566592654,
+              "ps": 0.9444444444444444,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": 0.37144817893002824,
+              "ps": 0.9444444444444444,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": 0.26100760343287543,
+              "ps": 0.9166666666666666,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": 0.26100760343287543,
+              "ps": 0.9166666666666666,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": 0.35651906761595975,
+              "ps": 0.8611111111111112,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": 0.2803327634647095,
+              "ps": 0.8888888888888888,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": 0.32111920084923606,
+              "ps": 0.8055555555555556,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": 0.2590063707706882,
+              "ps": 0.9444444444444444,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": 0.20074228469995,
+              "ps": 0.8611111111111112,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.04707413933975086,
+          "sd_across_wordings_ps": 0.04187657563580048,
+          "effect_logodds": 0.281188016010126,
+          "effect_ps": 0.9027777777777778,
+          "effect_identified": true,
+          "ratio_sd_to_effect_logodds": 0.16741161308259897,
+          "ratio_sd_to_effect_ps": 0.10396942916474602,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.04864416865393959,
+            "null": 0.01434438276373118
+          },
+          "arm_sd": {
+            "semantic": 0.054090713036921874,
+            "null": 0.04409800414227089
+          },
+          "wording_range_logodds": [
+            0.20074228469995,
+            0.37144817893002824
+          ]
+        },
+        "mistral-7b-instruct-v0.1": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": -0.06690682400000135,
+              "ci": [
+                -0.10645936603138278,
+                -0.02729787995490118
+              ],
+              "p": 0.0004
+            },
+            "prob_pp": {
+              "est": -1.1636542772082086,
+              "ci": [
+                -1.725553882358373,
+                -0.6223349548994104
+              ],
+              "p": 0.0001
+            },
+            "superiority": {
+              "est": 0.27314814814814814,
+              "ci": [
+                0.12731481481481477,
+                0.4375
+              ],
+              "cliff": -0.4537037037037037,
+              "p": 0.005
+            },
+            "local_slope": 0.14188294380783834,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              -0.9492937149953121,
+              -1.6726706000000338
+            ],
+            "legacy_pp": -1.6726706000000338,
+            "saturated_frac": 0.0
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": -0.06304958472624822,
+              "ps": 0.25,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": -0.06486728892346258,
+              "ps": 0.33333333333333337,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": -0.053694181257930115,
+              "ps": 0.33333333333333337,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": -0.054356640311581966,
+              "ps": 0.2777777777777778,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": -0.08379069961257596,
+              "ps": 0.25,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": -0.0934567876148867,
+              "ps": 0.1388888888888889,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": -0.06304958472624822,
+              "ps": 0.25,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": -0.0827540850896005,
+              "ps": 0.19444444444444445,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": -0.08482216648043918,
+              "ps": 0.2777777777777778,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": -0.0686368111315324,
+              "ps": 0.33333333333333337,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": -0.04726350710688249,
+              "ps": 0.2777777777777778,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": -0.04314055101862765,
+              "ps": 0.3611111111111111,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.0161857030660084,
+          "sd_across_wordings_ps": 0.06360094680088751,
+          "effect_logodds": -0.06690682400000135,
+          "effect_ps": 0.27314814814814814,
+          "effect_identified": true,
+          "ratio_sd_to_effect_logodds": 0.24191408436915304,
+          "ratio_sd_to_effect_ps": 0.28036335732636125,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.05936044601786891,
+            "null": 0.07190099503080437
+          },
+          "arm_sd": {
+            "semantic": 0.017421575772658123,
+            "null": 0.016235636187959184
+          },
+          "wording_range_logodds": [
+            -0.0934567876148867,
+            -0.04314055101862765
+          ]
+        },
+        "mistral-7b-instruct-v0.3": {
+          "overall": {
+            "n": 432,
+            "logodds": {
+              "est": 0.7560052392973273,
+              "ci": [
+                0.5934464982527862,
+                0.9182662272996911
+              ],
+              "p": 0.0001
+            },
+            "prob_pp": {
+              "est": 0.006063091832793502,
+              "ci": [
+                0.0035051669810579043,
+                0.008963618018759596
+              ],
+              "p": 0.0001
+            },
+            "superiority": {
+              "est": 0.8912037037037037,
+              "ci": [
+                0.8356481481481481,
+                0.9398726851851843
+              ],
+              "cliff": 0.7824074074074074,
+              "p": 0.0001
+            },
+            "local_slope": 3.491346089500523e-05,
+            "clustered": true,
+            "n_clusters": 12,
+            "pp_interval": [
+              0.002639475935862631,
+              18.900130982433183
+            ],
+            "legacy_pp": 18.900130982433183,
+            "saturated_frac": 1.0
+          },
+          "per_variant": {
+            "N1": {
+              "n": 36,
+              "logodds": 0.7377059462878797,
+              "ps": 0.8888888888888888,
+              "kind": "null"
+            },
+            "N2": {
+              "n": 36,
+              "logodds": 0.769402057203924,
+              "ps": 0.8888888888888888,
+              "kind": "null"
+            },
+            "N3": {
+              "n": 36,
+              "logodds": 0.7486991005906155,
+              "ps": 0.8611111111111112,
+              "kind": "null"
+            },
+            "N4": {
+              "n": 36,
+              "logodds": 0.616126976269406,
+              "ps": 0.7777777777777778,
+              "kind": "null"
+            },
+            "N5": {
+              "n": 36,
+              "logodds": 0.48502941270372296,
+              "ps": 0.9166666666666666,
+              "kind": "null"
+            },
+            "N6": {
+              "n": 36,
+              "logodds": 0.746643632238932,
+              "ps": 0.9444444444444444,
+              "kind": "null"
+            },
+            "S1": {
+              "n": 36,
+              "logodds": 0.7377059462878797,
+              "ps": 0.8888888888888888,
+              "kind": "semantic"
+            },
+            "S2": {
+              "n": 36,
+              "logodds": 0.5476936970199582,
+              "ps": 0.9444444444444444,
+              "kind": "semantic"
+            },
+            "S3": {
+              "n": 36,
+              "logodds": 1.0418186588761325,
+              "ps": 0.8333333333333334,
+              "kind": "semantic"
+            },
+            "S4": {
+              "n": 36,
+              "logodds": 1.0677559975560793,
+              "ps": 0.9444444444444444,
+              "kind": "semantic"
+            },
+            "S5": {
+              "n": 36,
+              "logodds": 0.8457030259413328,
+              "ps": 0.9166666666666666,
+              "kind": "semantic"
+            },
+            "S6": {
+              "n": 36,
+              "logodds": 0.7277784205920658,
+              "ps": 0.8888888888888888,
+              "kind": "semantic"
+            }
+          },
+          "sd_across_wordings_logodds": 0.17191383686177134,
+          "sd_across_wordings_ps": 0.0494900104042895,
+          "effect_logodds": 0.7560052392973273,
+          "effect_ps": 0.8912037037037037,
+          "effect_identified": true,
+          "ratio_sd_to_effect_logodds": 0.22739767917687642,
+          "ratio_sd_to_effect_ps": 0.12650700884410096,
+          "noise_floor": {
+            "n_cells": 36,
+            "n_identical": 36,
+            "frac_identical": 1.0,
+            "sigma_per_cell": 0.0,
+            "sigma_on_variant_mean": 0.0
+          },
+          "sd_over_noise": null,
+          "noise_floor_is_exactly_zero": true,
+          "replicate_agreement": "36/36",
+          "arm_sd_ps": {
+            "semantic": 0.042127085800286374,
+            "null": 0.05737753105492467
+          },
+          "arm_sd": {
+            "semantic": 0.20014181190488955,
+            "null": 0.11178913592378303
+          },
+          "wording_range_logodds": [
+            0.48502941270372296,
+            1.0677559975560793
+          ]
+        }
+      },
+      "censoring": {
+        "llama-2-7b-chat": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 7.135690088139903,
+            "effect_dropping_censored": -0.12935996595955737,
+            "bound_low": -0.12935996595955737,
+            "bound_high": -0.12935996595955737,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        },
+        "llama-3.1-8b-instruct": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 7.11753954431305,
+            "effect_dropping_censored": 0.281188016010126,
+            "bound_low": 0.281188016010126,
+            "bound_high": 0.281188016010126,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        },
+        "mistral-7b-instruct-v0.1": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 2.877811993079587,
+            "effect_dropping_censored": -0.06690682400000135,
+            "bound_low": -0.06690682400000135,
+            "bound_high": -0.06690682400000135,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        },
+        "mistral-7b-instruct-v0.3": {
+          "n_cells": 432,
+          "n_white_censored": 0,
+          "n_black_censored": 0,
+          "n_pairs_dropped": 0,
+          "frac_pairs_dropped": 0.0,
+          "censored_white_only": 0,
+          "censored_black_only": 0,
+          "differential_p": null,
+          "by_level": {
+            "L1_strong": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L2_mid": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            },
+            "L3_marginal": {
+              "dropped": 0,
+              "n": 144,
+              "frac": 0.0
+            }
+          },
+          "bounds": {
+            "n_censored_pairs": 0,
+            "extreme_magnitude_used": 19.611468895178373,
+            "effect_dropping_censored": 0.7560052392973273,
+            "bound_low": 0.7560052392973273,
+            "bound_high": 0.7560052392973273,
+            "bounds_contain_zero": false,
+            "sign_stable_under_bounds": true
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "n_domain_model_cells": 8,
+    "n_with_identified_effect": 5,
+    "n_ratio_suppressed_unidentified": 3,
+    "ratio_basis": "cells whose effect interval excludes zero; ratio is SD / |P(sup) - 0.5|, the same scale as Tables 3 and 17",
+    "ratio_logodds_min": 0.16741161308259897,
+    "ratio_logodds_max": 0.5330397263877175,
+    "ratio_min": 0.10396942916474602,
+    "ratio_max": 0.5647727233169385,
+    "sd_over_noise_min": null,
+    "sd_over_noise_max": null,
+    "n_replicate_cells": 284,
+    "n_replicate_cells_identical": 284,
+    "n_cells_with_zero_noise_floor": 8,
+    "per_cell": [
+      {
+        "domain": "housing",
+        "model": "llama-2-7b-chat",
+        "sd": 0.07054420945767774,
+        "ratio": 7.745238032084395,
+        "ratio_ps": 1.6461513529038254,
+        "sd_ps": 0.06497965866725629,
+        "effect_ps": 0.5394736842105263,
+        "identified": false,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 32,
+          "n_identical": 32,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "32/32"
+      },
+      {
+        "domain": "housing",
+        "model": "llama-3.1-8b-instruct",
+        "sd": 0.038110027532907126,
+        "ratio": 0.44825309519707274,
+        "ratio_ps": 0.5647727233169385,
+        "sd_ps": 0.08889941015174031,
+        "effect_ps": 0.3425925925925926,
+        "identified": true,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      },
+      {
+        "domain": "housing",
+        "model": "mistral-7b-instruct-v0.1",
+        "sd": 0.018104454311385697,
+        "ratio": 0.7899793081905135,
+        "ratio_ps": 5.624621199366563,
+        "sd_ps": 0.052079825920060684,
+        "effect_ps": 0.49074074074074076,
+        "identified": false,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      },
+      {
+        "domain": "housing",
+        "model": "mistral-7b-instruct-v0.3",
+        "sd": 0.07726524907771484,
+        "ratio": 0.9886401270480515,
+        "ratio_ps": 3.692744729379989,
+        "sd_ps": 0.06838416165518488,
+        "effect_ps": 0.5185185185185185,
+        "identified": false,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      },
+      {
+        "domain": "moderation",
+        "model": "llama-2-7b-chat",
+        "sd": 0.0689540008606069,
+        "ratio": 0.5330397263877175,
+        "ratio_ps": 0.5036385908678727,
+        "sd_ps": 0.08044227493028522,
+        "effect_ps": 0.3402777777777778,
+        "identified": true,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      },
+      {
+        "domain": "moderation",
+        "model": "llama-3.1-8b-instruct",
+        "sd": 0.04707413933975086,
+        "ratio": 0.16741161308259897,
+        "ratio_ps": 0.10396942916474602,
+        "sd_ps": 0.04187657563580048,
+        "effect_ps": 0.9027777777777778,
+        "identified": true,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      },
+      {
+        "domain": "moderation",
+        "model": "mistral-7b-instruct-v0.1",
+        "sd": 0.0161857030660084,
+        "ratio": 0.24191408436915304,
+        "ratio_ps": 0.28036335732636125,
+        "sd_ps": 0.06360094680088751,
+        "effect_ps": 0.27314814814814814,
+        "identified": true,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      },
+      {
+        "domain": "moderation",
+        "model": "mistral-7b-instruct-v0.3",
+        "sd": 0.17191383686177134,
+        "ratio": 0.22739767917687642,
+        "ratio_ps": 0.12650700884410096,
+        "sd_ps": 0.0494900104042895,
+        "effect_ps": 0.8912037037037037,
+        "identified": true,
+        "sd_over_noise": null,
+        "noise_floor": {
+          "n_cells": 36,
+          "n_identical": 36,
+          "frac_identical": 1.0,
+          "sigma_per_cell": 0.0,
+          "sigma_on_variant_mean": 0.0
+        },
+        "noise_floor_is_exactly_zero": true,
+        "replicate_agreement": "36/36"
+      }
+    ]
+  },
+  "abstract_clause": "Outside hiring \u2014 rental tenancy screening and content moderation, 8 domain-by-model cells \u2014 the same wordings move the effect by 0.10 to 0.56 of itself on the 5 cells where it is separable from zero, so this is a fact about prompted measurement rather than about hiring."
+}

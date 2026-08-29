@@ -1,0 +1,1439 @@
+{
+  "seed": 20260801,
+  "n_boot": 20000,
+  "source": "paper-a/data/reference/bm2004_names.json",
+  "models": {
+    "llama-2-7b-chat": {
+      "n_names": 24,
+      "n_obs_per_name": 144,
+      "race_effect_on_name_scale": 0.18970937526514708,
+      "replicate_noise": {
+        "n_replicate_pairs": 288,
+        "frac_identical": 0.7083333333333334,
+        "sigma_per_observation": 0.09587036681477744,
+        "sigma_on_name_mean": 0.007989197234564786,
+        "sd_name_margin_within_race": 0.09459801950390219,
+        "noise_over_within_race_sd": 0.08445417014502328
+      },
+      "q1_perception": {
+        "n": 24,
+        "rho": 0.6225229557108752,
+        "ci": [
+          0.3467902385315382,
+          0.7761096402741572
+        ],
+        "width": 0.429319401742619,
+        "p": 0.0007,
+        "method": "spearman",
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": -0.139444993095432,
+          "ci": [
+            -0.5397273474859935,
+            0.30590922664884873
+          ],
+          "width": 0.8456365741348422,
+          "p": 0.5748,
+          "p_perm": 0.527723613819309,
+          "boot_sd": 0.21980179773255215,
+          "null_sd": 0.2124101913173834,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q2_callback": {
+        "white": {
+          "n": 12,
+          "rho": 0.2842122758581141,
+          "ci": [
+            -0.4827659418373128,
+            0.8124547800036677
+          ],
+          "width": 1.2952207218409804,
+          "p": 0.42672133606680335,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": -0.3894760817314897,
+          "ci": [
+            -0.8372213591330165,
+            0.2352944914617683
+          ],
+          "width": 1.072515850594785,
+          "p": 0.2026,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": -0.05263190293668779,
+          "ci": [
+            -0.4976973103023213,
+            0.36299845456850915
+          ],
+          "width": 0.8606957648708304,
+          "p": 0.8247,
+          "p_perm": 0.8164591770411479,
+          "boot_sd": 0.21780758719278806,
+          "null_sd": 0.21533904324403774,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q3_ses": {
+        "white": {
+          "n": 12,
+          "rho": 0.15384615384615385,
+          "ci": [
+            -0.5357142857142857,
+            0.7928571428571428
+          ],
+          "width": 1.3285714285714285,
+          "p": 0.633,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": 0.4755244755244756,
+          "ci": [
+            -0.2114695340501792,
+            0.885304659498208
+          ],
+          "width": 1.0967741935483872,
+          "p": 0.1501,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.3146853146853147,
+          "ci": [
+            -0.15218162195497995,
+            0.7111913357400722
+          ],
+          "width": 0.8633729576950522,
+          "p": 0.1836,
+          "p_perm": 0.14824258787060646,
+          "boot_sd": 0.2213340140507897,
+          "null_sd": 0.21370576512199566,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "per_name": {
+        "Aisha": {
+          "margin": 1.8695314966877734,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 2.2,
+          "mother_education_pct": 77.2,
+          "perception": 0.97
+        },
+        "Allison": {
+          "margin": 1.9083695315070548,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 9.5,
+          "mother_education_pct": 95.7,
+          "perception": 0.926
+        },
+        "Anne": {
+          "margin": 2.0389139633312783,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.3,
+          "mother_education_pct": 93.1,
+          "perception": 0.962
+        },
+        "Brad": {
+          "margin": 1.9303104995635165,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 15.9,
+          "mother_education_pct": 90.5,
+          "perception": 1.0
+        },
+        "Brendan": {
+          "margin": 2.094551746821819,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.7,
+          "mother_education_pct": 96.7,
+          "perception": 0.667
+        },
+        "Brett": {
+          "margin": 1.7720044717050523,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 93.9,
+          "perception": 0.923
+        },
+        "Carrie": {
+          "margin": 1.8762662431225428,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 80.7,
+          "perception": 0.923
+        },
+        "Darnell": {
+          "margin": 1.7411353092890995,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.8,
+          "mother_education_pct": 66.1,
+          "perception": 0.967
+        },
+        "Ebony": {
+          "margin": 1.7036630766262,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.6,
+          "mother_education_pct": 65.6,
+          "perception": 0.9
+        },
+        "Emily": {
+          "margin": 1.9624080117052207,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 7.9,
+          "mother_education_pct": 96.6,
+          "perception": 0.925
+        },
+        "Geoffrey": {
+          "margin": 1.7490806777937344,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 96.0,
+          "perception": 0.731
+        },
+        "Greg": {
+          "margin": 1.9000660411924857,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.8,
+          "mother_education_pct": 88.3,
+          "perception": 1.0
+        },
+        "Hakim": {
+          "margin": 1.8137360793724926,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 5.5,
+          "mother_education_pct": 73.7,
+          "perception": 0.933
+        },
+        "Jamal": {
+          "margin": 1.6929566431191134,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 6.6,
+          "mother_education_pct": 73.9,
+          "perception": 0.967
+        },
+        "Jay": {
+          "margin": 1.986055955854267,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 13.4,
+          "mother_education_pct": 85.4,
+          "perception": 0.926
+        },
+        "Jermaine": {
+          "margin": 1.7630903559632007,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.6,
+          "mother_education_pct": 57.5,
+          "perception": 1.0
+        },
+        "Jill": {
+          "margin": 2.037389371299499,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.4,
+          "mother_education_pct": 92.3,
+          "perception": 0.889
+        },
+        "Kareem": {
+          "margin": 1.8366329413763909,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.7,
+          "mother_education_pct": 67.4,
+          "perception": 0.967
+        },
+        "Keisha": {
+          "margin": 1.744069713733932,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 3.8,
+          "mother_education_pct": 68.8,
+          "perception": 0.93
+        },
+        "Kenya": {
+          "margin": 1.813908762214731,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 8.7,
+          "mother_education_pct": 70.2,
+          "perception": 0.967
+        },
+        "Kristen": {
+          "margin": 2.0482048968134126,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 93.4,
+          "perception": 0.963
+        },
+        "Lakisha": {
+          "margin": 1.625906885417332,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 5.5,
+          "mother_education_pct": 55.6,
+          "perception": 0.967
+        },
+        "Latonya": {
+          "margin": 1.7950272007441528,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.1,
+          "mother_education_pct": 31.3,
+          "perception": 1.0
+        },
+        "Leroy": {
+          "margin": 1.6274504429837044,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.4,
+          "mother_education_pct": 53.3,
+          "perception": 0.933
+        }
+      }
+    },
+    "llama-3.1-8b-instruct": {
+      "n_names": 24,
+      "n_obs_per_name": 144,
+      "race_effect_on_name_scale": -0.1508946573899066,
+      "replicate_noise": {
+        "n_replicate_pairs": 288,
+        "frac_identical": 0.8194444444444444,
+        "sigma_per_observation": 0.012432629225366322,
+        "sigma_on_name_mean": 0.0010360524354471935,
+        "sd_name_margin_within_race": 0.08059292442622804,
+        "noise_over_within_race_sd": 0.012855377104420126
+      },
+      "q1_perception": {
+        "n": 24,
+        "rho": -0.6566218254759372,
+        "ci": [
+          -0.8412554670115271,
+          -0.34319514100934856
+        ],
+        "width": 0.49806032600217853,
+        "p": 0.0003,
+        "method": "spearman",
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": -0.09296332873028801,
+          "ci": [
+            -0.5102820595081182,
+            0.3459908405853151
+          ],
+          "width": 0.8562729000934333,
+          "p": 0.6635,
+          "p_perm": 0.6735163241837908,
+          "boot_sd": 0.2160128657247271,
+          "null_sd": 0.2124606451127012,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q2_callback": {
+        "white": {
+          "n": 12,
+          "rho": 0.12631656704805072,
+          "ci": [
+            -0.5475183917648954,
+            0.6117237658487227
+          ],
+          "width": 1.159242157613618,
+          "p": 0.7228,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": 0.17894846998473848,
+          "ci": [
+            -0.48339483394833954,
+            0.763660119945739
+          ],
+          "width": 1.2470549538940785,
+          "p": 0.5985,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.15263251851639462,
+          "ci": [
+            -0.31301919989746607,
+            0.5459795237243754
+          ],
+          "width": 0.8589987236218415,
+          "p": 0.5359,
+          "p_perm": 0.48582570871456426,
+          "boot_sd": 0.2220374080215751,
+          "null_sd": 0.2146275138773984,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q3_ses": {
+        "white": {
+          "n": 12,
+          "rho": 0.3216783216783217,
+          "ci": [
+            -0.28001438848920857,
+            0.7941176470588236
+          ],
+          "width": 1.0741320355480322,
+          "p": 0.291,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": 0.3356643356643357,
+          "ci": [
+            -0.22511010593976913,
+            0.7600217391304329
+          ],
+          "width": 0.985131845070202,
+          "p": 0.2369,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.32867132867132864,
+          "ci": [
+            -0.08197160421545667,
+            0.6512455516014235
+          ],
+          "width": 0.7332171558168802,
+          "p": 0.1145,
+          "p_perm": 0.13164341782910854,
+          "boot_sd": 0.188030055310162,
+          "null_sd": 0.21331079738349032,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "per_name": {
+        "Aisha": {
+          "margin": -3.7647519927042765,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 2.2,
+          "mother_education_pct": 77.2,
+          "perception": 0.97
+        },
+        "Allison": {
+          "margin": -3.8774247221803173,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 9.5,
+          "mother_education_pct": 95.7,
+          "perception": 0.926
+        },
+        "Anne": {
+          "margin": -3.9568888527405885,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.3,
+          "mother_education_pct": 93.1,
+          "perception": 0.962
+        },
+        "Brad": {
+          "margin": -4.010167749491278,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 15.9,
+          "mother_education_pct": 90.5,
+          "perception": 1.0
+        },
+        "Brendan": {
+          "margin": -3.9190740799117663,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.7,
+          "mother_education_pct": 96.7,
+          "perception": 0.667
+        },
+        "Brett": {
+          "margin": -3.9356668335578715,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 93.9,
+          "perception": 0.923
+        },
+        "Carrie": {
+          "margin": -3.8876169796143643,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 80.7,
+          "perception": 0.923
+        },
+        "Darnell": {
+          "margin": -3.947602840357557,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.8,
+          "mother_education_pct": 66.1,
+          "perception": 0.967
+        },
+        "Ebony": {
+          "margin": -3.597436071723489,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.6,
+          "mother_education_pct": 65.6,
+          "perception": 0.9
+        },
+        "Emily": {
+          "margin": -3.817346499831684,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 7.9,
+          "mother_education_pct": 96.6,
+          "perception": 0.925
+        },
+        "Geoffrey": {
+          "margin": -3.9542802025252177,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 96.0,
+          "perception": 0.731
+        },
+        "Greg": {
+          "margin": -4.0397916398595575,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.8,
+          "mother_education_pct": 88.3,
+          "perception": 1.0
+        },
+        "Hakim": {
+          "margin": -3.773493123712961,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 5.5,
+          "mother_education_pct": 73.7,
+          "perception": 0.933
+        },
+        "Jamal": {
+          "margin": -3.711923822963578,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 6.6,
+          "mother_education_pct": 73.9,
+          "perception": 0.967
+        },
+        "Jay": {
+          "margin": -3.9318814190133917,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 13.4,
+          "mother_education_pct": 85.4,
+          "perception": 0.926
+        },
+        "Jermaine": {
+          "margin": -3.785877886436497,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.6,
+          "mother_education_pct": 57.5,
+          "perception": 1.0
+        },
+        "Jill": {
+          "margin": -3.8680895297075515,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.4,
+          "mother_education_pct": 92.3,
+          "perception": 0.889
+        },
+        "Kareem": {
+          "margin": -3.814816472772293,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.7,
+          "mother_education_pct": 67.4,
+          "perception": 0.967
+        },
+        "Keisha": {
+          "margin": -3.739222758287229,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 3.8,
+          "mother_education_pct": 68.8,
+          "perception": 0.93
+        },
+        "Kenya": {
+          "margin": -3.6737132371537373,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 8.7,
+          "mother_education_pct": 70.2,
+          "perception": 0.967
+        },
+        "Kristen": {
+          "margin": -3.879706212588775,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 93.4,
+          "perception": 0.963
+        },
+        "Lakisha": {
+          "margin": -3.7842742711742634,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 5.5,
+          "mother_education_pct": 55.6,
+          "perception": 0.967
+        },
+        "Latonya": {
+          "margin": -3.7547346024716544,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.1,
+          "mother_education_pct": 31.3,
+          "perception": 1.0
+        },
+        "Leroy": {
+          "margin": -3.919351752585947,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.4,
+          "mother_education_pct": 53.3,
+          "perception": 0.933
+        }
+      }
+    },
+    "mistral-7b-instruct-v0.1": {
+      "n_names": 24,
+      "n_obs_per_name": 144,
+      "race_effect_on_name_scale": 0.001278070653401464,
+      "replicate_noise": {
+        "n_replicate_pairs": 288,
+        "frac_identical": 0.3229166666666667,
+        "sigma_per_observation": 0.01609872340422933,
+        "sigma_on_name_mean": 0.0013415602836857774,
+        "sd_name_margin_within_race": 0.08566118370516321,
+        "noise_over_within_race_sd": 0.015661239147748494
+      },
+      "q1_perception": {
+        "n": 24,
+        "rho": -0.043716499698797415,
+        "ci": [
+          -0.43005383633598,
+          0.3657704492388473
+        ],
+        "width": 0.7958242855748272,
+        "p": 0.8377,
+        "method": "spearman",
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": -0.255649154008292,
+          "ci": [
+            -0.7208661021234164,
+            0.2603702930985627
+          ],
+          "width": 0.9812363952219791,
+          "p": 0.3399,
+          "p_perm": 0.24438778061096944,
+          "boot_sd": 0.25329876594068645,
+          "null_sd": 0.2149193380287126,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q2_callback": {
+        "white": {
+          "n": 12,
+          "rho": -0.25263313409610144,
+          "ci": [
+            -0.8509997760726552,
+            0.40925476198317073
+          ],
+          "width": 1.2602545380558259,
+          "p": 0.4267,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": 0.42807281055172736,
+          "ci": [
+            -0.20879120879120877,
+            0.8639057100966868
+          ],
+          "width": 1.0726969188878956,
+          "p": 0.1756,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.08771983822781299,
+          "ci": [
+            -0.33697971999919346,
+            0.4781565120395482
+          ],
+          "width": 0.8151362320387416,
+          "p": 0.7087,
+          "p_perm": 0.6900154992250388,
+          "boot_sd": 0.20990751422679063,
+          "null_sd": 0.21299438498581774,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q3_ses": {
+        "white": {
+          "n": 12,
+          "rho": 0.43356643356643365,
+          "ci": [
+            -0.27007299270072993,
+            0.9354838709677419
+          ],
+          "width": 1.205556863668472,
+          "p": 0.2114,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": -0.39860139860139865,
+          "ci": [
+            -0.8928571428571428,
+            0.2903225806451613
+          ],
+          "width": 1.183179723502304,
+          "p": 0.2209,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.017482517482517484,
+          "ci": [
+            -0.41323792486583183,
+            0.45688728702490117
+          ],
+          "width": 0.870125211890733,
+          "p": 0.9203,
+          "p_perm": 0.9434528273586321,
+          "boot_sd": 0.2213534495638473,
+          "null_sd": 0.21199635419567664,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "per_name": {
+        "Aisha": {
+          "margin": -1.862823009834732,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 2.2,
+          "mother_education_pct": 77.2,
+          "perception": 0.97
+        },
+        "Allison": {
+          "margin": -1.8413281983364707,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 9.5,
+          "mother_education_pct": 95.7,
+          "perception": 0.926
+        },
+        "Anne": {
+          "margin": -1.8041570145198804,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.3,
+          "mother_education_pct": 93.1,
+          "perception": 0.962
+        },
+        "Brad": {
+          "margin": -1.9113164220511736,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 15.9,
+          "mother_education_pct": 90.5,
+          "perception": 1.0
+        },
+        "Brendan": {
+          "margin": -1.9536822768658761,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.7,
+          "mother_education_pct": 96.7,
+          "perception": 0.667
+        },
+        "Brett": {
+          "margin": -1.878530647184972,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 93.9,
+          "perception": 0.923
+        },
+        "Carrie": {
+          "margin": -1.9303409175431925,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 80.7,
+          "perception": 0.923
+        },
+        "Darnell": {
+          "margin": -1.9326758398617008,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.8,
+          "mother_education_pct": 66.1,
+          "perception": 0.967
+        },
+        "Ebony": {
+          "margin": -1.6990847638413409,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.6,
+          "mother_education_pct": 65.6,
+          "perception": 0.9
+        },
+        "Emily": {
+          "margin": -1.8233445571757452,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 7.9,
+          "mother_education_pct": 96.6,
+          "perception": 0.925
+        },
+        "Geoffrey": {
+          "margin": -1.7181254084312068,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 96.0,
+          "perception": 0.731
+        },
+        "Greg": {
+          "margin": -1.9668449201106557,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.8,
+          "mother_education_pct": 88.3,
+          "perception": 1.0
+        },
+        "Hakim": {
+          "margin": -1.9826621136923777,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 5.5,
+          "mother_education_pct": 73.7,
+          "perception": 0.933
+        },
+        "Jamal": {
+          "margin": -1.8912315848642665,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 6.6,
+          "mother_education_pct": 73.9,
+          "perception": 0.967
+        },
+        "Jay": {
+          "margin": -1.9120714776682743,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 13.4,
+          "mother_education_pct": 85.4,
+          "perception": 0.926
+        },
+        "Jermaine": {
+          "margin": -1.9100689733815177,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.6,
+          "mother_education_pct": 57.5,
+          "perception": 1.0
+        },
+        "Jill": {
+          "margin": -1.8341706434600757,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.4,
+          "mother_education_pct": 92.3,
+          "perception": 0.889
+        },
+        "Kareem": {
+          "margin": -1.9424048581078297,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.7,
+          "mother_education_pct": 67.4,
+          "perception": 0.967
+        },
+        "Keisha": {
+          "margin": -1.9581435873554172,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 3.8,
+          "mother_education_pct": 68.8,
+          "perception": 0.93
+        },
+        "Kenya": {
+          "margin": -1.9400282177015622,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 8.7,
+          "mother_education_pct": 70.2,
+          "perception": 0.967
+        },
+        "Kristen": {
+          "margin": -1.9080334131338776,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 93.4,
+          "perception": 0.963
+        },
+        "Lakisha": {
+          "margin": -1.7502828182479597,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 5.5,
+          "mother_education_pct": 55.6,
+          "perception": 0.967
+        },
+        "Latonya": {
+          "margin": -1.7173072894760704,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.1,
+          "mother_education_pct": 31.3,
+          "perception": 1.0
+        },
+        "Leroy": {
+          "margin": -1.9105696879574456,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.4,
+          "mother_education_pct": 53.3,
+          "perception": 0.933
+        }
+      }
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_names": 24,
+      "n_obs_per_name": 144,
+      "race_effect_on_name_scale": -0.09172164351552436,
+      "replicate_noise": {
+        "n_replicate_pairs": 288,
+        "frac_identical": 0.3645833333333333,
+        "sigma_per_observation": 0.03440117408632236,
+        "sigma_on_name_mean": 0.0028667645071935297,
+        "sd_name_margin_within_race": 0.25249903121362177,
+        "noise_over_within_race_sd": 0.011353566361877091
+      },
+      "q1_perception": {
+        "n": 24,
+        "rho": -0.16481120386446627,
+        "ci": [
+          -0.5491715896024879,
+          0.2675342895883825
+        ],
+        "width": 0.8167058791908703,
+        "p": 0.4565,
+        "method": "spearman",
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": -0.01608980689562677,
+          "ci": [
+            -0.47314728811659723,
+            0.45955005667682053
+          ],
+          "width": 0.9326973447934177,
+          "p": 0.9467,
+          "p_perm": 0.943802809859507,
+          "boot_sd": 0.2396998448458673,
+          "null_sd": 0.2130908454347585,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q2_callback": {
+        "white": {
+          "n": 12,
+          "rho": 0.10526380587337558,
+          "ci": [
+            -0.6000000000000001,
+            0.6958156896194717
+          ],
+          "width": 1.295815689619472,
+          "p": 0.7762,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": 0.15438691528095086,
+          "ci": [
+            -0.44686273836544294,
+            0.7207324201788005
+          ],
+          "width": 1.1675951585442434,
+          "p": 0.6378,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.12982536057716323,
+          "ci": [
+            -0.3384696984129379,
+            0.5456299780649833
+          ],
+          "width": 0.8840996764779212,
+          "p": 0.6003,
+          "p_perm": 0.5495225238738063,
+          "boot_sd": 0.22679629347089136,
+          "null_sd": 0.21118518118011614,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "q3_ses": {
+        "white": {
+          "n": 12,
+          "rho": 0.3706293706293707,
+          "ci": [
+            -0.22142857142857142,
+            0.8029197080291971
+          ],
+          "width": 1.0243482794577685,
+          "p": 0.2178,
+          "method": "spearman"
+        },
+        "black": {
+          "n": 12,
+          "rho": -0.23076923076923078,
+          "ci": [
+            -0.7417033686465897,
+            0.41304347826086957
+          ],
+          "width": 1.1547468469074593,
+          "p": 0.4766,
+          "method": "spearman"
+        },
+        "pooled_within_race": {
+          "n": 24,
+          "n_per_race": [
+            12,
+            12
+          ],
+          "rho": 0.06993006993006994,
+          "ci": [
+            -0.329797445466087,
+            0.45787545787545786
+          ],
+          "width": 0.7876729033415448,
+          "p": 0.7479,
+          "p_perm": 0.7529123543822809,
+          "boot_sd": 0.20101116715405748,
+          "null_sd": 0.21402336737802266,
+          "method": "pearson_on_within_race_ranks"
+        }
+      },
+      "per_name": {
+        "Aisha": {
+          "margin": -1.2963063233657945,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 2.2,
+          "mother_education_pct": 77.2,
+          "perception": 0.97
+        },
+        "Allison": {
+          "margin": -1.3328285872116012,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 9.5,
+          "mother_education_pct": 95.7,
+          "perception": 0.926
+        },
+        "Anne": {
+          "margin": -1.5249178672923027,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.3,
+          "mother_education_pct": 93.1,
+          "perception": 0.962
+        },
+        "Brad": {
+          "margin": -1.752282366921821,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 15.9,
+          "mother_education_pct": 90.5,
+          "perception": 1.0
+        },
+        "Brendan": {
+          "margin": -1.6699442069443715,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.7,
+          "mother_education_pct": 96.7,
+          "perception": 0.667
+        },
+        "Brett": {
+          "margin": -1.8494149677294418,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 93.9,
+          "perception": 0.923
+        },
+        "Carrie": {
+          "margin": -1.5487940905050186,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 80.7,
+          "perception": 0.923
+        },
+        "Darnell": {
+          "margin": -1.903962917237028,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.8,
+          "mother_education_pct": 66.1,
+          "perception": 0.967
+        },
+        "Ebony": {
+          "margin": -1.2763101596367161,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.6,
+          "mother_education_pct": 65.6,
+          "perception": 0.9
+        },
+        "Emily": {
+          "margin": -1.121458819095408,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 7.9,
+          "mother_education_pct": 96.6,
+          "perception": 0.925
+        },
+        "Geoffrey": {
+          "margin": -1.549436735338091,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 6.8,
+          "mother_education_pct": 96.0,
+          "perception": 0.731
+        },
+        "Greg": {
+          "margin": -1.7070501140308387,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 7.8,
+          "mother_education_pct": 88.3,
+          "perception": 1.0
+        },
+        "Hakim": {
+          "margin": -1.87228077225345,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 5.5,
+          "mother_education_pct": 73.7,
+          "perception": 0.933
+        },
+        "Jamal": {
+          "margin": -1.3789408326829868,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 6.6,
+          "mother_education_pct": 73.9,
+          "perception": 0.967
+        },
+        "Jay": {
+          "margin": -1.691031057320025,
+          "n": 144,
+          "race": "white",
+          "gender": "male",
+          "callback_pct": 13.4,
+          "mother_education_pct": 85.4,
+          "perception": 0.926
+        },
+        "Jermaine": {
+          "margin": -1.6092766073092533,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.6,
+          "mother_education_pct": 57.5,
+          "perception": 1.0
+        },
+        "Jill": {
+          "margin": -1.7062701524743973,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 8.4,
+          "mother_education_pct": 92.3,
+          "perception": 0.889
+        },
+        "Kareem": {
+          "margin": -1.789540553461884,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 4.7,
+          "mother_education_pct": 67.4,
+          "perception": 0.967
+        },
+        "Keisha": {
+          "margin": -1.1651127779862331,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 3.8,
+          "mother_education_pct": 68.8,
+          "perception": 0.93
+        },
+        "Kenya": {
+          "margin": -1.2933610258873312,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 8.7,
+          "mother_education_pct": 70.2,
+          "perception": 0.967
+        },
+        "Kristen": {
+          "margin": -1.3364176758892965,
+          "n": 144,
+          "race": "white",
+          "gender": "female",
+          "callback_pct": 13.1,
+          "mother_education_pct": 93.4,
+          "perception": 0.963
+        },
+        "Lakisha": {
+          "margin": -1.2877737801797982,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 5.5,
+          "mother_education_pct": 55.6,
+          "perception": 0.967
+        },
+        "Latonya": {
+          "margin": -1.0902009485542905,
+          "n": 144,
+          "race": "black",
+          "gender": "female",
+          "callback_pct": 9.1,
+          "mother_education_pct": 31.3,
+          "perception": 1.0
+        },
+        "Leroy": {
+          "margin": -1.726120220011557,
+          "n": 144,
+          "race": "black",
+          "gender": "male",
+          "callback_pct": 9.4,
+          "mother_education_pct": 53.3,
+          "perception": 0.933
+        }
+      }
+    }
+  },
+  "field_anchor": {
+    "headline_gap_pp": 3.2,
+    "within_cell_range_pp": {
+      "white_female": 5.2,
+      "black_female": 7.4,
+      "white_male": 10.0,
+      "black_male": 6.6
+    },
+    "max_within_cell_pp": 10.0,
+    "min_within_cell_pp": 5.2,
+    "n_cells_exceeding_headline": 4,
+    "n_cells": 4
+  },
+  "mde": {
+    "n_names_total": 24,
+    "n_names_per_race": 12,
+    "mde_rho_all_names": 0.5641259470582007,
+    "mde_rho_within_race": 0.7584445658326149,
+    "mde_rho_pooled_within_race": 0.5906425228714942
+  },
+  "summary": {
+    "q1_perception": {
+      "n_models": 4,
+      "min": -0.6566218254759372,
+      "max": 0.6225229557108752,
+      "n_excluding_zero": 2,
+      "max_abs": 0.6566218254759372
+    },
+    "q1_perception_within_race": {
+      "n_models": 4,
+      "min": -0.255649154008292,
+      "max": -0.01608980689562677,
+      "n_excluding_zero": 0,
+      "max_abs": 0.255649154008292,
+      "n_p_perm_below_05": 0,
+      "min_p_perm": 0.24438778061096944
+    },
+    "q2_callback_within_race": {
+      "n_models": 4,
+      "min": -0.05263190293668779,
+      "max": 0.15263251851639462,
+      "n_excluding_zero": 0,
+      "max_abs": 0.15263251851639462,
+      "n_p_perm_below_05": 0,
+      "min_p_perm": 0.48582570871456426
+    },
+    "q3_ses_within_race": {
+      "n_models": 4,
+      "min": 0.017482517482517484,
+      "max": 0.32867132867132864,
+      "n_excluding_zero": 0,
+      "max_abs": 0.32867132867132864,
+      "n_p_perm_below_05": 0,
+      "min_p_perm": 0.13164341782910854
+    }
+  }
+}

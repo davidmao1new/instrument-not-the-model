@@ -1,0 +1,64 @@
+{
+  "_what": "The Gemini arm of the frontier wording study: 220 matched pairs scored on a thresholded yes/no verdict, because the endpoint returns no next-token distribution to any caller.",
+  "_why": "It measures what a binary outcome can resolve on a frontier model, which is the empirical form of the argument in \u00a74.2 that binarising a graded outcome discards the comparison.",
+  "model": "gemini-3.1-flash-lite",
+  "provider": "google",
+  "n_pairs": 220,
+  "n_model_calls": 440,
+  "n_design_cells": 216,
+  "n_cells_run_twice": 4,
+  "n_repeated_cells_disagreeing": 0,
+  "n_variants": 12,
+  "n_templates": 3,
+  "n_pairs_where_the_arms_disagree": 0,
+  "frac_pairs_where_the_arms_disagree": 0.0,
+  "verdict_is_a_function_of_the_template_alone": true,
+  "by_template": {
+    "T1_strong": {
+      "n_pairs": 74,
+      "verdicts_observed": [
+        "yes"
+      ],
+      "advance_rate": 1.0
+    },
+    "T2_mid": {
+      "n_pairs": 72,
+      "verdicts_observed": [
+        "no"
+      ],
+      "advance_rate": 0.0
+    },
+    "T3_marginal": {
+      "n_pairs": 74,
+      "verdicts_observed": [
+        "no"
+      ],
+      "advance_rate": 0.0
+    }
+  },
+  "wording_spread_within_template": {
+    "T1_strong": {
+      "n_variants": 12,
+      "min": 1.0,
+      "max": 1.0,
+      "spread": 0.0
+    },
+    "T2_mid": {
+      "n_variants": 12,
+      "min": 0.0,
+      "max": 0.0,
+      "spread": 0.0
+    },
+    "T3_marginal": {
+      "n_variants": 12,
+      "min": 0.0,
+      "max": 0.0,
+      "spread": 0.0
+    }
+  },
+  "max_wording_spread_within_any_template": 0.0,
+  "n_rationales_naming_the_candidate": 21,
+  "n_arm_responses": 440,
+  "_naming_note": "A rationale that uses the candidate's first name shows the model read it. That the verdict is constant anyway is the point: the threshold, not the model, is what has no resolution.",
+  "_limit": "An arm that finds nothing cannot by itself separate 'no effect' from 'no resolution'. Two things license the second reading: the same design on models returning a distribution yields effects that are not zero, and the constancy here is exact rather than small -- a true null would scatter around zero, not repeat one value in every cell."
+}

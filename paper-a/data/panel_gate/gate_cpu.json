@@ -1,0 +1,193 @@
+[
+  {
+    "model": "mistral-7b-v0.1-base",
+    "generation": "pre_2024",
+    "released": "2023-09",
+    "quality": {
+      "fwd": "A",
+      "rev": "A",
+      "passed": false,
+      "detail": "weak/strong->A (want B), strong/weak->A (want A)"
+    },
+    "position": {
+      "position_a_rate": 0.8333333333333334,
+      "position_a_ci": [
+        0.6810888526532568,
+        0.9212965937143589
+      ],
+      "position_a_k": 30,
+      "position_a_n": 36,
+      "order_stable": 0,
+      "pairs": 18,
+      "detail": "position A 0.83 [0.68,0.92] n=36; 0/18 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "yes",
+      "degenerate": true,
+      "detail": "strong->yes, weak->yes  DEGENERATE: same answer for both"
+    },
+    "template": {
+      "per_template": [
+        0.0,
+        0.333,
+        0.0,
+        0.0,
+        null
+      ],
+      "per_template_ci": [
+        [
+          0.0,
+          0.793
+        ],
+        [
+          0.061,
+          0.792
+        ],
+        [
+          0.0,
+          0.184
+        ],
+        [
+          0.0,
+          0.658
+        ],
+        null
+      ],
+      "per_template_kn": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          17
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "spread": 0.333,
+      "spread_ci": [
+        0.0,
+        0.792
+      ],
+      "overall_accept": 0.043,
+      "overall_kn": [
+        1,
+        23
+      ],
+      "unclear": 157,
+      "n_per_template": 36,
+      "detail": "per-template accept [0.0, 0.333, 0.0, 0.0, None] (n=36 each), spread 0.33 [0.00,0.79]"
+    },
+    "admit": false,
+    "elapsed_s": 4285.4
+  },
+  {
+    "model": "llama-3.1-8b-instruct",
+    "generation": "post_2024",
+    "released": "2024-07",
+    "quality": {
+      "fwd": "B",
+      "rev": "B",
+      "passed": false,
+      "detail": "weak/strong->B (want B), strong/weak->B (want A)"
+    },
+    "position": {
+      "position_a_rate": 0.8055555555555556,
+      "position_a_ci": [
+        0.6497163793648479,
+        0.9024702798054665
+      ],
+      "position_a_k": 29,
+      "position_a_n": 36,
+      "order_stable": 5,
+      "pairs": 18,
+      "detail": "position A 0.81 [0.65,0.90] n=36; 5/18 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "no",
+      "degenerate": false,
+      "detail": "strong->yes, weak->no"
+    },
+    "template": {
+      "per_template": [
+        0.417,
+        0.0,
+        0.278,
+        0.722,
+        0.861
+      ],
+      "per_template_ci": [
+        [
+          0.271,
+          0.578
+        ],
+        [
+          0.0,
+          0.096
+        ],
+        [
+          0.158,
+          0.44
+        ],
+        [
+          0.56,
+          0.842
+        ],
+        [
+          0.713,
+          0.939
+        ]
+      ],
+      "per_template_kn": [
+        [
+          15,
+          36
+        ],
+        [
+          0,
+          36
+        ],
+        [
+          10,
+          36
+        ],
+        [
+          26,
+          36
+        ],
+        [
+          31,
+          36
+        ]
+      ],
+      "spread": 0.861,
+      "spread_ci": [
+        0.617,
+        0.939
+      ],
+      "overall_accept": 0.456,
+      "overall_kn": [
+        82,
+        180
+      ],
+      "unclear": 0,
+      "n_per_template": 36,
+      "detail": "per-template accept [0.417, 0.0, 0.278, 0.722, 0.861] (n=36 each), spread 0.86 [0.62,0.94]"
+    },
+    "admit": true,
+    "elapsed_s": 4114.1
+  }
+]

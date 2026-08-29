@@ -1,0 +1,126 @@
+{
+  "_what": "The false-positive rate of the screening rule of \u00a79.1 -- sign stable across wordings and the smallest per-wording estimate excluding the null -- under the global null, as a function of how correlated the wordings are.",
+  "_why": "\u00a79.1 recommended the rule and said its behaviour under the null 'depends on how correlated the wordings are, which is not something we have characterised'. A paper about uncharacterised measurement choices should not leave its own recommendation uncharacterised.",
+  "_model": "theta_w = sqrt(rho) U + sqrt(1-rho) E_w, U and E_w iid N(0,1); reject when every wording's two-sided interval excludes zero on the same side.",
+  "_equivalence": "sign stable AND min|estimate| excludes the null is the same event as ALL intervals excluding the null on one side, so the rule is not a minimum-selection problem and has a closed form.",
+  "alpha_per_wording": 0.05,
+  "z": 1.959963984540054,
+  "k_wordings": 12,
+  "n_sim": 400000,
+  "seed": 20260806,
+  "by_rho": [
+    {
+      "rho": 0.0,
+      "k": 12,
+      "exact": 1.1920928955078132e-19,
+      "rule": 0.0,
+      "sign_stable_only": 0.00053,
+      "min_excludes_only": 0.0,
+      "any_one_excludes": 0.461035
+    },
+    {
+      "rho": 0.3,
+      "k": 12,
+      "exact": 1.017651657353508e-06,
+      "rule": 0.0,
+      "sign_stable_only": 0.0536,
+      "min_excludes_only": 0.0,
+      "any_one_excludes": 0.3959625
+    },
+    {
+      "rho": 0.6,
+      "k": 12,
+      "exact": 0.0003826370627195022,
+      "rule": 0.0004575,
+      "sign_stable_only": 0.226455,
+      "min_excludes_only": 0.0004575,
+      "any_one_excludes": 0.2766675
+    },
+    {
+      "rho": 0.9,
+      "k": 12,
+      "exact": 0.010292746021964743,
+      "rule": 0.010355,
+      "sign_stable_only": 0.595125,
+      "min_excludes_only": 0.010355,
+      "any_one_excludes": 0.134765
+    }
+  ],
+  "by_k_and_rho": {
+    "3": {
+      "0.0": 3.125000000000001e-05,
+      "0.3": 0.0008670200775829947,
+      "0.6": 0.005453559354620262,
+      "0.9": 0.02258615879453378,
+      "0.99": 0.04044662811519286
+    },
+    "6": {
+      "0.0": 4.882812500000002e-10,
+      "0.3": 3.285175793746431e-05,
+      "0.6": 0.001385702121900819,
+      "0.9": 0.014883108091567876,
+      "0.99": 0.0363620551846597
+    },
+    "12": {
+      "0.0": 1.1920928955078132e-19,
+      "0.3": 1.017651657353508e-06,
+      "0.6": 0.0003826370627195022,
+      "0.9": 0.010292746021964743,
+      "0.99": 0.03315924850819818
+    },
+    "24": {
+      "0.0": 7.105427357601012e-39,
+      "0.3": 3.206905156919624e-08,
+      "0.6": 0.00011533227076579233,
+      "0.9": 0.007384859110103839,
+      "0.99": 0.030558513895458276
+    }
+  },
+  "rate_never_exceeds_alpha": true,
+  "rate_monotone_increasing_in_rho": true,
+  "max_rate_over_rho": 0.04420238172661421,
+  "empirical_rho_per_model": {
+    "llama-2-7b-chat": {
+      "n_pairs": 12,
+      "n_wordings": 12,
+      "mean_offdiagonal_r": 0.5999112908390429,
+      "median_offdiagonal_r": 0.6617152728639486,
+      "min_offdiagonal_r": 0.0013364420208314756,
+      "max_offdiagonal_r": 0.9596233390253667
+    },
+    "llama-3.1-8b-instruct": {
+      "n_pairs": 12,
+      "n_wordings": 12,
+      "mean_offdiagonal_r": 0.794563877701906,
+      "median_offdiagonal_r": 0.8015221289170398,
+      "min_offdiagonal_r": 0.43135552515557707,
+      "max_offdiagonal_r": 0.9887405762780958
+    },
+    "mistral-7b-instruct-v0.1": {
+      "n_pairs": 12,
+      "n_wordings": 12,
+      "mean_offdiagonal_r": 0.9144589080040075,
+      "median_offdiagonal_r": 0.9241152942561912,
+      "min_offdiagonal_r": 0.7666949816992606,
+      "max_offdiagonal_r": 0.995164850233792
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_pairs": 12,
+      "n_wordings": 12,
+      "mean_offdiagonal_r": 0.8966908280966142,
+      "median_offdiagonal_r": 0.8958772059623077,
+      "min_offdiagonal_r": 0.7751659842042796,
+      "max_offdiagonal_r": 0.9880503425005598
+    }
+  },
+  "empirical_rho_min": 0.5999112908390429,
+  "empirical_rho_max": 0.9144589080040075,
+  "rate_at_empirical_rho": {
+    "llama-2-7b-chat": 0.00038218974002161664,
+    "llama-3.1-8b-instruct": 0.0035183074154148983,
+    "mistral-7b-instruct-v0.1": 0.012004802722078836,
+    "mistral-7b-instruct-v0.3": 0.009941947001844205
+  },
+  "rate_at_empirical_rho_max": 0.012004802722078836,
+  "_verdict": "The rule is conservative for every correlation: its false-positive rate rises monotonically in rho from alpha^k to alpha and never exceeds alpha, so it cannot be more liberal than the single-wording test it replaces. The selection worry ran the wrong way -- taking the minimum makes the rule harder to pass."
+}

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.hypothesis/
+.pytest_cache/
+paper-a/figures/paper_instrument_validity_v3.pdf
+paper-a/releases/abstract_arxiv.txt

@@ -1,0 +1,230 @@
+[
+  {
+    "model": "mistral-7b-instruct-v0.1",
+    "generation": "pre_2024",
+    "released": "2023-09",
+    "quality": {
+      "fwd": "A",
+      "rev": "A",
+      "passed": false,
+      "detail": "weak/strong->A (want B), strong/weak->A (want A)"
+    },
+    "position": {
+      "position_a_rate": 1.0,
+      "order_stable": 0,
+      "pairs": 4,
+      "detail": "picked position A in 8/8 calls; 0/4 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "no",
+      "degenerate": false,
+      "detail": "strong->yes, weak->no"
+    },
+    "template": {
+      "per_template": [
+        1.0,
+        1.0,
+        1.0,
+        0.25,
+        1.0
+      ],
+      "spread": 0.75,
+      "overall_accept": 0.833,
+      "unclear": 2,
+      "detail": "per-template accept [1.0, 1.0, 1.0, 0.25, 1.0], spread 0.75"
+    },
+    "admit": true,
+    "elapsed_s": 379.9
+  },
+  {
+    "model": "mistral-7b-v0.1-base",
+    "generation": "pre_2024",
+    "released": "2023-09",
+    "quality": {
+      "fwd": "A",
+      "rev": "A",
+      "passed": false,
+      "detail": "weak/strong->A (want B), strong/weak->A (want A)"
+    },
+    "position": {
+      "position_a_rate": 1.0,
+      "order_stable": 0,
+      "pairs": 4,
+      "detail": "picked position A in 8/8 calls; 0/4 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "yes",
+      "degenerate": true,
+      "detail": "strong->yes, weak->yes  DEGENERATE: same answer for both"
+    },
+    "template": {
+      "per_template": [
+        0.0,
+        null,
+        0.0,
+        0.0,
+        null
+      ],
+      "spread": 0.0,
+      "overall_accept": 0.0,
+      "unclear": 16,
+      "detail": "per-template accept [0.0, None, 0.0, 0.0, None], spread 0.0"
+    },
+    "admit": false,
+    "elapsed_s": 406.8
+  },
+  {
+    "model": "llama-2-7b-chat",
+    "generation": "pre_2024",
+    "released": "2023-07",
+    "quality": {
+      "fwd": "B",
+      "rev": "B",
+      "passed": false,
+      "detail": "weak/strong->B (want B), strong/weak->B (want A)"
+    },
+    "position": {
+      "position_a_rate": 0.0,
+      "order_stable": 0,
+      "pairs": 4,
+      "detail": "picked position A in 0/8 calls; 0/4 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "no",
+      "degenerate": false,
+      "detail": "strong->yes, weak->no"
+    },
+    "template": {
+      "per_template": [
+        1.0,
+        0.75,
+        0.5,
+        1.0,
+        1.0
+      ],
+      "spread": 0.5,
+      "overall_accept": 0.85,
+      "unclear": 0,
+      "detail": "per-template accept [1.0, 0.75, 0.5, 1.0, 1.0], spread 0.5"
+    },
+    "admit": true,
+    "elapsed_s": 412.5
+  },
+  {
+    "model": "llama-2-13b-chat",
+    "generation": "pre_2024",
+    "released": "2023-07",
+    "quality": {
+      "fwd": "B",
+      "rev": "A",
+      "passed": true,
+      "detail": "weak/strong->B (want B), strong/weak->A (want A)"
+    },
+    "position": {
+      "position_a_rate": 0.0,
+      "order_stable": 0,
+      "pairs": 4,
+      "detail": "picked position A in 0/8 calls; 0/4 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "yes",
+      "degenerate": true,
+      "detail": "strong->yes, weak->yes  DEGENERATE: same answer for both"
+    },
+    "template": {
+      "per_template": [
+        1.0,
+        0.33,
+        0.25,
+        0.0,
+        0.0
+      ],
+      "spread": 1.0,
+      "overall_accept": 0.316,
+      "unclear": 1,
+      "detail": "per-template accept [1.0, 0.33, 0.25, 0.0, 0.0], spread 1.0"
+    },
+    "admit": false,
+    "elapsed_s": 1319.4
+  },
+  {
+    "model": "mistral-7b-instruct-v0.3",
+    "generation": "post_2024",
+    "released": "2024-05",
+    "quality": {
+      "fwd": "B",
+      "rev": "A",
+      "passed": true,
+      "detail": "weak/strong->B (want B), strong/weak->A (want A)"
+    },
+    "position": {
+      "position_a_rate": 0.0,
+      "order_stable": 0,
+      "pairs": 4,
+      "detail": "picked position A in 0/8 calls; 0/4 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "no",
+      "degenerate": false,
+      "detail": "strong->yes, weak->no"
+    },
+    "template": {
+      "per_template": [
+        0.25,
+        1.0,
+        0.75,
+        1.0,
+        1.0
+      ],
+      "spread": 0.75,
+      "overall_accept": 0.8,
+      "unclear": 0,
+      "detail": "per-template accept [0.25, 1.0, 0.75, 1.0, 1.0], spread 0.75"
+    },
+    "admit": true,
+    "elapsed_s": 398.1
+  },
+  {
+    "model": "llama-3.1-8b-instruct",
+    "generation": "post_2024",
+    "released": "2024-07",
+    "quality": {
+      "fwd": "B",
+      "rev": "B",
+      "passed": false,
+      "detail": "weak/strong->B (want B), strong/weak->B (want A)"
+    },
+    "position": {
+      "position_a_rate": 1.0,
+      "order_stable": 0,
+      "pairs": 4,
+      "detail": "picked position A in 8/8 calls; 0/4 pairs order-stable"
+    },
+    "verdict": {
+      "strong": "yes",
+      "weak": "no",
+      "degenerate": false,
+      "detail": "strong->yes, weak->no"
+    },
+    "template": {
+      "per_template": [
+        0.5,
+        0.0,
+        1.0,
+        0.25,
+        1.0
+      ],
+      "spread": 1.0,
+      "overall_accept": 0.55,
+      "unclear": 0,
+      "detail": "per-template accept [0.5, 0.0, 1.0, 0.25, 1.0], spread 1.0"
+    },
+    "admit": true,
+    "elapsed_s": 392.0
+  }
+]

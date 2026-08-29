@@ -1,0 +1,28 @@
+{
+ "minimal_rerun": {
+  "criterion": [
+   "prompt_published",
+   "checkpoint_pinned",
+   "decoding_params"
+  ],
+  "n_meeting": 0,
+  "n_audits": 13,
+  "flips": {
+   "prompt_published": [],
+   "checkpoint_pinned": [
+    "An et al. 2024",
+    "Nghiem et al. 2024",
+    "Wilson & Caliskan 2024"
+   ],
+   "decoding_params": [
+    "Armstrong et al. 2024"
+   ]
+  }
+ },
+ "checkpoint_near_miss": {
+  "n_reported": 2,
+  "n_partial": 10
+ },
+ "_what": "Cross-field structure of the reporting matrix: the minimal re-run criterion and which single field flips the most audits to meeting it.",
+ "_provenance": "Computed inside an adversarial audit workflow, 25 Aug 2026; counts exact, independently reproduced before adoption."
+}

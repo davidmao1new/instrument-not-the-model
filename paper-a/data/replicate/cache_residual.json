@@ -1,0 +1,97 @@
+{
+  "llama-2-7b-chat": {
+    "concurrency 4, cache on": {
+      "n_cells": 36,
+      "frac_identical": 0.6388888888888888,
+      "mean_sd": 0.009745437279163629,
+      "max_spread": 0.160310432466249,
+      "prompt_sha_consistent": true
+    },
+    "concurrency 1, cache on": {
+      "n_cells": 36,
+      "frac_identical": 0.9166666666666666,
+      "mean_sd": 0.0022826102199267843,
+      "max_spread": 0.10183885536519455,
+      "prompt_sha_consistent": true
+    },
+    "concurrency 1, cache OFF": {
+      "n_cells": 36,
+      "frac_identical": 1.0,
+      "mean_sd": 0.0,
+      "max_spread": 0.0,
+      "prompt_sha_consistent": true
+    },
+    "effect_cache_on": 0.24030641746560827,
+    "effect_cache_off": 0.24327551673516437,
+    "effect_difference": {
+      "est": -0.002969099269556123,
+      "ci": [
+        -0.014392277210023667,
+        0.006137118212850801
+      ],
+      "p": 0.53905
+    }
+  },
+  "mistral-7b-instruct-v0.3": {
+    "concurrency 4, cache on": {
+      "n_cells": 36,
+      "frac_identical": 0.5,
+      "mean_sd": 0.012289123761347897,
+      "max_spread": 0.13725623085541283,
+      "prompt_sha_consistent": true
+    },
+    "concurrency 1, cache on": {
+      "n_cells": 36,
+      "frac_identical": 0.9444444444444444,
+      "mean_sd": 0.0023633744774812404,
+      "max_spread": 0.12049458650104938,
+      "prompt_sha_consistent": true
+    },
+    "concurrency 1, cache OFF": {
+      "n_cells": 36,
+      "frac_identical": 1.0,
+      "mean_sd": 0.0,
+      "max_spread": 0.0,
+      "prompt_sha_consistent": true
+    },
+    "effect_cache_on": -0.09656787020728516,
+    "effect_cache_off": -0.09690636684239563,
+    "effect_difference": {
+      "est": 0.00033849663511047255,
+      "ci": [
+        -0.002477399234896862,
+        0.0034928891402282794
+      ],
+      "p": 0.85
+    }
+  },
+  "_verdict": {
+    "verdict": "FULLY EXPLAINED",
+    "frac_identical_cache_on": 0.9305555555555556,
+    "frac_identical_cache_off": 1.0,
+    "mean_sd_cache_on": 0.002322992348704012,
+    "mean_sd_cache_off": 0.0,
+    "n_models": 2,
+    "cross_session_identical": true
+  },
+  "_cross_session": {
+    "llama-2-7b-chat": {
+      "n_cells": 36,
+      "frac_identical": 1.0,
+      "sigma": 0.0,
+      "max_abs_diff": 0.0,
+      "effect_session1": 0.24327551673516437,
+      "effect_session2": 0.24327551673516437,
+      "prompt_sha_consistent": true
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_cells": 36,
+      "frac_identical": 1.0,
+      "sigma": 0.0,
+      "max_abs_diff": 0.0,
+      "effect_session1": -0.09690636684239563,
+      "effect_session2": -0.09690636684239563,
+      "prompt_sha_consistent": true
+    }
+  }
+}

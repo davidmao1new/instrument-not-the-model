@@ -1,0 +1,807 @@
+{
+  "_what": "Whether the Gemini API returns log probabilities, probed across every generation-capable text model the API-key surface lists, on both public REST versions and three spellings of the parameter.",
+  "_endpoint": "generativelanguage.googleapis.com (API-key surface). Vertex AI's aiplatform endpoint needs OAuth and a billed GCP project and is NOT covered here; the paper says so.",
+  "_producer": "paper-a/src/probe_gemini_exhaustive.py",
+  "_tier": "The account carries no balance, so every call went through the free tier -- which is precisely where a capability gate is most likely. A billed tier is untested.",
+  "n_probed": 46,
+  "n_probe_records": 46,
+  "n_models_distinct": 33,
+  "n_models_by_version": {
+    "v1beta": 33,
+    "v1": 13
+  },
+  "n_models_probed_on_both_versions": 13,
+  "n_reachable": 18,
+  "n_quota_blocked": 19,
+  "n_unavailable": 9,
+  "n_models_reachable_distinct": 12,
+  "n_usable_for_margin": 0,
+  "n_parameter_spellings_tried": 3,
+  "most_common_error": "Logprobs is not enabled for this model",
+  "_count_note": "n_probed is the number of (model, REST-version) probe records. n_models_distinct is the number of models. Prose that says 'we probed N models' must use n_models_distinct.",
+  "records": [
+    {
+      "version": "v1beta",
+      "model": "gemini-2.5-flash",
+      "attempts": [],
+      "plain_status": 404,
+      "plain_error": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.",
+      "verdict": "not-available"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.5-pro",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.0-flash",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.0-flash-001",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.0-flash-lite-001",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.0-flash-lite",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemma-4-26b-a4b-it",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemma-4-31b-it",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-flash-latest",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-flash-lite-latest",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-pro-latest",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.5-flash-lite",
+      "attempts": [],
+      "plain_status": 404,
+      "plain_error": "This model models/gemini-2.5-flash-lite is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.",
+      "verdict": "not-available"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3-pro-preview",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3-flash-preview",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.1-pro-preview",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.1-pro-preview-customtools",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.1-flash-lite-preview",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "nano-banana-pro-preview",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.5-flash",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.5-flash-lite",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-omni-flash-preview",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-3.6-flash",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 429,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "lyria-3-clip-preview",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "lyria-3-pro-preview",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-robotics-er-1.5-preview",
+      "attempts": [],
+      "plain_status": 404,
+      "plain_error": "This model models/gemini-robotics-er-1.5-preview is no longer available. Please update your code to use a newer model for the latest features and improvements. We recommend you to use the Interactions API (https://ai.goo",
+      "verdict": "not-available"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-robotics-er-1.6-preview",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-robotics-er-2-preview",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1beta",
+      "model": "gemini-2.5-computer-use-preview-10-2025",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1beta",
+      "model": "antigravity-preview-05-2026",
+      "attempts": [],
+      "plain_status": 400,
+      "plain_error": "This model only supports Interactions API.",
+      "verdict": "plain-400"
+    },
+    {
+      "version": "v1beta",
+      "model": "deep-research-max-preview-04-2026",
+      "attempts": [],
+      "plain_status": 400,
+      "plain_error": "This model only supports Interactions API.",
+      "verdict": "plain-400"
+    },
+    {
+      "version": "v1beta",
+      "model": "deep-research-preview-04-2026",
+      "attempts": [],
+      "plain_status": 400,
+      "plain_error": "This model only supports Interactions API.",
+      "verdict": "plain-400"
+    },
+    {
+      "version": "v1beta",
+      "model": "deep-research-pro-preview-12-2025",
+      "attempts": [],
+      "plain_status": 400,
+      "plain_error": "This model only supports Interactions API.",
+      "verdict": "plain-400"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.5-flash",
+      "attempts": [],
+      "plain_status": 404,
+      "plain_error": "This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.",
+      "verdict": "not-available"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.5-pro",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.0-flash",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.0-flash-001",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.0-flash-lite-001",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.0-flash-lite",
+      "attempts": [],
+      "plain_status": 429,
+      "plain_error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/",
+      "verdict": "quota"
+    },
+    {
+      "version": "v1",
+      "model": "gemma-4-26b-a4b-it",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1",
+      "model": "gemma-4-31b-it",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-2.5-flash-lite",
+      "attempts": [],
+      "plain_status": 404,
+      "plain_error": "This model models/gemini-2.5-flash-lite is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.",
+      "verdict": "not-available"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-3.1-flash-lite",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-3.5-flash",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 429,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https:/"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-3.5-flash-lite",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    },
+    {
+      "version": "v1",
+      "model": "gemini-3.6-flash",
+      "attempts": [
+        {
+          "spelling": "camelCase",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "snake_case",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        },
+        {
+          "spelling": "responseLogprobs only",
+          "status": 400,
+          "logprobs_returned": false,
+          "n_top": 0,
+          "error": "Logprobs is not enabled for this model"
+        }
+      ],
+      "plain_status": 200,
+      "plain_error": "",
+      "logprobs_returned": false,
+      "verdict": "reachable, no logprobs"
+    }
+  ],
+  "usable_models": []
+}

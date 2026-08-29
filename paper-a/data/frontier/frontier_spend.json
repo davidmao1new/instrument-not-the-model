@@ -1,0 +1,54 @@
+{
+  "_what": "Measured spend for the frontier arm, parsed from the run's own printed usage.",
+  "_source": "usage.prompt_tokens returned by the API, summed per model by experiment_frontier_margin.py; output is one token per call and is not counted.",
+  "_logs": [
+    "frontier_run.log"
+  ],
+  "_caveat": "List price at the time of the run. Prices change; the token counts do not.",
+  "_resumption_note": "The runner resumes: it skips cells already in the JSONL and counts tokens only for calls it issues, so a model whose file was partly written earlier prints the last invocation's usage rather than the run's. Every model sends the same prompts on the same tokenizer, so the counts must agree; any model below the modal count is corrected up to it. input_tokens_recorded and usd_recorded preserve what the log actually said.",
+  "models": {
+    "gpt-4o-mini": {
+      "input_tokens": 134532,
+      "usd": 0.0202,
+      "usd_per_million_input": 0.15,
+      "input_tokens_recorded": 77333,
+      "usd_recorded": 0.0116,
+      "resumed_mid_run": true
+    },
+    "gpt-4.1-mini": {
+      "input_tokens": 134532,
+      "usd": 0.0538,
+      "usd_per_million_input": 0.4,
+      "input_tokens_recorded": 134532,
+      "usd_recorded": 0.0538,
+      "resumed_mid_run": false
+    },
+    "gpt-4.1": {
+      "input_tokens": 134532,
+      "usd": 0.2691,
+      "usd_per_million_input": 2.0,
+      "input_tokens_recorded": 134532,
+      "usd_recorded": 0.2691,
+      "resumed_mid_run": false
+    },
+    "gpt-4o": {
+      "input_tokens": 134532,
+      "usd": 0.3363,
+      "usd_per_million_input": 2.5,
+      "input_tokens_recorded": 134532,
+      "usd_recorded": 0.3363,
+      "resumed_mid_run": false
+    }
+  },
+  "total_usd": 0.6794,
+  "total_input_tokens": 538128,
+  "total_cents": 68,
+  "n_models": 4,
+  "modal_input_tokens_per_model": 134532,
+  "n_models_resumed_mid_run": 1,
+  "models_resumed_mid_run": [
+    "gpt-4o-mini"
+  ],
+  "total_input_tokens_as_logged": 480929,
+  "total_usd_as_logged": 0.6708
+}

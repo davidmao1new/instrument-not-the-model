@@ -1,0 +1,251 @@
+{
+  "_scale": "log-odds; every component divided by |beta| for that model",
+  "models": {
+    "llama-2-7b-chat": {
+      "beta_logodds": 0.18051754558900474,
+      "components": {
+        "noise floor": {
+          "value": 0.009521290916840215,
+          "kind": "sd",
+          "note": "byte-identical replicate, on a per-wording mean",
+          "over_beta": 0.052744407119947864
+        },
+        "wording": {
+          "value": 0.06708458347552172,
+          "kind": "sd",
+          "note": "raw SD across twelve wordings",
+          "over_beta": 0.37162361839473085
+        },
+        "name draw, k=3": {
+          "value": 0.07664740216971208,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 3 matched pairs",
+          "over_beta": 0.42459807394135457
+        },
+        "name draw, k=9": {
+          "value": 0.04308794299470549,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 9 matched pairs",
+          "over_beta": 0.23869116353269298
+        },
+        "occupation": {
+          "value": 0.09018310698713976,
+          "kind": "sd",
+          "note": "SD across three structurally matched postings",
+          "over_beta": 0.49958083959586463
+        },
+        "quantization": {
+          "value": 0.0235616908947502,
+          "kind": "shift",
+          "note": "Q4_K_M to Q8_0, absolute shift",
+          "over_beta": 0.13052299607703804
+        },
+        "token matching": {
+          "value": 0.019839117216255697,
+          "kind": "shift",
+          "ci": [
+            0.0,
+            0.043847524151627716
+          ],
+          "ci_signed": [
+            -0.043847524151627716,
+            0.006405001872990305
+          ],
+          "ci_covers_zero": true,
+          "p": 0.1247,
+          "separable_from_zero": false,
+          "note": "effect on token-matched pairs minus effect on all pairs, resampling first-name pairs",
+          "over_beta": 0.10990132372741551
+        }
+      }
+    },
+    "llama-3.1-8b-instruct": {
+      "beta_logodds": -0.17628771147194242,
+      "components": {
+        "noise floor": {
+          "value": 0.00745421208110257,
+          "kind": "sd",
+          "note": "byte-identical replicate, on a per-wording mean",
+          "over_beta": 0.04228435447293765
+        },
+        "wording": {
+          "value": 0.04278638849276404,
+          "kind": "sd",
+          "note": "raw SD across twelve wordings",
+          "over_beta": 0.24270771987174972
+        },
+        "name draw, k=3": {
+          "value": 0.050154332611598386,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 3 matched pairs",
+          "over_beta": 0.28450271543505085
+        },
+        "name draw, k=9": {
+          "value": 0.02860480244041674,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 9 matched pairs",
+          "over_beta": 0.16226203290959065
+        },
+        "occupation": {
+          "value": 0.06903873025754549,
+          "kind": "sd",
+          "note": "SD across three structurally matched postings",
+          "over_beta": 0.3916253134214267
+        },
+        "token matching": {
+          "value": 0.0913816940398734,
+          "kind": "shift",
+          "ci": [
+            0.009317995153267528,
+            0.21877466167728402
+          ],
+          "ci_signed": [
+            -0.21877466167728402,
+            -0.009317995153267528
+          ],
+          "ci_covers_zero": false,
+          "p": 0.07804928343128158,
+          "separable_from_zero": false,
+          "note": "effect on token-matched pairs minus effect on all pairs, resampling first-name pairs",
+          "over_beta": 0.5183667839174231
+        }
+      }
+    },
+    "mistral-7b-instruct-v0.1": {
+      "beta_logodds": -0.032603054762351265,
+      "components": {
+        "noise floor": {
+          "value": 0.0029247614073282563,
+          "kind": "sd",
+          "note": "byte-identical replicate, on a per-wording mean",
+          "over_beta": 0.08970820153655223
+        },
+        "wording": {
+          "value": 0.019616012398361426,
+          "kind": "sd",
+          "note": "raw SD across twelve wordings",
+          "over_beta": 0.601661793391619
+        },
+        "name draw, k=3": {
+          "value": 0.05436000280636605,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 3 matched pairs",
+          "over_beta": 1.6673285126993331
+        },
+        "name draw, k=9": {
+          "value": 0.03147473140301591,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 9 matched pairs",
+          "over_beta": 0.9653920969197556
+        },
+        "occupation": {
+          "value": 0.02024953843800729,
+          "kind": "sd",
+          "note": "SD across three structurally matched postings",
+          "over_beta": 0.6210932866754151
+        },
+        "quantization": {
+          "value": 0.017992507610409807,
+          "kind": "shift",
+          "note": "Q4_K_M to Q8_0, absolute shift",
+          "over_beta": 0.5518656991364764
+        },
+        "token matching": {
+          "value": 0.02685898455988059,
+          "kind": "shift",
+          "ci": [
+            0.0,
+            0.07647468161381653
+          ],
+          "ci_signed": [
+            -0.027051233727824472,
+            0.07647468161381653
+          ],
+          "ci_covers_zero": true,
+          "p": 0.29815,
+          "separable_from_zero": false,
+          "note": "effect on token-matched pairs minus effect on all pairs, resampling first-name pairs",
+          "over_beta": 0.8238180365508663
+        }
+      }
+    },
+    "mistral-7b-instruct-v0.3": {
+      "beta_logodds": -0.08533195470384253,
+      "components": {
+        "noise floor": {
+          "value": 0.010124575046650161,
+          "kind": "sd",
+          "note": "byte-identical replicate, on a per-wording mean",
+          "over_beta": 0.11864928070368284
+        },
+        "wording": {
+          "value": 0.06614572022479077,
+          "kind": "sd",
+          "note": "raw SD across twelve wordings",
+          "over_beta": 0.7751576821878687
+        },
+        "name draw, k=3": {
+          "value": 0.13789996924705764,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 3 matched pairs",
+          "over_beta": 1.6160413730783545
+        },
+        "name draw, k=9": {
+          "value": 0.07858360825502379,
+          "kind": "sd",
+          "estimand": "population (draws with replacement)",
+          "note": "SD over draws of 9 matched pairs",
+          "over_beta": 0.9209165373951658
+        },
+        "occupation": {
+          "value": 0.13759503235286874,
+          "kind": "sd",
+          "note": "SD across three structurally matched postings",
+          "over_beta": 1.6124678361161788
+        },
+        "token matching": {
+          "value": 0.031501223065890066,
+          "kind": "shift",
+          "ci": [
+            0.0,
+            0.1876720791378082
+          ],
+          "ci_signed": [
+            -0.1876720791378082,
+            0.12595036129852344
+          ],
+          "ci_covers_zero": true,
+          "p": 0.67925,
+          "separable_from_zero": false,
+          "note": "effect on token-matched pairs minus effect on all pairs, resampling first-name pairs",
+          "over_beta": 0.36916092189871696
+        }
+      }
+    }
+  },
+  "pairing_note": {
+    "llama-2-7b-chat": {
+      "perm_sd_psup": 0.009297539767457261,
+      "best_worst_range_psup": 0.2037037037037036
+    },
+    "llama-3.1-8b-instruct": {
+      "perm_sd_psup": 0.009467425979623995,
+      "best_worst_range_psup": 0.20601851851851852
+    },
+    "mistral-7b-instruct-v0.1": {
+      "perm_sd_psup": 0.012851338903240733,
+      "best_worst_range_psup": 0.24247685185185186
+    },
+    "mistral-7b-instruct-v0.3": {
+      "perm_sd_psup": 0.011043679968589374,
+      "best_worst_range_psup": 0.21990740740740738
+    }
+  }
+}

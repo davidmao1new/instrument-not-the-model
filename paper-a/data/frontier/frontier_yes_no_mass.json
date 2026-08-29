@@ -1,0 +1,78 @@
+{
+  "_what": "Renormalisable yes/no mass in the first token of each frontier call, the same quantity Table 1 reports for the open-weight panel.",
+  "_why": "It distinguishes saturation (mass near 1, all on one side) from a token-class mismatch (mass near 0), and it is the quantity that makes the grammar-free API arm comparable with the grammar-constrained local one.",
+  "models": {
+    "gpt-4o-mini": {
+      "n_calls": 864,
+      "mean_mass": 0.9999998772667603,
+      "median_mass": 0.9999999030555964,
+      "frac_above_0_99": 1.0,
+      "frac_above_0_5": 1.0,
+      "frac_below_0_01": 0.0,
+      "min_mass": 0.9999987967656725,
+      "n_all_mass_on_one_verdict": 0,
+      "frac_all_mass_on_one_verdict": 0.0,
+      "emitted_first_tokens": {
+        "No": 576,
+        "Yes": 288
+      },
+      "diagnosis": "verdict-dominated, both sides present"
+    },
+    "gpt-4o": {
+      "n_calls": 864,
+      "mean_mass": 0.9999978611855743,
+      "median_mass": 0.9999995718353523,
+      "frac_above_0_99": 1.0,
+      "frac_above_0_5": 1.0,
+      "frac_below_0_01": 0.0,
+      "min_mass": 0.9998136931376395,
+      "n_all_mass_on_one_verdict": 6,
+      "frac_all_mass_on_one_verdict": 0.006944444444444444,
+      "emitted_first_tokens": {
+        "No": 576,
+        "Yes": 288
+      },
+      "diagnosis": "verdict-dominated, both sides present"
+    },
+    "gpt-4.1-mini": {
+      "n_calls": 864,
+      "mean_mass": 0.9999999575773488,
+      "median_mass": 0.9999999649905398,
+      "frac_above_0_99": 1.0,
+      "frac_above_0_5": 1.0,
+      "frac_below_0_01": 0.0,
+      "min_mass": 0.9999998441917727,
+      "n_all_mass_on_one_verdict": 288,
+      "frac_all_mass_on_one_verdict": 0.3333333333333333,
+      "emitted_first_tokens": {
+        "No": 576,
+        "Yes": 288
+      },
+      "diagnosis": "verdict-dominated, both sides present"
+    },
+    "gpt-4.1": {
+      "n_calls": 864,
+      "mean_mass": 0.999999726626841,
+      "median_mass": 1.0,
+      "frac_above_0_99": 1.0,
+      "frac_above_0_5": 1.0,
+      "frac_below_0_01": 0.0,
+      "min_mass": 0.9999645281915759,
+      "n_all_mass_on_one_verdict": 855,
+      "frac_all_mass_on_one_verdict": 0.9895833333333334,
+      "emitted_first_tokens": {
+        "No": 576,
+        "Yes": 288
+      },
+      "diagnosis": "SATURATED (mass on a verdict, all of it on one side)"
+    }
+  },
+  "summary": {
+    "n_models": 4,
+    "min_mean_mass": 0.9999978611855743,
+    "max_mean_mass": 0.9999999575773488,
+    "n_saturated": 1,
+    "n_token_class_mismatch": 0,
+    "all_verdict_dominated": true
+  }
+}

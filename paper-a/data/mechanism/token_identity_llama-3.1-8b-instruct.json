@@ -1,0 +1,98 @@
+{
+  "S1": {
+    "kind": "semantic",
+    "klass": "IDENTICAL",
+    "delta_len": [
+      0
+    ],
+    "note": ""
+  },
+  "S2": {
+    "kind": "semantic",
+    "klass": "ALTERED_SAME_LEN",
+    "delta_len": [
+      0
+    ],
+    "note": ""
+  },
+  "S3": {
+    "kind": "semantic",
+    "klass": "ALTERED_SAME_LEN",
+    "delta_len": [
+      0
+    ],
+    "note": ""
+  },
+  "S4": {
+    "kind": "semantic",
+    "klass": "ALTERED",
+    "delta_len": [
+      1
+    ],
+    "note": ""
+  },
+  "S5": {
+    "kind": "semantic",
+    "klass": "ALTERED_SAME_LEN",
+    "delta_len": [
+      0
+    ],
+    "note": ""
+  },
+  "S6": {
+    "kind": "semantic",
+    "klass": "ALTERED_SAME_LEN",
+    "delta_len": [
+      0
+    ],
+    "note": ""
+  },
+  "N1": {
+    "kind": "null",
+    "klass": "IDENTICAL",
+    "delta_len": [
+      0
+    ],
+    "note": "baseline; identical to S1"
+  },
+  "N2": {
+    "kind": "null",
+    "klass": "ALTERED_SAME_LEN",
+    "delta_len": [
+      0
+    ],
+    "note": "one trailing newline"
+  },
+  "N3": {
+    "kind": "null",
+    "klass": "ALTERED",
+    "delta_len": [
+      3
+    ],
+    "note": "two spaces after each colon instead of one"
+  },
+  "N4": {
+    "kind": "null",
+    "klass": "REORDERED",
+    "delta_len": [
+      0
+    ],
+    "note": "the two independent system sentences swapped"
+  },
+  "N5": {
+    "kind": "null",
+    "klass": "ALTERED",
+    "delta_len": [
+      2
+    ],
+    "note": "a single space inserted into each blank line"
+  },
+  "N6": {
+    "kind": "null",
+    "klass": "ALTERED",
+    "delta_len": [
+      1
+    ],
+    "note": "one trailing space"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "n_boot": 20000,
+  "seed": 20260801,
+  "_unit": "wordings are resampled; within-wording sampling noise is NOT included here and is handled by the partial-pooling model of section 6.1",
+  "models": {
+    "llama-2-7b-chat": {
+      "n_wordings": 12,
+      "sd_ps": 0.09655858154913985,
+      "sd_ci": [
+        0.055344717771979024,
+        0.12201831015658268
+      ],
+      "sd_ci_relative_width": 0.6904988796948374,
+      "chi2_ci": [
+        0.06840163094354933,
+        0.16394469303489534
+      ],
+      "effect_ps": 0.28935185185185186,
+      "ratio": 0.3337064578338273,
+      "ratio_ci": [
+        0.1912713446199595,
+        0.42169527990114974
+      ],
+      "effect_identified": true
+    },
+    "llama-3.1-8b-instruct": {
+      "n_wordings": 12,
+      "sd_ps": 0.07778228702657293,
+      "sd_ci": [
+        0.04484249360898049,
+        0.09945135690664252
+      ],
+      "sd_ci_relative_width": 0.7020732532460235,
+      "chi2_ci": [
+        0.055100594952601195,
+        0.1320648353107173
+      ],
+      "effect_ps": 0.3125,
+      "ratio": 0.2489033184850334,
+      "ratio_ci": [
+        0.14349597954873755,
+        0.3182443421012561
+      ],
+      "effect_identified": true
+    },
+    "mistral-7b-instruct-v0.1": {
+      "n_wordings": 12,
+      "sd_ps": 0.06851226197661456,
+      "sd_ci": [
+        0.03987447569807074,
+        0.08770785264096734
+      ],
+      "sd_ci_relative_width": 0.6981724958843669,
+      "chi2_ci": [
+        0.048533754158838954,
+        0.11632546355464211
+      ],
+      "effect_ps": 0.05787037037037035,
+      "ratio": 1.1838918869559,
+      "ratio_ci": [
+        0.6890309400626626,
+        1.5155916936359162
+      ],
+      "effect_identified": false
+    },
+    "mistral-7b-instruct-v0.3": {
+      "n_wordings": 12,
+      "sd_ps": 0.03838051553931985,
+      "sd_ci": [
+        0.018571053428375593,
+        0.04859607752141771
+      ],
+      "sd_ci_relative_width": 0.7822986135317086,
+      "chi2_ci": [
+        0.027188571095648026,
+        0.0651654336431258
+      ],
+      "effect_ps": 0.06944444444444442,
+      "ratio": 0.552679423766206,
+      "ratio_ci": [
+        0.2674231693686086,
+        0.6997835163084153
+      ],
+      "effect_identified": false
+    }
+  },
+  "summary": {
+    "min_relative_width": 0.6904988796948374,
+    "max_relative_width": 0.7822986135317086,
+    "note": "relative width = (upper - lower) / point estimate"
+  }
+}

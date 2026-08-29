@@ -1,0 +1,131 @@
+{
+  "_what": "Cluster-bootstrap intervals on the dispersion-to-effect ratio, for the frontier and open-weight panels, resampling name pairs.",
+  "_why": "\u00a74.7 both ranked the two panels and said it could not; neither claim had an interval behind it. This supplies one.",
+  "_method": "Resample name pairs with replacement (the \u00a76.1 unit). Per draw, recompute the per-wording mean P(superiority) within pairs then across them, the SD across wordings, and the effect; the ratio is their quotient. Percentile interval over 4000 draws. Draws whose |effect - 0.5| falls below 0.001 are counted as degenerate and excluded, and the fraction is reported: a ratio with a vanishing denominator has no finite upper bound, which is the \u00a74.5 problem.",
+  "frontier": {
+    "gpt-4o-mini": {
+      "est": 0.5362242838052265,
+      "sd": 0.10798961271077474,
+      "effect": 0.29861111111111116,
+      "ci": [
+        0.37590193360597524,
+        1.1973502304727115
+      ],
+      "median": 0.6076167815483604,
+      "frac_degenerate": 0.0,
+      "n_pairs": 12
+    },
+    "gpt-4o": {
+      "est": 0.6415302043494723,
+      "sd": 0.06858687667532555,
+      "effect": 0.3930886243386243,
+      "ci": [
+        0.4503959786854129,
+        2.784984454258972
+      ],
+      "median": 0.8637978817490799,
+      "frac_degenerate": 0.00025,
+      "n_pairs": 12
+    },
+    "gpt-4.1-mini": {
+      "est": 7.495453167208677,
+      "sd": 0.10410351621123125,
+      "effect": 0.48611111111111116,
+      "ci": [
+        1.2019584184957968,
+        42.02596599938936
+      ],
+      "median": 4.517083174354913,
+      "frac_degenerate": 0.03375,
+      "n_pairs": 12
+    }
+  },
+  "local": {
+    "llama-2-7b-chat": {
+      "est": 0.33370645783382713,
+      "sd": 0.09655858154913984,
+      "effect": 0.789351851851852,
+      "ci": [
+        0.24105888744782053,
+        0.6556227800498913
+      ],
+      "median": 0.37993906509046704,
+      "frac_degenerate": 0.0,
+      "n_pairs": 12,
+      "published_ratio": 0.3337064578338273
+    },
+    "llama-3.1-8b-instruct": {
+      "est": 0.24890331848503333,
+      "sd": 0.07778228702657292,
+      "effect": 0.18749999999999997,
+      "ci": [
+        0.17756093162076295,
+        0.49720354707729486
+      ],
+      "median": 0.2759117714507313,
+      "frac_degenerate": 0.0,
+      "n_pairs": 12,
+      "published_ratio": 0.2489033184850334
+    },
+    "mistral-7b-instruct-v0.1": {
+      "est": 1.1838918869558985,
+      "sd": 0.06851226197661454,
+      "effect": 0.4421296296296296,
+      "ci": [
+        0.2722310776299561,
+        20.440601307647267
+      ],
+      "median": 1.079881567870737,
+      "frac_degenerate": 0.00625,
+      "n_pairs": 12,
+      "published_ratio": 1.1838918869559
+    },
+    "mistral-7b-instruct-v0.3": {
+      "est": 0.552679423766206,
+      "sd": 0.03838051553931985,
+      "effect": 0.4305555555555556,
+      "ci": [
+        0.2638292558134384,
+        8.416424118232095
+      ],
+      "median": 0.6705998374677964,
+      "frac_degenerate": 0.00875,
+      "n_pairs": 12,
+      "published_ratio": 0.552679423766206
+    }
+  },
+  "_identified": {
+    "frontier": [
+      "gpt-4o-mini",
+      "gpt-4o"
+    ],
+    "local": [
+      "llama-2-7b-chat",
+      "llama-3.1-8b-instruct"
+    ]
+  },
+  "comparison": {
+    "n_frontier_with_an_interval": 2,
+    "n_local_with_an_interval": 2,
+    "frontier_point_min": 0.5362242838052265,
+    "frontier_point_max": 0.6415302043494723,
+    "local_point_min": 0.24890331848503333,
+    "local_point_max": 0.33370645783382713,
+    "every_frontier_point_above_every_local_point": true,
+    "frontier_intervals_all_above_local_points": true,
+    "worst_case_overlap": -0.042195475772148106,
+    "max_local_ci_upper": 0.6556227800498913,
+    "min_frontier_ci_lower": 0.37590193360597524,
+    "intervals_disjoint": false,
+    "frontier_models": [
+      "gpt-4o",
+      "gpt-4o-mini"
+    ],
+    "local_models": [
+      "llama-2-7b-chat",
+      "llama-3.1-8b-instruct"
+    ],
+    "ranking_is_supported": false,
+    "_verdict": "the point estimates order one way on every checkpoint, but the intervals overlap, so the ordering is a direction and not a finding; the paper must not claim the frontier ratio is larger"
+  }
+}

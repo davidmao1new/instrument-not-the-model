@@ -1,0 +1,297 @@
+{
+ "_why": "Answers whether the token-matched design can be given power by a larger name list, a question raised in external review of the design.",
+ "_identity": "max matching = sum_v min(#white_v, #black_v), exact because token-balance is an equivalence relation",
+ "panel": [
+  "llama-2-7b-chat",
+  "llama-3.1-8b-instruct",
+  "mistral-7b-instruct-v0.1",
+  "mistral-7b-instruct-v0.3"
+ ],
+ "context": {
+  "pre": "Candidate: ",
+  "post": "\n"
+ },
+ "token_counts": {
+  "llama-2-7b-chat": {
+   "Allison": 1,
+   "Anne": 0,
+   "Carrie": 1,
+   "Emily": 1,
+   "Jill": 1,
+   "Laurie": 1,
+   "Kristen": 1,
+   "Meredith": 2,
+   "Sarah": 0,
+   "Brad": 0,
+   "Brendan": 2,
+   "Geoffrey": 1,
+   "Greg": 0,
+   "Brett": 1,
+   "Jay": 0,
+   "Matthew": 0,
+   "Neil": 0,
+   "Todd": 1,
+   "Aisha": 2,
+   "Ebony": 1,
+   "Keisha": 2,
+   "Kenya": 1,
+   "Latonya": 2,
+   "Lakisha": 2,
+   "Latoya": 2,
+   "Tamika": 1,
+   "Tanisha": 2,
+   "Darnell": 2,
+   "Hakim": 2,
+   "Jermaine": 2,
+   "Kareem": 2,
+   "Jamal": 1,
+   "Leroy": 2,
+   "Rasheed": 2,
+   "Tremayne": 3,
+   "Tyrone": 2,
+   "_served": "llama-2-7b-chat.Q4_K_M.gguf"
+  },
+  "llama-3.1-8b-instruct": {
+   "Allison": 1,
+   "Anne": 1,
+   "Carrie": 1,
+   "Emily": 1,
+   "Jill": 1,
+   "Laurie": 1,
+   "Kristen": 1,
+   "Meredith": 1,
+   "Sarah": 1,
+   "Brad": 1,
+   "Brendan": 1,
+   "Geoffrey": 1,
+   "Greg": 1,
+   "Brett": 1,
+   "Jay": 1,
+   "Matthew": 1,
+   "Neil": 1,
+   "Todd": 1,
+   "Aisha": 2,
+   "Ebony": 1,
+   "Keisha": 2,
+   "Kenya": 1,
+   "Latonya": 2,
+   "Lakisha": 2,
+   "Latoya": 2,
+   "Tamika": 2,
+   "Tanisha": 2,
+   "Darnell": 3,
+   "Hakim": 2,
+   "Jermaine": 3,
+   "Kareem": 2,
+   "Jamal": 1,
+   "Leroy": 2,
+   "Rasheed": 2,
+   "Tremayne": 2,
+   "Tyrone": 2,
+   "_served": "Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf"
+  },
+  "mistral-7b-instruct-v0.1": {
+   "Allison": 1,
+   "Anne": 0,
+   "Carrie": 1,
+   "Emily": 0,
+   "Jill": 1,
+   "Laurie": 2,
+   "Kristen": 1,
+   "Meredith": 2,
+   "Sarah": 0,
+   "Brad": 0,
+   "Brendan": 1,
+   "Geoffrey": 1,
+   "Greg": 0,
+   "Brett": 1,
+   "Jay": 0,
+   "Matthew": 0,
+   "Neil": 0,
+   "Todd": 0,
+   "Aisha": 1,
+   "Ebony": 2,
+   "Keisha": 1,
+   "Kenya": 0,
+   "Latonya": 2,
+   "Lakisha": 2,
+   "Latoya": 1,
+   "Tamika": 1,
+   "Tanisha": 1,
+   "Darnell": 2,
+   "Hakim": 2,
+   "Jermaine": 2,
+   "Kareem": 2,
+   "Jamal": 1,
+   "Leroy": 2,
+   "Rasheed": 3,
+   "Tremayne": 3,
+   "Tyrone": 2,
+   "_served": "mistral-7b-instruct-v0.1.Q4_K_M.gguf"
+  },
+  "mistral-7b-instruct-v0.3": {
+   "Allison": 1,
+   "Anne": 0,
+   "Carrie": 1,
+   "Emily": 0,
+   "Jill": 1,
+   "Laurie": 2,
+   "Kristen": 1,
+   "Meredith": 2,
+   "Sarah": 0,
+   "Brad": 0,
+   "Brendan": 1,
+   "Geoffrey": 1,
+   "Greg": 0,
+   "Brett": 1,
+   "Jay": 0,
+   "Matthew": 0,
+   "Neil": 0,
+   "Todd": 0,
+   "Aisha": 1,
+   "Ebony": 2,
+   "Keisha": 1,
+   "Kenya": 0,
+   "Latonya": 2,
+   "Lakisha": 2,
+   "Latoya": 1,
+   "Tamika": 1,
+   "Tanisha": 1,
+   "Darnell": 2,
+   "Hakim": 2,
+   "Jermaine": 2,
+   "Kareem": 2,
+   "Jamal": 1,
+   "Leroy": 2,
+   "Rasheed": 3,
+   "Tremayne": 3,
+   "Tyrone": 2,
+   "_served": "Mistral-7B-Instruct-v0.3-Q4_K_M.gguf"
+  }
+ },
+ "per_gender": {
+  "female": {
+   "n_white": 9,
+   "n_black": 9,
+   "max_matching_panel": 2
+  },
+  "male": {
+   "n_white": 9,
+   "n_black": 9,
+   "max_matching_panel": 1
+  }
+ },
+ "by_n_tokenizers": {
+  "1": {
+   "models": [
+    "llama-2-7b-chat"
+   ],
+   "total": 6
+  },
+  "2": {
+   "models": [
+    "llama-2-7b-chat",
+    "llama-3.1-8b-instruct"
+   ],
+   "total": 3
+  },
+  "3": {
+   "models": [
+    "llama-2-7b-chat",
+    "llama-3.1-8b-instruct",
+    "mistral-7b-instruct-v0.1"
+   ],
+   "total": 3
+  },
+  "4": {
+   "models": [
+    "llama-2-7b-chat",
+    "llama-3.1-8b-instruct",
+    "mistral-7b-instruct-v0.1",
+    "mistral-7b-instruct-v0.3"
+   ],
+   "total": 3
+  }
+ },
+ "per_model": {
+  "llama-2-7b-chat": 6,
+  "llama-3.1-8b-instruct": 3,
+  "mistral-7b-instruct-v0.1": 8,
+  "mistral-7b-instruct-v0.3": 8
+ },
+ "vector_histogram": {
+  "female": {
+   "white": {
+    "(0, 1, 0, 0)": 2,
+    "(1, 1, 0, 0)": 1,
+    "(1, 1, 1, 1)": 4,
+    "(1, 1, 2, 2)": 1,
+    "(2, 1, 2, 2)": 1
+   },
+   "black": {
+    "(1, 1, 0, 0)": 1,
+    "(1, 1, 2, 2)": 1,
+    "(1, 2, 1, 1)": 1,
+    "(2, 2, 1, 1)": 4,
+    "(2, 2, 2, 2)": 2
+   },
+   "overlap": {
+    "(1, 1, 0, 0)": 1,
+    "(1, 1, 2, 2)": 1
+   }
+  },
+  "male": {
+   "white": {
+    "(0, 1, 0, 0)": 5,
+    "(1, 1, 0, 0)": 1,
+    "(1, 1, 1, 1)": 2,
+    "(2, 1, 1, 1)": 1
+   },
+   "black": {
+    "(1, 1, 1, 1)": 1,
+    "(2, 2, 2, 2)": 4,
+    "(2, 2, 3, 3)": 1,
+    "(2, 3, 2, 2)": 2,
+    "(3, 2, 3, 3)": 1
+   },
+   "overlap": {
+    "(1, 1, 1, 1)": 1
+   }
+  }
+ },
+ "race_gap_in_tokens": {
+  "llama-2-7b-chat": {
+   "white_mean": 0.722,
+   "black_mean": 1.833,
+   "gap": 1.111
+  },
+  "llama-3.1-8b-instruct": {
+   "white_mean": 1,
+   "black_mean": 1.944,
+   "gap": 0.944
+  },
+  "mistral-7b-instruct-v0.1": {
+   "white_mean": 0.611,
+   "black_mean": 1.667,
+   "gap": 1.056
+  },
+  "mistral-7b-instruct-v0.3": {
+   "white_mean": 0.611,
+   "black_mean": 1.667,
+   "gap": 1.056
+  }
+ },
+ "possible_pairs": 18,
+ "max_matching_panel_total": 3,
+ "extrapolation": {
+  "_caveat": "Linear in list size only if a larger list draws from the same length distribution. A list BUILT to be token-matched does far better; that is the point of the recommendation.",
+  "names_per_cell_now": 9,
+  "matched_pairs_now": 3,
+  "matched_pairs_per_name_per_cell": 0.1667,
+  "names_per_cell_for": {
+   "10": 60,
+   "20": 120,
+   "30": 180
+  }
+ }
+}

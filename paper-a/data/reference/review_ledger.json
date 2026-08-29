@@ -1,0 +1,72 @@
+{
+ "_what": "What the adversarial critique loop actually did, per round.",
+ "_why": "The phrase 'seven rounds of adversarial review' is not falsifiable and was also wrong. This is the ledger behind it.",
+ "_source": "paper-a/releases/critique_round*.json",
+ "n_rounds_with_artifacts": 6,
+ "rounds_without_artifacts": [
+  3
+ ],
+ "rounds": [
+  {
+   "round": 1,
+   "examined": 79,
+   "confirmed": 32,
+   "refuted": 47,
+   "serious": 27,
+   "stands": null,
+   "changed": null
+  },
+  {
+   "round": 2,
+   "examined": 160,
+   "confirmed": 128,
+   "refuted": 32,
+   "serious": 102,
+   "stands": null,
+   "changed": null
+  },
+  {
+   "round": 4,
+   "examined": 69,
+   "confirmed": 55,
+   "refuted": 14,
+   "serious": 35,
+   "stands": 8,
+   "changed": 47
+  },
+  {
+   "round": 5,
+   "examined": 154,
+   "confirmed": 110,
+   "refuted": 44,
+   "serious": 78,
+   "stands": 26,
+   "changed": 84
+  },
+  {
+   "round": 6,
+   "examined": 134,
+   "confirmed": 49,
+   "refuted": 85,
+   "serious": 29,
+   "stands": 15,
+   "changed": 34
+  },
+  {
+   "round": 7,
+   "examined": 138,
+   "confirmed": 92,
+   "refuted": 46,
+   "serious": 47,
+   "stands": 56,
+   "changed": 36
+  }
+ ],
+ "totals": {
+  "examined": 734,
+  "confirmed": 466,
+  "refuted": 268,
+  "serious": 318
+ },
+ "n_withdrawal_lines_in_changelog": 9
+}

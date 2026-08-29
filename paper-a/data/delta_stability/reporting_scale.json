@@ -1,0 +1,60 @@
+{
+  "_definition": {
+    "jacobian_error": "0.25 / mean_cells p(1-p): how wrong the assumed conversion factor is at the model's operating point. Independent of the effect size.",
+    "realised_ratio": "fixed-Jacobian pp figure / measured mean per-cell probability difference. Has the effect in its denominator, so it is only interpretable where the effect is distinguishable from zero."
+  },
+  "models": {
+    "llama-2-7b-chat": {
+      "model": "llama-2-7b-chat",
+      "slope": 0.1128230898522169,
+      "operating_p": 0.870374013866771,
+      "saturated": 0.06481481481481481,
+      "jacobian_error": 2.215858476553571,
+      "effective_slope": 0.1376128211749764,
+      "realised_ratio": 1.8166911910200718,
+      "effect_distinguishable": true
+    },
+    "llama-3.1-8b-instruct": {
+      "model": "llama-3.1-8b-instruct",
+      "slope": 0.030797205292908733,
+      "operating_p": 0.031809018981472426,
+      "saturated": 0.4398148148148148,
+      "jacobian_error": 8.117619687315075,
+      "effective_slope": 0.03215782087504531,
+      "realised_ratio": 7.774158608924951,
+      "effect_distinguishable": true
+    },
+    "mistral-7b-instruct-v0.1": {
+      "model": "mistral-7b-instruct-v0.1",
+      "slope": 0.12397741418709442,
+      "operating_p": 0.14500340027979763,
+      "saturated": 0.0,
+      "jacobian_error": 2.016496324263747,
+      "effective_slope": 0.00373493150229648,
+      "realised_ratio": 66.93563184392637,
+      "effect_distinguishable": false
+    },
+    "mistral-7b-instruct-v0.3": {
+      "model": "mistral-7b-instruct-v0.3",
+      "slope": 0.0005169582339612353,
+      "operating_p": 0.0005172257564443616,
+      "saturated": 0.9965277777777778,
+      "jacobian_error": 483.5980618479645,
+      "effective_slope": 0.002304933865434356,
+      "realised_ratio": 108.4629818447691,
+      "effect_distinguishable": false
+    }
+  },
+  "summary": {
+    "jacobian_error_min": 2.016496324263747,
+    "jacobian_error_max": 483.5980618479645,
+    "n_models": 4,
+    "n_distinguishable": 2,
+    "realised_min": 1.8166911910200718,
+    "realised_max": 7.774158608924951,
+    "predicted_for_distinguishable": [
+      2.215858476553571,
+      8.117619687315075
+    ]
+  }
+}
