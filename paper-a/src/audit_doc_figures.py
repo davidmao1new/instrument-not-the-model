@@ -173,27 +173,46 @@ def main() -> int:
             continue
         want = T[key]
         want_forms = {str(want), f"{want:,}", WORDS.get(int(want), "")} - {""}
-        for hit in hits:
-            checked += 1
-            if hit.strip().lower() in want_forms:
-                continue
-            if fix:
-                # Replace only inside the matched group, so the surrounding
-                # sentence is untouched and a numeral stays a numeral while
-                # a spelled-out count stays spelled out.
-                spelled = not hit.strip().isdigit()
+        checked += len(hits)
+        stale = [h for h in hits if h.strip().lower() not in want_forms]
+        if not stale:
+            continue
+        if fix:
+            # ONE PASS OVER EVERY MATCH, NOT ONE PASS PER STALE HIT. This
+            # loop used to call re.subn(..., count=1) once per stale hit,
+            # and count=1 always targets the FIRST match in the document
+            # rather than the hit being handled. A document holding one
+            # correct mention and one stale one therefore had its CORRECT
+            # mention rewritten -- which changes nothing, it already said
+            # the right thing -- while subn still returned n=1, so the
+            # code printed "fixed", counted it and skipped the problem
+            # report. The stale number survived and the audit said it had
+            # repaired it. A fix that reports success without fixing is
+            # worse than no fix, because it also suppresses the warning.
+            #
+            # Deciding per match instead: each match is rewritten only if
+            # its own captured text is stale, so correct mentions are left
+            # exactly as they are and every stale one is reached.
+            def _sub(m: re.Match) -> str:
+                cur = m.group(1)
+                if cur.strip().lower() in want_forms:
+                    return m.group(0)
+                # A numeral stays a numeral and a spelled-out count stays
+                # spelled out; only the group is touched, never the
+                # sentence around it.
+                spelled = not cur.strip().isdigit()
                 repl = WORDS.get(int(want), str(want)) if spelled \
                     else str(want)
+                return m.group(0).replace(cur, repl, 1)
 
-                def _sub(m: re.Match) -> str:
-                    return m.group(0).replace(m.group(1), repl, 1)
-
-                text, n = re.subn(pattern, _sub, text, count=1)
-                if n:
-                    p.write_text(text, encoding="utf-8")
-                    fixed += 1
-                    print(f"  fixed {rel}: {hit!r} -> {repl!r}")
-                    continue
+            new_text = re.sub(pattern, _sub, text)
+            if new_text != text:
+                p.write_text(new_text, encoding="utf-8")
+                fixed += len(stale)
+                for hit in stale:
+                    print(f"  fixed {rel}: {hit!r} -> {want}")
+                continue
+        for hit in stale:
             problems.append(
                 f"{rel}: says {hit!r} where the artifact says {want} "
                 f"({key})")

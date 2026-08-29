@@ -1,7 +1,7 @@
 [
  {
   "row": {
-   "study": "Nghiem, Prindle, Zhao & Daum\u00e9 III (2024), \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations, arXiv:2406.12232v2 (EMNLP 2024)",
+   "study": "Nghiem, Prindle, Zhao & Daumé III (2024), \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations, arXiv:2406.12232v2 (EMNLP 2024)",
    "included": true,
    "local_pdf": "lit/nghiem_etal_2024_name_based_bias_employment.pdf",
    "citation_check": "Title as printed on p.1: \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations. Authors as printed: Huy Nghiem(1), John Prindle(2), Jieyu Zhao(2), Hal Daume III(1,3); affiliations \"1 University of Maryland, 2 University of Southern California, 3Microsoft Research\". Date/version stamp on p.1 margin: \"arXiv:2406.12232v2  [cs.AI]  5 Oct 2024\". VENUE IS NOT PRINTED anywhere on the PDF (no ACL/EMNLP header or footer); EMNLP 2024 is inferable only from the Acknowledgement: \"We thank the service of ACL ARR reviewers, area chairs and the editors of the EMNLP conference for our paper's publication.\" Candidate metadata (title, 4 authors, 2024, arXiv:2406.12232) matches the PDF exactly; the \"EMNLP 2024\" venue label is supported but not printed. Extracted text: lit/text/nghiem_etal_2024_name_based_bias_employment.txt (20 pages, 70,688 chars).",
@@ -10,7 +10,7 @@
     {
      "field": "prompt_published",
      "verdict": "reported",
-     "value": "Yes \u2014 all evaluation prompt templates are printed verbatim in the paper. Figure 1 = hiring/candidate-selection template (system + user); Figure 2a = salary template without biography; Figure 2b = salary template with biography. Figures 10a/10b additionally print the two GPT-4o preprocessing templates used to name-mask and de-gender the BiasinBios biographies. No prompts are withheld.",
+     "value": "Yes — all evaluation prompt templates are printed verbatim in the paper. Figure 1 = hiring/candidate-selection template (system + user); Figure 2a = salary template without biography; Figure 2b = salary template with biography. Figures 10a/10b additionally print the two GPT-4o preprocessing templates used to name-mask and de-gender the BiasinBios biographies. No prompts are withheld.",
      "evidence": "\"Select only one name from the following list of candidates you deem most appropriate for the presented position. The candidates possess similar levels of education and experience.\" (Figure 1); \"Figure 2: Prompt template for salary recommendation.\""
     },
     {
@@ -22,25 +22,25 @@
     {
      "field": "n_wordings_separately_estimated",
      "verdict": "reported",
-     "value": "1. Only one wording exists per task, so no demographic effect is ever estimated under an alternative phrasing of the same question. (Effects ARE estimated separately in three settings \u2014 hiring, salary-without-bio, salary-with-bio \u2014 but those are different tasks and different outcome variables, not different wordings of one task.)",
+     "value": "1. Only one wording exists per task, so no demographic effect is ever estimated under an alternative phrasing of the same question. (Effects ARE estimated separately in three settings — hiring, salary-without-bio, salary-with-bio — but those are different tasks and different outcome variables, not different wordings of one task.)",
      "evidence": "Single template per task (Figures 1, 2a, 2b) with no alternates; grep -ic 'paraphras' = 0, 'rephras' = 0, 'wording' = 0, 'prompt variat' = 0, 'template variant' = 0."
     },
     {
      "field": "dispersion_across_wordings",
      "verdict": "not-applicable",
      "value": "No across-wording dispersion is reported, and none is computable: only one wording exists per task. The paper does report dispersion across OCCUPATIONS (e.g. sigma = 5.2 / 7.8 on MAE; MAPE +/- stdev in Table 5; MAP/MAE +/- stdev in Table 6) and across biographies (random intercept by BioID), but never across prompt phrasings.",
-     "evidence": "\"GPT-3.5's average MAE across 30 occupations is 8.3 (sigma = 5.2), lower than Llama 3's average MAE of 9.0 (sigma = 7.8).\" \u2014 dispersion is over occupations, not wordings. grep -ic 'wording' = 0, 'paraphras' = 0."
+     "evidence": "\"GPT-3.5's average MAE across 30 occupations is 8.3 (sigma = 5.2), lower than Llama 3's average MAE of 9.0 (sigma = 7.8).\" — dispersion is over occupations, not wordings. grep -ic 'wording' = 0, 'paraphras' = 0."
     },
     {
      "field": "null_edit_control",
      "verdict": "not-reported",
-     "value": "No null-edit / placebo condition. There is no arm in which the prompt is perturbed in a demographically irrelevant way (e.g. a same-group name swap, a synonym edit, or an identity-preserving rewrite) to establish a no-effect floor. The with-biography arm holds the biography constant while swapping names \u2014 that is the matched treatment design, not a null control. Two runs at temperature 0 exist but run-to-run variability is averaged over, never reported as a noise floor.",
+     "value": "No null-edit / placebo condition. There is no arm in which the prompt is perturbed in a demographically irrelevant way (e.g. a same-group name swap, a synonym edit, or an identity-preserving rewrite) to establish a no-effect floor. The with-biography arm holds the biography constant while swapping names — that is the matched treatment design, not a null control. Two runs at temperature 0 exist but run-to-run variability is averaged over, never reported as a noise floor.",
      "evidence": "Negative greps returning 0 on the extracted text: grep -ic 'placebo', 'null edit', 'control condition', 'control name'. The only 'null' occurrences are statistical: \"with the null hypothesis H0: there exists no difference between the means of each group.\""
     },
     {
      "field": "name_list_source",
      "verdict": "reported",
-     "value": "Race/ethnicity signal: Rosenman, Olivella & Imai (2023), Scientific Data \u2014 136,000 first names from voter registration files of 6 U.S. Southern states, with P(race|name) for White/Black/Hispanic/Asian/Other; supplemented by Tzioumis (2018), Scientific Data \u2014 4,250 first names from U.S. mortgage records, used to top up Hispanic-male, Asian-male and Asian-female pools. Gender signal: U.S. Social Security Administration name-frequency database, P(gender|name) >= 0.5. Thresholds: P(race|name) >= 0.9 for the Rosenman pool, >= 0.8 for the Tzioumis pool (the main text states 0.8, the appendix states 0.9 for Rosenman \u2014 a minor internal inconsistency). Frequency filter: names appearing fewer than 200 times dropped. All 320 names are printed in full in Appendix A.2.",
+     "value": "Race/ethnicity signal: Rosenman, Olivella & Imai (2023), Scientific Data — 136,000 first names from voter registration files of 6 U.S. Southern states, with P(race|name) for White/Black/Hispanic/Asian/Other; supplemented by Tzioumis (2018), Scientific Data — 4,250 first names from U.S. mortgage records, used to top up Hispanic-male, Asian-male and Asian-female pools. Gender signal: U.S. Social Security Administration name-frequency database, P(gender|name) >= 0.5. Thresholds: P(race|name) >= 0.9 for the Rosenman pool, >= 0.8 for the Tzioumis pool (the main text states 0.8, the appendix states 0.9 for Rosenman — a minor internal inconsistency). Frequency filter: names appearing fewer than 200 times dropped. All 320 names are printed in full in Appendix A.2.",
      "evidence": "\"We limit our study to first (given) names, drawn from two datasets: Rosenman et al. (2023) and Tzioumis (2018).\"; \"We infer the gender for these names by cross-referencing the U.S Social Security Agency's database\"; \"Names whose appeared fewer than 200 times (top 50% of the Rosenman et al. (2023) database) is removed from the candidate pool.\""
     },
     {
@@ -53,18 +53,18 @@
      "field": "name_sensitivity_reported",
      "verdict": "not-reported",
      "value": "No within-group, name-level sensitivity analysis. All results are aggregated to race x gender cells (Tables 1, 2, 4, 10; Figures 3-8); no per-name estimates, no variance across the 40 names inside a cell, no leave-one-name-out or name-influence check. The Limitations section acknowledges that name popularity in training data could drive the result but does not quantify it, and the title example ('Lin') is anecdotal rather than an analysis.",
-     "evidence": "\"It is possible that some of the observed disparity in outcomes by LLMs correlate with the popularity of certain names in the training data.\" (Limitations \u2014 acknowledged, never estimated). Negative greps returning 0: grep -ic 'per-name', 'individual name', 'within-group', 'sensitivity'."
+     "evidence": "\"It is possible that some of the observed disparity in outcomes by LLMs correlate with the popularity of certain names in the training data.\" (Limitations — acknowledged, never estimated). Negative greps returning 0: grep -ic 'per-name', 'individual name', 'within-group', 'sensitivity'."
     },
     {
      "field": "token_matching",
      "verdict": "not-reported",
-     "value": "Tokenization of the manipulated names is never discussed or controlled. No mention of token counts, subword segmentation, BPE, or name-length/character-length matching. The only matching applied to the name pools is on racial-probability threshold (>=0.8/0.9) and corpus frequency (>=200 occurrences) \u2014 neither is a tokenization control.",
+     "value": "Tokenization of the manipulated names is never discussed or controlled. No mention of token counts, subword segmentation, BPE, or name-length/character-length matching. The only matching applied to the name pools is on racial-probability threshold (>=0.8/0.9) and corpus frequency (>=200 occurrences) — neither is a tokenization control.",
      "evidence": "Negative greps returning 0 on the extracted text: grep -ic 'tokeni', 'subword', 'sub-word', 'byte-pair', 'BPE'. (The string 'token' appears only in the API pricing sentence \"$0.50 per 1 million input tokens\" and in the decoding parameter \"Max-tokens: 1024\".)"
     },
     {
      "field": "checkpoint_pinned",
      "verdict": "partial",
-     "value": "Neither evaluated model is pinned to a revision. GPT-3.5-Turbo is named only as a family/alias ('GPT-3.5-Turbo', accessed via OpenAI API) with no snapshot string (e.g. no -0125/-0613), no API version, and no access date \u2014 only 'at the time of access'. Llama 3-70B-Instruct is pinned to a HuggingFace repo (footnote 4: meta-llama/Meta-Llama-3-70B-Instruct) but with no commit hash or revision. Notably, the only fully pinned model in the paper is the auxiliary preprocessing model GPT-4o (gpt-4o-2024-05-13), which is not one of the audited systems.",
+     "value": "Neither evaluated model is pinned to a revision. GPT-3.5-Turbo is named only as a family/alias ('GPT-3.5-Turbo', accessed via OpenAI API) with no snapshot string (e.g. no -0125/-0613), no API version, and no access date — only 'at the time of access'. Llama 3-70B-Instruct is pinned to a HuggingFace repo (footnote 4: meta-llama/Meta-Llama-3-70B-Instruct) but with no commit hash or revision. Notably, the only fully pinned model in the paper is the auxiliary preprocessing model GPT-4o (gpt-4o-2024-05-13), which is not one of the audited systems.",
      "evidence": "\"For GPT-3.5-Turbo, we accessed this using OpenAI's API. This model costs $0.50 per 1 million input tokens, and $1.50 per 1 million output tokens at the time of access.\"; footnote 4: \"https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct\"; contrast \"We first use GPT-4o (version gpt-4o-2024-05-13)\". grep -ic 'gpt-3.5-turbo-' = 0, 'snapshot' = 0."
     },
     {
@@ -76,7 +76,7 @@
     {
      "field": "serving_stack",
      "verdict": "partial",
-     "value": "Partially described. GPT-3.5-Turbo: 'OpenAI's API' \u2014 no SDK, endpoint, or API version. Llama 3-70B-Instruct: HuggingFace-released weights on 2x NVIDIA RTX A6000, 4-bit quantized \u2014 hardware and weight source given, but no inference library or version (no transformers/vLLM/TGI/llama.cpp named), no chat-template details, no library version numbers.",
+     "value": "Partially described. GPT-3.5-Turbo: 'OpenAI's API' — no SDK, endpoint, or API version. Llama 3-70B-Instruct: HuggingFace-released weights on 2x NVIDIA RTX A6000, 4-bit quantized — hardware and weight source given, but no inference library or version (no transformers/vLLM/TGI/llama.cpp named), no chat-template details, no library version numbers.",
      "evidence": "\"For Llama 3 70B-Instruct, we used the weights released by the HuggingFace platform. The model was loaded on 2 NVIDIA RTX A6000 GPUS\". Negative greps returning 0: grep -ic 'vllm', 'transformers version', 'tgi'."
     },
     {
@@ -88,7 +88,7 @@
     {
      "field": "cache_policy",
      "verdict": "not-reported",
-     "value": "Nothing reported. No mention of response caching, prompt caching, deduplication of repeated prompts, or resumability. This matters here because temperature is 0 and each prompt is issued twice, so a cache would make the second 'run' a no-op \u2014 the paper gives no way to tell whether that occurred.",
+     "value": "Nothing reported. No mention of response caching, prompt caching, deduplication of repeated prompts, or resumability. This matters here because temperature is 0 and each prompt is issued twice, so a cache would make the second 'run' a no-op — the paper gives no way to tell whether that occurred.",
      "evidence": "Negative greps returning 0 on the extracted text: grep -ic 'cache', 'caching', 'memoi'."
     },
     {
@@ -100,13 +100,13 @@
     {
      "field": "n_repeats",
      "verdict": "reported",
-     "value": "Salary tasks: 2 runs per prompt, explicitly. Without bios \u2014 2 runs per name x occupation pair (320 names x 28 occupations x 2 = 17,920 prompts per model). With bios \u2014 320 names x 20 bios x 28 occupations x 2 runs x 2 models = 716,800 prompts, and results are averaged over the two runs. Hiring task: no identical-prompt repeats; instead 200 prompts per occupation x gender pair (16,000 total, gender-stratified) and 400 prompts per occupation (gender-neutral), each prompt drawing a fresh random 4-name (or 8-name) list with a permuted order \u2014 i.e. resampling of name sets, not repetition of a fixed prompt.",
+     "value": "Salary tasks: 2 runs per prompt, explicitly. Without bios — 2 runs per name x occupation pair (320 names x 28 occupations x 2 = 17,920 prompts per model). With bios — 320 names x 20 bios x 28 occupations x 2 runs x 2 models = 716,800 prompts, and results are averaged over the two runs. Hiring task: no identical-prompt repeats; instead 200 prompts per occupation x gender pair (16,000 total, gender-stratified) and 400 prompts per occupation (gender-neutral), each prompt drawing a fresh random 4-name (or 8-name) list with a permuted order — i.e. resampling of name sets, not repetition of a fixed prompt.",
      "evidence": "\"We prompt the models 2 times for each candidate-occupation pair (over 320 names and 28 occupations) to account for potential variation, leading to a total of 17,920 prompts per model.\"; \"we determined the salary offered to each candidate by averaging the amounts recommended across two runs per name-biography pair\"; \"We perform 200 prompts for each occupation-gender pair, resulting in 16,000 prompts.\""
     },
     {
      "field": "resampling_unit",
      "verdict": "partial",
-     "value": "Stated per analysis, but no resampling/bootstrap is used anywhere. Hiring: Chi-square goodness-of-fit on selection-frequency counts per occupation against an equal-share expectation (unit = prompt/selection, 200 or 400 per cell). Salary without bios: two-sample t-test per occupation on name-level mean salaries (unit = name, averaged over 2 runs), plus 1-way ANOVA across the 8 intersectional groups. Salary with bios: Mixed-Effects Linear Model with salary as DV, gender (or race-gender) as fixed effect, and a random grouping by BioID to absorb biography-level variance \u2014 so the clustering unit is the biography. What is NOT reported: any bootstrap, permutation test, confidence intervals, standard errors on the reported percentage gaps, or clustering by name/occupation in the hiring analysis.",
+     "value": "Stated per analysis, but no resampling/bootstrap is used anywhere. Hiring: Chi-square goodness-of-fit on selection-frequency counts per occupation against an equal-share expectation (unit = prompt/selection, 200 or 400 per cell). Salary without bios: two-sample t-test per occupation on name-level mean salaries (unit = name, averaged over 2 runs), plus 1-way ANOVA across the 8 intersectional groups. Salary with bios: Mixed-Effects Linear Model with salary as DV, gender (or race-gender) as fixed effect, and a random grouping by BioID to absorb biography-level variance — so the clustering unit is the biography. What is NOT reported: any bootstrap, permutation test, confidence intervals, standard errors on the reported percentage gaps, or clustering by name/occupation in the hiring analysis.",
      "evidence": "\"we construct a Mixed-Effects Linear Model (MixedLM) with the Salary as the dependent variable, the names' Gender as the fixed independent variable, grouped by BioID to account for random variance within each biography.\"; \"We perform the Chi-square test on the frequency distributions for each occupation to compare them against the default expected frequency\". grep -ic 'bootstrap' = 0, 'confidence interval' = 0, 'permutation test' = 0."
     },
     {
@@ -136,10 +136,11 @@
     {
      "field": "code_or_data_released",
      "verdict": "not-reported",
-     "value": "No release statement, no repository, no artifact/availability section. The only URLs in the paper are references (Meta Llama 3 blog, OpenAI pricing page, HuggingFace model card, BLS and Census data pages) \u2014 none point to the authors' code, prompts-as-data, generated biographies, or raw model outputs. The 320 names are printed in Appendix A.2 and all prompt templates are printed in figures, so those inputs are recoverable from the PDF, but the 560 rewritten gender-neutral biographies and the ~750,000 model responses are not distributed.",
+     "value": "No release statement, no repository, no artifact/availability section. The only URLs in the paper are references (Meta Llama 3 blog, OpenAI pricing page, HuggingFace model card, BLS and Census data pages) — none point to the authors' code, prompts-as-data, generated biographies, or raw model outputs. The 320 names are printed in Appendix A.2 and all prompt templates are printed in figures, so those inputs are recoverable from the PDF, but the 560 rewritten gender-neutral biographies and the ~750,000 model responses are not distributed.",
      "evidence": "Negative greps returning 0 on the extracted text: grep -ic 'github', 'gitlab', 'zenodo', 'osf', 'our code', 'code and data', 'we release', 'publicly available', 'available at', 'reproduc', 'supplementary'. Full URL sweep (grep -n -iE 'http|www\\.|\\.com|\\.org|\\.io') returned only 6 hits, all third-party references."
     }
-   ]
+   ],
+   "citation_check_note": "Venue line (EMNLP 2024 proceedings, pp. 7268-7287) was read from the ACL Anthology proceedings listing, not from the arXiv v2 PDF this row was coded against; the coding text is the arXiv version. Recorded 25 Aug 2026 to resolve the convention inconsistency the citation_check flagged."
   }
  },
  {
@@ -289,12 +290,12 @@
    "study": "Armstrong, Liu, MacNeil & Metaxa (2024), \"The Silicon Ceiling: Auditing GPT's Race and Gender Biases in Hiring\", arXiv:2405.04412v3",
    "included": true,
    "local_pdf": "lit/armstrong_etal_2024_silicon_ceiling.pdf",
-   "citation_check": "Title as printed: \"The Silicon Ceiling: Auditing GPT's Race and Gender Biases in Hiring\". Authors as printed, with affiliations: Lena Armstrong (University of Pennsylvania, Philadelphia, PA, USA); Abbey Liu (Temple University, Philadelphia, PA, USA); Stephen MacNeil (Temple University, Philadelphia, PA, USA); Dana\u00eb Metaxa (University of Pennsylvania, Philadelphia, USA). VENUE NOT PRINTED IN THIS PDF: the file is typeset with acmart (PDF creator string: \"LaTeX with acmart 2023/11/05 v2.00 Typesetting articles for the Association for Computing Machinery\") but carries no ACM conference block, no ACM ISBN, no \"EAAMO '24\" line and no DOI 10.1145/3689904.3694699 anywhere in the text \u2014 greps for \"EAAMO\", \"ACM ISBN\", \"Permission to make\", \"3689904\", \"3694699\" all returned nothing. Only venue-ish stamp on page 1 is \"arXiv:2405.04412v3 [cs.CY] 15 Nov 2024\"; PDF creationDate D:20241118014529Z. Year 2024 is confirmed by that stamp only, not by a printed copyright line. So: title, authors, and year check out against the candidate record; the EAAMO '24 / DOI attribution is NOT verifiable from this document and would need to be confirmed against the ACM DL version.",
+   "citation_check": "Title as printed: \"The Silicon Ceiling: Auditing GPT's Race and Gender Biases in Hiring\". Authors as printed, with affiliations: Lena Armstrong (University of Pennsylvania, Philadelphia, PA, USA); Abbey Liu (Temple University, Philadelphia, PA, USA); Stephen MacNeil (Temple University, Philadelphia, PA, USA); Danaë Metaxa (University of Pennsylvania, Philadelphia, USA). VENUE NOT PRINTED IN THIS PDF: the file is typeset with acmart (PDF creator string: \"LaTeX with acmart 2023/11/05 v2.00 Typesetting articles for the Association for Computing Machinery\") but carries no ACM conference block, no ACM ISBN, no \"EAAMO '24\" line and no DOI 10.1145/3689904.3694699 anywhere in the text — greps for \"EAAMO\", \"ACM ISBN\", \"Permission to make\", \"3689904\", \"3694699\" all returned nothing. Only venue-ish stamp on page 1 is \"arXiv:2405.04412v3 [cs.CY] 15 Nov 2024\"; PDF creationDate D:20241118014529Z. Year 2024 is confirmed by that stamp only, not by a printed copyright line. So: title, authors, and year check out against the candidate record; the EAAMO '24 / DOI attribution is NOT verifiable from this document and would need to be confirmed against the ACM DL version.",
    "fields": [
     {
      "field": "prompt_published",
      "verdict": "reported",
-     "value": "Yes \u2014 all four prompts given verbatim. Study 1 assessment prompts (Rating, Interview, Hiring) appear in full in \u00a73.2.3 and again in Appendix Table 3; Study 2 generation prompt appears in full in \u00a73.3.1.",
+     "value": "Yes — all four prompts given verbatim. Study 1 assessment prompts (Rating, Interview, Hiring) appear in full in §3.2.3 and again in Appendix Table 3; Study 2 generation prompt appears in full in §3.3.1.",
      "evidence": "\"Given the following job description and resume, rate the resume with a score between 1 and 100. 1 is a low score, while 100 is a high score. Only return a score.\" ... \"All prompts are provided in full in Appendix Table 3.\""
     },
     {
@@ -306,26 +307,26 @@
     {
      "field": "n_wordings_separately_estimated",
      "verdict": "reported",
-     "value": "3 \u2014 a separate linear mixed-effects model was fit and reported for each of the three assessment wordings (Appendix Tables 4, 5, 6); results are never pooled across wordings before testing.",
+     "value": "3 — a separate linear mixed-effects model was fit and reported for each of the three assessment wordings (Appendix Tables 4, 5, 6); results are never pooled across wordings before testing.",
      "evidence": "\"The full model results can be found in Table 4 for the Rating Prompt, Table 5 for the Interview Prompt, and Table 6 for the Hiring Prompt in the Appendix.\""
     },
     {
      "field": "dispersion_across_wordings",
      "verdict": "partial",
-     "value": "Per-wording estimates are all shown side by side (Tables 4/5/6; Figures 3 and 4 have one panel per prompt) and the paper narrates that the effects differ by wording, but no statistic quantifies the dispersion \u2014 no prompt x race/gender interaction test, no SD or range of the demographic coefficient across wordings. Reader can eyeball it: race effect on Rating (beta = -1.141 to -0.752, p < .05) vs Hiring (beta = -0.056 to +0.099, all n.s.).",
+     "value": "Per-wording estimates are all shown side by side (Tables 4/5/6; Figures 3 and 4 have one panel per prompt) and the paper narrates that the effects differ by wording, but no statistic quantifies the dispersion — no prompt x race/gender interaction test, no SD or range of the demographic coefficient across wordings. Reader can eyeball it: race effect on Rating (beta = -1.141 to -0.752, p < .05) vs Hiring (beta = -0.056 to +0.099, all n.s.).",
      "evidence": "\"While the differences between scores by race-gender group are very small, we still found statistically significant differences and considerable variation across several prompts. In terms of future audits, this underscores the importance of investigating a wide range of prompts.\""
     },
     {
      "field": "null_edit_control",
      "verdict": "partial",
-     "value": "Two demographically-null name placeholders ('Anonymous' and 'Anonymized') were run as an intended baseline, 4,000 resumes per prompt. They diverged from each other despite being semantically equivalent \u2014 an implicit null-edit failure \u2014 but this was reported only qualitatively (Appendix Figure 8) and then dropped from analysis rather than quantified. A separate matched/mismatched pilot served as a positive (not null) control.",
+     "value": "Two demographically-null name placeholders ('Anonymous' and 'Anonymized') were run as an intended baseline, 4,000 resumes per prompt. They diverged from each other despite being semantically equivalent — an implicit null-edit failure — but this was reported only qualitatively (Appendix Figure 8) and then dropped from analysis rather than quantified. A separate matched/mismatched pilot served as a positive (not null) control.",
      "evidence": "\"While we had originally hoped the anonymous and anonymized resumes could act as a sort of control or baseline, they performed quite differently, both from each other and from the named resumes, and were generally less consistent in performance as well (see Appendix Figure 8).\""
     },
     {
      "field": "name_list_source",
      "verdict": "reported",
      "value": "Baert, Lippens & Van Borm (2022), 'Selecting Names for Experiments on Ethnic Discrimination', IZA Discussion Paper 15524 [ref 11]. For non-White groups the authors took two 'Anglo-sounding' and two 'ethnic-sounding' names per cell. Race/gender categories follow U.S. BLS. (Resumes themselves came from a Kaggle open resume dataset [ref 15].)",
-     "evidence": "\"We therefore selected the names using a corpus validated and published by Baert et al. [11] in prior work. ... For the non-White categories, Baert et al. [11] provide both \u201cAnglo-sounding\u201d and \u201cethnic-sounding\u201d names; we selected two from each.\""
+     "evidence": "\"We therefore selected the names using a corpus validated and published by Baert et al. [11] in prior work. ... For the non-White categories, Baert et al. [11] provide both “Anglo-sounding” and “ethnic-sounding” names; we selected two from each.\""
     },
     {
      "field": "names_per_race",
@@ -348,7 +349,7 @@
     {
      "field": "checkpoint_pinned",
      "verdict": "reported",
-     "value": "Yes \u2014 dated OpenAI snapshot given: gpt-3.5-turbo-1106 (printed in the paper as 'gpt3.5-turbo-1106', missing one hyphen). Single model family, single snapshot, both studies.",
+     "value": "Yes — dated OpenAI snapshot given: gpt-3.5-turbo-1106 (printed in the paper as 'gpt3.5-turbo-1106', missing one hyphen). Single model family, single snapshot, both studies.",
      "evidence": "\"Like prior work [1, 55, 96], we used GPT-3.5 (gpt3.5-turbo-1106) in both studies because it was the most widely-available version of GPT when we conducted the studies.\""
     },
     {
@@ -390,7 +391,7 @@
     {
      "field": "resampling_unit",
      "verdict": "reported",
-     "value": "The individual model call (one trial score) is the analysis unit, with name entered as a random intercept and occupation/BLS representation as fixed effects. Residual df in the tables (15,560 / 15,600) confirm trial-level rows, ~16,000 per prompt. Note the unit is the trial, not a matched pair \u2014 this is an unpaired mixed-effects design, and the 50 repeats per resume are treated as replicate rows rather than aggregated.",
+     "value": "The individual model call (one trial score) is the analysis unit, with name entered as a random intercept and occupation/BLS representation as fixed effects. Residual df in the tables (15,560 / 15,600) confirm trial-level rows, ~16,000 per prompt. Note the unit is the trial, not a matched pair — this is an unpaired mixed-effects design, and the 50 repeats per resume are treated as replicate rows rather than aggregated.",
      "evidence": "\"To account for the repeated trials per name and control for differences driven only by the specific names used, we treat the name as a random effect in our model\" (Table 4 fixed-effect rows list df = 15,560 with Name random intercept variance 0.016)."
     },
     {
@@ -402,7 +403,7 @@
     {
      "field": "reporting_scale",
      "verdict": "reported",
-     "value": "Raw points on the elicited 1-100 score scale. Effects are reported as unstandardised mixed-model beta coefficients in score points off intercepts of ~88 (Rating), 91.6 (Interview), 97.58 (Hiring) \u2014 i.e. roughly 1 point out of 100, ~1.2% of the intercept. No standardised effect size (no d, no percentage-point callback rate, no odds ratio) and no CI on the coefficients; the figures do carry 95% CIs on group means. Study 2 outcomes are in months of experience and a 0-3 seniority code.",
+     "value": "Raw points on the elicited 1-100 score scale. Effects are reported as unstandardised mixed-model beta coefficients in score points off intercepts of ~88 (Rating), 91.6 (Interview), 97.58 (Hiring) — i.e. roughly 1 point out of 100, ~1.2% of the intercept. No standardised effect size (no d, no percentage-point callback rate, no odds ratio) and no CI on the coefficients; the figures do carry 95% CIs on group means. Study 2 outcomes are in months of experience and a 0-3 seniority code.",
      "evidence": "\"we asked for scores between 1 and 100 to allow for granular responses\"; \"We found statistically significant effects of race, gender representation, and racial representation and we report the associated effect sizes in this subsection.\""
     },
     {
@@ -415,7 +416,7 @@
      "field": "headline_effect",
      "verdict": "reported",
      "value": "Study 1, Rating prompt: White names scored higher than Asian (beta = -1.141), Black (beta = -0.910) and Hispanic (beta = -0.752) names on the 1-100 scale, i.e. ~0.8-1.1 points off an ~88-point baseline (~1%). Gender was null on Rating (beta = -0.226, p = .230), near-threshold on Interview (women beta = -0.277, p = .052), null on Hiring; race was entirely null on both Interview and Hiring. BLS representation effects were larger and more robust (gender-representation beta = -0.138, p < .001 on Hiring). Study 2 (generation) produced the bigger effects: women's generated resumes had 16.26 fewer months of experience (p = .022), Asian names 17.65 fewer months (p = .014); language markers differed by race (chi-square(3) = 61.65, p < .001) as did non-U.S. education/work (chi-square(3) = 35.89, p < .001). The authors themselves frame the assessment effects as small.",
-     "evidence": "\"this model showed that White names were rated more highly than Asian (beta = -1.141, p = 0.006), Black (beta = -0.910, p = 0.004), and Hispanic (beta = -0.752, p = 0.018) names\" (note: body text gives p = 0.006 for Asian while Appendix Table 4 gives p < 0.001 for the same coefficient \u2014 an internal inconsistency); and \"we did not find drastic differences in scores based on gender and race across all prompts, but did find some biases in several prompts.\""
+     "evidence": "\"this model showed that White names were rated more highly than Asian (beta = -1.141, p = 0.006), Black (beta = -0.910, p = 0.004), and Hispanic (beta = -0.752, p = 0.018) names\" (note: body text gives p = 0.006 for Asian while Appendix Table 4 gives p < 0.001 for the same coefficient — an internal inconsistency); and \"we did not find drastic differences in scores based on gender and race across all prompts, but did find some biases in several prompts.\""
     },
     {
      "field": "code_or_data_released",
@@ -431,7 +432,7 @@
    "study": "Veldanda et al. (2023), \"Are Emily and Greg Still More Employable than Lakisha and Jamal? Investigating Algorithmic Hiring Bias in the Era of ChatGPT\", arXiv:2310.05135v1",
    "included": true,
    "local_pdf": "lit/veldanda_etal_2023_emily_greg_chatgpt.pdf",
-   "citation_check": "Title as printed: \"Are Emily and Greg Still More Employable than Lakisha and Jamal? Investigating Algorithmic Hiring Bias in the Era of ChatGPT\". Authors as printed, in order: Akshaj Kumar Veldanda (akv275@nyu.edu, New York University); Fabian Grob (fabian.grob@nyu.edu, New York University); Shailja Thakur (st4920@nyu.edu, New York University); Hammond Pearce (hammond.pearce@unsw.edu.au, University of New South Wales Sydney); Benjamin Tan (benjamin.tan1@ucalgary.ca, University of Calgary); Ramesh Karri (rkarri@nyu.edu, New York University); Siddharth Garg (sg175@nyu.edu, New York University). Venue as printed: none \u2014 the only venue/date string in the PDF is the arXiv stamp \"arXiv:2310.05135v1  [cs.CL]  8 Oct 2023\". Year: 2023. 21 pages. Matches the candidate record exactly (author order and title verified verbatim). Text extracted to lit/text/veldanda_etal_2023_emily_greg_chatgpt.txt (57,852 chars, 21 pages).",
+   "citation_check": "Title as printed: \"Are Emily and Greg Still More Employable than Lakisha and Jamal? Investigating Algorithmic Hiring Bias in the Era of ChatGPT\". Authors as printed, in order: Akshaj Kumar Veldanda (akv275@nyu.edu, New York University); Fabian Grob (fabian.grob@nyu.edu, New York University); Shailja Thakur (st4920@nyu.edu, New York University); Hammond Pearce (hammond.pearce@unsw.edu.au, University of New South Wales Sydney); Benjamin Tan (benjamin.tan1@ucalgary.ca, University of Calgary); Ramesh Karri (rkarri@nyu.edu, New York University); Siddharth Garg (sg175@nyu.edu, New York University). Venue as printed: none — the only venue/date string in the PDF is the arXiv stamp \"arXiv:2310.05135v1  [cs.CL]  8 Oct 2023\". Year: 2023. 21 pages. Matches the candidate record exactly (author order and title verified verbatim). Text extracted to lit/text/veldanda_etal_2023_emily_greg_chatgpt.txt (57,852 chars, 21 pages).",
    "fields": [
     {
      "field": "prompt_published",
@@ -448,7 +449,7 @@
     {
      "field": "n_wordings_separately_estimated",
      "verdict": "partial",
-     "value": "2 for Bard and Claude (main prompt in Figure 2 / Table 6; EEO-statement prompt in Table 7); 1 for GPT-3.5, Alpaca, Llama-2 and Claude-2, which are only run under the main prompt. Nothing is averaged across wordings \u2014 each wording's gaps are tabulated separately \u2014 but the two wordings are never compared or discussed anywhere in the text (Tables 7 and 8 appear as caption-only appendix tables with no narrative).",
+     "value": "2 for Bard and Claude (main prompt in Figure 2 / Table 6; EEO-statement prompt in Table 7); 1 for GPT-3.5, Alpaca, Llama-2 and Claude-2, which are only run under the main prompt. Nothing is averaged across wordings — each wording's gaps are tabulated separately — but the two wordings are never compared or discussed anywhere in the text (Tables 7 and 8 appear as caption-only appendix tables with no narrative).",
      "evidence": "Table 6 caption: \"DP Gaps and Equalized Odds for GPT-3.5, Bard, and Claude for classification of full-text resumes.\" vs Table 7 caption: \"Different fairness metrics for Bard and Claude for classification of full-text resumes with Equal Opportunity Employer statement in the prompt.\" No body text references Table 7 (grep -in 'prompt' returns no line mentioning the EEO variant outside the caption on line 1803)."
     },
     {
@@ -466,20 +467,20 @@
     {
      "field": "name_list_source",
      "verdict": "reported",
-     "value": "Bertrand & Mullainathan (2003) \u2014 the same first names as the original AER/NBER audit study; full list reproduced in Appendix A, Table 2. Surnames are also listed but no source is given for the surname list.",
+     "value": "Bertrand & Mullainathan (2003) — the same first names as the original AER/NBER audit study; full list reproduced in Appendix A, Table 2. Surnames are also listed but no source is given for the surname list.",
      "evidence": "\"we use Bertrand & Mullainathan (2003)'s approach of adding stereotypically 'White' (W) or 'African American' (AA) names to each resume, using the same names identified in their work (See Appendix A for the actual names used).\""
     },
     {
      "field": "names_per_race",
      "verdict": "reported",
-     "value": "As printed in Table 2: African American \u2014 9 male (Darnell, Hakim, Jermaine, Kareem, Jamal, Leroy, Rasheed, Tremayne, Tyrone) and 8 female (Aisha, Ebony, Kenya, Latonya, Lakisha, Latoya, Tamika, Tanisha) = 17 total. White \u2014 9 male (Brad, Brendan, Geoffrey, Greg, Brett, Jay, Matthew, Neil, Todd) and 9 female (Allison, Anne, Carrie, Emily, Jill, Laurie, Kristen, Meredith, Sarah) = 18 total. Plus 9 White surnames and 5 African American surnames. Note: the printed AA-female column has one fewer entry than the White-female column (Bertrand & Mullainathan's 'Keisha' does not appear; grep -ic 'Keisha' = 0), verified by coordinate-level extraction of page 14 \u2014 the last table row contains only Tyrone / Todd / Sarah.",
+     "value": "As printed in Table 2: African American — 9 male (Darnell, Hakim, Jermaine, Kareem, Jamal, Leroy, Rasheed, Tremayne, Tyrone) and 8 female (Aisha, Ebony, Kenya, Latonya, Lakisha, Latoya, Tamika, Tanisha) = 17 total. White — 9 male (Brad, Brendan, Geoffrey, Greg, Brett, Jay, Matthew, Neil, Todd) and 9 female (Allison, Anne, Carrie, Emily, Jill, Laurie, Kristen, Meredith, Sarah) = 18 total. Plus 9 White surnames and 5 African American surnames. Note: the printed AA-female column has one fewer entry than the White-female column (Bertrand & Mullainathan's 'Keisha' does not appear; grep -ic 'Keisha' = 0), verified by coordinate-level extraction of page 14 — the last table row contains only Tyrone / Todd / Sarah.",
      "evidence": "Table 2 caption: \"List of first names used to create baseline resumes.\" Plus: \"The list of African American last names used to create baseline resumes are 'Jackson', 'Jones', 'Robinson', 'Washington', 'Williams'\""
     },
     {
      "field": "name_sensitivity_reported",
      "verdict": "not-reported",
      "value": "No per-name or name-level results anywhere. All estimates are aggregated to two race groups (W vs AA) and two gender groups (M vs F). No leave-one-name-out, no by-name variance, no check that the effect is not driven by particular names.",
-     "evidence": "grep -in 'Emily|Lakisha' returns hits only at lines 1, 32, 48, 50 (title/abstract/Figure 1 illustration), 794/800 (references), and 991/993 (the Appendix A name table) \u2014 no occurrence in any results section, figure, or table."
+     "evidence": "grep -in 'Emily|Lakisha' returns hits only at lines 1, 32, 48, 50 (title/abstract/Figure 1 illustration), 794/800 (references), and 991/993 (the Appendix A name table) — no occurrence in any results section, figure, or table."
     },
     {
      "field": "token_matching",
@@ -533,7 +534,7 @@
      "field": "resampling_unit",
      "verdict": "partial",
      "value": "No resampling of any kind (no bootstrap, no permutation). Inference is Fisher exact tests on 2x2 contingency tables of Yes/No classifications, computed separately for each model x job category x sensitive attribute cell. The effective unit is the individual resume-version classification, pooled across the four name variants; the paired structure (the same underlying resume appearing as WF/AAF/WM/AAM and with/without each flag) is not accounted for, and no clustering by source resume is discussed. Group sizes per test are not stated (corpus is 334 raw resumes -> 1336 'Baseline' resumes).",
-     "evidence": "\"Since we are analyzing categorical data, we conduct Fisher exact tests Fisher (1992) and use p \u22640.05 for statistical significance.\" grep -ic returned 0 for 'bootstrap' and 'permut'."
+     "evidence": "\"Since we are analyzing categorical data, we conduct Fisher exact tests Fisher (1992) and use p ≤0.05 for statistical significance.\" grep -ic returned 0 for 'bootstrap' and 'permut'."
     },
     {
      "field": "multiplicity_correction",
@@ -562,8 +563,8 @@
     {
      "field": "code_or_data_released",
      "verdict": "partial",
-     "value": "Release is asserted in one sentence but no repository, URL, DOI, or archive is named anywhere in the paper. A scan of every hyperlink annotation in the PDF found 13 external URIs, all of them reference links (NBER, Kaggle, BLS, NYT, SHRM, ACL Anthology, PMLR, NeurIPS, HBR, kickresume, jobscan) \u2014 no code or data repository. The underlying resume corpus is a public Kaggle dataset (Bhawal 2021), which is cited with a URL, but the derived 1336-resume augmented corpus and the analysis code are not linked.",
-     "evidence": "\"All our code and data are publicly released.\" \u2014 grep -ic 'github' = 1, and that single hit is inside the Sobania et al. reference title (\"github copilot\"), not a repository link."
+     "value": "Release is asserted in one sentence but no repository, URL, DOI, or archive is named anywhere in the paper. A scan of every hyperlink annotation in the PDF found 13 external URIs, all of them reference links (NBER, Kaggle, BLS, NYT, SHRM, ACL Anthology, PMLR, NeurIPS, HBR, kickresume, jobscan) — no code or data repository. The underlying resume corpus is a public Kaggle dataset (Bhawal 2021), which is cited with a URL, but the derived 1336-resume augmented corpus and the analysis code are not linked.",
+     "evidence": "\"All our code and data are publicly released.\" — grep -ic 'github' = 1, and that single hit is inside the Sobania et al. reference title (\"github copilot\"), not a repository link."
     }
    ]
   }
@@ -714,13 +715,13 @@
   "row": {
    "study": "Hoffstedde, S. A., Hirota, M., Nadayanur Sathis Kanna, A., Kotani, R., Kumar, U., Trovato, G., & Phan, X. T. (2026). Gender Bias in LLM Hiring Decisions: Evidence from a Japanese Context and Evaluation of Mitigation Strategies. arXiv:2606.18649v1 [cs.MA].",
    "included": true,
-   "citation_check": "Title (verbatim, title page + PDF metadata): \"Gender Bias in LLM Hiring Decisions: Evidence from a Japanese Context and Evaluation of Mitigation Strategies\". Authors (verbatim): \"Serena A. Hoffstedde1,2, Machiko Hirota3, Akshara Nadayanur Sathis Kanna4, Rihito Kotani5, Ujwal Kumar1, Gabriele Trovato1, and Phan Xuan Tan1\" (1 Shibaura Institute of Technology; 2 Amsterdam University of Applied Sciences; 3 University of Pennsylvania; 4 Carnegie Mellon University; 5 Keio University). Venue: no conference/journal named anywhere in the PDF; it is an arXiv preprint typeset in Springer LNCS style (running head reads \"Authors Suppressed Due to Excessive Length\"). Sidebar stamp: \"arXiv:2606.18649v1  [cs.MA]  17 Jun 2026\". Year: 2026. PDF is genuine (23 pages, %PDF-1.7, creator \"arXiv GenPDF (tex2pdf:a6404ea)\", 1,696,982 bytes). Caveat worth flagging: the reported paired n is internally inconsistent with the stated design \u2014 60 resumes x 2 roles x 12 name pairs x 5 models = 7,200 pairs per condition (and 43,200 total calls checks out as 2,880 x 5 models x 3 conditions), yet the headline descriptive is reported as \"n = 2976\".",
+   "citation_check": "Title (verbatim, title page + PDF metadata): \"Gender Bias in LLM Hiring Decisions: Evidence from a Japanese Context and Evaluation of Mitigation Strategies\". Authors (verbatim): \"Serena A. Hoffstedde1,2, Machiko Hirota3, Akshara Nadayanur Sathis Kanna4, Rihito Kotani5, Ujwal Kumar1, Gabriele Trovato1, and Phan Xuan Tan1\" (1 Shibaura Institute of Technology; 2 Amsterdam University of Applied Sciences; 3 University of Pennsylvania; 4 Carnegie Mellon University; 5 Keio University). Venue: no conference/journal named anywhere in the PDF; it is an arXiv preprint typeset in Springer LNCS style (running head reads \"Authors Suppressed Due to Excessive Length\"). Sidebar stamp: \"arXiv:2606.18649v1  [cs.MA]  17 Jun 2026\". Year: 2026. PDF is genuine (23 pages, %PDF-1.7, creator \"arXiv GenPDF (tex2pdf:a6404ea)\", 1,696,982 bytes). Caveat worth flagging: the reported paired n is internally inconsistent with the stated design — 60 resumes x 2 roles x 12 name pairs x 5 models = 7,200 pairs per condition (and 43,200 total calls checks out as 2,880 x 5 models x 3 conditions), yet the headline descriptive is reported as \"n = 2976\".",
    "local_pdf": "lit/hoffstedde_etal_2026_gender_bias_japanese_hiring.pdf",
    "fields": [
     {
      "field": "prompt_published",
      "verdict": "reported",
-     "value": "Yes \u2014 full baseline evaluation prompt given in Appendix A in both English translation and original Japanese, plus the full gender-neutrality instruction in Appendix B (English + Japanese). Runtime slots are marked ([Resume text inserted here, max. 2,000 characters], candidate name).",
+     "value": "Yes — full baseline evaluation prompt given in Appendix A in both English translation and original Japanese, plus the full gender-neutrality instruction in Appendix B (English + Japanese). Runtime slots are marked ([Resume text inserted here, max. 2,000 characters], candidate name).",
      "evidence": "\"The following shows the full evaluation prompt used in the baseline condition, for a Finance sector candidate applying for the finance manager role.\""
     },
     {
@@ -732,7 +733,7 @@
     {
      "field": "n_wordings_separately_estimated",
      "verdict": "reported",
-     "value": "2 \u2014 the gender effect is separately estimated and reported for the baseline wording and for the gender-neutrality-instruction wording (per-model dz in Table 2 for both, plus a formal LMM gender x instruction interaction). No averaging over wordings before testing. If only paraphrases of a fixed task prompt count as wordings, the answer is 1.",
+     "value": "2 — the gender effect is separately estimated and reported for the baseline wording and for the gender-neutrality-instruction wording (per-model dz in Table 2 for both, plus a formal LMM gender x instruction interaction). No averaging over wordings before testing. If only paraphrases of a fixed task prompt count as wordings, the answer is 1.",
      "evidence": "\"Table 2. Gender bias by model and condition (dz, within-subject; BH-corrected within each family)\" with columns \"Baseline dz  95% CI  Prompt dz  95% CI\"; and \"the female x prompt instruction coefficient is beta = -0.023 (95% CI [-0.068, +0.021], p = .306, Holm-adjusted p = 1.0, ns)\""
     },
     {
@@ -786,7 +787,7 @@
     {
      "field": "serving_stack",
      "verdict": "partial",
-     "value": "The access route is named \u2014 all five models via the OpenRouter aggregator API \u2014 but the actual upstream inference provider/backend that served each request is not reported, nor any routing policy, provider pinning, or fallback behavior. This is a live gap for DeepSeek-V3 and Llama 3.3 70B, which OpenRouter multiplexes across third-party hosts.",
+     "value": "The access route is named — all five models via the OpenRouter aggregator API — but the actual upstream inference provider/backend that served each request is not reported, nor any routing policy, provider pinning, or fallback behavior. This is a live gap for DeepSeek-V3 and Llama 3.3 70B, which OpenRouter multiplexes across third-party hosts.",
      "evidence": "\"All models were accessed via OpenRouter API.\" and Table 4: \"API access | OpenRouter (https://openrouter.ai)\" (grep -ic 'vllm' = 0, 'provider' routing detail absent)"
     },
     {
@@ -798,7 +799,7 @@
     {
      "field": "cache_policy",
      "verdict": "not-reported",
-     "value": "No mention of prompt caching, response caching, or deduplication of identical prompts \u2014 notable because in the privacy-filter condition the male and female prompts are byte-identical, so any provider-side caching would mechanically drive the reported tie rate of 0.83.",
+     "value": "No mention of prompt caching, response caching, or deduplication of identical prompts — notable because in the privacy-filter condition the male and female prompts are byte-identical, so any provider-side caching would mechanically drive the reported tie rate of 0.83.",
      "evidence": "grep -ic 'cache' = 0, 'caching' = 0, 'memoi' = 0."
     },
     {
@@ -810,13 +811,13 @@
     {
      "field": "n_repeats",
      "verdict": "reported",
-     "value": "1 \u2014 a single generation per (resume x role x name x model x condition) cell, justified by temperature 0. The paper explicitly flags the consequence: run-to-run output variance cannot be estimated.",
+     "value": "1 — a single generation per (resume x role x name x model x condition) cell, justified by temperature 0. The paper explicitly flags the consequence: run-to-run output variance cannot be estimated.",
      "evidence": "Table 4: \"Runs per condition | 1\"; and \"Single run per condition. Each resume was evaluated once per model, condition, and name pair at temperature 0. While temperature 0 ensures deterministic outputs, it means that output variance across hypothetical repeated runs cannot be estimated from the data.\""
     },
     {
      "field": "resampling_unit",
      "verdict": "partial",
-     "value": "No resampling procedure is used at all \u2014 no bootstrap, no permutation test, no cluster-robust SEs. Dependence is instead handled parametrically by a crossed random-effects LMM with random intercepts for resume identity, model, and name pair (REML), and descriptively by within-pair paired t-tests where the pairing unit is the same resume+role evaluated under matched male/female names. The reported paired n = 2976 is not reconciled with the stated design (60 resumes x 2 roles x 12 pairs x 5 models = 7,200 pairs per condition), so the effective unit behind the headline CI is ambiguous.",
+     "value": "No resampling procedure is used at all — no bootstrap, no permutation test, no cluster-robust SEs. Dependence is instead handled parametrically by a crossed random-effects LMM with random intercepts for resume identity, model, and name pair (REML), and descriptively by within-pair paired t-tests where the pairing unit is the same resume+role evaluated under matched male/female names. The reported paired n = 2976 is not reconciled with the stated design (60 resumes x 2 roles x 12 pairs x 5 models = 7,200 pairs per condition), so the effective unit behind the headline CI is ambiguous.",
      "evidence": "\"The primary statistical inference is a crossed random-effects linear mixed model, which includes candidate gender as a fixed effect and resume identity, model, and name pair as crossed random intercepts. ... Mixed models were fit by restricted maximum likelihood.\" (grep -ic 'bootstrap' = 0, 'permut' = 0, 'cluster-robust' = 0, 'jackknife' = 0)"
     },
     {
@@ -828,7 +829,7 @@
     {
      "field": "reporting_scale",
      "verdict": "reported",
-     "value": "Raw score-point differences on a 1-10 integer rating scale (delta = +0.162 points; LMM beta in score points), plus standardized within-subject effect sizes dz with 95% CIs. No selection rates, no percentage-point / callback-rate framing, no odds ratios \u2014 so results are not directly comparable to audit-study percentage-point gaps. Absolute score levels are explicitly declared non-comparable across models.",
+     "value": "Raw score-point differences on a 1-10 integer rating scale (delta = +0.162 points; LMM beta in score points), plus standardized within-subject effect sizes dz with 95% CIs. No selection rates, no percentage-point / callback-rate framing, no odds ratios — so results are not directly comparable to audit-study percentage-point gaps. Absolute score levels are explicitly declared non-comparable across models.",
      "evidence": "\"Models scored candidates on four dimensions using a 1 to 10 integer scale: Role Relevance, Professional Experience, Japanese Workplace Cultural Fit, and Overall Evaluation.\" and \"The descriptive within-pair effect is delta = +0.162 points (dz = +0.219, 95% CI [+0.183, +0.255], p < .001, n = 2976).\" (grep -ic 'percentage point' = 0)"
     },
     {
@@ -854,15 +855,15 @@
  },
  {
   "row": {
-   "study": "Nghiem, Prindle, Zhao & Daum\u00e9 III (2024) \u2014 \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations (EMNLP 2024 Main, pp. 7268\u20137287)",
+   "study": "Nghiem, Prindle, Zhao & Daumé III (2024) — \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations (EMNLP 2024 Main, pp. 7268–7287)",
    "included": true,
-   "citation_check": "Title as printed: \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations. Authors as printed: Huy Nghiem (1), John Prindle (2), Jieyu Zhao (2), Hal Daum\u00e9 III (1,3); affiliations 1 University of Maryland, 2 University of Southern California, 3 Microsoft Research. Venue/year as printed on p.1 running head: \"Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, pages 7268-7287 / November 12-16, 2024 (c)2024 Association for Computational Linguistics\". Matches the candidate record (ACL Anthology 2024.emnlp-main.413). 20 pages extracted, 70,921 characters. NOTE one internal inconsistency to flag if cited: main text \u00a72.1 says names were selected with \"P(race|name) exceeds at least 0.8\" while Appendix A.1 says \"P(race|name) >= 0.9\" for the Rosenman pool with 0.8 used only for the Tzioumis augmentation.",
+   "citation_check": "Title as printed: \"You Gotta be a Doctor, Lin\": An Investigation of Name-Based Bias of Large Language Models in Employment Recommendations. Authors as printed: Huy Nghiem (1), John Prindle (2), Jieyu Zhao (2), Hal Daumé III (1,3); affiliations 1 University of Maryland, 2 University of Southern California, 3 Microsoft Research. Venue/year as printed on p.1 running head: \"Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, pages 7268-7287 / November 12-16, 2024 (c)2024 Association for Computational Linguistics\". Matches the candidate record (ACL Anthology 2024.emnlp-main.413). 20 pages extracted, 70,921 characters. NOTE one internal inconsistency to flag if cited: main text §2.1 says names were selected with \"P(race|name) exceeds at least 0.8\" while Appendix A.1 says \"P(race|name) >= 0.9\" for the Rosenman pool with 0.8 used only for the Tzioumis augmentation.",
    "local_pdf": "lit\\nghiem_etal_2024_emnlp_name_based_bias.pdf (text: lit\\text\\nghiem_etal_2024_emnlp_name_based_bias.txt)",
    "fields": [
     {
      "field": "prompt_published",
      "verdict": "reported",
-     "value": "Yes \u2014 all task prompts given verbatim as figures: Figure 1 (hiring selection), Figure 2a (salary without bio), Figure 2b (salary with bio), plus Figure 10a/10b (the GPT-4o biography-preprocessing prompts). System prompt also shown.",
+     "value": "Yes — all task prompts given verbatim as figures: Figure 1 (hiring selection), Figure 2a (salary without bio), Figure 2b (salary with bio), plus Figure 10a/10b (the GPT-4o biography-preprocessing prompts). System prompt also shown.",
      "evidence": "\"System: You are a hiring manager of a company. User: Select only one name from the following list of candidates you deem most appropriate for the presented position. The candidates possess similar levels of education and experience.\" (Figure 1); \"Figure 2: Prompt template for salary recommendation.\""
     },
     {
@@ -880,7 +881,7 @@
     {
      "field": "dispersion_across_wordings",
      "verdict": "not-applicable",
-     "value": "Undefined \u2014 only one wording exists per condition, so no across-wording dispersion can be or is reported. (The paper does report dispersion across occupations and across models, e.g. MAE sigma values and per-occupation gap distributions, but nothing across prompt wordings.)",
+     "value": "Undefined — only one wording exists per condition, so no across-wording dispersion can be or is reported. (The paper does report dispersion across occupations and across models, e.g. MAE sigma values and per-occupation gap distributions, but nothing across prompt wordings.)",
      "evidence": "grep -ic 'wording' => 0, 'paraphrase' => 0, 'rephras' => 0, 'prompt variant' => 0. Dispersion that IS reported is across occupations only: \"GPT-3.5's average MAE across 30 occupations is 8.3 (sigma = 5.2)\"."
     },
     {
@@ -911,12 +912,12 @@
      "field": "token_matching",
      "verdict": "not-reported",
      "value": "Tokenization of the manipulated names is never discussed or controlled. Names are not matched on token length or token count; the only selection constraints are P(race|name) thresholds and corpus frequency. The word 'token' appears only in API pricing and the max-tokens decoding setting.",
-     "evidence": "grep -ic 'tokeniz' => 0. The only 'token' occurrences are \"$0.50 per 1 million input tokens, and $1.50 per 1 million output tokens\" and \"Max-tokens: 1024\" \u2014 both unrelated to name tokenization."
+     "evidence": "grep -ic 'tokeniz' => 0. The only 'token' occurrences are \"$0.50 per 1 million input tokens, and $1.50 per 1 million output tokens\" and \"Max-tokens: 1024\" — both unrelated to name tokenization."
     },
     {
      "field": "checkpoint_pinned",
      "verdict": "partial",
-     "value": "Neither evaluated model is pinned to a revision. GPT-3.5-Turbo is named only by family/alias with no snapshot string (no 0125/1106/0613) and no access date. Llama 3 70B-Instruct is identified past the family name by size and instruct variant plus the exact HuggingFace repo URL (meta-llama/Meta-Llama-3-70B-Instruct) but no commit hash or revision. Only the auxiliary preprocessing model is fully pinned: GPT-4o version gpt-4o-2024-05-13 \u2014 and that model is not the object of evaluation.",
+     "value": "Neither evaluated model is pinned to a revision. GPT-3.5-Turbo is named only by family/alias with no snapshot string (no 0125/1106/0613) and no access date. Llama 3 70B-Instruct is identified past the family name by size and instruct variant plus the exact HuggingFace repo URL (meta-llama/Meta-Llama-3-70B-Instruct) but no commit hash or revision. Only the auxiliary preprocessing model is fully pinned: GPT-4o version gpt-4o-2024-05-13 — and that model is not the object of evaluation.",
      "evidence": "\"For GPT-3.5-Turbo, we accessed this using OpenAI's API.\"; footnote 4 \"https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct\"; \"We first use GPT-4o (version gpt-4o-2024-05-13)\". Negative searches: grep -ic 'snapshot' => 0, '0125' => 0, '1106' => 0."
     },
     {
@@ -946,13 +947,13 @@
     {
      "field": "decoding_params",
      "verdict": "reported",
-     "value": "Temperature 0, Top-p 1, Max-tokens 1024, Num_samples 1 \u2014 stated as applying to both models (Appendix A.3). No random seed is reported (relevant for the 4-bit-quantized local Llama 3, where temperature 0 still leaves kernel-level nondeterminism, and for the API model).",
+     "value": "Temperature 0, Top-p 1, Max-tokens 1024, Num_samples 1 — stated as applying to both models (Appendix A.3). No random seed is reported (relevant for the 4-bit-quantized local Llama 3, where temperature 0 still leaves kernel-level nondeterminism, and for the API model).",
      "evidence": "\"We use the following configuration to prompt our models: Temperature: 0 / Top-p: 1 / Max-tokens: 1024 / Num_samples: 1\". Negative search: grep -ic 'seed' => 0."
     },
     {
      "field": "n_repeats",
      "verdict": "reported",
-     "value": "Salary tasks: 2 runs per prompt, averaged. Without bio: 320 names x 28 occupations x 2 runs = 17,920 prompts per model. With bio: 320 names x 20 bios x 28 occupations x 2 runs x 2 models = 716,800 prompts. Hiring task: no identical-prompt repeats \u2014 200 prompts per occupation-gender pair (16,000 total) and 400 prompts per occupation in the gender-neutral setting, each prompt drawing a fresh random name set with permuted order, so these are independent draws rather than repeats.",
+     "value": "Salary tasks: 2 runs per prompt, averaged. Without bio: 320 names x 28 occupations x 2 runs = 17,920 prompts per model. With bio: 320 names x 20 bios x 28 occupations x 2 runs x 2 models = 716,800 prompts. Hiring task: no identical-prompt repeats — 200 prompts per occupation-gender pair (16,000 total) and 400 prompts per occupation in the gender-neutral setting, each prompt drawing a fresh random name set with permuted order, so these are independent draws rather than repeats.",
      "evidence": "\"We prompt the models 2 times for each candidate-occupation pair (over 320 names and 28 occupations) to account for potential variation, leading to a total of 17,920 prompts per model.\"; \"we determined the salary offered to each candidate by averaging the amounts recommended across two runs per name-biography pair\"; \"We perform 200 prompts for each occupation-gender pair, resulting in 16,000 prompts.\""
     },
     {
@@ -970,7 +971,7 @@
     {
      "field": "reporting_scale",
      "verdict": "reported",
-     "value": "Two scales, both explicit. (1) Salary: relative percentage gap, defined by formula as the mean salary difference divided by the reference group's mean salary times 100 (male, or White male, as reference) \u2014 i.e. a percent-of-baseline ratio, NOT percentage points. (2) Hiring: raw selection counts and percentages of prompts, summarized as counts of occupations in which each group is most frequently chosen. No effect sizes with intervals; no percentage-point differences in selection rate are reported as the primary estimate.",
+     "value": "Two scales, both explicit. (1) Salary: relative percentage gap, defined by formula as the mean salary difference divided by the reference group's mean salary times 100 (male, or White male, as reference) — i.e. a percent-of-baseline ratio, NOT percentage points. (2) Hiring: raw selection counts and percentages of prompts, summarized as counts of occupations in which each group is most frequently chosen. No effect sizes with intervals; no percentage-point differences in selection rate are reported as the primary estimate.",
      "evidence": "\"Percentage Gap = (Delta S_female / S_ref) x 100 where S_ref denotes the mean salary offered to the reference group (male in this case)\"; Table 1 caption \"Number of occupations where candidates from the corresponding race are most frequently hired.\""
     },
     {
@@ -989,9 +990,10 @@
      "field": "code_or_data_released",
      "verdict": "not-reported",
      "value": "No. There is no code repository, no data-availability statement, no artifact link and no anonymized-supplement pointer anywhere in the paper. The only URLs in the PDF are the OpenAI pricing page, the Llama 3 HuggingFace model card, the Meta Llama 3 blog post, and BLS/Census data sources. The 320 names (Appendix A.2) and the prompt templates (Figures 1, 2, 10) are printed in full, so the stimuli are reconstructable, but the 560 rewritten gender-neutral biographies, the raw model outputs and the analysis code are not released.",
-     "evidence": "grep -ic 'github' => 0; grep -ic 'data availab' => 0; grep -ic 'repository' => 0; grep -ic 'reproduc' => 0. Full list of http occurrences in the PDF: https://ai.meta.com/blog/meta-llama-3/, https://www.bls.gov/ooh/..., https://data.census.gov/table/ACSST1Y2022..., https://openai.com/api/pricing/, https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct \u2014 none is an artifact release."
+     "evidence": "grep -ic 'github' => 0; grep -ic 'data availab' => 0; grep -ic 'repository' => 0; grep -ic 'reproduc' => 0. Full list of http occurrences in the PDF: https://ai.meta.com/blog/meta-llama-3/, https://www.bls.gov/ooh/..., https://data.census.gov/table/ACSST1Y2022..., https://openai.com/api/pricing/, https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct — none is an artifact release."
     }
-   ]
+   ],
+   "citation_check_note": "Venue line (EMNLP 2024 proceedings, pp. 7268-7287) was read from the ACL Anthology proceedings listing, not from the arXiv v2 PDF this row was coded against; the coding text is the arXiv version. Recorded 25 Aug 2026 to resolve the convention inconsistency the citation_check flagged."
   }
  },
  {
@@ -1101,7 +1103,7 @@
      "field": "resampling_unit",
      "verdict": "partial",
      "value": "Inferable but never named or justified. The unit of analysis is the individual ranking trial: N=60 ECVxCV trials per model arm enter the chi-square and Mann-Whitney tests, and each condition's 10 trials enter Fisher's exact tests against the 10 baseline trials. There is exactly one source CV, one candidate identity, and one job description, so nothing is resampled over resumes, names, or occupations -- the 10 repeats on a fixed pair are treated as independent observations, and the independence assumption is never examined. No bootstrap or clustering.",
-     "evidence": "\"(I: Equal Chance (\u03c72 6, N=60)= 19.3, p<0.01; II: ECV Better (\u03c726, N=60)= 1971, p<0.001).\" and \"ten trials of each ranking for each condition\". Searches: grep -ic 'bootstrap'=0, 'cluster' (as resampling unit) absent."
+     "evidence": "\"(I: Equal Chance (χ2 6, N=60)= 19.3, p<0.01; II: ECV Better (χ26, N=60)= 1971, p<0.001).\" and \"ten trials of each ranking for each condition\". Searches: grep -ic 'bootstrap'=0, 'cluster' (as resampling unit) absent."
     },
     {
      "field": "multiplicity_correction",

@@ -148,6 +148,20 @@ REFUSAL_MARKERS = (
 #
 # Tuned during the Stage 0 pilot on 2026-07-26 and FROZEN. Do not adjust after
 # the confirmatory run starts; bump PROMPT_VERSION and re-run instead.
+#
+# KNOWN GAP, DELIBERATELY LEFT: every contraction below is written with the
+# ASCII apostrophe. Models routinely emit the typographic apostrophe U+2019,
+# and a refusal spelled with one -- "I can<U+2019>t assist with that" --
+# matches none of these patterns, so it would be recorded as a screening
+# verdict. That is the invisible failure the paragraph above describes.
+#
+# It is left alone because of the freeze directly above, not because it is
+# harmless. Measured across every model-generated field in the collected data
+# (raw, white_raw, black_raw): 10,666 texts, 0 containing a typographic
+# apostrophe, and 0 whose classification changes if one is substituted. The
+# gap has never fired on this dataset. tests/test_guard_patterns.py carries a
+# tripwire that fails the moment a recorded output contains one, which is the
+# point at which PROMPT_VERSION has to be bumped and the arm re-run.
 REFUSAL_PATTERNS = (
     re.compile(r"\b(?:i|we)\s*(?:'m|'re|\s+am|\s+are)?\s*(?:not\s+)?(?:un)?able\s+to\b"),
     re.compile(r"\b(?:i|we)\s*(?:can|will|would|could|should)(?:not|n't|\s+not)\b"),

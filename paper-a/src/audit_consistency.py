@@ -3,7 +3,7 @@
 A project this size accumulates statements in places that do not get rebuilt
 when the data changes: the protocol, the gap register, the handoff notes, an
 older paper builder, figure captions baked into PNGs. Numbers inside the paper
-are safe by construction, because `build_paper_v2.py` interpolates every one of
+are safe by construction, because `build_paper_v3.py` interpolates every one of
 them from an artifact and drops any sentence whose artifact is missing. Nothing
 protects the prose ELSEWHERE, and nothing protects a count that a human typed
 into a caption.
@@ -88,7 +88,14 @@ SUPERSEDED = [
 EXEMPT = ("CHANGELOG.md", "VERIFICATION.md", "GAPS.md", "audit_consistency.py",
           "effectsize.py", "analyze_mech_panel.py", "analyze_noise_floor.py",
           "fit_arm_contrast.py", "figures_mechpanel.py", "figures_noise.py",
-          "build_paper_v2.py", "build_paper_v3.py")
+          "build_paper_v3.py")
+
+# Which of the above actually skipped something, filled in as the scan runs.
+# AN EXEMPTION THAT SKIPS NOTHING IS A SWITCH LEFT OFF. It removes no finding
+# today, so it looks identical to one that is working, and it stays armed for
+# whatever text lands in that file next -- exempted without anyone deciding it
+# should be. build_paper_v2.py sat here after the file itself was deleted.
+EXEMPT_USED: set[str] = set()
 
 
 # Words that mark a nearby occurrence of a superseded phrase as a RETRACTION of
@@ -144,21 +151,40 @@ def check_superseded():
     targets = [f for f in SRC.glob("*.py")] + [d for d in DOCS if d.exists()]
     hits = 0
     for f in targets:
-        if f.name in EXEMPT:
-            continue
         try:
             text = f.read_text(encoding="utf-8")
         except Exception:  # noqa: BLE001
             continue
         for pat, why in SUPERSEDED:
             for m in re.finditer(pat, text, re.I):
-                ln = text[:m.start()].count("\n") + 1
                 if _is_retraction(text, m.start()):
                     continue
+                # The exemption is recorded at the moment it does something,
+                # so an entry that never reaches this line is reported below
+                # as one that no longer applies to any text.
+                if f.name in EXEMPT:
+                    EXEMPT_USED.add(f.name)
+                    continue
+                ln = text[:m.start()].count("\n") + 1
                 issue("stale", f"{f.relative_to(ROOT)}:{ln} {m.group(0)!r} — {why}")
                 hits += 1
     if not hits:
         print("  none")
+
+    # RESOLVED AGAINST THE SET ACTUALLY SCANNED, not against guessed
+    # directories. Checking SRC/ and ROOT/ reported GAPS.md as absent; it
+    # lives at paper-a/docs/GAPS.md and is in DOCS, and was being scanned
+    # all along.
+    present = {f.name for f in targets}
+    missing = [n for n in EXEMPT if n not in present]
+    unused = [n for n in EXEMPT if n not in EXEMPT_USED and n not in missing]
+    if missing:
+        print(f"  exempt but absent: {', '.join(missing)} — the rule points "
+              "at a file that is not here")
+    if unused:
+        print(f"  exempt but skipped nothing: {', '.join(unused)} — the "
+              "reason no longer applies to any text in those files, and the "
+              "rule stays armed for whatever lands there next")
 
 
 # --------------------------------------------------------------------------
@@ -175,11 +201,35 @@ def check_counts():
 
     # any file claiming "eight ... conditions" when there are now eleven
     n = len(CONDITIONS)
-    words = {8: "eight", 11: "eleven", 12: "twelve"}
-    stale_word = words.get(8) if n != 8 else None
+    # THE COUNTS THIS FACT HAS PREVIOUSLY HELD. Append when it changes.
+    #
+    # This was written `words.get(8) if n != 8 else None`, which hardcodes
+    # the superseded value inside a lookup, where it reads like a parameter
+    # and behaves like a constant: the only word ever searched for is
+    # "eight", and the map's entries for eleven and twelve can never be
+    # reached. Move the count from eleven to twelve and prose saying
+    # "eleven conditions" goes unlooked-for, silently.
+    #
+    # Searching for EVERY word that is not the current count was tried and
+    # reverted: "conditions" is too generic a noun and it produced four
+    # false positives on the first run -- a schema's "Three conditions", a
+    # control pair's "two conditions", a contrast definition's "two
+    # conditions". Four standing false alarms in a gate that runs on every
+    # build is worse than the narrow scan, because it is how a gate stops
+    # being read.
+    PRIOR_COUNTS = (8,)
+    words = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+             6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+             11: "eleven", 12: "twelve"}
+    stale_words = [words[k] for k in PRIOR_COUNTS if k != n and k in words]
     hits = 0
-    if stale_word:
-        pat = re.compile(rf"{stale_word}\s+(?:semantically\s+null\s+)?conditions", re.I)
+    if not stale_words:
+        print(f"  (no superseded count to look for: {n} is the only value "
+              "this fact has held)")
+    if stale_words:
+        pat = re.compile(
+            r"\b(?:" + "|".join(stale_words) + r")"
+            r"\s+(?:semantically\s+null\s+)?conditions\b", re.I)
         for f in [f for f in SRC.glob("*.py")] + [d for d in DOCS if d.exists()]:
             if f.name in EXEMPT:
                 continue

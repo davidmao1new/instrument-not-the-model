@@ -38,10 +38,31 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 SECTION_SIGN = "§"
 
-# The statute the paper is about is cited by section number and is not a
-# pointer into the paper. Local Law 144 lives at N.Y.C. Admin. Code
-# 20-870 to 20-874, and the rule at 6 RCNY 5-300.
-STATUTE = re.compile(r"^(20-|5-|20$|5$)")
+# A STATUTE IS NOT A POINTER, AND THE TEST IS CONTEXT, NOT VALUE. The statute
+# the paper is about is cited by section number: Local Law 144 lives at
+# N.Y.C. Admin. Code 20-870 to 20-874, and the rule at 6 RCNY 5-300. Every
+# such citation carries a hyphen and a further number immediately after the
+# digits, and no pointer into this paper ever does. So the hyphen is what
+# disqualifies them, and it does so at the moment of harvest -- see NUM.
+#
+# The rule this replaces tested the harvested VALUE against ^(20-|5-|20$|5$).
+# By then the hyphen was already gone, so the only alternatives that could
+# ever fire were the bare "20" and "5" -- which is also exactly what a
+# pointer to this paper's own section 5 looks like. Three real pointers were
+# being waved through: "it says nothing about 5: quantization" in the
+# preprint, and two in the fork. Section 5 exists, so the audit printed
+# "clean". Renumber section 5 and all three would dangle, still clean.
+
+# A section number, and not the head of a statute citation.
+NUM = r"[0-9]+(?:\.[0-9]+){0,2}(?![0-9-])"
+
+# POINTERS TRAVEL IN LISTS. "Sections 6.1 and 6.3" is in the built preprint.
+# The separators are read off the two documents rather than guessed at: "and"
+# and "&" join pointers there, and a comma never does. All seven commas that
+# follow a pointer in the current build are ordinary punctuation -- "3, where
+# no conversion", "8.1, and it is a sample" -- and admitting one invents a
+# pointer to section 0 out of "of the audits surveyed in 8, 0 of 8 report it".
+SEP = r"\s*(?:and|&)\s*"
 
 DOCS = [
     ("preprint",
@@ -58,16 +79,31 @@ def headings_from_source(src: pathlib.Path, pat: re.Pattern) -> set[str]:
     return set(pat.findall(src.read_text(encoding="utf-8")))
 
 
+def refs_from_text(text: str) -> Counter:
+    """Every section number the prose points at, one line of text at a time.
+
+    Separate from the PDF reader so that a test can hand it the sentence it
+    cares about instead of rebuilding the paper -- or, worse, keeping its own
+    copy of the pattern and then testing the copy.
+    """
+    # BOTH FORMS, AND EVERY NUMBER IN EACH. The paper writes pointers as
+    # "SS 4.5", as "Section 4.5" and as "Sections 6.1 and 6.3". An earlier
+    # version of this audit matched only the sign, so half the pointers were
+    # never checked; the version after it still read one number per pointer,
+    # so the tail of every list went unchecked and the plural "Sections"
+    # defeated the word form outright. Each time they were sound, and each
+    # time that was luck.
+    pointer = re.compile(r"(?:" + SECTION_SIGN + r"\s?|\bSections?\s+)"
+                         r"(" + NUM + r"(?:" + SEP + NUM + r")*)")
+    return Counter(n for m in pointer.finditer(text)
+                   for n in re.split(SEP, m.group(1)))
+
+
 def refs_from_pdf(pdf: pathlib.Path) -> Counter:
     import fitz
     with fitz.open(pdf) as d:
         text = " ".join(" ".join(p.get_text().split()) for p in d)
-    # BOTH FORMS. The paper writes pointers as "SS 4.5" and as "Section 4.5",
-    # and an earlier version of this audit matched only the sign, so half the
-    # pointers were never checked. They were sound, but that was luck.
-    return Counter(
-        re.findall(SECTION_SIGN + r"\s?([0-9]+(?:\.[0-9]+){0,2})", text)
-        + re.findall(r"\bSection\s+([0-9]+(?:\.[0-9]+){0,2})", text))
+    return refs_from_text(text)
 
 
 def main() -> int:
@@ -89,7 +125,8 @@ def main() -> int:
             # design table, and its appendix tells reviewers those numbers
             # refer to the technical report. So they are validated against
             # the PREPRINT's headings, which is the promise the fork makes.
-            live = {r: n for r, n in refs.items() if not STATUTE.match(r)}
+            # Statutes never entered refs; everything here is a pointer.
+            live = dict(refs)
             checked += sum(live.values())
             if preprint_heads:
                 for r, n in sorted(live.items()):
@@ -106,16 +143,13 @@ def main() -> int:
             preprint_heads = heads
         assert heads, f"{name}: no headings found; the pattern has gone stale"
         for r, n in sorted(refs.items()):
-            if STATUTE.match(r):
-                continue
             checked += n
             if r not in heads:
                 problems.append(
                     f"{name}: {SECTION_SIGN}{r} referenced {n} time(s) but no "
                     "such heading exists")
         print(f"  {name}: {len(heads)} headings, "
-              f"{sum(n for r, n in refs.items() if not STATUTE.match(r))} "
-              "pointers")
+              f"{sum(refs.values())} pointers")
 
     print(f"  {checked} pointer(s) checked")
     if problems:

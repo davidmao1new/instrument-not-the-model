@@ -70,10 +70,8 @@ EXEMPT = [
     # two targets as one, so the pattern has to consume the whole list.
     (r"§\s*\d+(\.\d+)?((\s*(and|to|,|&|–|-)\s*)(§\s*)?\d+(\.\d+)?)*",
      "section cross-reference, possibly a list"),
-    (r"\bTables?\s+\d+((\s*(and|to|,|&|–|-)\s*)\d+)*",
-     "table cross-reference, possibly a list"),
-    (r"\bFigures?\s+\d+((\s*(and|to|,|&|–|-)\s*)\d+)*",
-     "figure cross-reference, possibly a list"),
+    (r"\b(?:Tables?|Figures?)\s+\d+((\s*(and|to|,|&|–|-)\s*)\d+)*",
+     "table or figure cross-reference, possibly a list"),
     (r"\bSections?\s+\d+(\.\d+)?((\s*(and|to|,|&|–|-)\s*)\d+(\.\d+)?)*",
      "section cross-reference, possibly a list"),
     (r"\b(19|20)\d{2}\b", "year"),
@@ -110,7 +108,6 @@ EXEMPT = [
     (r"\b(10|20|40|4),?000\b", "bootstrap or permutation draw count"),
     (r"\bSHA-?256\b", "hash algorithm name"),
     (r"\b(432|504|864|1,?728|3,?456)\b", "design cell count"),
-    (r"\b12 first names\b|\b8 surnames\b|\b24 names\b", "grid dimension"),
     (r"\bHTTP \d{3}\b", "HTTP status code"),
     (r"\b4,?000 replicates\b|\bmultiples of 0\.00025\b",
      "replicate count and its reciprocal, both design constants"),
@@ -156,10 +153,6 @@ EXEMPT = [
      "unless it holds: the guard beside the sentence in build_paper_v3.py "
      "checks every p it covers against 0.001. Measured today at 9.9995e-05 "
      "and 4.99975e-05 across 20,000 permutations."),
-    (r"\btemperature 0\.6\b",
-     "An et al.'s decoding temperature, quoted. The sentence exists because "
-     "they claim seed-based reproducibility at a NON-zero temperature, so the "
-     "value is the point and cannot be interpolated from our artifacts."),
 ]
 
 # What a measurement looks like once the above are stripped.
@@ -238,6 +231,13 @@ def main() -> int:
             ref_lines.update(range(node.lineno, (node.end_lineno or node.lineno) + 1))
 
     hits = []
+    # WHICH REASONS STILL APPLY TO ANYTHING. An exemption is a stated reason
+    # for turning this gate off over a span of prose. When the prose it was
+    # bound to is reworded away, the reason stops applying but the rule stays
+    # armed, and the next sentence that happens to match it is exempted
+    # without anyone deciding it should. Nothing about that is visible: a
+    # dead exemption and a satisfied one both remove zero hits.
+    used: set[int] = set()
     for expr in printed:
         for node in constants(expr):
             if node.lineno in ref_lines:
@@ -254,8 +254,10 @@ def main() -> int:
             if not any(c.isdigit() for c in text):
                 continue
             stripped = text
-            for pat, _why in EXEMPT:
-                stripped = re.sub(pat, " ", stripped, flags=re.I)
+            for i, (pat, _why) in enumerate(EXEMPT):
+                stripped, n = re.subn(pat, " ", stripped, flags=re.I)
+                if n:
+                    used.add(i)
             for m in MEASURE.finditer(stripped):
                 hits.append((node.lineno, m.group(0),
                              " ".join(text.split())[:88]))
@@ -270,6 +272,18 @@ def main() -> int:
               "to exempt with a reason.")
     else:
         print("  every measurement on the page is interpolated")
+
+    dead = [(i, why) for i, (_pat, why) in enumerate(EXEMPT) if i not in used]
+    print()
+    print(f"  {len(EXEMPT) - len(dead)} of {len(EXEMPT)} exemptions applied "
+          "to something in this build")
+    for i, why in dead:
+        print(f"    unused [{i:>2}]  {why}")
+    if dead:
+        print("  An unused exemption is a reason that no longer applies to "
+              "any text. It stays armed for whatever matches it next, so "
+              "either the prose it named should come back or the rule "
+              "should go.")
     return 1 if hits else 0
 
 

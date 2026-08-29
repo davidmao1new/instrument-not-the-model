@@ -170,8 +170,16 @@ TOO_SHORT = 4
 # "appeared" hundreds of times in every paper and buried the real findings under
 # 875 false hits. A search term is a word, a stem or a short phrase: letters,
 # digits, and the few punctuation marks that occur inside identifiers.
+# A QUOTE MARK BETWEEN LETTERS IS AN APOSTROPHE. Without the lookarounds,
+# the apostrophe in "Bertrand's age-related name study. grep -i 'Black'"
+# opened a quote that closed on the one before Black, so the harvested term
+# was the sentence fragment between them and 'Black' was never re-run --
+# in a paper about name-based bias. The fragment was then counted in n_neg,
+# which the paper prints as \MatrixNegSearches: a search nobody made,
+# returning zero forever, reading as a confirmation.
 NEG_NEAR = re.compile(
-    r"['‘“\"]([a-zA-Z][a-zA-Z0-9 ._\-/]{%d,39})['’”\"]"
+    r"(?<![A-Za-z])['‘“\"]([a-zA-Z][a-zA-Z0-9 ._\-/]{%d,39})"
+    r"['’”\"](?![A-Za-z])"
     r"[^.;\n]{0,18}?\b0\b(?!\.\d)" % (TOO_SHORT - 1))
 # "…returned 0 for 'a', 'b', 'c'…" / "…0 hits for 'a' and 'b'…"
 # THE VERB IS NOT ALWAYS "returned" AND THE DELIMITER IS NOT ALWAYS NEXT.
@@ -193,8 +201,11 @@ NEG_LIST = re.compile(
     r"|\b0\s*hits?\b)"
     r"[^:'‘“\"\n]{0,48}?(?::|\bfor\b)"
     r"[^'‘“\"\n]{0,24}?"
-    r"((?:['‘“\"][a-zA-Z][a-zA-Z0-9 ._\-/]{%d,39}"
-    r"['’”\"][,;\s]*(?:and\s*)?)+)" % (TOO_SHORT - 1),
+    # Same apostrophe rule as NEG_NEAR, inside the repeated group: each
+    # quoted term must open on a mark that is not preceded by a letter and
+    # close on one not followed by a letter.
+    r"((?:(?<![A-Za-z])['‘“\"][a-zA-Z][a-zA-Z0-9 ._\-/]{%d,39}"
+    r"['’”\"](?![A-Za-z])[,;\s]*(?:and\s*)?)+)" % (TOO_SHORT - 1),
     re.I)
 # NO UPPER BOUND. The ceiling was 400 characters, which exempted the longest
 # quotations in the matrix -- precisely the passages a reader would lean on

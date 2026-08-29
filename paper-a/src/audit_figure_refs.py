@@ -44,12 +44,30 @@ DIRS = [
 # A pointer into a numbered document. "§6.2", "Section 6.2", "see Section 4",
 # "Table 3", "Figure 2" -- all of them assume a surrounding structure the
 # image may not be bound into.
+#
+# CASE, PLURAL AND ABBREVIATION. This rule was case-sensitive, singular and
+# spelled out, so "Fig. 2", "figures 2 and 3" and "see table 3" all passed --
+# the three forms a figure is most likely to draw, because an axis label has
+# less room than a sentence. The plural failure is the one that defeated the
+# section-pointer audit too: \bFigure\s+ cannot match "Figures", because the
+# "s" is exactly where the space has to be.
+#
+# The abbreviations require their period. "sec" is also the abbreviation for
+# seconds and "tab" for a user-interface tab, and a tick label reading "5 sec"
+# is not a cross-reference. None of the fourteen ported figures contains any
+# of these words in any case today, so this widening flags nothing new right
+# now; the period is what keeps it quiet if a timing axis is ever added.
 REF = re.compile(
     r"(?:§\s*\d+(?:\.\d+)*"
-    r"|\bSection\s+\d+(?:\.\d+)*"
-    r"|\bTable\s+\d+\b"
-    r"|\bFigure\s+\d+\b"
-    r"|\bAppendix\s+[A-Z]\b)")
+    r"|\bSections?\s+\d+(?:\.\d+)*"
+    r"|\bSecs?\.\s*\d+(?:\.\d+)*"
+    r"|\bTables?\s+\d+"
+    r"|\bTabs?\.\s*\d+"
+    r"|\bFigures?\s+\d+"
+    r"|\bFigs?\.\s*\d+"
+    r"|\bAppendix\s+[A-Z]\b"
+    r"|\bAppendices\s+[A-Z]\b"
+    r"|\bApps?\.\s*[A-Z]\b)", re.I)
 
 # The built papers live in the same directory as the figures and are not
 # figures: a paper is entitled to reference its own sections. Matched by

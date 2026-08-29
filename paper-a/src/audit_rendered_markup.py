@@ -30,15 +30,27 @@ except Exception:  # noqa: BLE001
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 
-# Every PDF the project builds. Globbed, not listed: a new deliverable is
-# covered the day it exists.
-PDF_DIRS = [
-    ROOT / "paper-a" / "figures",
-    ROOT / "paper-a" / "releases",
+# Every PDF the project builds, found by WALKING these roots.
+#
+# This was three leaf directories globbed non-recursively, and it opened 48 of
+# the 65 PDFs in the tree. The seventeen it never saw included
+# paper-a/iclr/build/main.pdf -- the submission -- and every figure ported
+# into the two venue forks, which is exactly where this class of defect would
+# recur: a figure redrawn through a different sink for a different venue, and
+# a sink that forgets to strip run markup prints it. The docstring above has
+# always claimed EVERY PDF; walking is what makes that true.
+PDF_ROOTS = [
+    ROOT / "paper-a",
     ROOT / "outreach",
 ]
 
-TAG = re.compile(r"</?[bi]>")
+# ANY tag, and any HTML entity -- not only the two that the run markup uses.
+# The sibling check in audit_consistency.py exists because an escaped hair
+# space, written as a numeric character reference, shipped into a build. That
+# is an entity rather than a tag, so this audit could not have seen it even in
+# the files it did open. Measured across all 65 built PDFs before widening:
+# the wider rule finds nothing, so it costs no noise to hold.
+TAG = re.compile(r"</?[a-zA-Z][a-zA-Z0-9]*>|&#?\w+;")
 
 
 def scan(pdf: pathlib.Path):
@@ -58,8 +70,10 @@ def main() -> int:
     print("=" * 74)
     bad = 0
     n_pdfs = 0
-    for d in PDF_DIRS:
-        for pdf in sorted(d.glob("*.pdf")):
+    for d in PDF_ROOTS:
+        if not d.exists():
+            continue
+        for pdf in sorted(d.rglob("*.pdf")):
             n_pdfs += 1
             hits = scan(pdf)
             if hits:

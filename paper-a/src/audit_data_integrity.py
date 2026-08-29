@@ -261,21 +261,77 @@ def scan(label, folder, pattern, key_fields, expected=None):
 def check_superseded_excluded():
     """Quarantined directories must not be reachable by any analysis glob."""
     print("\nQUARANTINE")
+    def _quarantined(p: pathlib.Path) -> bool:
+        return p.name.startswith("_") or "SUPERSEDED" in p.name
+
+    # WHAT A TOP-LEVEL GLOB ACTUALLY REACHES, computed by globbing rather
+    # than asserted. The analyses read the top level of each data folder, so
+    # that is what is enumerated here; folders that are themselves
+    # quarantined are not among the ones any analysis globs.
+    #
+    # The rule this replaces read:
+    #
+    #     reachable = [f for f in files if f.parent == DATA / q.parent.name]
+    #
+    # Every file in `files` came from q.glob, so every f.parent IS q, and the
+    # condition asked whether the quarantine directory equals its own parent
+    # -- false by construction. `reachable` was always empty, the failure
+    # branch was unreachable code, and five directories printed "ok, not
+    # reachable" on a comparison that could not have said anything else.
+    reach: set[pathlib.Path] = set()
+    for folder in DATA.iterdir():
+        if folder.is_dir() and not _quarantined(folder):
+            reach |= {p.resolve() for p in folder.glob("*.jsonl")}
+            reach |= {p.resolve() for p in folder.glob("*.json")}
+    reach |= {p.resolve() for p in DATA.glob("*.jsonl")}
+    reach |= {p.resolve() for p in DATA.glob("*.json")}
+
     quarantined = [p for p in DATA.rglob("*")
-                   if p.is_dir() and (p.name.startswith("_")
-                                      or "SUPERSEDED" in p.name)]
+                   if p.is_dir() and _quarantined(p)]
     for q in quarantined:
         files = list(q.glob("*.jsonl")) + list(q.glob("*.json"))
-        # the analyses glob only the top level of each data folder
-        reachable = [f for f in files if f.parent == DATA / q.parent.name]
+        reachable = [f for f in files if f.resolve() in reach]
         if reachable:
             fail(f"{q.relative_to(DATA)}: {len(reachable)} quarantined files "
                  f"sit where a top-level glob would find them")
         else:
             ok(f"{q.relative_to(DATA)}: {len(files)} files quarantined, "
                f"not reachable by a top-level glob")
-    for stray in DATA.rglob("*SUPERSEDED*.json"):
-        if stray.parent == DATA or stray.parent.name in ("panel_gate",):
+
+    # THE LIST THE ANALYSES ACTUALLY FILTER BY MUST COVER WHAT IS HERE.
+    # Directory layout is not what protects the corpus counts: two modules
+    # walk the data tree recursively and then drop anything whose path
+    # contains one of a hand-typed set of directory names. This audit
+    # identifies a quarantine directory by a different rule -- leading "_",
+    # or "SUPERSEDED" in the name -- and the two agree today only by
+    # coincidence of naming. A directory quarantined as "_withdrawn" would
+    # be reported safe here and walked into there.
+    try:
+        from analyze_corpus_size import QUAR as ANALYSIS_QUAR
+    except Exception as exc:  # noqa: BLE001
+        note(f"cannot read the analyses' quarantine list ({exc}); the "
+             "directories above are unverified against what the paper "
+             "builder actually filters")
+    else:
+        for q in quarantined:
+            parts = set(q.relative_to(DATA).parts)
+            if not parts & set(ANALYSIS_QUAR):
+                fail(f"{q.relative_to(DATA)}: quarantined by this audit's "
+                     "rule but NOT excluded by the list the analyses filter "
+                     f"on ({', '.join(ANALYSIS_QUAR)}); the paper builder "
+                     "walks the tree recursively and would read it")
+        present = {p.name for p in DATA.rglob("*") if p.is_dir()}
+        for name in ANALYSIS_QUAR:
+            if name not in present:
+                note(f"the analyses exclude {name!r}, which is not a "
+                     "directory in the data tree")
+
+    # A SUPERSEDED ARTIFACT LEFT AMONG LIVE ONES. This looked at DATA itself
+    # and at one hardcoded folder name, so the same file in any other live
+    # folder was silent. It asks the computed set instead, which is the set
+    # that defines the risk.
+    for stray in sorted(reach):
+        if _quarantined(stray):
             note(f"{stray.relative_to(DATA)}: superseded artifact sits beside "
                  f"live ones; it is loaded by exact filename only")
 

@@ -426,8 +426,13 @@ def corpus_size():
         c = json.loads(p.read_text(encoding="utf-8"))
         return c["n_matched_pair_records"], c["n_single_prompt_records"], \
             c["n_model_calls"]
-    QUAR = ("_contaminated", "_superseded", "_binary_only_superseded",
-            "_d9_superseded")
+    # ONE DEFINITION OF QUARANTINED, NOT TWO. This tuple was written out
+    # here and again in analyze_corpus_size.py, and both are the real
+    # protection: this loop walks the data tree RECURSIVELY, so nothing but
+    # the filter keeps superseded records out of the corpus counts. Two
+    # hand-typed copies of the thing that does the protecting is how one of
+    # them comes to be missing an entry.
+    from analyze_corpus_size import QUAR
     pair = single = calls = 0
     for f in D.rglob("*.jsonl"):
         if any(q in f.parts for q in QUAR):
@@ -3855,7 +3860,8 @@ def main() -> int:
       "and reports no repeat, and a fourth, running at a non-zero "
       "temperature, relies on a fixed random seed while reporting a batch "
       "size of four in the same appendix. The studies are identifiable "
-      "from Table 10; the point needs the count, not the names. We "
+      "from " + TAB("reporting_matrix") + "; the point needs the count, "
+      "not the names. We "
       "make no claim about the other nine, which say nothing either way; "
       "and for an audit run against a commercial API, several serving "
       "fields are not the auditor’s to report, because the platform does "

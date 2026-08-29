@@ -1028,15 +1028,35 @@ def test_freshness_is_decided_by_content_not_by_a_timestamp():
         "the content comparison is gone; freshness is back to trusting "
         "timestamps")
 
-    # Touching a staged file without changing it must not read as stale.
+    # MOVING AN mtime WITHOUT CHANGING A BYTE MUST NOT READ AS STALE. The
+    # first version of this took the first selected file with a staged
+    # counterpart and asserted the two did not differ -- without checking
+    # that their bytes were identical, which is what its failure message
+    # claimed. It therefore passed whenever the stage happened to be current
+    # and failed the moment a source was legitimately edited, blaming the
+    # comparison for a real difference.
+    import os
+
     sel = rel.selected_sources()
     assert sel, "nothing selected"
     probe = next((p for p in sel
-                  if (rel.STAGE / p.relative_to(rel.ROOT)).is_file()), None)
-    assert probe is not None
+                  if (rel.STAGE / p.relative_to(rel.ROOT)).is_file()
+                  and (rel.STAGE / p.relative_to(rel.ROOT)).read_bytes()
+                  == p.read_bytes()), None)
+    if probe is None:
+        pytest.skip("no staged file is currently byte-identical to its "
+                    "source, so there is nothing to compare")
     staged = rel.STAGE / probe.relative_to(rel.ROOT)
-    assert not rel.staged_copy_differs(probe, staged), (
-        f"{probe.name} reads as changed while its bytes are identical")
+    was = (probe.stat().st_atime, probe.stat().st_mtime)
+    try:
+        os.utime(probe, (was[0], was[1] + 120))
+        assert not rel.staged_copy_differs(probe, staged), (
+            f"{probe.name} reads as changed after its mtime moved, though "
+            "not one byte of it did; the suite rewrites generated files "
+            "with identical content on every run, so this demands a rebuild "
+            "after every pytest and the gate becomes noise")
+    finally:
+        os.utime(probe, was)
 
 
 @needs_check
@@ -1526,3 +1546,739 @@ def test_a_lowercase_generated_macro_makes_the_gate_say_so():
             "unsound:\n" + p.stdout)
     finally:
         probe.unlink()
+
+
+# ---------------------------------------------------------------------------
+# The section-pointer audit: what counts as a pointer, and what it does with
+# the ones it finds.
+# ---------------------------------------------------------------------------
+def _secrefs():
+    import audit_section_refs
+    return audit_section_refs
+
+
+def test_a_pointer_that_names_more_than_one_section_is_read_in_full():
+    r"""A pointer can carry two numbers, and both of them are pointers.
+
+    "Sections 6.1 and 6.3" is in the built preprint. The audit read one
+    number per pointer and matched the singular word form, so the plural
+    defeated it outright and the tail of every list went unchecked. Both
+    sections happen to exist, which is why nothing showed: the audit's own
+    docstring already records the previous version of this same mistake --
+    "they were sound, but that was luck."
+    """
+    A = _secrefs()
+    sign = A.SECTION_SIGN
+    got = A.refs_from_text(
+        "Sections 6.1 and 6.3 concern the case where the conversion is "
+        f"exact, and {sign}4.6 and 4.7 give the two panels.")
+    missing = [n for n in ("6.1", "6.3", "4.6", "4.7") if not got[n]]
+    assert not missing, (
+        f"{missing} appear in a pointer but never reach the check, so a "
+        "dangling one would be reported as clean")
+
+
+def test_a_statute_citation_is_not_a_pointer_into_this_paper():
+    r"""The statute is excluded by context: the hyphen that follows it.
+
+    The rule this replaces tested the harvested VALUE, by which point the
+    hyphen was gone -- so it exempted the bare "5" and "20", which is also
+    what a pointer to this paper's own section 5 looks like.
+    """
+    A = _secrefs()
+    sign = A.SECTION_SIGN
+    got = A.refs_from_text(
+        f"6 RCNY {sign} 5-300 et seq., adopted 6 April 2023; N.Y.C. Admin. "
+        f"Code {sign}{sign} 20-870 to 20-874; a summary of the results is "
+        f"published ({sign} 20-871(a)).")
+    assert not got, (
+        f"a statute citation was harvested as a pointer into this paper: "
+        f"{dict(got)}; the audit must then exempt it by value, and the only "
+        "values it can exempt are the ones real pointers also use")
+
+
+def test_a_pointer_to_this_papers_own_section_five_is_harvested():
+    r"""The other direction of the same rule.
+
+    Excluding the statute must not exclude the sections whose numbers it
+    happens to share. Section 5 is pointed at three times across the two
+    documents -- "it says nothing about 5: quantization" and two in the fork.
+    """
+    A = _secrefs()
+    sign = A.SECTION_SIGN
+    for n in ("5", "20", "7"):
+        got = A.refs_from_text(
+            f"It says nothing about {sign}{n}: quantization, batching.")
+        assert got[n] == 1, (
+            f"a pointer to section {n} is not harvested, so a dangling one "
+            f"would never be reported; harvested {dict(got)}")
+
+
+def test_a_comma_after_a_pointer_is_punctuation_and_not_a_list():
+    r"""Why the list separators are "and" and "&" and nothing else.
+
+    They were read off the two built documents rather than guessed at. Every
+    comma that follows a pointer there is ordinary punctuation, and admitting
+    one invents a pointer to a section 0 out of the sentence below -- a
+    dangling reference the paper does not contain, in the gate that exists to
+    report dangling references. A gate has two failure modes and this is the
+    one that teaches people to ignore it.
+    """
+    A = _secrefs()
+    sign = A.SECTION_SIGN
+    got = A.refs_from_text(
+        f"Of the audits surveyed in {sign}8, 0 of 8 report it.")
+    assert dict(got) == {"8": 1}, (
+        f"harvested {dict(got)} where the only pointer is section 8")
+
+
+def test_every_pointer_the_audit_finds_is_a_pointer_it_checks():
+    r"""No pointer is harvested and then dropped on the way to the check.
+
+    The audit used to filter statute-shaped values out AFTER harvesting, so
+    its "N pointer(s) checked" was smaller than the number of pointers it had
+    found, and the difference was silent. Whatever the exclusion rule is, it
+    belongs at the harvest -- once a string is called a pointer, it gets
+    checked. This compares the two counts against the real documents.
+    """
+    import subprocess
+
+    A = _secrefs()
+    pytest.importorskip("fitz", reason="pymupdf reads the built PDFs")
+    harvested = 0
+    built = 0
+    for _name, pdf, _src, _pat in A.DOCS:
+        if not pdf.exists():
+            continue
+        built += 1
+        harvested += sum(A.refs_from_pdf(pdf).values())
+    if not built:
+        pytest.skip("neither document is built on this checkout")
+    p = subprocess.run(
+        [sys.executable, str(SRC / "audit_section_refs.py")],
+        capture_output=True, text=True, cwd=str(ROOT))
+    m = re.search(r"(\d+) pointer\(s\) checked", p.stdout)
+    assert m, "the audit did not report how many pointers it checked:\n" + \
+        p.stdout
+    assert int(m.group(1)) == harvested, (
+        f"the audit harvested {harvested} pointer(s) but checked "
+        f"{m.group(1)}; the difference is exempted somewhere downstream and "
+        "nothing says so")
+
+
+# ---------------------------------------------------------------------------
+# Exemptions in the typed-measurement gate: a reason, or a switch left off.
+# ---------------------------------------------------------------------------
+def _hardtyped():
+    import audit_hardtyped_numbers
+    if not audit_hardtyped_numbers.SRC.exists():
+        pytest.skip("the preprint builder is not on this checkout")
+    return audit_hardtyped_numbers
+
+
+def test_an_exemption_that_matches_nothing_is_reported(capsys):
+    r"""The report is tested by creating the condition, not by reading code.
+
+    Every entry in EXEMPT turns the typed-measurement gate off over the span
+    it matches. When the prose an entry was bound to is reworded away, the
+    reason stops applying but the rule stays armed for whatever matches it
+    next -- and nothing shows, because a dead exemption and a satisfied one
+    both remove zero hits. Three entries were in exactly that state when this
+    was written.
+    """
+    H = _hardtyped()
+    why = "a probe bound to prose that is not in the builder"
+    probe = (r"\bzzq-no-such-phrase-in-any-paper\b", why)
+    H.EXEMPT.append(probe)
+    try:
+        H.main()
+    finally:
+        H.EXEMPT.remove(probe)
+    out = capsys.readouterr().out
+    assert why in out, (
+        "an exemption that matched nothing went unmentioned, so a reason "
+        "that no longer applies to any text stays armed silently:\n" + out)
+
+
+def test_every_exemption_still_applies_to_something(capsys):
+    r"""Drift check, run against the builder as it stands.
+
+    Not a list of known-dead entries to maintain -- the audit computes it.
+    If prose moves and an exemption stops matching, this says so and someone
+    decides whether the sentence comes back or the rule goes.
+    """
+    H = _hardtyped()
+    H.main()
+    out = capsys.readouterr().out
+    dead = [ln.strip() for ln in out.splitlines() if "unused [" in ln]
+    assert not dead, (
+        "an exemption no longer applies to any printed text:\n  "
+        + "\n  ".join(dead))
+
+
+# ---------------------------------------------------------------------------
+# The documented-figures autofix: which mention does it actually repair?
+# ---------------------------------------------------------------------------
+def test_the_autofix_repairs_every_stale_mention_not_just_the_first(capsys):
+    r"""A correct mention standing before a stale one used to absorb the fix.
+
+    --fix looped once per stale hit and called re.subn(..., count=1), which
+    always rewrites the FIRST match in the document rather than the hit being
+    handled. So a file saying the right number once and the wrong number once
+    had its RIGHT mention rewritten -- a no-op -- while subn still reported
+    one substitution, which the code took as proof of repair: it printed
+    "fixed", counted it, and suppressed the problem report. The stale number
+    survived and the audit called it repaired.
+
+    The document is built here rather than found, because no claim in the
+    tree matches twice today. The audit's own docstring explains why one
+    soon will: the preprint's page count moves on almost every content edit.
+    """
+    import audit_doc_figures as D
+
+    if D.main() != 0:
+        capsys.readouterr()
+        pytest.skip("a real document is already stale; not running --fix")
+    capsys.readouterr()
+
+    T = D.truth()
+    key = next((k for k, v in T.items() if isinstance(v, int)), None)
+    if key is None:
+        pytest.skip("no integer figure to build a probe from")
+    want = T[key]
+
+    probe = ROOT / "_probe_doc_figures.md"
+    pattern = r"the probe count is (\d+) exactly"
+    probe.write_text(
+        f"First, correctly: the probe count is {want} exactly.\n"
+        f"Later, staler: the probe count is {want + 1} exactly.\n",
+        encoding="utf-8")
+    claim = ("_probe_doc_figures.md", pattern, key, "a constructed probe")
+    D.CLAIMS.append(claim)
+    argv = sys.argv[:]
+    sys.argv = [argv[0], "--fix"]
+    try:
+        D.main()
+        found = re.findall(pattern, probe.read_text(encoding="utf-8"))
+    finally:
+        sys.argv = argv
+        D.CLAIMS.remove(claim)
+        probe.unlink(missing_ok=True)
+        capsys.readouterr()
+
+    assert found == [str(want), str(want)], (
+        f"--fix left {found} where both mentions should read {want}; a "
+        "correct mention standing first absorbed the substitution and the "
+        "stale one was reported as repaired")
+
+
+# ---------------------------------------------------------------------------
+# Cross-references baked into a figure: the spellings a figure actually uses.
+# ---------------------------------------------------------------------------
+def test_a_reference_baked_into_a_figure_is_caught_in_every_spelling():
+    r"""An axis label abbreviates; the rule only knew the long form.
+
+    The rule was case-sensitive, singular and spelled out, so "Fig. 2",
+    "figures 2 and 3" and "see table 3" all passed -- the three forms a
+    figure is most likely to draw, because a label has less room than a
+    sentence. A figure that points at a section cannot be re-captioned per
+    venue, which is the whole reason this check exists.
+    """
+    import audit_figure_refs as A
+    missed = [s for s in (
+        "see Figure 2", "see Fig. 2", "Figs. 2", "figures 2 and 3",
+        "see Table 3", "see table 3", "Tab. 3", "tables 2 and 3",
+        "Section 6.2", "section 6.2", "Sec. 6.2", "Sections 6.1 and 6.3",
+        "Appendix B", "appendix B", "App. B", "Appendices B",
+    ) if not A.REF.search(s)]
+    assert not missed, (
+        f"a figure could draw {missed} and the check would call it "
+        "self-contained")
+
+
+def test_the_abbreviations_still_require_their_period():
+    r"""Why "sec" and "tab" are not enough on their own.
+
+    "sec" is also the abbreviation for seconds and "tab" for a user-interface
+    tab. A tick label reading "5 sec" is not a cross-reference, and a gate
+    that says it is would be a standing false alarm on any timing axis --
+    which is the failure mode that gets a gate ignored.
+    """
+    import audit_figure_refs as A
+    cried_wolf = [s for s in (
+        "0 sec 5 sec 10", "elapsed secs", "tab 3 of the interface",
+        "app B store", "the second run", "figurative",
+    ) if A.REF.search(s)]
+    assert not cried_wolf, (
+        f"{cried_wolf} would be reported as baked cross-references")
+
+
+# ---------------------------------------------------------------------------
+# A number that is missing must not typeset as a dash.
+# ---------------------------------------------------------------------------
+def _other_venue_builder():
+    """The second venue's macro builder, which the release does not carry."""
+    p = SRC / ("build_" + "fac" + "ct_tex.py")
+    if not p.exists():
+        pytest.skip("the second venue's tooling is not part of the release")
+    import importlib
+    return importlib.import_module(p.stem)
+
+
+def test_a_missing_percentage_leaves_its_macro_undefined():
+    r"""The two helpers have to agree about what absence means.
+
+    num() returns None when the artifact key is missing, M() then declines to
+    define the macro, and the LaTeX run stops on an undefined control
+    sequence -- loud, and correct. Its sibling returned "--" for the same
+    case; M() stores anything that is not None, so the macro came out
+    DEFINED, as an em dash, and typeset that way inside a sentence asserting
+    a measurement. The quiet helper was the one carrying the headline
+    dispersion ratio.
+    """
+    F = _other_venue_builder()
+    assert F._pctnum(None) is None, (
+        f"a missing percentage renders as {F._pctnum(None)!r}, which the "
+        "macro writer stores rather than skips, so the paper typesets it "
+        "where a measurement was promised")
+
+
+def test_no_generated_macro_of_the_second_venue_is_a_dash(capsys):
+    r"""The same property, read off the artifacts rather than the code.
+
+    A drift check: whatever the helpers do, no macro that reaches the page
+    may be defined as a dash, because a dash in a macro slot is a
+    measurement that silently went missing.
+    """
+    _other_venue_builder()
+    gen = ROOT / "paper-a" / ("fac" + "ct") / "generated"
+    if not gen.is_dir():
+        pytest.skip("no generated macros for that venue on this checkout")
+    dashes = []
+    for f in sorted(gen.glob("*.tex")):
+        for m in re.finditer(r"\\newcommand\{?\\(\w+)\}?\{(-{1,3})\}",
+                             f.read_text(encoding="utf-8")):
+            dashes.append(f"{f.name}: \\{m.group(1)} = {m.group(2)!r}")
+    assert not dashes, (
+        "a macro is defined as a dash, so a number the paper promises is "
+        "absent and nothing says so:\n  " + "\n  ".join(dashes))
+
+
+# ---------------------------------------------------------------------------
+# The other venue's desk-rejection checks: scope, spelling, and self-disabling.
+# ---------------------------------------------------------------------------
+def _other_venue_gate():
+    """The structural gate for the second venue, which the release omits."""
+    p = SRC / ("check_" + "fac" + "ct_tex.py")
+    if not p.exists():
+        pytest.skip("the second venue's gate is not part of the release")
+    import importlib
+    return importlib.import_module(p.stem)
+
+
+def test_a_two_word_term_is_found_however_latex_splits_it():
+    r"""The anonymity check matched one literal space and nothing else.
+
+    LaTeX source wraps lines wherever it likes and ties words with ~, so a
+    two-word name written across a line break, or tied, went unseen by the
+    check that decides whether a double-blind submission stays blind. That is
+    this project's founding bug with the separator changed.
+
+    A neutral term is used: the property is general, and this file ships.
+    """
+    C = _other_venue_gate()
+    rx = C.loose("Given Family")
+    missed = [v for v in (
+        "Given Family", "Given\nFamily", "Given~Family", "Given  Family",
+        "{Given} {Family}", "Given\\ Family", "Given\n  Family",
+        "GIVEN FAMILY", "given family",
+    ) if not rx.search(v)]
+    assert not missed, (
+        f"a two-word identity term spelled {missed} would pass the "
+        "anonymity check")
+
+
+def test_the_loose_match_does_not_reach_across_words():
+    r"""The gap may span spacing, never letters -- else it cries wolf."""
+    C = _other_venue_gate()
+    rx = C.loose("Given Family")
+    wrong = [v for v in ("GivenXFamily", "Given and Family",
+                         "Givenfamily", "Given, Family")
+             if rx.search(v)]
+    assert not wrong, f"{wrong} matched, so the gap spans more than spacing"
+
+
+def test_a_banned_section_in_an_included_file_is_caught():
+    r"""Two holes at once: the wrong construct, in a file never read.
+
+    The banned list looked for a hypothetical \acks{...}; acmart's real
+    construct is the environment \begin{acks}...\end{acks}, which is what an
+    author writes. And the check read main.tex alone, while the document
+    inputs its generated parts -- so the form that occurs, in the place it
+    would occur, was invisible twice over.
+    """
+    import subprocess
+
+    C = _other_venue_gate()
+    gen = C.GEN
+    if not gen.is_dir() or not C.MAIN.exists():
+        pytest.skip("that venue's document is not on this checkout")
+
+    main_before = C.MAIN.read_text(encoding="utf-8")
+    probe = gen / "_probe_banned.tex"
+    probe.write_text("\\begin{acks}\nWe thank nobody in particular.\n"
+                     "\\end{acks}\n", encoding="utf-8")
+    C.MAIN.write_text(
+        main_before.replace("\\end{document}",
+                            "\\input{generated/_probe_banned}\n"
+                            "\\end{document}"),
+        encoding="utf-8")
+    try:
+        p = subprocess.run(
+            [sys.executable, str(SRC / ("check_" + "fac" + "ct_tex.py"))],
+            capture_output=True, text=True, cwd=str(ROOT))
+    finally:
+        C.MAIN.write_text(main_before, encoding="utf-8")
+        probe.unlink(missing_ok=True)
+    assert C.MAIN.read_text(encoding="utf-8") == main_before, \
+        "the document was not restored"
+
+    assert p.returncode != 0 and "acks environment" in p.stdout, (
+        "an acks environment inside an included file was not reported as a "
+        "desk rejection:\n" + p.stdout)
+
+
+def test_the_gate_will_not_certify_anonymity_it_could_not_check():
+    r"""The confidential terms live in a file the repository never publishes.
+
+    When that file is absent the terms are not checked. That used to be a
+    note, so the gate still printed "anonymised" at the end -- a check that
+    silently turned itself off and a satisfied one produced the same verdict.
+    """
+    import subprocess
+
+    C = _other_venue_gate()
+    local = C.FACCT / "identity_terms.local.txt"
+    if not local.exists():
+        pytest.skip("the confidential terms are not on this machine")
+    aside = local.with_suffix(".txt.founding-case")
+    body = local.read_bytes()
+    local.rename(aside)
+    try:
+        p = subprocess.run(
+            [sys.executable, str(SRC / ("check_" + "fac" + "ct_tex.py"))],
+            capture_output=True, text=True, cwd=str(ROOT))
+    finally:
+        aside.rename(local)
+    assert local.read_bytes() == body, "the terms file was not restored"
+
+    assert p.returncode != 0, (
+        "with the confidential terms unavailable the gate still passed, so "
+        "it certified an anonymity it did not check:\n" + p.stdout)
+
+
+def test_the_gate_itself_catches_an_identity_term_broken_across_lines():
+    r"""Not the helper -- the gate.
+
+    The companion case above proves loose() survives a line break, and that
+    is not the same claim: reverting the call site to re.escape leaves it
+    green, because it never runs the gate. So this puts a synthetic term into
+    the confidential list, writes it into the document ACROSS A LINE BREAK,
+    and asks the gate what it says. The term is invented; no real identity
+    appears in this file, which ships.
+    """
+    import subprocess
+
+    C = _other_venue_gate()
+    local = C.FACCT / "identity_terms.local.txt"
+    if not local.exists() or not C.MAIN.exists():
+        pytest.skip("the confidential terms are not on this machine")
+
+    term_a, term_b = "Zzqprobe", "Wwvterm"
+    local_before = local.read_bytes()
+    main_before = C.MAIN.read_text(encoding="utf-8")
+    local.write_text(
+        local_before.decode("utf-8").rstrip("\n") + f"\n{term_a} {term_b}\n",
+        encoding="utf-8")
+    C.MAIN.write_text(
+        main_before.replace(
+            "\\end{document}",
+            f"A sentence mentioning {term_a}\n{term_b} here.\n"
+            "\\end{document}"),
+        encoding="utf-8")
+    try:
+        p = subprocess.run(
+            [sys.executable, str(SRC / ("check_" + "fac" + "ct_tex.py"))],
+            capture_output=True, text=True, cwd=str(ROOT))
+    finally:
+        local.write_bytes(local_before)
+        C.MAIN.write_text(main_before, encoding="utf-8")
+    assert local.read_bytes() == local_before, "the terms file was not restored"
+    assert C.MAIN.read_text(encoding="utf-8") == main_before, \
+        "the document was not restored"
+
+    assert p.returncode != 0 and "confidential affiliation" in p.stdout, (
+        "a confidential term written across a line break passed the "
+        "anonymity check, so the gate is not using the loose match:\n"
+        + p.stdout)
+
+
+# ---------------------------------------------------------------------------
+# The refusal detector is frozen. This watches the assumption that lets it be.
+# ---------------------------------------------------------------------------
+def test_no_recorded_output_hides_a_refusal_behind_a_curly_apostrophe():
+    r"""The detector knows only the ASCII apostrophe, and that is left alone.
+
+    Every contraction in REFUSAL_PATTERNS is written with '. Models routinely
+    emit U+2019, and a refusal spelled with one matches nothing -- so it is
+    recorded as a screening verdict, which is the invisible failure the
+    module's own comment describes.
+
+    The patterns are frozen after the Stage 0 pilot, with an explicit
+    instruction to bump PROMPT_VERSION and re-run rather than adjust them
+    mid-run, so the gap stays. What makes that safe is an empirical claim
+    about the collected data, and an empirical claim should be checked rather
+    than remembered: no recorded output contains a typographic apostrophe at
+    all. The moment one does, this fails, and the decision has to be made
+    again by someone rather than assumed.
+    """
+    import json
+
+    data = ROOT / "paper-a" / "data"
+    if not data.is_dir():
+        pytest.skip("no collected data on this checkout")
+    sys.path.insert(0, str(SRC))
+    try:
+        import run_audit
+    except Exception:  # noqa: BLE001
+        pytest.skip("the audit runner is not importable here")
+
+    curly = "\u2019"
+    scanned = 0
+    hidden = []
+    for f in sorted(data.rglob("*.jsonl")):
+        for line in f.read_text(encoding="utf-8",
+                                errors="replace").split("\n"):
+            line = line.strip()
+            if not line.startswith("{"):
+                continue
+            try:
+                rec = json.loads(line)
+            except Exception:  # noqa: BLE001
+                continue
+            for key in ("raw", "white_raw", "black_raw"):
+                text = rec.get(key)
+                if not isinstance(text, str) or not text:
+                    continue
+                scanned += 1
+                if curly not in text:
+                    continue
+                if (not run_audit.looks_like_refusal(text)
+                        and run_audit.looks_like_refusal(
+                            text.replace(curly, "'"))):
+                    hidden.append(f"{f.name}: {text[:100]!r}")
+
+    if not scanned:
+        pytest.skip("no model-generated text in the collected data")
+    assert not hidden, (
+        f"{len(hidden)} recorded output(s) read as a refusal only once the "
+        "typographic apostrophe is normalised, so they were counted as "
+        "screening verdicts. The detector is frozen: bump PROMPT_VERSION and "
+        "re-run that arm rather than widening the pattern in place.\n  "
+        + "\n  ".join(hidden[:5]))
+
+
+# ---------------------------------------------------------------------------
+# The reporting matrix: comparing identifiers, and keeping what was written.
+# ---------------------------------------------------------------------------
+def _matrix_builder():
+    import build_reporting_matrix
+    return build_reporting_matrix
+
+
+def test_an_identifier_is_compared_by_value_not_by_the_text_around_it():
+    r"""The pattern was case-insensitive; the comparison was not.
+
+    The cross-check compared the raw matched text of the FIRST match in each
+    field, so "ArXiv:" against "arXiv:", "V1" against "v1", and a reference
+    that names another paper's identifier before its own were all reported as
+    disagreements -- each raising SystemExit and stopping the build. A gate
+    that halts a build over a capital letter is a gate someone deletes, which
+    is the more insidious of the two ways a gate fails.
+    """
+    B = _matrix_builder()
+    want = B.arxiv_ids("arXiv:2406.10486v1")
+    assert want, "the identifier pattern matched nothing at all"
+    for variant in ("ArXiv:2406.10486v1", "ARXIV:2406.10486V1",
+                    "arXiv: 2406.10486v1", "arXiv:2406.10486v1 [cs.AI]"):
+        assert B.arxiv_ids(variant) == want, (
+            f"{variant!r} reads as a different identifier, so the build "
+            "stops on a difference in spelling")
+    both = B.arxiv_ids("see arXiv:2101.00001 and arXiv:2406.10486v1")
+    assert want <= both, (
+        "only the first identifier in a field is read, so a reference that "
+        "mentions another paper first is compared against the wrong one")
+
+
+def test_a_real_disagreement_between_versions_still_shows():
+    r"""The widening must not cost the check its founding case.
+
+    Armstrong's entry said v2 in the reference and v3 in the transcription
+    for two rounds and nothing noticed. That must still be a disagreement.
+    """
+    B = _matrix_builder()
+    assert B.arxiv_ids("arXiv:2407.20371v2") != B.arxiv_ids(
+        "arXiv:2407.20371v3"), "two versions of a paper read as the same one"
+    assert not (B.arxiv_ids("arXiv:2407.20371v3")
+                <= B.arxiv_ids("arXiv:2407.20371v2"))
+
+
+def test_every_note_in_the_built_matrix_comes_from_a_raw_reading():
+    r"""The matrix is BUILT, so anything hand-added to it is deleted next run.
+
+    A note recording why one venue line came from the ACL Anthology listing
+    rather than from the PDF the row was coded against had been typed
+    straight into the built file -- it sorted last among that entry's keys,
+    which is the signature of an edit after the build -- and the next rebuild
+    duly destroyed it. It lives in the raw reading now. This fails if another
+    one is ever written into the output, and says where it belongs.
+    """
+    import json
+
+    ref = ROOT / "paper-a" / "data" / "reference"
+    built_p = ref / "reporting_practice_matrix.json"
+    if not built_p.exists() or not (ref / "raw").is_dir():
+        pytest.skip("the reporting matrix is not on this checkout")
+    built = json.loads(built_p.read_text(encoding="utf-8"))
+    raw_text = "\n".join(
+        f.read_text(encoding="utf-8") for f in sorted((ref / "raw").glob("*.json")))
+
+    orphaned = [
+        f"{s['label']}: {s['citation_check_note'][:60]}..."
+        for s in built["studies"]
+        if s.get("citation_check_note")
+        and json.dumps(s["citation_check_note"])[1:-1] not in raw_text]
+    assert not orphaned, (
+        "a note in the built matrix is in no raw reading, so the next "
+        "rebuild deletes it. Put it on the study's row under "
+        "paper-a/data/reference/raw/ instead:\n  " + "\n  ".join(orphaned))
+
+
+# ---------------------------------------------------------------------------
+# The consistency audit: a scan frozen at one transition, and dead exemptions.
+# ---------------------------------------------------------------------------
+def _consistency():
+    import audit_consistency
+    return audit_consistency
+
+
+def test_the_stale_count_scan_still_finds_the_superseded_count(capsys):
+    r"""Frozen at one transition, and it had to stay live through the repair.
+
+    The scan read `words.get(8) if n != 8 else None`, hardcoding the
+    superseded value inside a lookup so that only "eight" was ever searched
+    for -- the map's entries for eleven and twelve could not be reached, and
+    a later move of the count would go unlooked-for in silence. It is a named
+    list of the counts this fact has held now.
+
+    Widening it to EVERY word that is not the current count was tried and
+    reverted: "conditions" is too generic a noun and it raised four false
+    alarms on unrelated prose. So this checks the narrow property that
+    matters -- the superseded count is still found where it is written.
+    """
+    A = _consistency()
+    doc = next((d for d in A.DOCS if d.exists()), None)
+    if doc is None:
+        pytest.skip("none of the scanned documents is on this checkout")
+    before = doc.read_text(encoding="utf-8")
+    doc.write_text(
+        before + "\n\nProbe: the panel used eight semantically null "
+        "conditions.\n", encoding="utf-8")
+    try:
+        A.ISSUES.clear()
+        A.check_counts()
+        out = capsys.readouterr().out
+    finally:
+        doc.write_text(before, encoding="utf-8")
+        A.ISSUES.clear()
+    assert doc.read_text(encoding="utf-8") == before, "document not restored"
+    assert "eight semantically null conditions" in out, (
+        "a superseded condition count written into a scanned document was "
+        "not found:\n" + out)
+
+
+def test_an_exemption_that_skips_nothing_is_reported(capsys):
+    r"""An exemption removes no finding when it is dead AND when it is working.
+
+    Both states print the same thing -- nothing -- so a rule whose reason has
+    expired stays armed for whatever text lands in that file next, and no one
+    is told. One entry here named a builder that had already been deleted.
+    """
+    A = _consistency()
+    probe = "zzq_no_such_module.py"
+    original = A.EXEMPT
+    A.EXEMPT = tuple(original) + (probe,)
+    try:
+        A.ISSUES.clear()
+        A.check_superseded()
+        out = capsys.readouterr().out
+    finally:
+        A.EXEMPT = original
+        A.ISSUES.clear()
+    assert probe in out, (
+        "an exemption naming a file the audit never scans went unmentioned, "
+        "so a rule that protects nothing looks exactly like one that "
+        "does:\n" + out)
+
+
+# ---------------------------------------------------------------------------
+# Quarantined data: two definitions of "quarantined", one of them load-bearing.
+# ---------------------------------------------------------------------------
+def test_a_quarantine_the_analyses_do_not_know_about_is_reported():
+    r"""Directory layout is not what keeps superseded records out.
+
+    Two modules walk the data tree RECURSIVELY -- build_paper_v3.py and
+    analyze_corpus_size.py -- and then drop anything whose path contains one
+    of a hand-typed set of directory names. That set is the protection. The
+    integrity audit, meanwhile, recognises a quarantine directory by a
+    different rule: a leading underscore, or "SUPERSEDED" in the name. The
+    two agreed only by coincidence of naming.
+
+    So a directory quarantined under any other name is reported safe by the
+    audit while the paper builder walks straight into it, and superseded
+    records reach a corpus count with an audit saying that cannot happen.
+    This creates exactly that directory and asks.
+    """
+    import shutil
+
+    import analyze_corpus_size as acs
+    import audit_data_integrity as adi
+
+    if not adi.DATA.is_dir():
+        pytest.skip("no data tree on this checkout")
+    live = next((d for d in sorted(adi.DATA.iterdir())
+                 if d.is_dir() and not d.name.startswith("_")), None)
+    if live is None:
+        pytest.skip("no live data folder to plant a probe in")
+
+    name = "_probe_withdrawn"
+    assert name not in acs.QUAR, "pick a name the analyses do not know"
+    probe = live / name
+    probe.mkdir(parents=True, exist_ok=False)
+    (probe / "probe.jsonl").write_text("{}\n", encoding="utf-8")
+    before_f, before_n = list(adi.FAILURES), list(adi.NOTES)
+    try:
+        adi.FAILURES.clear()
+        adi.check_superseded_excluded()
+        failures = list(adi.FAILURES)
+    finally:
+        shutil.rmtree(probe)
+        adi.FAILURES[:] = before_f
+        adi.NOTES[:] = before_n
+    assert not probe.exists(), "the probe directory was not removed"
+
+    assert any(name in f for f in failures), (
+        "a directory this audit calls quarantined, but which the analyses' "
+        "filter does not name, was not reported -- so it would be walked "
+        "into by the recursive globs in the paper builder:\n  "
+        + "\n  ".join(failures))

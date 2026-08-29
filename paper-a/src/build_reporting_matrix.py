@@ -219,6 +219,27 @@ def load_rounds() -> list[dict]:
     return rows
 
 
+
+_AX = re.compile(r"arXiv:\s*(\d{4}\.\d{4,5})(v\d+)?", re.I)
+
+
+def arxiv_ids(text: str | None) -> set[tuple[str, str]]:
+    """Every arXiv identifier in a field, normalised to (id, version).
+
+    NORMALISED, AND ALL OF THEM. The cross-check used to compare
+    a.group(0) against b.group(0) -- the raw matched text of a
+    case-insensitive pattern, taking only the FIRST match in each field.
+    That disagreed with itself three ways, each raising SystemExit and
+    stopping the build: "ArXiv:" against "arXiv:", "V1" against "v1", and a
+    reference that mentions another paper's identifier before its own, which
+    compared the wrong pair entirely. A gate that halts a build over a
+    capital letter is a gate someone deletes, and that is the more insidious
+    of the two ways a gate fails.
+    """
+    return {(m.group(1), (m.group(2) or "").lower())
+            for m in _AX.finditer(text or "")}
+
+
 def main() -> int:
     raw = load_rounds()
     if not raw:
@@ -244,6 +265,17 @@ def main() -> int:
             reference=REFERENCE.get(label, ""),
             negative_check=r.get("negative_check", ""),
             source_file=r["source_file"], cells=cells)
+        # A NOTE ON THE CITATION HAS TO SURVIVE THE REBUILD. This file is
+        # BUILT, and an entry is assembled from the fixed set of keys above,
+        # so anything hand-added to the output is deleted by the next run
+        # without a word. One note had been recorded that way -- why a venue
+        # line came from the ACL Anthology listing rather than from the PDF
+        # the row was coded against -- and a rebuild duly destroyed it. It
+        # lives in the raw reading now, which is the source of truth, and is
+        # appended last so the key order the artifact already had is kept.
+        note = r["row"].get("citation_check_note", "")
+        if note:
+            entry["citation_check_note"] = note
         resolved = sum(1 for c in cells.values()
                        if c["verdict"] != "not-applicable")
         prev = seen_labels.get(label)
@@ -260,14 +292,16 @@ def main() -> int:
     # the other for two rounds, and nothing in the build noticed. A reference
     # with no arXiv identifier is fine (it cites a published venue instead);
     # two that disagree is not.
-    _ax = re.compile(r"arXiv:\s*(\d{4}\.\d{4,5})(v\d+)?", re.I)
     for s in studies:
-        a = _ax.search(s.get("reference") or "")
-        b = _ax.search(s.get("study_as_printed") or "")
-        if a and b and a.group(0).replace(" ", "") != b.group(0).replace(" ", ""):
+        ref_ids = arxiv_ids(s.get("reference"))
+        printed = arxiv_ids(s.get("study_as_printed"))
+        # The identifier read off the document must be among those the
+        # hand-typed reference carries. The reference may legitimately name
+        # more than one paper; the document header names this one.
+        if ref_ids and printed and not printed <= ref_ids:
             raise SystemExit(
-                f"{s['label']}: REFERENCE says {a.group(0)} but the document "
-                f"read prints {b.group(0)}")
+                f"{s['label']}: the document read prints "
+                f"{sorted(printed)} but REFERENCE carries {sorted(ref_ids)}")
 
     studies.sort(key=lambda s: (s["kind"] != "llm_hiring_audit", s["label"]))
     audits = [s for s in studies if s["kind"] == "llm_hiring_audit"]
