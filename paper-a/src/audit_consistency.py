@@ -1080,6 +1080,71 @@ def check_orphan_headings():
         print("  every heading is followed by text in its own column")
 
 
+def check_gate_count_claims() -> None:
+    """Prose claiming how many gates check_iclr.py runs, against the gates.
+
+    Counted from the file's own section banners rather than from a list
+    maintained beside them, because a list beside the thing it counts is the
+    same hand-maintained number one level down.
+    """
+    gate_src = SRC / "check_iclr.py"
+    if not gate_src.is_file():
+        return
+    banners = re.findall(r"^    # ---- (.+?) -+$",
+                         gate_src.read_text(encoding="utf-8"), re.M)
+    n = len(banners)
+    if not n:
+        issue("GATES", "check_iclr.py has no section banners to count -- the "
+                       "gate count can no longer be derived, so any number "
+                       "in the prose is now unverified")
+        return
+
+    words = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+             "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+             "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15,
+             "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19,
+             "twenty": 20}
+    alt = "|".join(words) + r"|\d+"
+    # Two shapes, both of which occur: "eight gates" and, beside the file
+    # name, "(nine of them)".
+    claim = re.compile(r"\b(" + alt + r")\s+gates\b"
+                       r"|check_iclr\.py`?\s*\((" + alt + r")\s+of\s+them",
+                       re.I)
+
+    docs = sorted(p for p in ROOT.rglob("*.md")
+                  if not {".git", ".claude", "release",
+                          "node_modules"} & set(p.parts))
+    checked = 0
+    for p in docs:
+        try:
+            text = p.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+        # ONLY WHERE THE PROSE IS ABOUT THIS SCRIPT. "gates" is a common noun
+        # here: PROGRESS.md's "no model passes all three gates" is about the
+        # paper's scientific criteria, and the first version of this rule
+        # reported it as drift. Every real claim sits within a line or two of
+        # a check_iclr.py invocation; PROGRESS.md never names the script.
+        near = [mm.start() for mm in re.finditer(r"check_iclr", text)]
+        if not near:
+            continue
+        for m in claim.finditer(text):
+            if not any(abs(m.start() - q) <= 400 for q in near):
+                continue
+            raw = (m.group(1) or m.group(2)).lower()
+            said = words.get(raw, int(raw) if raw.isdigit() else None)
+            if said is None:
+                continue
+            checked += 1
+            if said != n:
+                line = text[:m.start()].count("\n") + 1
+                issue("GATES",
+                      f"{p.relative_to(ROOT).as_posix()}:{line} says "
+                      f"{raw} gates; check_iclr.py runs {n}")
+    print(f"  gate-count claims: {checked} checked against "
+          f"{n} gates in check_iclr.py")
+
+
 def main() -> int:
     print("=" * 78)
     print("CROSS-DOCUMENT CONSISTENCY AUDIT")
@@ -1100,6 +1165,7 @@ def main() -> int:
     check_placeholder_leaks()
     check_duplicate_references()
     check_figure_captions()
+    check_gate_count_claims()
     print("\n" + "=" * 78)
     kinds = {}
     for k, _ in ISSUES:

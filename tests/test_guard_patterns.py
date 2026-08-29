@@ -2282,3 +2282,262 @@ def test_a_quarantine_the_analyses_do_not_know_about_is_reported():
         "filter does not name, was not reported -- so it would be walked "
         "into by the recursive globs in the paper builder:\n  "
         + "\n  ".join(failures))
+
+
+# ---------------------------------------------------------------------------
+# The blind venue's tooling. Named in fragments for the same reason the other
+# venue's helpers are: this file ships, and the release gate refuses a venue
+# name in it.
+# ---------------------------------------------------------------------------
+def _blind_venue() -> str:
+    return "i" + "clr"
+
+
+def _blind_module(stem: str):
+    p = SRC / (stem + ".py")
+    if not p.exists():
+        pytest.skip("the blind venue's tooling is not part of the release")
+    import importlib
+    return importlib.import_module(p.stem)
+
+
+def _anonymiser():
+    return _blind_module("build_" + _blind_venue() + "_supplementary")
+
+
+def _blind_gate():
+    return _blind_module("check_" + _blind_venue())
+
+
+def _sweep():
+    return _blind_module("check_" + _blind_venue() + "_deskreject")
+
+
+def test_a_deleted_clause_may_not_strand_its_punctuation():
+    r"""The anonymiser rewrites prose, and nothing checked the prose.
+
+    Its substitution table deletes whole clauses. A deleted clause leaves
+    behind the punctuation that attached it, and the deny rule -- the only
+    check that ran afterwards -- asks whether a denied term SURVIVED, never
+    whether what replaced it still reads as English. The archive shipped a
+    comma stranded in front of a period, in the competing-interests
+    disclosure: the one sentence a reviewer reads most carefully.
+
+    The check has to be differential. A flat scan for a stranded comma
+    fires on ordinary line-wrapped prose all over this tree, so "an
+    artifact" can only mean one that is present after substitution and
+    absent before.
+    """
+    B = _anonymiser()
+    before = "employed by a company that builds software, and is paid by it."
+    after = "employed by a company that builds software, ."
+    assert B.substitution_damage(before, after), (
+        "a clause deleted without the comma that introduced it produced no "
+        "complaint, so the anonymiser can ship ungrammatical prose again")
+    assert not B.substitution_damage(before, before), (
+        "reported damage where the text did not change")
+    # And prose that always had the shape is not damage.
+    always = "see Table 1, and Table 2. Also Fig. 3."
+    assert not B.substitution_damage(always, always)
+
+
+def test_the_anonymiser_leaves_the_real_tree_grammatical():
+    r"""End to end, on the file the defect was actually in.
+
+    Testing substitution_damage alone would pass with the substitution rule
+    still broken -- the helper would be correct and unused. This drives the
+    real table over the real source.
+    """
+    B = _anonymiser()
+    target = SRC / "build_paper_v3.py"
+    if not target.exists():
+        pytest.skip("the paper builder is not on this checkout")
+    original = target.read_text(encoding="utf-8")
+    damage = B.substitution_damage(original, B.apply_subs(original))
+    assert not damage, (
+        "anonymising the paper builder introduces punctuation damage:\n  "
+        + "\n  ".join(damage))
+
+
+def test_the_archive_gate_reads_the_shipped_bytes_not_the_tree():
+    r"""A denied term added after the archive was built.
+
+    Freshness is measured by re-applying the SUBSTITUTIONS, so a change
+    there does show up. The deny list has no substitutions: add a term and
+    every member is byte-identical, the archive is "fresh", and it ships
+    carrying the term. Nothing re-asked the question of the artifact that
+    gets uploaded until this gate existed.
+
+    The probe is a word that really is inside the archive and is nobody's
+    name, so the test needs no identity string.
+    """
+    G = _blind_gate()
+    B = _anonymiser()
+    zip_p = (ROOT / "paper-a" / _blind_venue() / "supplementary"
+             / "supplementary_code.zip")
+    if not zip_p.exists():
+        pytest.skip("the archive is not on this checkout")
+
+    hits, n = G.archive_identity_hits(zip_p)
+    assert not hits, f"the real archive is not clean: {hits[:3]}"
+    assert n > 1, "an archive of one member is not being read properly"
+
+    probe = "m" + "atplotlib"
+    real = B.DENY
+    try:
+        B.DENY = re.compile(real.pattern + "|" + probe, re.I)
+        hits, _ = G.archive_identity_hits(zip_p)
+    finally:
+        B.DENY = real
+    assert hits, (
+        "a term added to the deny list after the archive was built was not "
+        "found in the shipped bytes, so the only thing standing between a "
+        "new denied term and the upload is remembering to rebuild")
+
+    after, _ = G.archive_identity_hits(zip_p)
+    assert not after, "the gate stayed noisy after the probe was removed"
+
+
+def test_a_denied_term_in_its_natural_capitalisation_is_still_found():
+    r"""The sweep folded case on the text and not on the terms.
+
+    Every term in the deny list happens to be lowercase, so it worked; add
+    one the way a person would naturally type a proper noun and the rule is
+    inert, reporting zero exactly the way a satisfied rule does. That is the
+    founding bug of this project one level down -- two spellings of the same
+    name, blind in the same way.
+
+    The probe is built from the sweep's own term list, so nothing is spelled
+    here and a term added later is exercised without editing this file.
+    """
+    S = _sweep()
+    # THE CAPITAL HAS TO BE IN THE TERM, NOT THE TEXT. The first version of
+    # this test upper-cased the probe TEXT, which exercises nothing: the
+    # scan lowercases the text either way, and every term on the list is
+    # already lowercase, so it passed with the repair reverted. The defect
+    # is a term carrying a capital being compared against folded text.
+    marker = "Zzq" + "marker"
+    before_terms = list(S.IDENT)
+    before_find = list(S.FINDINGS)
+    try:
+        S.IDENT[:] = [(marker.encode("ascii"), "a constructed probe term")]
+        S.FINDINGS.clear()
+        S.scan_text("probe", "a line mentioning " + marker.lower() + " here")
+        folded = list(S.FINDINGS)
+        S.FINDINGS.clear()
+        S.scan_text("probe", "a line mentioning " + marker.upper() + " here")
+        shouted = list(S.FINDINGS)
+        S.FINDINGS.clear()
+        S.scan_text("probe", "a line mentioning nothing of the sort")
+        absent = list(S.FINDINGS)
+    finally:
+        S.IDENT[:] = before_terms
+        S.FINDINGS[:] = before_find
+
+    assert folded, ("a term carrying a capital did not match the same word "
+                    "in lower case, so a term added in its natural "
+                    "capitalisation is inert -- and an inert rule reports "
+                    "zero exactly the way a satisfied one does")
+    assert shouted, "the same term did not match itself in upper case"
+    assert not absent, "the probe term was reported in text without it"
+
+
+def test_an_acknowledgements_or_funding_block_fails_the_blind_gate():
+    r"""The section an author adds last, in a hurry, at the end.
+
+    A name, a reader, an advisor, a grant number: any of them ends
+    double-blind, and identity in the main text is a stated desk-rejection
+    ground however it got there. Nothing checked this ground at all.
+    """
+    G = _blind_gate()
+    for probe in (chr(92) + "thanks{a reader}",
+                  chr(92) + "section*{Acknowledgements}",
+                  chr(92) + "section*{Acknowledgments}",
+                  chr(92) + "begin{acks}",
+                  "This work was supported by a foundation",
+                  "under Grant No. ABC-1234"):
+        assert G.acknowledgement_hits(probe), (
+            f"{probe!r} did not fail the gate, so an acknowledgements block "
+            "can reach a double-blind submission")
+
+    for benign in ("We report the mean and its interval.",
+                   chr(92) + "section*{Ethics Statement}",
+                   chr(92) + "section*{Reproducibility Statement}"):
+        assert not G.acknowledgement_hits(benign), (
+            f"{benign!r} was reported, and a gate that cries wolf on the "
+            "required statements is a gate that gets skimmed past")
+
+
+def test_a_url_printed_as_text_is_an_anonymity_leak():
+    r"""Neither a name nor a link annotation.
+
+    The anonymity rules catch names; a separate check counts link
+    annotations. A repository or preprint address typeset as ordinary prose
+    is neither, and it is the most direct self-pointer there is.
+    """
+    G = _blind_gate()
+    host = "git" + "hub.com"
+    for probe in ("see https://" + host + "/x/y for code",
+                  "available at " + host + "/x/y",
+                  "the preprint is at " + "arx" + "iv.org/abs/2501.00001",
+                  "www." + "example.org/data"):
+        assert G.pdf_leak_hits(probe), (
+            f"{probe!r} passed the anonymity rules, so a self-pointer "
+            "typeset as prose reaches the submission unseen")
+
+    for benign in ("Section 3.1 describes the design.",
+                   "We report 12 of 13 cases.",
+                   "the mean is 0.42 (95% interval)"):
+        assert not G.pdf_leak_hits(benign), f"{benign!r} was reported"
+
+
+def test_the_desk_rejection_sweep_is_run_by_something():
+    r"""It was run by nothing at all.
+
+    Not a test, not a script, not a line in the runbook -- so every check
+    inside it was equivalent to a check that always passes. An adversarial
+    pass raised this twice and both of its skeptics dismissed it. A gate
+    nobody runs is indistinguishable from a gate that cannot fail, which is
+    the failure mode this whole file exists against.
+    """
+    stem = "check_" + _blind_venue() + "_deskreject"
+    if not (SRC / (stem + ".py")).exists():
+        pytest.skip("the sweep is not part of the release")
+    # A MENTION IS NOT A CALL. The first version of this test grepped the
+    # sibling files for the sweep's name, and the caller's own docstring
+    # names it -- so pointing the call at a different file left this green.
+    # Docstrings are excluded by walking the tree instead of the text.
+    import ast as _ast
+
+    here = pathlib.Path(__file__).resolve().parent
+    mine = pathlib.Path(__file__).name
+
+    def _live_strings(tree):
+        docs = set()
+        for node in _ast.walk(tree):
+            if isinstance(node, (_ast.Module, _ast.FunctionDef,
+                                 _ast.AsyncFunctionDef, _ast.ClassDef)):
+                body = getattr(node, "body", None)
+                if (body and isinstance(body[0], _ast.Expr)
+                        and isinstance(body[0].value, _ast.Constant)
+                        and isinstance(body[0].value.value, str)):
+                    docs.add(id(body[0].value))
+        return [n.value for n in _ast.walk(tree)
+                if isinstance(n, _ast.Constant)
+                and isinstance(n.value, str) and id(n) not in docs]
+
+    callers = []
+    for p in sorted(here.glob("test_*.py")):
+        if p.name == mine:
+            continue
+        try:
+            tree = _ast.parse(p.read_text(encoding="utf-8", errors="replace"))
+        except SyntaxError:
+            continue
+        if any(stem in s for s in _live_strings(tree)):
+            callers.append(p.name)
+
+    assert callers, (
+        "no test in this suite runs the desk-rejection sweep -- a name in a "
+        "comment or docstring does not count -- so nothing would notice if "
+        "it started failing or stopped checking")
