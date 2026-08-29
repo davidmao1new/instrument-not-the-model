@@ -1046,3 +1046,87 @@ def test_the_paper_types_no_measurement_anywhere_in_printed_prose():
         capture_output=True, text=True, cwd=str(ROOT))
     assert "0 numeral(s)" in p.stdout, (
         "a measurement is typed into the paper's prose again:\n" + p.stdout)
+
+
+# ---------------------------------------------------------------------------
+# 9. what leaves the machine: venues, and directories nobody scanned
+# ---------------------------------------------------------------------------
+@needs_gate
+def test_venue_tooling_is_excluded_by_category_not_by_roll_call():
+    """The comment named a category; the code named one member of it.
+
+    SKIP_NAME_PATTERNS read ("iclr",) under a comment saying "anything whose
+    NAME carries the venue is conference-submission tooling and never ships,
+    whether or not anyone remembered to list it below". This repository
+    builds submissions for two anonymous venues, and 33 files of the second
+    reached the author's own named public repo -- five builders, four tests,
+    and the generated tree holding that paper's own captions and tables.
+
+    No venue is spelled here: the tokens come from the gate's own tuple, and
+    the probe names are built from them.
+    """
+    import importlib
+
+    import build_release_repo as rel
+    importlib.reload(rel)
+
+    venues = tuple(rel.ANONYMOUS_VENUES)
+    assert len(venues) >= 2, (
+        "the venue list is back to naming a single venue while the "
+        "repository builds submissions for more than one")
+    assert tuple(rel.SKIP_NAME_PATTERNS) == venues, (
+        "the name rule and the venue list have come apart")
+
+    for v in venues:
+        for probe in (f"build_{v}_tex.py", f"check_{v}.py",
+                      f"test_{v}_structure.py", f"BUILD_{v.upper()}.PY"):
+            assert any(p in probe.lower() for p in rel.SKIP_NAME_PATTERNS), (
+                f"{probe} would ship")
+
+    # And the selection agrees: nothing carrying a venue token is staged.
+    staged = [p.name for p in rel.selected_sources()
+              if any(v in p.name.lower() for v in venues)]
+    assert not staged, f"{len(staged)} venue-named file(s) still staged: " \
+                       f"{sorted(staged)[:4]}"
+
+
+@needs_anon
+@needs_gate
+def test_the_two_gates_agree_on_which_directories_are_transient():
+    """One gate refused to scan .hypothesis; the other packaged it.
+
+    build_release_repo.staged_files() has always ignored .hypothesis, so
+    nothing in it is ever read by a deny rule. build_iclr_supplementary's
+    SKIP_DIRS did not list it, so it would have packaged it. Running the
+    suite inside the clone -- which the README invites -- leaves the
+    directory behind, and 27 of its files were headed for the reviewer
+    archive: bytes no rule had read, in the artifact where identity is a
+    stated desk-rejection ground.
+    """
+    import importlib
+
+    import build_iclr_supplementary as anon
+    import build_release_repo as rel
+    importlib.reload(rel)
+    importlib.reload(anon)
+
+    unscanned = {".git", "__pycache__", ".hypothesis", ".pytest_cache"}
+    missing = sorted(unscanned - set(anon.SKIP_DIRS))
+    assert not missing, (
+        f"the archive would package {missing}, which the release gate "
+        "never scans; unscanned bytes must not reach the reviewer zip")
+
+    # Demonstrated rather than asserted from the constant: a file planted in
+    # one of those directories is not among the packaged members.
+    probe = anon.REPO / ".hypothesis" / "examples" / "probe.bin"
+    probe.parent.mkdir(parents=True, exist_ok=True)
+    probe.write_bytes(b"transient")
+    try:
+        packaged = {p.as_posix() for p in anon.packaged_sources()}
+        assert probe.as_posix() not in packaged, (
+            "a file under .hypothesis is packaged into the reviewer archive")
+    finally:
+        probe.unlink()
+        for d in (probe.parent, probe.parent.parent):
+            if d.is_dir() and not any(d.iterdir()):
+                d.rmdir()
