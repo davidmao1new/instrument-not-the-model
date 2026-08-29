@@ -35,6 +35,7 @@ import sys
 import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import effectsize as es  # noqa: E402
 import paperkit as pk  # noqa: E402
 import stimuli as st  # noqa: E402
 
@@ -209,6 +210,19 @@ def load(key):
     except Exception as e:  # noqa: BLE001
         MISSING.append(f"{key} ({e})")
         return None
+
+
+# The widening buckets, named once. The prose used to type "more than 10 %"
+# beside a lookup of frac_widen_over_10pct, so the sentence and the artifact
+# key it describes could drift apart silently. Reading the label out of the
+# key is what keeps them together.
+W10 = "frac_widen_over_10pct"
+W25 = "frac_widen_over_25pct"
+
+
+def widen_label(key: str) -> str:
+    """The percentage a frac_widen_over_NNpct key counts, as printed prose."""
+    return key.split("_over_")[1][:-len("pct")] + " %"
 
 
 def fmt(x, n=2, sign=False):
@@ -2012,7 +2026,8 @@ def main() -> int:
                  "column is the fraction of individual résumé "
                  "scorings , two per matched pair, on which the "
                  "model’s "
-                 "preference is saturated beyond 0.99 or below 0.01, which is "
+                 f"preference is saturated beyond {es.SATURATION_HI} or "
+                 f"below {es.SATURATION_LO}, which is "
                  "why a single percentage-point conversion cannot serve all "
                  "four models. See Section 6.2."))
 
@@ -3951,12 +3966,35 @@ def main() -> int:
             xi = min(v["frac_identical"] for v in xsess.values())
             xs_ = max(v["sigma"] for v in xsess.values())
             xn = sum(v["n_cells"] for v in xsess.values())
+            # READ, NOT TYPED. This sentence carried five artifact values
+            # and two number words as literal text -- "none of 504 cells on
+            # three of the four models, and on 212 of 504 on the fourth" --
+            # in a paper whose SS1.2 claims that no number in it is typed.
+            # It survived every earlier run of audit_hardtyped_numbers.py
+            # because the fragment is implicitly concatenated onto the
+            # f-string below it, so Python folded it into that JoinedStr
+            # before the AST existed and the audit read it as interpolated.
+            # The source is noise_floor.json, which SS8.1 already reads.
+            _xc = [noise[m]["cross_session"] for m in models
+                   if m in noise and "cross_session" in noise[m]]
+            _zero = [c for c in _xc if not c["n_identical"]]
+            _some = [c for c in _xc if c["n_identical"]]
+            if len(_some) != 1 or not _zero:
+                sys.exit(
+                    "cross-session shape changed: this sentence names one "
+                    f"model as the exception and {len(_some)} now show "
+                    "partial agreement. Rewrite it rather than letting it "
+                    "print a description of data that no longer exists.")
+            _ord = ("first", "second", "third", "fourth", "fifth")[
+                next(i for i, c in enumerate(_xc) if c["n_identical"])]
             P("<b>And across processes, which is the harder test.</b> "
               "Everything above is repeats inside one server launch, and this "
               "paper reports a second and larger reproducibility failure: "
               "identical prompts measured in a different process on a "
-              "different day agree on none of 504 cells on three of the four "
-              "models, and on 212 of 504 on the fourth. Nothing in Studies 8 "
+              f"different day agree on none of {_zero[0]['n']} cells on "
+              f"{NUM[len(_zero)]} of the {NUM[len(_xc)]} "
+              f"models, and on {_some[0]['n_identical']} of {_some[0]['n']} "
+              f"on the {_ord}. Nothing in Studies 8 "
               "or 9 speaks to that, so the same cells were re-measured a third "
               "time in a <i>fresh</i> server process, still sequential, still with "
               "the cache off. They reproduce the stored run "
@@ -4010,6 +4048,26 @@ def main() -> int:
                          for v in _fnm.values()
                          if v.get("n_in_band") == 0
                          and v.get("mean_sd_out_of_band")) if _ib_mean else []
+        # THE BOUND IS PRINTED AS PROSE, SO IT IS CHECKED AS A CLAIM.
+        # "permutation p < 0.001" is a reporting convention rather than a
+        # measurement, which is why it stays typed -- but a convention that
+        # states a fact can stop being true without the sentence noticing.
+        # The same guard covers the clause after it: "unchanged when the
+        # bitwise-identical cells are dropped" is the nonzero_only figure,
+        # and it has to clear the bound too.
+        _PBOUND = 0.001
+        for _m, _v in _fnm.items():
+            if not _v.get("mean_sd_in_band"):
+                continue
+            for _where, _d in (("", _v), (" with ties dropped",
+                                          _v.get("nonzero_only") or {})):
+                _p = _d.get("p_permutation")
+                if _p is not None and _p >= _PBOUND:
+                    sys.exit(
+                        f"SS8 prints 'permutation p < {_PBOUND}', but {_m}"
+                        f"{_where} has p = {_p:.5g}. Restate the sentence "
+                        "rather than letting it print a bound the data no "
+                        "longer supports.")
         P("<b>The floor is not a constant, and prior work says where it should "
           "be largest.</b> Fu, Martínez, Conde and colleagues analysed LLM "
           "nondeterminism at the token "
@@ -4110,10 +4168,10 @@ def main() -> int:
       + (f"ratio now runs from {resamp['contrasts']['min']:.3f} to "
          f"{resamp['contrasts']['max']:.3f}, and while the median is "
          f"{resamp['contrasts']['median']:.3f}, "
-         f"{pct(resamp['contrasts']['frac_widen_over_10pct'], 1)} of "
-         f"contrasts widen by more than 10 % and "
-         f"{pct(resamp['contrasts']['frac_widen_over_25pct'], 1)} by "
-         f"more than 25 %. " if resamp else
+         f"{pct(resamp['contrasts'][W10], 1)} of "
+         f"contrasts widen by more than {widen_label(W10)} and "
+         f"{pct(resamp['contrasts'][W25], 1)} by "
+         f"more than {widen_label(W25)}. " if resamp else
          "ratio is no longer negligible. ")
       + "Every contrast in this paper resamples name pairs. "
       "“Usually indistinguishable” is not a reason to use the "
@@ -4142,8 +4200,9 @@ def main() -> int:
           "existed, and an audit of this paper found that no artifact "
           "reproduced it: recomputed on the panel it described, the range is "
           f"{_t2['min']:.3f} to {_t2['max']:.3f}, wider at both ends, with "
-          f"{pct(_t2['frac_widen_over_10pct'], 1)} of contrasts already "
-          "widening by more than 10 %. The direction of that error matters "
+          f"{pct(_t2[W10], 1)} of contrasts already "
+          f"widening by more than {widen_label(W10)}. The direction of that "
+          "error matters "
           "for the argument it supports. The “before” panel was less "
           "reassuring than we reported, so the case for calling the two "
           "estimators interchangeable was weaker than we thought even before "
@@ -4698,19 +4757,40 @@ def main() -> int:
     H("8  Calibration against the published literature")
     if lit:
         s = lit["summary_of_published_pp_gaps"]
+        # THE CORRECTION SENTENCE READS THE SUPERSEDED BLOCK. It used to type
+        # "12 of the 14", "the other two" and "from 0.51", which are exactly
+        # the values published_effects.json keeps under superseded_twelve_row
+        # -- a block whose own _why_kept says it exists "so that any prose
+        # still carrying the old numbers can be traced". The prose was
+        # carrying them.
+        _sup = s.get("superseded_twelve_row")
+        if not _sup:
+            sys.exit(
+                "published_effects.json no longer records the superseded "
+                "twelve-row summary, but SS8 describes the correction it "
+                "made. Restore the block or rewrite the sentence; do not "
+                "let it print numbers with nothing behind them.")
+        # The threshold is read out of the key that defines it, so the
+        # sentence cannot go on naming a bucket the analysis stopped
+        # computing.
+        _below_key = next(k for k in s
+                          if k.startswith("n_below_") and k.endswith("_pp"))
+        _below_thr = _below_key[len("n_below_"):-len("_pp")].replace("_", ".")
         P("The movement above is only alarming if it is large relative to what "
           "audits report. " + FIGREF("fig9_literature") + " places it against the published record. The "
           "largest set of directly comparable percentage-point callback gaps in "
           "this literature , comparable because one team measured them on "
           "one protocol, has a median absolute gap of "
           f"{fmt(s['median_abs_pp'])} "
-          f"points, with {s['n_below_1_1_pp']} of {s['n']} below 1.1 and a "
-          f"maximum of {fmt(s['max_abs_pp'])}: all {s['n']} model rows of "
-          "that panel. An earlier version of this paper used 12 of the 14 and "
-          "said the other two had not extracted cleanly from the published "
-          "two-column layout. That was wrong. Both extract cleanly, and an "
-          "audit of this paper found it. Restoring them moves the median from "
-          f"0.51 to {fmt(s['median_abs_pp'])} points. Against our own "
+          f"points, with {s[_below_key]} of {s['n']} below {_below_thr} "
+          f"and a maximum of {fmt(s['max_abs_pp'])}: all {s['n']} model rows "
+          f"of that panel. An earlier version of this paper used {_sup['n']} "
+          f"of the {s['n']} and said the other {NUM[s['n'] - _sup['n']]} had "
+          "not extracted cleanly from the published two-column layout. That "
+          "was wrong. Both extract cleanly, and an audit of this paper found "
+          "it. Restoring them moves the median from "
+          f"{fmt(_sup['median_abs_pp'])} to {fmt(s['median_abs_pp'])} points. "
+          "Against our own "
           "argument, since the effects we are calibrating against get larger. "
           f"The Bertrand and Mullainathan "
           f"field anchor is {fmt(bm['_headline']['gap_pp'], 1) if bm else 'n/a'} "

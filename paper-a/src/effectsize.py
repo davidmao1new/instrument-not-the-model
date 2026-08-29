@@ -87,6 +87,14 @@ LEGACY_LOGIT_TO_PP = 25.0
 # and that is what the paper's effect sizes use.
 PP_PER_LOGIT_MAX = 25.0
 
+# WHAT "SATURATED" MEANS, named once. Table 2's caption in build_paper_v3.py
+# spelled these two numbers out in prose while this function decided them
+# here, so moving the cutoff would have left the caption describing the old
+# one -- in a table whose final column IS this definition. The caption now
+# imports them.
+SATURATION_HI = 0.99
+SATURATION_LO = 0.01
+
 
 def prob(margin: float) -> float:
     """Renormalised preference P(yes) / (P(yes) + P(no)) from the log-odds."""
@@ -252,7 +260,8 @@ def describe(rows, n_boot: int = 10000, rng=None, cluster_key="pair") -> dict | 
         pp_interval=sorted([lo, hi], key=abs),
         legacy_pp=bl["est"] * LEGACY_LOGIT_TO_PP,
         saturated_frac=float(np.mean([
-            (prob(r[s + "_margin"]) > 0.99 or prob(r[s + "_margin"]) < 0.01)
+            (prob(r[s + "_margin"]) > SATURATION_HI
+             or prob(r[s + "_margin"]) < SATURATION_LO)
             for r in rows for s in ("white", "black")])),
     )
 

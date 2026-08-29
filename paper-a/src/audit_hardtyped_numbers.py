@@ -130,6 +130,32 @@ EXEMPT = [
      "his within-group dispersion result as an antecedent and the comparison "
      "only means something with his numbers in it; they are facts about his "
      "paper and are read by a human from it, not computed from our artifacts."),
+    # THE FOUR THAT SURVIVED THE F-STRING REPAIR. When the audit stopped
+    # treating a literal glued to an f-string as interpolated, 38.6% of this
+    # paper's printed prose became visible for the first time and twelve
+    # numerals surfaced. Eight were artifact values and are now read from
+    # their artifacts. These four are not measurements at all. Each pattern
+    # is bound to its own sentence, so no exemption can drift onto a number
+    # it was not written for.
+    (r"\bthe side of 1\.0\b",
+     "the neutral point of a ratio. The sentence asks which side of 1.0 a "
+     "ratio of two standard deviations falls on; 1.0 is where a ratio stops "
+     "meaning one thing and starts meaning the other, not a measured value."),
+    (r"\bcalls returned 200\b",
+     "an HTTP status code. The existing HTTP entry requires the literal "
+     "'HTTP' beside the number, and this sentence does not write it: the "
+     "point being made is that the API answered normally and the failure was "
+     "elsewhere."),
+    (r"\bconversion factor itself, 0\.25\b",
+     "the maximum of p(1-p), reached at p = 0.5, so 1/4 exactly. It is the "
+     "numerator of the Jacobian the section is criticising and is fixed by "
+     "arithmetic, not by this panel; effectsize.PP_PER_LOGIT_MAX is the same "
+     "quantity in percentage points."),
+    (r"\bpermutation p < 0\.001\b",
+     "a conventional reporting bound, and one this build refuses to print "
+     "unless it holds: the guard beside the sentence in build_paper_v3.py "
+     "checks every p it covers against 0.001. Measured today at 9.9995e-05 "
+     "and 4.99975e-05 across 20,000 permutations."),
     (r"\btemperature 0\.6\b",
      "An et al.'s decoding temperature, quoted. The sentence exists because "
      "they claim seed-based reproducibility at a NON-zero temperature, so the "
@@ -144,6 +170,42 @@ MEASURE = re.compile(
     r"|\b\d+ of \d+\b"              # a tally
     r"|\bp = \d"                    # a p-value
 )
+
+
+def typed_literals(n):
+    """Every typed string literal in an expression that reaches the page.
+
+    A LITERAL GLUED TO AN F-STRING IS STILL A LITERAL. Python folds implicit
+    concatenation before the AST exists, so
+
+        P(f"the gap is {x:.1f} points"
+          " and the legacy share is 83 %")
+
+    is one JoinedStr and the second fragment -- which interpolates nothing --
+    lives in its .values. Skipping everything inside a JoinedStr therefore
+    skipped 815 typed fragments in build_paper_v3.py, 63,695 of the 165,207
+    characters of printed prose, and the folding is invisible in the source:
+    those look like two strings because they were written as two strings. The
+    exemption's reason, that an f-string reads its numbers from artifacts,
+    was only ever true of the {...} parts. Twelve numerals were hiding in
+    there, eight of them artifact values.
+
+    The format spec is the one thing inside an f-string that is not prose:
+    `{x:.3f}` keeps ".3f" as a Constant under FormattedValue.format_spec,
+    where the 3 is a precision. Excluded by node identity, so a nested spec
+    like `{x:{w}.3f}` is covered too.
+
+    At module scope so a test can call it. The version nested inside main()
+    could only be tested by a copy of itself, which tests the copy.
+    """
+    specs = set()
+    for sub in ast.walk(n):
+        if isinstance(sub, ast.FormattedValue) and sub.format_spec:
+            specs.update(id(x) for x in ast.walk(sub.format_spec))
+    for sub in ast.walk(n):
+        if (isinstance(sub, ast.Constant) and isinstance(sub.value, str)
+                and id(sub) not in specs):
+            yield sub
 
 
 def main() -> int:
@@ -166,17 +228,7 @@ def main() -> int:
             if kw.arg == "caption":
                 printed.append(kw.value)
 
-    def constants(n):
-        """Plain string constants inside an expression, skipping f-strings."""
-        for sub in ast.walk(n):
-            if isinstance(sub, ast.JoinedStr):
-                continue
-            if isinstance(sub, ast.Constant) and isinstance(sub.value, str):
-                inside_f = any(
-                    sub is v for anc in ast.walk(n)
-                    if isinstance(anc, ast.JoinedStr) for v in ast.walk(anc))
-                if not inside_f:
-                    yield sub
+    constants = typed_literals
 
     # The reference registry is bibliographic: page ranges, DOIs, arXiv ids.
     ref_lines = set()

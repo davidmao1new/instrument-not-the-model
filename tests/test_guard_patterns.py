@@ -831,3 +831,218 @@ def test_the_public_gate_sees_the_same_views_the_anonymiser_does():
     source = _code(GATE)
     assert "seen = views_of(text, rel)" in source, (
         "the gate scan no longer reads every view of the file")
+
+
+# ---------------------------------------------------------------------------
+# 8. what the gates are shown: line breaks, file lists, and folded literals
+# ---------------------------------------------------------------------------
+@needs_check
+def test_a_name_broken_across_a_line_is_still_a_name():
+    """A PDF line break is lossy in three ways and each needs its inverse.
+
+    TeX INSERTS a hyphen when it breaks inside a word, KEEPS the hyphen when
+    it breaks at one the word already had, and leaves only the break when it
+    splits at a space. Dropping the hyphen repairs the first case and
+    destroys the second, so no single normalisation works -- the scan has to
+    try every reconstruction.
+
+    Measured on the built PDF: of 39 hyphen breaks, four of the six longest
+    are compounds broken at their own hyphen (between-group, within-group,
+    maximum-weight, single-wording). The one LEAKS pattern built from
+    hyphenated parts is the repository URL, which has three places to break.
+    """
+    import importlib
+
+    import check_iclr as C
+    importlib.reload(C)
+
+    # THE MODULE'S OWN SCAN, not a copy of it. Written with the views
+    # inlined here, this test passed whatever check_iclr.py did -- the same
+    # way two of the first founding-case tests passed on the bugs they were
+    # written for.
+    def caught(t):
+        return bool(C.pdf_leak_hits(t))
+
+    # The school, hyphenated by the typesetter at three different places.
+    school = next(rx.pattern for rx, why in C.LEAKS if "school" in why)
+    for cut in (4, 8, 10):
+        assert caught(f"{school[:cut]}-\n{school[cut:]} High School"), (
+            f"the school broken after {cut} letters is not caught")
+
+    # The repository URL, broken at each hyphen it already contains.
+    repo = next(rx.pattern for rx, why in C.LEAKS if "repo" in why)
+    for i, ch in enumerate(repo):
+        if ch == "-":
+            probe = f"{repo[:i + 1]}\n{repo[i + 1:]}"
+            assert caught(probe), (
+                f"the repository URL broken at hyphen {i} is not caught; "
+                "a break at an EXISTING hyphen keeps it, so de-hyphenating "
+                "cannot rebuild the word")
+
+    # Ordinary hyphenation must stay quiet, including the paper's own
+    # compounds, which is what stops the fourth view being a blanket join.
+    for quiet in ("randomiza-\ntion", "between-\ngroup dispersion",
+                  "maximum-\nweight matching", "a dis-\npersion budget"):
+        assert not caught(quiet), f"false positive on {quiet!r}"
+
+
+@needs_check
+def test_the_freshness_gate_asks_what_the_archive_holds():
+    """The file list is derived from the selection, never guessed at.
+
+    Three copies of "three directories, two suffixes" once stood in for the
+    archive's contents. Measured against the archive they guarded, that guess
+    watched 55 files it never ships -- 43 under _superseded/, excluded on
+    purpose -- and missed 50 it does, including all 19 figures, every bundled
+    font, config.yaml and _py.sh. A gate wrong in both directions blocks on
+    edits reviewers never see and waves through edits to the figures.
+    """
+    import importlib
+
+    import build_iclr_supplementary as anon
+    import build_release_repo as rel
+    importlib.reload(rel)
+    importlib.reload(anon)
+
+    packaged = {p.relative_to(anon.REPO).as_posix()
+                for p in anon.packaged_sources()}
+    assert packaged, "the archive selection is empty"
+
+    # Every figure and every font is watched. These are exactly what the
+    # directory-and-suffix guess could not see.
+    for suffix in (".png", ".pdf", ".otf", ".ttf", ".sh", ".yaml"):
+        assert any(p.endswith(suffix) for p in packaged), (
+            f"no {suffix} file is watched; the freshness scan has gone back "
+            "to filtering by directory and suffix")
+
+    # And nothing deliberately excluded is watched.
+    assert not [p for p in packaged if "_superseded" in p], (
+        "superseded files are watched again, so touching one demands a "
+        "rebuild that changes nothing")
+
+    # The archive on disk holds exactly what the selection names.
+    zp = ROOT / "paper-a" / "iclr" / "supplementary" / "supplementary_code.zip"
+    if zp.exists():
+        import zipfile
+        with zipfile.ZipFile(zp) as z:
+            shipped = {n[len("code/"):] for n in z.namelist()
+                       if n.startswith("code/") and not n.endswith("/")}
+        shipped.discard("ANONYMIZED_FOR_REVIEW.md")
+        assert shipped == packaged, (
+            f"the archive and the selection disagree on "
+            f"{len(shipped ^ packaged)} file(s)")
+
+
+@needs_check
+def test_freshness_is_decided_by_content_not_by_a_timestamp():
+    """mtime is the pre-filter; the bytes are the answer.
+
+    The FaccT tests rewrite capnumbers.tex with byte-identical content on
+    every suite run, so a timestamp-only gate demanded a rebuild after every
+    `pytest`. A gate that cries wolf on every test run is one people learn to
+    skip, which is the same erosion the directory guess caused by the
+    opposite route.
+
+    mtime survives as a filter because it is sound in the direction that
+    matters: a file whose mtime has not moved cannot have changed.
+    """
+    import importlib
+
+    import build_release_repo as rel
+    importlib.reload(rel)
+
+    src = _code(pathlib.Path(rel.__file__))
+    assert "def staged_copy_differs" in src, (
+        "the content comparison is gone; freshness is back to trusting "
+        "timestamps")
+
+    # Touching a staged file without changing it must not read as stale.
+    sel = rel.selected_sources()
+    assert sel, "nothing selected"
+    probe = next((p for p in sel
+                  if (rel.STAGE / p.relative_to(rel.ROOT)).is_file()), None)
+    assert probe is not None
+    staged = rel.STAGE / probe.relative_to(rel.ROOT)
+    assert not rel.staged_copy_differs(probe, staged), (
+        f"{probe.name} reads as changed while its bytes are identical")
+
+
+@needs_check
+def test_the_gate_and_the_test_share_one_freshness_definition():
+    """Three copies of a list is how a list stays wrong.
+
+    The same guess lived in check_iclr.py, in build_iclr_supplementary.py's
+    pre-flight and in tests/test_iclr_fork.py. Fixing one left the other two
+    to re-report the old answer, which is what happened: the gate was
+    repaired and the suite went on failing from its own copy.
+    """
+    import importlib
+
+    import check_iclr as C
+    importlib.reload(C)
+    assert hasattr(C, "archive_staleness"), (
+        "the single freshness definition is gone")
+
+    for name in ("build_iclr_supplementary.py", "check_iclr.py"):
+        body = _code(pathlib.Path(C.__file__).parent / name)
+        assert '("paper-a/src", "paper-a/data", "tests")' not in body, (
+            f"{name} has grown its own copy of the directory guess again")
+    fork = ROOT / "tests" / "test_iclr_fork.py"
+    if fork.exists():
+        assert '("paper-a/src", "paper-a/data", "tests")' not in _code(fork), (
+            "the fork test has grown its own copy of the directory guess")
+
+
+def test_a_literal_glued_to_an_fstring_is_still_typed():
+    """Python folds implicit concatenation before the AST exists.
+
+        P(f"the gap is {x:.1f} points"
+          " and the legacy share is 83 %")
+
+    is ONE JoinedStr. The second fragment interpolates nothing -- it is a
+    plain literal -- but it lives in JoinedStr.values, so a rule that skipped
+    everything inside a JoinedStr skipped 815 typed fragments in
+    build_paper_v3.py: 63,695 of 165,207 characters, 38.6% of the printed
+    prose. Twelve numerals were hiding there, eight of them artifact values.
+
+    The format spec is the one thing inside an f-string that is not prose:
+    `{x:.3f}` stores ".3f", where the 3 is a precision.
+    """
+    import ast as _ast
+    import importlib
+
+    import audit_hardtyped_numbers as H
+    importlib.reload(H)
+
+    # THE MODULE'S OWN WALK, not a copy of it. Spelling the traversal out
+    # here made the test agree with itself no matter what the audit did.
+    tree = _ast.parse(
+        'P(f"the gap is {x:.1f} points"\n'
+        '  " and the legacy share is 83 %")\n')
+    call = tree.body[0].value
+    found = [n.value for n in H.typed_literals(call)]
+
+    assert any("83 %" in f for f in found), (
+        "a plain literal implicitly concatenated onto an f-string is still "
+        "invisible to the audit")
+    assert not any(".1f" == f for f in found), (
+        "the format spec is being read as prose; its digits are precisions")
+
+
+def test_the_paper_types_no_measurement_anywhere_in_printed_prose():
+    """The claim SS1.2 makes about itself, enforced end to end.
+
+    With the f-string repair in place this found twelve numerals. Eight were
+    artifact values -- the cross-day counts (212 of 504, none of 504 on three
+    of four), the superseded literature median (0.51, 12 of the 14, the other
+    two), the widening buckets and the saturation cutoff -- and are now read
+    from the artifacts that hold them. The four that remain are not
+    measurements and each carries a bound exemption.
+    """
+    import subprocess
+    p = subprocess.run(
+        [sys.executable, str(ROOT / "paper-a" / "src" /
+                             "audit_hardtyped_numbers.py")],
+        capture_output=True, text=True, cwd=str(ROOT))
+    assert "0 numeral(s)" in p.stdout, (
+        "a measurement is typed into the paper's prose again:\n" + p.stdout)
