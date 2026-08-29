@@ -483,11 +483,83 @@ def test_hardtyped_audit_has_no_blanket_length_cut():
 
     builder = SRC / "build_paper_v3.py"
     if builder.exists():
-        bad = re.findall(r'else\s+"(\d[^"]{0,10})"', _code(builder))
+        # THE SHAPES, NOT ONE SPELLING OF THEM. This matched `else "<digits>"`
+        # and nothing else, so it never saw `_n_panel = len(...) or 6` -- a
+        # bare int after `or`, feeding \NPanel into the abstract of both
+        # papers, and printing exactly the value the artifact holds today.
+        # The AST names both shapes and can tell an artifact fallback from
+        # `1 if fverd else 0`, which counts an optional arm rather than
+        # standing in for a missing one: there, both branches are constants.
+        import ast as _ast
+        src_text = builder.read_text(encoding="utf-8")
+        tree = _ast.parse(src_text)
+
+        def _numeric(node):
+            return (isinstance(node, _ast.Constant)
+                    and not isinstance(node.value, bool)
+                    and (isinstance(node.value, (int, float))
+                         or (isinstance(node.value, str)
+                             and node.value[:1].isdigit())))
+
+        bad = []
+        for node in _ast.walk(tree):
+            if isinstance(node, _ast.BoolOp) and isinstance(node.op, _ast.Or) \
+                    and _numeric(node.values[-1]):
+                bad.append((node.lineno,
+                            _ast.get_source_segment(src_text, node)))
+            if isinstance(node, _ast.IfExp) and _numeric(node.orelse) \
+                    and not _numeric(node.body):
+                bad.append((node.lineno,
+                            _ast.get_source_segment(src_text, node)))
         assert not bad, (
-            f"the builder has numeric artifact fallbacks again: {bad}. A "
-            "missing artifact must stop the build, not print a stale number "
-            "into a paper claiming every number is interpolated.")
+            "the builder has numeric artifact fallbacks again:\n  "
+            + "\n  ".join(f"line {n}: {s}" for n, s in bad)
+            + "\nA missing artifact must stop the build, not print a stale "
+              "number into a paper claiming every number is interpolated.")
+
+
+def test_the_facct_typed_gate_sees_single_digits_too():
+    r"""The repair landed in one of the two gates that had the defect.
+
+    check_iclr.py's TYPED gate dropped its single-digit cut and gained
+    context guards. check_draft.py is the FAccT counterpart -- its docstring
+    says it exists because audit_hardtyped_numbers.py cannot see inside a
+    .tex file -- and kept the cut. 15 of the 55 generated FAccT macros hold a
+    single-digit value, five of them Cap* macros, and this routine is also
+    what checks the captions, "the densest numbers in the submission".
+
+    Removing a cheap pre-filter is only half the repair; what it was standing
+    in for has to be handled by context. Here that is one category above all
+    -- a numeral inside a checkpoint name -- and it accounted for 66 of the
+    matches the cut was hiding.
+    """
+    draft = SRC / "check_draft.py"
+    if not draft.exists():
+        pytest.skip("check_draft not shipped")
+    assert "< 2:" not in _code(draft), (
+        "the single-digit cut is back in the FAccT typed-measurement gate")
+
+    import check_draft as CD
+    allow = {"0.25", "0.5", "1.0", "95"}
+
+    for prose in ("the effect moves by 6 points",
+                  "agreement falls to 4 of 12 cells",
+                  "the panel covers 6 checkpoints",
+                  "47.9 % of contrasts widen"):
+        assert CD.typed_measurements(prose, allow), (
+            f"a typed measurement is invisible: {prose!r}")
+
+    for quiet in ("measured on Llama-2-7B-chat",
+                  "on Mistral-7B-Instruct v0.1 and v0.3",
+                  "Llama-3.1-8B-Instruct saturates",
+                  "see preprint Figure 4 for the panel",
+                  "Table 7 lists the wordings",
+                  "as Section 6 shows",
+                  "the interval level is 95 %",
+                  "% a comment saying pick 2-3 topics"):
+        assert not CD.typed_measurements(quiet, allow), (
+            f"a false positive would train the author to ignore this gate: "
+            f"{quiet!r} -> {CD.typed_measurements(quiet, allow)}")
 
 
 def test_negative_search_harvester_reads_every_documented_form():
@@ -1312,10 +1384,17 @@ def test_the_allow_drift_check_reads_a_decorated_macro_value():
     # A macro's NAME can be read without parsing its value at all, which
     # makes it the independent quantity.
     names = {n for ns in seen.values() for n in ns}
+    # Only a macro whose value CARRIES a number needs to be reachable: one
+    # that renders a word (\NSlopeChecked prints "four") has nothing an
+    # ALLOW entry could collide with. The definition line is scanned for a
+    # digit rather than parsed, and not parsing the value is what keeps this
+    # independent of the regex under test.
     declared = set()
     for g in gen.glob("*.tex"):
-        declared |= set(re.findall(r"\\newcommand\{?\\([A-Za-z]+)",
-                                   g.read_text(encoding="utf-8")))
+        for line in g.read_text(encoding="utf-8").split("\n"):
+            dm = re.match(r"\s*\\newcommand\{?\\([A-Za-z]+)", line)
+            if dm and any(c.isdigit() for c in line[dm.end():]):
+                declared.add(dm.group(1))
     assert declared <= names, (
         "these macros are invisible to the drift check, so an ALLOW entry "
         f"equal to one of their values would never be reported: "

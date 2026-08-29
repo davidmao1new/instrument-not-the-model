@@ -632,8 +632,17 @@ def main() -> int:
     n_records, n_single, n_calls = corpus_size()
     # Frontier checkpoints TOUCHED, which is what the corpus totals cover: the
     # four that return a margin plus the verdict-only arm of Appendix D.
-    _n_front = ((front["summary"]["n_models"] if front and front.get("summary")
-                 else 0) + (1 if fverd else 0))
+    # Same rule, same abstract. A missing frontier artifact used to make
+    # this zero, in a sentence that counts frontier checkpoints. The second
+    # term stays conditional: the verdict-only arm of Appendix D is
+    # genuinely optional, and `1 if fverd else 0` counts it rather than
+    # standing in for it.
+    if not (front and front.get("summary")):
+        sys.exit(
+            "cannot build without frontier/frontier_margin_analysis.json: "
+            "\\NFront is interpolated into the abstract, and a missing "
+            "artifact used to make it zero rather than stop the build.")
+    _n_front = front["summary"]["n_models"] + (1 if fverd else 0)
     # How badly a single p = 0.5 Jacobian misstates the probability-scale
     # effect, per model. Recomputed here rather than quoted, because it is
     # one of the paper's load-bearing numbers.
@@ -944,7 +953,20 @@ def main() -> int:
     # runs on four of the six the mechanism panel defines, and Study 9 on two.
     # The sentence was making the serving evidence sound panel-wide in the same
     # breath as conceding that "complete" overstates the cache arm.
-    _n_panel = len([k for k in (mech or {}) if not k.startswith("_")]) or 6
+    # NO TYPED FALLBACK BEHIND A NUMBER IN THE ABSTRACT. This read
+    # `... or 6`, and six is exactly what the artifact holds today: lose the
+    # artifact and the sentence would have read the same while the number
+    # stopped being measured. \NPanel is in the abstract of this paper and
+    # of the ICLR fork. The file's idiom for an artifact it cannot build
+    # without is line 597's sys.exit, and this is one of those.
+    _panel_models = [k for k in (mech or {}) if not k.startswith("_")]
+    if not _panel_models:
+        sys.exit(
+            "cannot build without mechanism_panel/mech_panel_analysis.json: "
+            "\\NPanel is interpolated into the abstract, and the fallback "
+            "that used to stand in for it printed the value the artifact "
+            "happens to hold today, so nothing would have looked wrong.")
+    _n_panel = len(_panel_models)
     _n_batch = len([k for k in (rep or {})
                     if not k.startswith("_") and isinstance(rep[k], dict)])
     _n_cache = len([k for k in (cache or {})

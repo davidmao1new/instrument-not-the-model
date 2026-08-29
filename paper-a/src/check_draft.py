@@ -116,6 +116,12 @@ def typed_measurements(body: str, allow: set[str] = frozenset()) -> list[str]:
     build_caption_kit.CONSTANTS so the two cannot drift apart.
     """
     out = []
+    # A COMMENT IS NOT PROSE. This gate read the whole file, so a template
+    # note like "https://dl.acm.org/ccs (pick 2-3)" was scanned as if it
+    # were a sentence in the paper. check_iclr.py has stripped comments
+    # since it was written.
+    body = "\n".join(re.sub(r"(?<!\\)%.*$", "", ln)
+                     for ln in body.split("\n"))
     for m in re.finditer(r"(?<![\\\w])\d[\d,.]*\s*\\?%?", body):
         s = m.group().strip()
         # TRAILING PUNCTUATION IS NOT PART OF THE NUMBER. "[\d,.]*" swallows
@@ -125,14 +131,40 @@ def typed_measurements(body: str, allow: set[str] = frozenset()) -> list[str]:
         # end a clause. It also made every report of such a number ugly.
         if not s.endswith("%"):
             s = s.rstrip(",.")
-        if len(s.replace(",", "").replace(".", "")) < 2:
-            continue          # single digits: "one of four" style counts
+        # NO SINGLE-DIGIT CUT. It ran before the real test and decided what
+        # the real test was allowed to see -- the same defect removed from
+        # check_iclr.py's TYPED gate, left standing in its sibling. 15 of
+        # the 55 generated FAccT macros hold a single-digit value, five of
+        # them Cap* macros, so about a quarter of this submission's
+        # measurements could be typed as digits with this gate printing
+        # "none". What the cut was really hiding is handled below, by
+        # context, in the manner check_iclr.py uses.
         if s.rstrip("\\%").strip().rstrip(",.") in allow:
+            continue
+        # A NUMERAL INSIDE AN IDENTIFIER IS PART OF THE NAME. "Llama-2-7B",
+        # "Mistral v0.1", "Llama-3.1-8B-Instruct": the whitespace-delimited
+        # token carries letters, so the digits in it name a checkpoint
+        # rather than measure one. This is the category the single-digit cut
+        # was silently standing in for -- 66 of the matches it hid.
+        # The match pattern ends in `\s*`, so m.end() can sit past a space
+        # and the window would swallow the NEXT word -- which made "6 points"
+        # read as a token containing letters, and the guard skipped the very
+        # measurements removing the single-digit cut was meant to expose.
+        _end = m.start() + len(m.group().rstrip())
+        _lo = body.rfind(" ", 0, m.start()) + 1
+        _hi = body.find(" ", _end)
+        token = body[_lo:_hi if _hi > 0 else len(body)]
+        if any(c.isalpha() for c in token.strip("\\%(),.;:")):
             continue
         # A section number is not a measurement. "\S{}4.7" and "§4.7" both
         # end in digits and both tripped this on the first run.
         before = body[max(0, m.start() - 30):m.start()]
         if re.search(r"(\\S\{\}|§)\s*$", before):
+            continue
+        # A cross-reference names a float, it does not measure one. The
+        # captions point at the preprint's numbering throughout.
+        if re.search(r"\b(Figures?|Tables?|Sections?|Appendix|Appendices)"
+                     r"\s*$", before):
             continue
         if "\\label" in before or "\\ref" in before or "\\cite" in before:
             continue
