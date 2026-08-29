@@ -1130,3 +1130,143 @@ def test_the_two_gates_agree_on_which_directories_are_transient():
         for d in (probe.parent, probe.parent.parent):
             if d.is_dir() and not any(d.iterdir()):
                 d.rmdir()
+
+
+# ---------------------------------------------------------------------------
+# 10. rules written to a category rather than to a sample of it
+# ---------------------------------------------------------------------------
+@needs_gate
+def test_the_credential_rule_covers_the_shapes_vendors_issue_today():
+    """sk-[A-Za-z0-9]{20,} stops at a hyphen, and the current keys have one.
+
+    sk-proj- and sk-svcacct- have been OpenAI's issued formats since 2024 and
+    both put a hyphen inside the first twenty characters, so neither matched;
+    the bare sk- shape the rule did catch is the one being retired. ghp_ is
+    not github_pat_, and the four sibling gh?_ kinds had no rule at all.
+
+    The routes are real: experiment_frontier_margin.py posts a Bearer token
+    and prints an OPENAI_API_KEY=... line in its own docstring, and
+    paper-a/releases/critique_*.json ships verbatim command transcripts.
+    Every probe below is a syntactically valid shape with an invented body.
+    """
+    import importlib
+
+    import build_release_repo as rel
+    importlib.reload(rel)
+
+    def caught(s):
+        return any(rx.search(s) for rx, _ in rel.DENY_TEXT)
+
+    body = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJ"
+    for shape in (f"sk-proj-{body}", f"sk-svcacct-{body}", f"sk-ant-api03-{body}",
+                  f"sk-{body}", f"github_pat_11ABCDEFG0{body}{body}",
+                  f"ghp_{body}", f"ghs_{body}", f"gho_{body}", f"hf_{body}",
+                  # Split: whole, this IS a credential shape, and a gate
+                  # that let a file containing one ship would be the bug.
+                  "AKIA" + "IOSFODNN7EXAMPLE", f"AIzaSyA-{body}",
+                  # Split for the same reason as the AWS shape above.
+                  "xoxb-" + "123456789012-" + body[:12]):
+        assert caught(shape), f"{shape[:18]}... is not recognised as a credential"
+
+    # Prose about a prefix is not a credential.
+    for quiet in ("the sk- prefix is discussed in the appendix",
+                  "import sklearn as sk", "see ghp for the format"):
+        assert not caught(quiet), f"false refusal on {quiet!r}"
+
+
+@needs_gate
+def test_the_identity_tripwires_are_case_and_separator_agnostic():
+    """Every identity rule in the table carries re.I except the one that did not.
+
+    The account-name rule was the last line of defence for the home-directory
+    form SANITISE misses -- that table replaces literals, so an uppercased
+    path out of cmd is neither rewritten nor flagged. The outreach tripwire
+    assumed a forward slash on a Windows tree whose recorded shell commands
+    carry backslashes, and the LinkedIn rule missed the vendor's own
+    capitalisation, which is the single most likely spelling.
+    """
+    import importlib
+
+    import build_release_repo as rel
+    importlib.reload(rel)
+
+    def caught(s):
+        return any(rx.search(s) for rx, _ in rel.DENY_TEXT)
+
+    # NOTHING DENIED IS SPELLED HERE. Written out, these probes ARE the
+    # strings the rules hunt, in a file that ships publicly -- and the gate
+    # refused this file until they were built at runtime instead, which is
+    # the widened rules working on their first real input. The account name
+    # comes from its own rule's parse tree; the paths are split so the denied
+    # sequence exists only after concatenation.
+    acct = matching_string(
+        next(rx for rx, why in rel.DENY_TEXT
+             if "account name" in why).pattern)
+    assert acct, "the account-name rule yielded no literal to probe with"
+
+    for probe in (f"C:/Users/{acct.upper()}/AppData",
+                  f"C:/Users/{acct.title()}/scratch",
+                  f"{acct}_scratch", f"{acct}2", f"/{acct}/",
+                  "see outreach" + "\\" + "NOTES.md",
+                  "see OUTREACH" + "/notes.md",
+                  "https://www.LinkedIn.com" + "/in/someone"):
+        assert caught(probe), f"{probe!r} escapes every tripwire"
+
+    # A surname that merely CONTAINS the account name is not the account name.
+    # Bare, this rule refused a release over an ordinary citation; \b would
+    # reintroduce the founding bug, since the live path forms are acct_ and
+    # acct2 and "_" and digits are word characters.
+    for quiet in (f"Chai{acct}ana et al. 2019",
+                  f"the {acct.title()}enko method"):
+        assert not caught(quiet), (
+            f"false refusal on {quiet!r}; a citation must not stop a release")
+
+
+@needs_gate
+def test_the_byte_rules_know_more_than_one_spelling_of_a_name():
+    """The binary branch is the only path where sanitise() never runs.
+
+    b"david mao" assumed exactly one space, so the underscore, hyphen, dotted
+    and inverted spellings a PDF /Author or XMP dc:creator field routinely
+    carries all missed -- the founding separator case in byte form. The list
+    also had no counterpart to the three text rules guarding the absolute
+    local path, so a figure regenerated by a tool that stamps its input path
+    would have shipped untouched and unflagged.
+
+    The author's name is not spelled here: the probes are built from the
+    module's own generated spellings.
+    """
+    import importlib
+
+    import build_release_repo as rel
+    importlib.reload(rel)
+
+    lits = [p for p, _ in rel.DENY_BYTES]
+
+    # BUILD THE PROBES, DO NOT READ THEM BACK. The first version of this test
+    # asked each literal whether the list containing it matched -- true by
+    # construction -- and it passed against a list carrying a single spelling.
+    # The two name parts come from the inverted literal, which is the one
+    # entry that spells both, and each separator form is rebuilt here.
+    inverted = next(p for p, why in rel.DENY_BYTES
+                    if why == "names the author, inverted")
+    last, first = (x.strip() for x in inverted.split(b","))
+
+    png = b"\x89PNG\r\n\x1a\n\x00\xff"
+    for sep in (b" ", b"_", b"-", b".", b""):
+        probe = first + sep + last
+        blob = (png + probe.upper() + b"\x00\xfe").lower()
+        assert any(p.lower() in blob for p in lits), (
+            f"a binary carrying the {sep!r}-joined author name is not "
+            "caught; the byte list is back to a single spelling")
+
+    # And the private working tree is represented in bytes, not only in text.
+    assert any(b"my drive" in p.lower() for p in lits), (
+        "no byte rule guards the absolute private path, on the one branch "
+        "where sanitise() does not run")
+    # Recovered from the rule, not spelled: this file ships.
+    acct = matching_string(
+        next(rx for rx, why in rel.DENY_TEXT
+             if "account name" in why).pattern)
+    assert any(acct.encode("ascii") in p.lower() for p in lits), (
+        "no byte rule guards the home directory")
