@@ -273,14 +273,15 @@ def test_a_name_written_inside_a_regex_literal_is_still_denied():
     # A correct helper that nothing calls is the same as no helper. The
     # assertions above would all pass with scannable() defined and unwired,
     # so the scan site itself is pinned.
-    source = (SRC / "build_iclr_supplementary.py").read_text(encoding="utf-8")
-    assert "scan = scannable(text)" in source, (
-        "scannable() is defined but the member loop no longer builds `scan` "
-        "from it")
-    assert "DENY.search(scan)" in source, (
-        "the deny scan no longer reads the escape-normalised copy")
-    assert "rx.search(scan)" in source, (
-        "the private-name rules no longer read the escape-normalised copy")
+    source = _code(ANON)
+    assert "views_of(" in source, (
+        "the member loop no longer builds its views from views_of()")
+    assert "scannable(text)" in source, (
+        "views_of() no longer includes the escape-normalised copy")
+    assert "seen = views_of(text, rel.as_posix())" in source, (
+        "the text branch no longer scans every view of the member")
+    assert "DENY.search(v)" in source and "rx.search(v)" in source, (
+        "the deny rules no longer read every view")
 
 
 # ---------------------------------------------------------------------------
@@ -681,3 +682,152 @@ def test_the_history_scan_honours_the_cited_author_allowlist():
     assert "at_path" in source and "ALLOW_EMAIL_IN" in source, (
         "the history scan no longer maps blobs to their committed path, so "
         "the cited-author allowlist cannot apply in history")
+
+
+# ---------------------------------------------------------------------------
+# 7. what the anonymiser's rules are actually shown
+# ---------------------------------------------------------------------------
+@needs_anon
+def test_the_member_path_is_scanned_not_only_its_contents():
+    """The founding case was a FILENAME, and no rule ever saw the filename.
+
+    Every repair after Mao_methods_supplement.pdf was about matching content.
+    The builder still wrote `code/{rel}` into the archive without running one
+    identity rule over `rel`. This tree actively generates surname-bearing
+    artifact names, kept out today only by SKIP_DIRS entries added for
+    unrelated curation reasons.
+
+    The name is rebuilt from the module's own byte list rather than typed.
+    """
+    import importlib
+
+    import build_iclr_supplementary as anon
+    importlib.reload(anon)
+
+    surname = anon.DENY_BYTES[0].decode("ascii").split()[-1]
+    for path in (f"paper-a/data/reference/{surname}_methods_supplement.pdf",
+                 f"paper-a/src/{surname}_notes.py",
+                 f"figures/{surname.lower()}-summary.png"):
+        assert any(v and anon.DENY.search(v)
+                   for v in anon.views_of("", path)), (
+            f"the member path {path} ships unscanned")
+
+    # and an ordinary path is still fine
+    assert not any(v and anon.DENY.search(v)
+                   for v in anon.views_of("", "paper-a/src/build_paper_v3.py"))
+
+
+@needs_anon
+@needs_private
+def test_a_name_joined_by_an_underscore_is_still_a_name():
+    r"""The rules join parts with \s+; a filename joins with _.
+
+    A name joined by an underscore or a hyphen missed every rule, in a
+    whose own release naming convention is underscore-separated and whose
+    founding case was exactly such a filename.
+
+    Probes are generated from each pattern's parse tree, so no correspondent
+    is named in this file.
+    """
+    import importlib
+
+    import build_iclr_supplementary as anon
+    importlib.reload(anon)
+
+    pats = anon.load_private_patterns()
+    assert pats, "no private patterns loaded"
+
+    missed = []
+    for rx in pats:
+        plain = matching_string(rx.pattern)
+        if " " not in plain:
+            continue
+        # only spaces BETWEEN LETTERS, which is what SEPARATOR_ALIAS
+        # normalises. Substituting every space invents spellings nobody
+        # writes, like "Hypothesis_:_Name", and tests the probe not the code.
+        for sep in ("_", "-"):
+            probe = re.sub(r"(?<=[A-Za-z]) (?=[A-Za-z])", sep, plain)
+            if not any(rx.search(v) for v in anon.views_of(probe, "")):
+                missed.append(probe.replace(plain.split()[0], "<name>"))
+    assert not missed, (
+        f"{len(missed)} underscore/hyphen spellings escape every view; the "
+        "separator normalisation has been removed")
+
+
+@needs_anon
+def test_binaries_get_literal_rules_and_never_a_regex():
+    """Two ways to get a binary wrong, and this file has had both.
+
+    Too weak: DENY_BYTES was case-sensitive, omitted the school, and the
+    private-correspondent patterns never touched a binary at all.
+
+    Too clever: running those regexes over raw.decode(errors="ignore")
+    invents matches out of compressed pixel data -- it refused three figures
+    the moment it was tried. Content gets literal byte comparisons; the
+    path, which is always real text, gets the full rule set.
+    """
+    import importlib
+
+    import build_iclr_supplementary as anon
+    importlib.reload(anon)
+
+    names = [p.decode("ascii", "ignore").lower() for p in anon.DENY_BYTES]
+    assert any("wissahickon" in n for n in names), (
+        "the school is denied for text but not for binaries again")
+
+    lits = anon.literal_bytes(anon.load_private_patterns())
+    assert lits, "no correspondent literals derived for binary scanning"
+
+    png = b"\x89PNG\r\n\x1a\n\x00\xff"
+    for probe in (anon.DENY_BYTES[0].upper(),
+                  anon.DENY_BYTES[0].replace(b" ", b"_"),
+                  lits[0].upper()):
+        blob = png + probe + b"\x00\xfe"
+        assert any(p.lower() in blob.lower()
+                   for p in anon.DENY_BYTES + lits), (
+            "a binary member carrying a denied term is not caught")
+
+    source = _code(ANON)
+    assert 'decode("utf-8", errors="ignore")' not in source, (
+        "the anonymiser is regex-scanning salvage-decoded binaries again; "
+        "that invents matches out of compressed data")
+
+
+@needs_gate
+@needs_private
+def test_the_public_gate_sees_the_same_views_the_anonymiser_does():
+    r"""Two gates, one boundary, and only one of them could see it.
+
+    A staged test file carrying an underscored correspondent name passed
+    build_release_repo.py -- which printed "clean: ... no personal contact
+    details" -- and was refused by build_iclr_supplementary.py one command
+    later. The release gate joined name parts with \s+ only, so
+    "Name_Surname" was invisible to the gate that publishes to the internet
+    while being caught by the one that packages for reviewers.
+
+    Probes come from each rule's own parse tree; no name is typed here.
+    """
+    import importlib
+
+    import build_release_repo as g
+    importlib.reload(g)
+
+    rules = [rx for rx, why in g.DENY_TEXT if "private correspondent" in why]
+    assert rules, "the private-correspondent rules did not load"
+
+    missed = []
+    for rx in rules:
+        plain = matching_string(rx.pattern)
+        if " " not in plain:
+            continue
+        for sep in ("_", "-"):
+            probe = re.sub(r"(?<=[A-Za-z]) (?=[A-Za-z])", sep, plain)
+            if not any(rx.search(v) for v in g.views_of(probe)):
+                missed.append(sep)
+    assert not missed, (
+        f"{len(missed)} separator spellings escape the public gate; it has "
+        "lost the views the anonymiser has")
+
+    source = _code(GATE)
+    assert "seen = views_of(text, rel)" in source, (
+        "the gate scan no longer reads every view of the file")
