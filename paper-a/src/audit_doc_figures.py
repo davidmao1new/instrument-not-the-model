@@ -52,12 +52,16 @@ def truth() -> dict[str, int | float]:
         with fitz.open(FULL_PDF) as d:
             t["full_pages"] = len(d)
     if ICLR_PDF.exists():
+        # ONE MEASUREMENT. This used to count pages before the REFERENCES
+        # page, which is a proxy for main text and stopped tracking it when
+        # the required statements grew to fill a page of their own. It then
+        # pinned PLAN.md and SUBMISSION.md to the wrong number -- the audit
+        # against stale documents holding two of them stale.
+        from build_iclr import main_text_end_page
         with fitz.open(ICLR_PDF) as d:
-            pages = [p.get_text() for p in d]
-        t["iclr_total"] = len(pages)
-        t["iclr_main"] = next(
-            (i for i, p in enumerate(pages)
-             if re.search(r"(?m)^\s*REFERENCES\s*$", p)), len(pages))
+            t["iclr_total"] = d.page_count
+            t["iclr_main"] = main_text_end_page(
+                [p.get_text("blocks") for p in d])[0]
     if ZIP.exists():
         with zipfile.ZipFile(ZIP) as z:
             t["zip_members"] = len(z.namelist())
